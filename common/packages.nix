@@ -11,6 +11,7 @@ with pkgs; [
   htop
   glances
   coreutils
+  direnv
   difftastic
   dejavu_fonts
   du-dust

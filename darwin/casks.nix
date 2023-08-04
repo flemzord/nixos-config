@@ -23,4 +23,8 @@
   "postman"
   "transmission"
   "jetbrains-toolbox"
+  "mumble"
+  "session-manager-plugin"
+  "the-unarchiver"
+  "Transmit"
 ]

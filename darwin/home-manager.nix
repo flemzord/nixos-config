@@ -20,15 +20,17 @@ let
 
   # Fully declarative dock using the latest from Nix Store
   local.dock.enable = true;
+#  local.dock.position = "left";
+#  local.dock.autoHide = true;
   local.dock.entries = [
+    { path = "/Applications/Arc.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Discord.app/"; }
     { path = "/Applications/Beeper.app/"; }
-    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
-    { path = "/Applications/Drafts.app/"; }
-    { path = "/System/Applications/Home.app/"; }
+    { path = "/Applications/Warp.app/"; }
+#    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
     {
-      path = "${config.users.users.${user}.home}/.local/share/bin/emacs-launcher.command";
+      path = "/Applications";
       section = "others";
     }
     {
@@ -37,7 +39,7 @@ let
       options = "--sort name --view grid --display folder";
     }
     {
-      path = "${config.users.users.${user}.home}/.local/share/downloads";
+      path = "${config.users.users.${user}.home}/Downloads";
       section = "others";
       options = "--sort name --view grid --display stack";
     }
