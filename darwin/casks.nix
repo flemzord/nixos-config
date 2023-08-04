@@ -15,7 +15,6 @@
   "visual-studio-code"
   "beeper"
   "cron"
-  "linear"
   "lens"
   "openlens"
   "1password"
