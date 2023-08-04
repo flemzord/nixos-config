@@ -74,10 +74,9 @@ let name = "Maxence Maireaux";
     alias ls='ls --color=auto'
 
     # Weather report in your terminal
-    alias weather='curl "http://wttr.in"'
+    alias weather='curl http://wttr.in'
 
-    # Reboot into my dual boot Windows partition
-    alias windows='systemctl reboot --boot-loader-entry=auto-windows'
+    alias dc='docker compose'
   '';
 
   git = {
