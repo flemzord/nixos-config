@@ -4,7 +4,7 @@ let user = "flemzord";
     keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOoC9CTKaguJf4cktkbVfU4+KdVL/kTg1XqIIwxwh/85" ]; in
 {
   imports = [
-    ./disk-config.nix
+    ./hardware-configuration.nix
     ../common
     ../common/cachix
   ];
