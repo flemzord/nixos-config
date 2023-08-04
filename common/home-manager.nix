@@ -106,6 +106,7 @@ let name = "Maxence Maireaux";
       user.signingkey = "~/.ssh/github.pub";
       pull.rebase = true;
       rebase.autoStash = true;
+      push.autoSetupRemote = true;
     };
   };
 
