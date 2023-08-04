@@ -33,7 +33,7 @@ in
     homeDirectory = "/home/${user}";
     packages = pkgs.callPackage ./packages.nix {};
     file = common-files // import ./files.nix { user = user; };
-    stateVersion = "21.05";
+    stateVersion = "23.05";
   };
 
   # Use a dark theme

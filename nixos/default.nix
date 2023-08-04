@@ -250,6 +250,6 @@ let user = "flemzord";
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
-  system.stateVersion = "21.05"; # Don't change this
+  system.stateVersion = "23.05"; # Don't change this
 
 }
