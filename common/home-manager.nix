@@ -77,6 +77,8 @@ let name = "Maxence Maireaux";
     alias weather='curl http://wttr.in'
 
     alias dc='docker compose'
+
+    eval "$(direnv hook zsh)"
   '';
 
   git = {
