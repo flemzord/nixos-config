@@ -2,7 +2,7 @@
 
 let
 
-  user = "dustin";
+  user = "flemzord";
   xdg_configHome  = "/home/${user}/.config";
   common-programs = import ../common/home-manager.nix { config = config; pkgs = pkgs; lib = lib; };
   common-files = import ../common/files.nix {};

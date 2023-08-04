@@ -1,6 +1,6 @@
 { config, pkgs, nixpkgs, ... }:
 
-let user = "dustin"; in
+let user = "flemzord"; in
 {
 
   imports = [

@@ -8,7 +8,7 @@ let
     ];
 
     nixpkgs.config.allowUnfree = true;
-    time.timeZone = "America/New_York";
+    time.timeZone = "Europe/Paris";
     networking.hostName = "syncthing";
     networking.hostId = "67518724"; # zfs requires this
     boot.initrd.supportedFilesystems = ["zfs"]; # boot from zfs
@@ -19,7 +19,7 @@ let
 
     environment.systemPackages = with pkgs; [ syncthing vim htop ];
     users.extraUsers.root.password = "password"; # Change after first login
-    users.users.dustin = {
+    users.users.flemzord = {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
     };

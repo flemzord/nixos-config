@@ -4,20 +4,16 @@
 with pkgs; [
   act # run github actions locally
   alacritty
-  aspell
-  aspellDicts.en
   awscli2
   bash-completion
   bat # A cat(1) clone with syntax highlighting
   btop
-  cloudflared
+  htop
+  glances
   coreutils
   difftastic
   dejavu_fonts
-  docker
-  docker-compose
   du-dust
-  emacs-all-the-icons-fonts
   flyctl
   ffmpeg
   fd
@@ -26,18 +22,16 @@ with pkgs; [
   gcc
   gh # github
   git-filter-repo
-  glow # CLI markdown viewer
   gnupg
-  google-cloud-sdk
   go
   gopls
   hack-font
   home-manager
-  htop
   hunspell
   iftop
   jetbrains-mono
   jq
+  yq
 
   # This is broken on MacOS for now
   # https://github.com/NixOS/nixpkgs/issues/172165 
@@ -53,19 +47,14 @@ with pkgs; [
   nodejs
   noto-fonts
   noto-fonts-emoji
-  ngrok
   openssh
   pandoc
   pinentry
   python39
   python39Packages.virtualenv
   ripgrep
-  slack
   sqlite
   ssm-session-manager-plugin
-  terraform
-  terraform-ls
-  tflint
   tree
   tmux
   unrar

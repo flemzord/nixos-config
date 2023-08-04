@@ -97,11 +97,11 @@ super + @space
 
 # Terminal emulator
 super + Return
-	bspc rule -a Alacritty -o state=floating rectangle=1024x768x0x0 center=true && /etc/profiles/per-user/dustin/bin/alacritty
+	bspc rule -a Alacritty -o state=floating rectangle=1024x768x0x0 center=true && /etc/profiles/per-user/flemzord/bin/alacritty
 
 # Terminal emulator
 super + ctrl + Return
-	/etc/profiles/per-user/dustin/bin/alacritty
+	/etc/profiles/per-user/flemzord/bin/alacritty
 
 # Jump to workspaces
 super + t
@@ -115,7 +115,7 @@ super + Tab
 
 # Keepass XC
 super + shift + x
-	/etc/profiles/per-user/dustin/bin/keepassxc
+	/etc/profiles/per-user/flemzord/bin/keepassxc
 
 # Emacs
 # -c flag is --create-frame

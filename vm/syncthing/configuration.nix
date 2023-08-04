@@ -19,7 +19,7 @@
   networking.hostName = "syncthing"; # Define your hostname.
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Paris";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -34,7 +34,7 @@
   networking.defaultGateway = "192.168.0.1";
   networking.nameservers = [ "192.168.0.223" ];
 
-  users.users.dustin = {
+  users.users.flemzord = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
@@ -53,16 +53,16 @@
       "* * * * *  root    python /root/import-readwise/app.py | logger -t cron"
       "0 3 * * *  root    zfs snapshot rpool/data@`date +\\%Y-\\%m-\\%d` | logger -t cron"
       "0 4 * * *  root    zfs destroy rpool/data@`date -d -30days +\\%Y-\\%m-\\%d` | logger -t cron"
-      "0 4 * * *  root    zfs send -i rpool/data@`date -d -1days +\\%Y-\\%m-\\%d` rpool/data@`date +\\%Y-\\%m-\\%d` | ssh dustin@192.168.0.223 zfs recv rpool/backups | logger -t cron"
-      "0 4 * * *  root    ssh dustin@192.168.0.223 zfs destroy rpool/data@`date -d -30days +\\%Y-\\%m-\\%d` | logger -t cron"
+      "0 4 * * *  root    zfs send -i rpool/data@`date -d -1days +\\%Y-\\%m-\\%d` rpool/data@`date +\\%Y-\\%m-\\%d` | ssh flemzord@192.168.0.223 zfs recv rpool/backups | logger -t cron"
+      "0 4 * * *  root    ssh flemzord@192.168.0.223 zfs destroy rpool/data@`date -d -30days +\\%Y-\\%m-\\%d` | logger -t cron"
     ];
 
   };
 
   services.syncthing = {
     enable = true;
-    user = "dustin";
-    dataDir = "/home/dustin";
+    user = "flemzord";
+    dataDir = "/home/flemzord";
     configDir = "/data/config";
   };
 

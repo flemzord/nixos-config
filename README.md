@@ -1,9 +1,9 @@
 <img src="https://user-images.githubusercontent.com/1292576/190241835-41469235-f65d-4d4b-9760-372cdff7a70f.png" width="48">
 
-# Dustin's Nix / NixOS config
+# flemzord's Nix / NixOS config
 ![GitHub last commit](https://img.shields.io/github/last-commit/dustinlyons/nixos-config?style=plastic)
 
-_Psst: I can help write Nix at your company. <a href="https://twitter.com/dustinhlyons">Get in touch.</a>_
+_Psst: I can help write Nix at your company. <a href="https://twitter.com/flemzordhlyons">Get in touch.</a>_
 # Overview
 Hey, you made it! Welcome. 🤓
 
@@ -93,8 +93,8 @@ You can edit your configuration and save the changes.
 ## Build and switch to new generation
 ### On Mac
 ```sh
-nix --experimental-features 'nix-command flakes' build .#darwinConfigurations.Dustins-MBP.system --impure && \
-./result/sw/bin/darwin-rebuild switch --flake .#Dustins-MBP --impure && \
+nix --experimental-features 'nix-command flakes' build .#darwinConfigurations.flemzords-MBP.system --impure && \
+./result/sw/bin/darwin-rebuild switch --flake .#flemzords-MBP --impure && \
 unlink ./result
 ```
 ### On NixOS
@@ -107,7 +107,7 @@ nix flake update
 ```
 
 ## Read my occasional musings on Nix
-[![Follow @dustinhlyons](https://github.com/dustinlyons/dustinlyons/assets/1292576/3d214b95-6c93-4967-8c72-862fa494e664)](https://www.twitter.com/dustinhlyons)
+[![Follow @flemzordhlyons](https://github.com/dustinlyons/dustinlyons/assets/1292576/3d214b95-6c93-4967-8c72-862fa494e664)](https://www.twitter.com/flemzordhlyons)
 
 > "All we have to decide is what to do with the time that is given us." - J.R.R. Tolkien
 

@@ -3,7 +3,7 @@
 let
   common-programs = import ../common/home-manager.nix { config = config; pkgs = pkgs; lib = lib; };
   common-files = import ../common/files.nix {};
-  user = "dustin"; in
+  user = "flemzord"; in
 {
   imports = [
     <home-manager/nix-darwin>
@@ -22,15 +22,9 @@ let
   local.dock.enable = true;
   local.dock.entries = [
     { path = "/Applications/Slack.app/"; }
-    { path = "/System/Applications/Messages.app/"; }
-    { path = "/System/Applications/Facetime.app/"; }
-    { path = "/Applications/Telegram.app/"; }
-    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
     { path = "/Applications/Discord.app/"; }
-    { path = "/System/Applications/Music.app/"; }
-    { path = "/System/Applications/News.app/"; }
-    { path = "/System/Applications/Photos.app/"; }
-    { path = "/System/Applications/Photo Booth.app/"; }
+    { path = "/Applications/Beeper.app/"; }
+    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
     { path = "/Applications/Drafts.app/"; }
     { path = "/System/Applications/Home.app/"; }
     {
@@ -66,17 +60,18 @@ let
   #
   homebrew.casks = pkgs.callPackage ./casks.nix {};
   homebrew.masApps = {
-    "1password" = 1333542190;
-    "drafts" = 1435957248;
-    "hidden-bar" = 1452453066;
-    "wireguard" = 1451685025;
-    "yoink" = 457622435;
+    "1Password for Safari" = 1569813296;
+    "Bear" = 1091189122;
+    "Infuse" = 1136220934;
+    "Screegle" = 1591051659;
+    "Tailscale" = 1475387142;
   };
 
   # Enable home-manager to manage the XDG standard
   home-manager = {
     useGlobalPkgs = true;
     users.${user} = {
+      home.stateVersion = "23.05";
       home.enableNixpkgsReleaseCheck = false;
       home.packages = pkgs.callPackage ./packages.nix {};
       home.file = common-files // import ./files.nix { config = config; pkgs = pkgs; };

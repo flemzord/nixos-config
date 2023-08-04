@@ -11,7 +11,7 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Paris";
   networking.hostName = "docker"; # Define your hostname.
   networking.hostId = "67518725"; # Needed for ZFS to work
 
@@ -35,7 +35,7 @@
   networking.nameservers = [ "192.168.0.223" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dustin = {
+  users.users.flemzord = {
     isNormalUser = true;
     extraGroups = [ "docker" "wheel" ];
   };

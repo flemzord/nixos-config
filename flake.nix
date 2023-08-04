@@ -1,5 +1,5 @@
 {
-  description = "Dustin's Configuration for NixOS and MacOS";
+  description = "flemzord's Configuration for NixOS and MacOS";
 
   inputs = {
     nixpkgs.url = "github:dustinlyons/nixpkgs/master"; # @todo: submit packages upstream
@@ -17,13 +17,13 @@
   outputs = { self, darwin, home-manager, nixpkgs, disko, ... }@inputs: {
 
     darwinConfigurations = {
-      "Dustins-MBP" = darwin.lib.darwinSystem {
+      "flemzords-MBP" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [ ./darwin ];
       };
     };
 
-    nixosConfigurations = let user = "dustin"; in {
+    nixosConfigurations = let user = "flemzord"; in {
       felix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
@@ -39,7 +39,7 @@
     };
 
     apps = {
-      x86_64-linux.install = let user = "dustin"; in {
+      x86_64-linux.install = let user = "flemzord"; in {
         type = "app";
         program = "${(nixpkgs.legacyPackages.x86_64-linux.writeShellScriptBin "install" ''
 

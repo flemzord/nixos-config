@@ -1,6 +1,6 @@
 { config, inputs, pkgs, ... }:
 
-let user = "dustin";
+let user = "flemzord";
     keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOoC9CTKaguJf4cktkbVfU4+KdVL/kTg1XqIIwxwh/85" ]; in
 {
   imports = [
@@ -17,7 +17,7 @@ let user = "dustin";
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "Europe/Paris";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config

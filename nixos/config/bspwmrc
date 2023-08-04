@@ -55,19 +55,19 @@ sleep .25
 # Desktop 1
 # Email, Calendar, News (General)
 bspc rule -a Google-chrome -o desktop='^1'
-/etc/profiles/per-user/dustin/bin/google-chrome-stable --profile-directory=Default "https://www.fastmail.com" "https://calendar.google.com/calendar/u/0/r" &!
+/etc/profiles/per-user/flemzord/bin/google-chrome-stable --profile-directory=Default "https://www.fastmail.com" "https://calendar.google.com/calendar/u/0/r" &!
 
 sleep 1
 
 bspc rule -a Google-chrome -o desktop='^1'
-/etc/profiles/per-user/dustin/bin/google-chrome-stable --profile-directory=Default --new-window "https://www.techmeme.com" "https://www.inoreader.com/" &!
+/etc/profiles/per-user/flemzord/bin/google-chrome-stable --profile-directory=Default --new-window "https://www.techmeme.com" "https://www.inoreader.com/" &!
 
 sleep 1
 
 # Desktop 2
 # Terminal, Emacs (IDE)
 bspc rule -a Alacritty -o desktop='^2'
-/etc/profiles/per-user/dustin/bin/alacritty -e tmux attach &!
+/etc/profiles/per-user/flemzord/bin/alacritty -e tmux attach &!
 
 sleep 1
 
@@ -79,36 +79,36 @@ sleep .5
 # Desktop 3
 # Slack, Dev Tools Browser
 bspc rule -a Slack -o desktop='^3'
-/etc/profiles/per-user/dustin/bin/slack &!
+/etc/profiles/per-user/flemzord/bin/slack &!
 
 sleep .5
 
 bspc rule -a Google-chrome -o desktop='^3'
-/etc/profiles/per-user/dustin/bin/google-chrome-stable --profile-directory=Profile\ 2 --new-window "https://chat.openai.com" "https://console.cloud.google.com/" &!
+/etc/profiles/per-user/flemzord/bin/google-chrome-stable --profile-directory=Profile\ 2 --new-window "https://chat.openai.com" "https://console.cloud.google.com/" &!
 
 sleep .5
 
 # Desktop 4
 # Chat, News (Financial)
 bspc rule -a Discord -o desktop='^4'
-/etc/profiles/per-user/dustin/bin/discord &!
+/etc/profiles/per-user/flemzord/bin/discord &!
 
 sleep 1
 
 bspc rule -a TelegramDesktop -o desktop='^4'
-/etc/profiles/per-user/dustin/bin/telegram-desktop &!
+/etc/profiles/per-user/flemzord/bin/telegram-desktop &!
 
 sleep .5
 
 bspc rule -a Google-chrome -o desktop='^4'
-/etc/profiles/per-user/dustin/bin/google-chrome-stable --profile-directory=Default --new-window "https://www.tradingview.com" "https://www.bloomberg.com" &!
+/etc/profiles/per-user/flemzord/bin/google-chrome-stable --profile-directory=Default --new-window "https://www.tradingview.com" "https://www.bloomberg.com" &!
 
 sleep .5
 
 # Desktop 6
 # Monitoring, Emacs (Journal)
 bspc rule -a Alacritty -o desktop='^6'
-/etc/profiles/per-user/dustin/bin/alacritty -e btop &!
+/etc/profiles/per-user/flemzord/bin/alacritty -e btop &!
 
 sleep .5
 
@@ -120,6 +120,6 @@ sleep .5
 # Desktop 5
 # Apple Music, Media
 bspc rule -a Cider -o desktop='^5'
-/etc/profiles/per-user/dustin/bin/cider &!
+/etc/profiles/per-user/flemzord/bin/cider &!
 
 sleep .5
