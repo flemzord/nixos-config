@@ -58,9 +58,6 @@ in
               echo >&2 "Resetting Dock."
               ${dockutil}/bin/dockutil --no-restart --remove all
               ${createEntries}
-              defaults write com.apple.dock orientation left
-              defaults write com.apple.dock autohide -bool true
-              defaults write com.apple.dock tilesize -int 30
               killall Dock
             else
               echo >&2 "Dock setup complete."
