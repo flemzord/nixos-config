@@ -1,7 +1,9 @@
 { config, pkgs, lib, ... }:
 
-let name = "Maxence Maireaux";
-    email = "maxence@maireaux.fr"; in
+let
+  name = "Maxence Maireaux";
+  email = "maxence@maireaux.fr";
+in
 {
   # Shared shell configuration
   zsh.enable = true;
@@ -13,14 +15,14 @@ let name = "Maxence Maireaux";
   };
   zsh.plugins = [
     {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      name = "powerlevel10k";
+      src = pkgs.zsh-powerlevel10k;
+      file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     }
     {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./config;
-        file = "p10k.zsh";
+      name = "powerlevel10k-config";
+      src = lib.cleanSource ./config;
+      file = "p10k.zsh";
     }
   ];
   zsh.initExtraFirst = ''
@@ -84,13 +86,13 @@ let name = "Maxence Maireaux";
   git = {
     enable = true;
     ignores = [
-        "*.swp"
-        ".idea"
-        "*.DS_Store"
-        "*.LSOverride"
-        "Thumbs.db"
-        ".bundle"
-        ".fleet"
+      "*.swp"
+      ".idea"
+      "*.DS_Store"
+      "*.LSOverride"
+      "Thumbs.db"
+      ".bundle"
+      ".fleet"
     ];
     userName = name;
     userEmail = email;
@@ -99,8 +101,8 @@ let name = "Maxence Maireaux";
     };
     extraConfig = {
       init.defaultBranch = "main";
-      core = { 
-	    editor = "vim";
+      core = {
+        editor = "vim";
         autocrlf = "input";
       };
       commit.gpgsign = true;
@@ -219,8 +221,8 @@ let name = "Maxence Maireaux";
 
       let g:airline_theme='bubblegum'
       let g:airline_powerline_fonts = 1
-      '';
-     };
+    '';
+  };
 
   alacritty = {
     enable = true;

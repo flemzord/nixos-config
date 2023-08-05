@@ -1,7 +1,10 @@
 { pkgs }:
 
 with pkgs;
-let common-packages = import ../common/packages.nix { pkgs = pkgs; }; in
+let common-packages = import ../common/packages.nix { inherit pkgs; }; in
 common-packages ++ [
   dockutil
+  nixpkgs-fmt
+  statix
+  pre-commit
 ]

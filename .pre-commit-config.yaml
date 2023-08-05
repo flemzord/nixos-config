@@ -1,0 +1,19 @@
+repos:
+  - repo: local
+    hooks:
+    - id: statix
+      name: statix (Nix)
+      description: Format Nix code with statix.
+      entry: statix
+      args: [ "fix" ]
+      pass_filenames: false
+      language: system
+      files: \.nix$
+
+    -  id: nixpkgs-fmt
+       name: nixpkgs-fmt
+       description: Format nix code with nixpkgs-fmt.
+       entry: nixpkgs-fmt .
+       language: system
+       files: \.nix$
+       require_serial: true

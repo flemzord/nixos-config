@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./../../pkgs/overlays/default.nix
       ./../../pkgs/services/tailscale.nix
@@ -54,25 +55,6 @@
     #media-session.enable = true;
   };
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    gnome-music
-    gnome-terminal
-    gedit # text editor
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
-    gnome-characters
-    totem # video player
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.flemzord = {
     isNormalUser = true;
@@ -83,6 +65,10 @@
     ];
   };
 
+  services.udev.packages = with pkgs; [
+    gnome.gnome-settings-daemon
+  ];
+
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "flemzord";
@@ -91,5 +77,28 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  environment = {
+    systemPackages = with pkgs; [
+      # Packages installed
+      gnome.gnome-tweaks
+      gnome.adwaita-icon-theme
+    ];
+    gnome.excludePackages = (with pkgs; [
+      # Gnome ignored packages
+      gnome-tour
+    ]) ++ (with pkgs.gnome; [
+      gedit
+      epiphany
+      geary
+      gnome-characters
+      tali
+      iagno
+      hitori
+      atomix
+      yelp
+      gnome-contacts
+      gnome-initial-setup
+    ]);
+  };
   system.stateVersion = "23.05"; # Did you read the comment?
 }

@@ -1,13 +1,13 @@
 { config, pkgs, lib, ... }:
 
 {
-    virtualisation = {
-        docker = {
-            enable = true;
-            autoPrune = {
-              dates = "daily";
-              flags = ["--all" "--volumes"];
-            };
-        };
+  virtualisation = {
+    docker = {
+      enable = true;
+      autoPrune = {
+        dates = "daily";
+        flags = [ "--all" "--volumes" ];
+      };
     };
+  };
 }

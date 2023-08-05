@@ -15,3 +15,6 @@ ifeq ($(UNAME), Darwin)
 else
 	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${NIXNAME}"
 endif
+
+update:
+	nix flake update --commit-lock-file

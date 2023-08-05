@@ -1,13 +1,14 @@
 { config, pkgs, lib, ... }:
 
 let
-  common-programs = import ../common/home-manager.nix { config = config; pkgs = pkgs; lib = lib; };
-  common-files = import ../common/files.nix {};
-  user = "flemzord"; in
+  common-programs = import ../common/home-manager.nix { inherit config; inherit pkgs; inherit lib; };
+  common-files = import ../common/files.nix { };
+  user = "flemzord";
+in
 {
   imports = [
     <home-manager/nix-darwin>
-   ./dock
+    ./dock
   ];
 
   # It me
@@ -20,15 +21,15 @@ let
 
   # Fully declarative dock using the latest from Nix Store
   local.dock.enable = true;
-#  local.dock.position = "left";
-#  local.dock.autoHide = true;
+  #  local.dock.position = "left";
+  #  local.dock.autoHide = true;
   local.dock.entries = [
     { path = "/Applications/Arc.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Discord.app/"; }
     { path = "/Applications/Beeper.app/"; }
     { path = "/Applications/Warp.app/"; }
-#    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
+    #    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
     {
       path = "/Applications";
       section = "others";
@@ -60,7 +61,7 @@ let
   #
   # $ mas search <app name>
   #
-  homebrew.casks = pkgs.callPackage ./casks.nix {};
+  homebrew.casks = pkgs.callPackage ./casks.nix { };
   homebrew.masApps = {
     "1Password for Safari" = 1569813296;
     "Bear" = 1091189122;
@@ -75,9 +76,9 @@ let
     users.${user} = {
       home.stateVersion = "23.05";
       home.enableNixpkgsReleaseCheck = false;
-      home.packages = pkgs.callPackage ./packages.nix {};
-      home.file = common-files // import ./files.nix { config = config; pkgs = pkgs; };
-      programs = common-programs // {};
+      home.packages = pkgs.callPackage ./packages.nix { };
+      home.file = common-files // import ./files.nix { inherit config; inherit pkgs; };
+      programs = common-programs // { };
 
       # https://github.com/nix-community/home-manager/issues/3344
       # Marked broken Oct 20, 2022 check later to remove this

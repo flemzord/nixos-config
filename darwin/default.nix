@@ -34,7 +34,7 @@ let user = "flemzord"; in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = (import ../common/packages.nix { pkgs = pkgs; });
+  environment.systemPackages = import ../common/packages.nix { inherit pkgs; };
 
   # Enable fonts dir
   fonts.fontDir.enable = true;

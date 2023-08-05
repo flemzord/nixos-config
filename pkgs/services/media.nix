@@ -2,29 +2,34 @@
 
 {
   services = {
-    radarr = {                  #7878
+    radarr = {
+      #7878
       enable = true;
       user = "root";
       group = "users";
       openFirewall = true;
     };
-    sonarr = {                  #8989
+    sonarr = {
+      #8989
       enable = true;
       user = "root";
       group = "users";
       openFirewall = true;
     };
-    bazarr = {                  #6767
+    bazarr = {
+      #6767
       enable = true;
       user = "root";
       group = "users";
       openFirewall = true;
     };
-    prowlarr = {                #9696
+    prowlarr = {
+      #9696
       enable = true;
       openFirewall = true;
     };
-    transmission = {                  #9091
+    transmission = {
+      #9091
       enable = true;
       user = "root";
       group = "users";
@@ -41,11 +46,11 @@
       };
     };
     plex = {
-        enable = true;
-        dataDir = "/var/lib/plex";
-        openFirewall = true;
-        user = "plex";
-        group = "plex";
+      enable = true;
+      dataDir = "/var/lib/plex";
+      openFirewall = true;
+      user = "plex";
+      group = "plex";
     };
   };
 }

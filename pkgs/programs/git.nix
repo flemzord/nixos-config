@@ -1,0 +1,7 @@
+{
+  programs = {
+    git = {
+      enable = true;
+    };
+  };
+}
