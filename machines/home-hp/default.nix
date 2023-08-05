@@ -8,6 +8,11 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./../../pkgs/services/openssh.nix
+      ./../../pkgs/services/tailscale.nix
+      ./../../pkgs/services/docker.nix
+      ./../../pkgs/services/media.nix
+      ./../../pkgs/services/metabase.nix
     ];
 
   # Bootloader.
@@ -121,43 +126,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    gnomeExtensions.tailscale-status
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     curl
-    tailscale
     htop
-    docker
-    metabase
+    btop
     glances
   ];
 
-  # programs.dconf.enable = true;
-  # services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-  # List services that you want to enable:
-  services.openssh.enable = true;
-  services.tailscale.enable = true;
-  services.metabase.enable = true;
-  virtualisation.docker.enable = true;
-
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [
-      22
-      3000
-    ];
-  };
-
-
-  services.plex = {
-    enable = true;
-    dataDir = "/var/lib/plex";
-    openFirewall = true;
-    user = "plex";
-    group = "plex";
   };
 
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
