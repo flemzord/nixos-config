@@ -130,7 +130,6 @@
     docker
     metabase
     glances
-    cloudflared
   ];
 
   # programs.dconf.enable = true;
@@ -141,23 +140,6 @@
   services.tailscale.enable = true;
   services.metabase.enable = true;
   virtualisation.docker.enable = true;
-
-  users.users.cloudflared = {
-    group = "cloudflared";
-    isSystemUser = true;
-  };
-  users.groups.cloudflared = { };
-
-  systemd.services.my_tunnel = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" "systemd-resolved.service" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token=eyJhIjoiYjQxYTcxNDhjYTYyZTcxYjg1ZjVjMzU2OTM2ODg2NmQiLCJ0IjoiM2Y3ODU0ZmQtOGRlYS00NTUxLWExZjEtOTY2ODNlNjJkN2Y0IiwicyI6Ik9EWmhNams1TW1VdE1ESTFOUzAwWkRZekxXSXhPV010TlRobE9XVmpOR0U0TWpkaSJ9";
-      Restart = "always";
-      User = "cloudflared";
-      Group = "cloudflared";
-    };
-  };
 
   networking.firewall = {
     enable = true;
