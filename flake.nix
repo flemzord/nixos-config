@@ -15,6 +15,14 @@
   };
 
   outputs = { self, darwin, home-manager, nixpkgs, disko, ... }@inputs: {
+    nixosConfigurations = {
+        "home-hp" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/home-hp
+          ];
+        };
+    };
 
     darwinConfigurations = {
       "flemzords-MBP" = darwin.lib.darwinSystem {
