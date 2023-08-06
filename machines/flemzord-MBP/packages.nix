@@ -1,22 +1,23 @@
 { pkgs }:
 
-# These packages are shared across all my machines
-with pkgs; [
+with pkgs;
+let common-packages = import ../../pkgs/common/packages.nix { inherit pkgs; }; in
+common-packages ++ [
+  dockutil
+  nixpkgs-fmt
+  statix
+  pre-commit
+  postgresql_13
   act # run github actions locally
   alacritty
   awscli2
   bash-completion
   bat # A cat(1) clone with syntax highlighting
-  btop
-  htop
-  glances
-  coreutils
-  direnv
   difftastic
+  coreutils
   dejavu_fonts
   du-dust
   flyctl
-  ffmpeg
   fd
   fzf
   font-awesome
@@ -29,15 +30,7 @@ with pkgs; [
   hack-font
   home-manager
   hunspell
-  iftop
   jetbrains-mono
-  jq
-  yq
-
-  # This is broken on MacOS for now
-  # https://github.com/NixOS/nixpkgs/issues/172165 
-  # keepassxc
-
   killall
   libfido2
   neofetch
@@ -48,7 +41,6 @@ with pkgs; [
   nodejs
   noto-fonts
   noto-fonts-emoji
-  openssh
   pandoc
   pinentry
   python39
@@ -56,12 +48,6 @@ with pkgs; [
   ripgrep
   sqlite
   ssm-session-manager-plugin
-  tree
-  tmux
-  unrar
-  unzip
-  wget
-  zip
   zsh-powerlevel10k
   meslo-lgs-nf # Meslo Nerd Font patch for powerlevel10
 ]

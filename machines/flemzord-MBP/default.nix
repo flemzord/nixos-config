@@ -4,8 +4,8 @@ let user = "flemzord"; in
 {
 
   imports = [
-    ../common
-    ../common/cachix
+    ../../pkgs/common
+    ../../pkgs/common/cachix
     ./home-manager.nix
   ];
 
@@ -34,7 +34,7 @@ let user = "flemzord"; in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = import ../common/packages.nix { inherit pkgs; };
+  environment.systemPackages = import ../../pkgs/common/packages.nix { inherit pkgs; };
 
   # Enable fonts dir
   fonts.fontDir.enable = true;

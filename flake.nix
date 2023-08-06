@@ -25,9 +25,9 @@
     };
 
     darwinConfigurations = {
-      "flemzords-MBP" = darwin.lib.darwinSystem {
+      "flemzord-MBP" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        modules = [ ./darwin ];
+        modules = [ ./machines/flemzord-MBP ];
       };
     };
   };

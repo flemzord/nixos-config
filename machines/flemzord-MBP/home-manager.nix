@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  common-programs = import ../common/home-manager.nix { inherit config; inherit pkgs; inherit lib; };
-  common-files = import ../common/files.nix { };
+  common-programs = import ../../pkgs/common/home-manager.nix { inherit config; inherit pkgs; inherit lib; };
   user = "flemzord";
 in
 {
@@ -77,7 +76,6 @@ in
       home.stateVersion = "23.05";
       home.enableNixpkgsReleaseCheck = false;
       home.packages = pkgs.callPackage ./packages.nix { };
-      home.file = common-files // import ./files.nix { inherit config; inherit pkgs; };
       programs = common-programs // { };
 
       # https://github.com/nix-community/home-manager/issues/3344
