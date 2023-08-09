@@ -26,4 +26,5 @@ _:
   "session-manager-plugin"
   "the-unarchiver"
   "Transmit"
+  "google-cloud-sdk"
 ]

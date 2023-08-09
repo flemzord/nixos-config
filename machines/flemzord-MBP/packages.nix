@@ -54,4 +54,6 @@ common-packages ++ [
   ctop
   httpie
   k6
+  kubernetes-helm
+  youtube-dl
 ]

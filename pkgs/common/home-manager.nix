@@ -39,6 +39,8 @@ in
     # Remove history data we don't want to see
     export HISTIGNORE="pwd:ls:cd"
     export HISTFILE=$HOME/.local/share/zsh/history
+    export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$PATH
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 
     # Define a custom history function that defaults to showing the last 1000 entries
     show_history() {
