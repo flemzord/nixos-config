@@ -27,4 +27,6 @@ _:
   "the-unarchiver"
   "Transmit"
   "google-cloud-sdk"
+  "audacity"
+  "firefox"
 ]
