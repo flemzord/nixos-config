@@ -56,6 +56,7 @@ common-packages ++ [
   k6
   kubernetes-helm
   youtube-dl
+  supabase-cli
   #tmp
   lame
 ]

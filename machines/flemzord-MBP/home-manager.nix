@@ -53,6 +53,7 @@ in
     upgrade = true;
   };
   homebrew.brewPrefix = "/opt/homebrew/bin";
+  homebrew.casks = pkgs.callPackage ./casks.nix { };
 
   # These app IDs are from using the mas CLI app
   # mas = mac app store
@@ -60,7 +61,6 @@ in
   #
   # $ mas search <app name>
   #
-  homebrew.casks = pkgs.callPackage ./casks.nix { };
   homebrew.masApps = {
     "1Password for Safari" = 1569813296;
     "Bear" = 1091189122;
