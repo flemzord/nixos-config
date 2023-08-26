@@ -59,4 +59,5 @@ common-packages ++ [
   supabase-cli
   #tmp
   lame
+  cmake
 ]

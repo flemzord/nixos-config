@@ -29,4 +29,8 @@ _:
   "google-cloud-sdk"
   "audacity"
   "firefox"
+  "obs"
+  "obs-ndi"
+  "obs-websocket"
+  "obs-advanced-scene-switcher"
 ]
