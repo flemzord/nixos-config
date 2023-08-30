@@ -57,6 +57,8 @@ common-packages ++ [
   kubernetes-helm
   youtube-dl
   supabase-cli
+  terraform
+  terragrunt
   #tmp
   lame
   cmake
