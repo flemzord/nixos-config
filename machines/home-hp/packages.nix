@@ -1,8 +1,8 @@
 { pkgs }:
 
 with pkgs;
-let common-packages = import ../../pkgs/common/packages.nix { inherit pkgs; }; in
-common-packages ++ [
+let shared-packages = import ../../pkgs/shared/packages.nix { inherit pkgs; }; in
+shared-packages ++ [
   gnome.gnome-tweaks
   gnome.adwaita-icon-theme
 ]
