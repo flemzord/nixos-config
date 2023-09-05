@@ -18,4 +18,12 @@ with pkgs; [
   wget
   zip
   watch
+  ctop
+  httpie
+  k6
+  kubectx
+  kubernetes-helm
+  supabase-cli
+  terraform
+  terragrunt
 ]

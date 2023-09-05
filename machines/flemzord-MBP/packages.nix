@@ -7,9 +7,7 @@ common-packages ++ [
   nixpkgs-fmt
   statix
   pre-commit
-  postgresql_13
   act # run github actions locally
-  alacritty
   awscli2
   bash-completion
   bat # A cat(1) clone with syntax highlighting
@@ -50,16 +48,4 @@ common-packages ++ [
   ssm-session-manager-plugin
   zsh-powerlevel10k
   meslo-lgs-nf # Meslo Nerd Font patch for powerlevel10
-  kubectx
-  ctop
-  httpie
-  k6
-  kubernetes-helm
-  youtube-dl
-  supabase-cli
-  terraform
-  terragrunt
-  #tmp
-  lame
-  cmake
 ]

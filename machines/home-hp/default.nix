@@ -78,11 +78,8 @@
   systemd.services."autovt@tty1".enable = false;
 
   environment = {
-    systemPackages = with pkgs; [
-      # Packages installed
-      gnome.gnome-tweaks
-      gnome.adwaita-icon-theme
-    ];
+    systemPackages = pkgs.callPackage ./packages.nix { };
+
     gnome.excludePackages = (with pkgs; [
       # Gnome ignored packages
       gnome-tour

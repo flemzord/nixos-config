@@ -67,7 +67,6 @@ in
     "Infuse" = 1136220934;
     "Screegle" = 1591051659;
     "Tailscale" = 1475387142;
-    "Amphetamine" = 937984704;
   };
 
   # Enable home-manager to manage the XDG standard
