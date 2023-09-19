@@ -1,37 +1,46 @@
 _:
 
 [
+  # Development Tools
   "orbstack"
   "warp"
-  "discord"
-  "google-chrome"
   "insomnia"
-  "loom"
-  "notion"
-  "ngrok"
-  "raycast"
-  "slack"
-  "vlc"
   "visual-studio-code"
-  "beeper"
-  "cron"
   "lens"
   "openlens"
-  "1password"
-  "notion"
-  "postman"
-  "transmission"
   "jetbrains-toolbox"
-  "mumble"
+  "postman"
   "session-manager-plugin"
-  "the-unarchiver"
-  "Transmit"
   "google-cloud-sdk"
-  "audacity"
-  "firefox"
+
+  # AI
+  "diffusionbee"
+
+  # Communication Tools
+  "discord"
+  "loom"
+  "notion"
+  "slack"
+  "beeper"
+  "cron"
+  "1password"
+  "obsidian"
+
+  # Streaming
   "obs"
   "obs-ndi"
   "obs-websocket"
   "obs-advanced-scene-switcher"
-  "obsidian"
+  "audacity"
+
+  # Another
+  "google-chrome"
+  "ngrok"
+  "raycast"
+  "vlc"
+  "transmission"
+  "mumble"
+  "the-unarchiver"
+  "Transmit"
+  "firefox"
 ]

@@ -27,20 +27,15 @@ in
     { path = "/Applications/Discord.app/"; }
     { path = "/Applications/Beeper.app/"; }
     { path = "/Applications/Warp.app/"; }
-    #    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
+    { path = "/System/Applications/Home.app/"; }
     {
       path = "/Applications";
       section = "others";
     }
     {
-      path = "${config.users.users.${user}.home}/.local/share/";
-      section = "others";
-      options = "--sort name --view grid --display folder";
-    }
-    {
       path = "${config.users.users.${user}.home}/Downloads";
       section = "others";
-      options = "--sort name --view grid --display stack";
+      options = "--sort datemodified --view grid --display stack";
     }
   ];
 
