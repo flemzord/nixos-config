@@ -33,4 +33,5 @@ _:
   "obs-ndi"
   "obs-websocket"
   "obs-advanced-scene-switcher"
+  "obsidian"
 ]

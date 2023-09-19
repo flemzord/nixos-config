@@ -48,4 +48,6 @@ shared-packages ++ [
   ssm-session-manager-plugin
   zsh-powerlevel10k
   meslo-lgs-nf # Meslo Nerd Font patch for powerlevel10
+  go-task
+  nodePackages.wrangler
 ]
