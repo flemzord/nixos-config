@@ -3,10 +3,22 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
+    agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
     };
     disko = {
       url = "github:nix-community/disko";
@@ -14,7 +26,7 @@
     };
   };
 
-  outputs = { self, darwin, home-manager, nixpkgs, disko, ... }@inputs: {
+  outputs = { self, darwin, nix-homebrew, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko, agenix } @inputs: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -27,7 +39,23 @@
     darwinConfigurations = {
       "flemzord-MBP" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        modules = [ ./machines/flemzord-MBP ];
+        modules = [
+          home-manager.darwinModules.home-manager
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              user = "flemzord";
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+              };
+              mutableTaps = false;
+              autoMigrate = true;
+            };
+          }
+          ./machines/flemzord-MBP
+        ];
       };
     };
   };

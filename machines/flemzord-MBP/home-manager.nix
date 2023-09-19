@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, home-manager, ... }:
 
 let
   shared-programs = import ../../pkgs/shared/home-manager.nix { inherit config; inherit pkgs; inherit lib; };
@@ -6,7 +6,6 @@ let
 in
 {
   imports = [
-    <home-manager/nix-darwin>
     ./dock
   ];
 
