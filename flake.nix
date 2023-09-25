@@ -20,13 +20,17 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    garden-cask = {
+      url = "github:garden-io/homebrew-garden";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, darwin, nix-homebrew, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko, agenix } @inputs: {
+  outputs = { self, darwin, nix-homebrew, homebrew-core, homebrew-cask, garden-cask, home-manager, nixpkgs, disko, agenix } @inputs: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -49,6 +53,7 @@
               taps = {
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
+                "garden-io/garden" = garden-cask;
               };
               mutableTaps = false;
               autoMigrate = true;

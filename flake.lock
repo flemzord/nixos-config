@@ -118,6 +118,22 @@
         "type": "github"
       }
     },
+    "garden-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695142471,
+        "narHash": "sha256-J0lfApfu1WgWxlVwPfAst1wbIn6gkENpuxokEHLB08s=",
+        "owner": "garden-io",
+        "repo": "homebrew-garden",
+        "rev": "fa737367c51da99c962973770930ce14d4c55c4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "garden-io",
+        "repo": "homebrew-garden",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -310,6 +326,7 @@
         "agenix": "agenix",
         "darwin": "darwin_2",
         "disko": "disko",
+        "garden-cask": "garden-cask",
         "home-manager": "home-manager_2",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
