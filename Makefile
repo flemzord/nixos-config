@@ -9,6 +9,8 @@ UNAME := $(shell uname)
 
 switch:
 ifeq ($(UNAME), Darwin)
+	sudo mkdir -p /opt/homebrew/Library/Taps/homebrew/
+	sudo /bin/chmod +a "flemzord allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown" /opt/homebrew/Library/Taps/homebrew/
 	nix --experimental-features 'nix-command flakes' build ".#darwinConfigurations.${NIXNAME}.system" --impure
 	./result/sw/bin/darwin-rebuild switch --flake "$$(pwd)#${NIXNAME}" --impure
 	unlink ./result
