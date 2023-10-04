@@ -66,11 +66,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1696043447,
-        "narHash": "sha256-VbJ1dY5pVH2fX1bS+cT2+4+BYEk4lMHRP0+udu9G6tk=",
+        "lastModified": 1696360011,
+        "narHash": "sha256-HpPv27qMuPou4acXcZ8Klm7Zt0Elv9dgDvSJaomWb9Y=",
         "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "792c2e01347cb1b2e7ec84a1ef73453ca86537d8",
+        "rev": "8b6ea26d5d2e8359d06278364f41fbc4b903b28a",
         "type": "github"
       },
       "original": {
@@ -118,22 +118,6 @@
         "type": "github"
       }
     },
-    "garden-cask": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1695904747,
-        "narHash": "sha256-eonnHnIEI7k7II0vt/WvRYL0Nf1jcnZm8rOpYYkW0UM=",
-        "owner": "garden-io",
-        "repo": "homebrew-garden",
-        "rev": "5bf31fdf3e42607deb8cc8ffe60317ecdc40a73c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "garden-io",
-        "repo": "homebrew-garden",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -160,11 +144,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1696145345,
-        "narHash": "sha256-3dM7I/d4751SLPJah0to1WBlWiyzIiuCEUwJqwBdmr4=",
+        "lastModified": 1696399669,
+        "narHash": "sha256-n2D5+im/0xtHRPSZ4eMCyfUGHQoK5lsDvEV1bcBBbSE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6f9b5b83ad1f470b3d11b8a9fe1d5ef68c7d0e30",
+        "rev": "b0e0d82696297964f231c37a38e3c64b22ae03e5",
         "type": "github"
       },
       "original": {
@@ -176,11 +160,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1696304133,
-        "narHash": "sha256-jC9sfvZSHB3l64SzKnrPOL4U6mNHGOBcKxki2i++rfM=",
+        "lastModified": 1696402215,
+        "narHash": "sha256-hAjmCMMQ7RQSd/cxmH1fsGM2GUnU1KfbuplNSp3l90E=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "32c61a2676e808eb9b54dad36e0ceaac7ddcfa33",
+        "rev": "982636f16f39517ab31ef4d67cfc6fdb86ae5f23",
         "type": "github"
       },
       "original": {
@@ -192,11 +176,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1696319325,
-        "narHash": "sha256-+rV2MHBc4ix2+CIKwumt9ON6QacZWEtArlsmMgSHmRY=",
+        "lastModified": 1696402170,
+        "narHash": "sha256-pujhgboCgjE9uoi0Y2IKmnJROq8AkxG6+OzhNXnVGqE=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "f9a7822cb1d5ba14893605216b4ca8c5e026fb17",
+        "rev": "8e266ca865a30932a0192fd47b7cc12bd653e6fc",
         "type": "github"
       },
       "original": {
@@ -262,11 +246,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1695360818,
-        "narHash": "sha256-JlkN3R/SSoMTa+CasbxS1gq+GpGxXQlNZRUh9+LIy/0=",
+        "lastModified": 1696193975,
+        "narHash": "sha256-mnQjUcYgp9Guu3RNVAB2Srr1TqKcPpRXmJf4LJk6KRY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e35dcc04a3853da485a396bdd332217d0ac9054f",
+        "rev": "fdd898f8f79e8d2f99ed2ab6b3751811ef683242",
         "type": "github"
       },
       "original": {
@@ -307,11 +291,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1696319839,
-        "narHash": "sha256-d1vwNETo5FFrHmKK+581fSII+bFYeCVbEsqcZxuidbQ=",
+        "lastModified": 1696402586,
+        "narHash": "sha256-iIiMr1l/PRTVXSthp5qvoIvrr7BD9oQkQFo0wOOk8uU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "40cfcd0676131541a3303f6f1f4ed28731b1f658",
+        "rev": "a0db6b6b13b85bbd0e8f571c377b1d66419d6629",
         "type": "github"
       },
       "original": {
@@ -326,7 +310,6 @@
         "agenix": "agenix",
         "darwin": "darwin_2",
         "disko": "disko",
-        "garden-cask": "garden-cask",
         "home-manager": "home-manager_2",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
