@@ -48,9 +48,6 @@ in
   };
   homebrew.brewPrefix = "/opt/homebrew/bin";
   homebrew.casks = pkgs.callPackage ./casks.nix { };
-  #  homebrew.brews = [
-  #    "garden-io/garden/garden-cli"
-  #  ];
 
   # These app IDs are from using the mas CLI app
   # mas = mac app store
