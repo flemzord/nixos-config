@@ -43,4 +43,5 @@ _:
   "the-unarchiver"
   "Transmit"
   "firefox"
+  "spacedrive"
 ]
