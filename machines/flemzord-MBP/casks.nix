@@ -12,6 +12,7 @@ _:
   "postman"
   "session-manager-plugin"
   "google-cloud-sdk"
+  "iterm2"
 
   # AI
   "diffusionbee"

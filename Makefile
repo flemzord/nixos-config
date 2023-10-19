@@ -7,10 +7,16 @@ NIXNAME ?= flemzord-MBP
 # We need to do some OS switching below.
 UNAME := $(shell uname)
 
+DIR_TO_CHECK_FOR = '/opt/homebrew/Library/Taps'
+
+
 switch:
 ifeq ($(UNAME), Darwin)
-	sudo mkdir -p /opt/homebrew/Library/Taps/homebrew/
-	sudo /bin/chmod +a "flemzord allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown" /opt/homebrew/Library/Taps/homebrew/
+ifeq ("$(wildcard $(DIR_TO_CHECK_FOR))", "")
+	sudo /bin/chmod +a "flemzord allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,writesecurity,chown" /opt/homebrew/Library/Taps
+else
+	echo "Skipping chmod because directory not exists."
+endif
 	nix --experimental-features 'nix-command flakes' build ".#darwinConfigurations.${NIXNAME}.system" --impure
 	./result/sw/bin/darwin-rebuild switch --flake "$$(pwd)#${NIXNAME}" --impure
 	unlink ./result
