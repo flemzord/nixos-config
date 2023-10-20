@@ -12,7 +12,7 @@
 
   nix = {
     package = pkgs.nixUnstable;
-    settings.trusted-users = [ "@admin" "${user}" ];
+    settings.trusted-users = [ "@admin" "flemzord" ];
 
     gc = {
       user = "root";
