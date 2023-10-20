@@ -8,6 +8,23 @@
       ./../programs/git.nix
     ];
 
+  nix = {
+    package = pkgs.nixUnstable;
+    settings.trusted-users = [ "@admin" "${user}" ];
+
+    gc = {
+      user = "root";
+      automatic = true;
+      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      options = "--delete-older-than 30d";
+    };
+
+    # Turn this on to make command line easier
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
