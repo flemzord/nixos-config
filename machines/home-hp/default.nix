@@ -14,7 +14,6 @@
       ./../../pkgs/services/docker.nix
       ./../../pkgs/services/media.nix
       ./../../pkgs/services/metabase.nix
-      #      ./../../pkgs/services/uptime-kuma.nix
     ];
 
   # Bootloader.
