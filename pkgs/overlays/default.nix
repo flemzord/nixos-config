@@ -6,6 +6,8 @@
       ./../services/openssh.nix
       ./../programs/zsh.nix
       ./../programs/git.nix
+      ./../pkgs/shared
+      ./../pkgs/shared/cachix
     ];
 
   nix = {
