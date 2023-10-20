@@ -12,8 +12,7 @@
       ./../../pkgs/overlays/default.nix
       ./../../pkgs/services/tailscale.nix
       ./../../pkgs/services/docker.nix
-      ./../../pkgs/services/media.nix
-      ./../../pkgs/services/metabase.nix
+      ./../../pkgs/services/goproxy.nix
     ];
 
   # Bootloader.

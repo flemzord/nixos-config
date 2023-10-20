@@ -22,7 +22,6 @@
     settings.trusted-users = [ "@admin" "flemzord" ];
 
     gc = {
-      user = "root";
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 30d";
@@ -54,9 +53,6 @@
 
   # Configure console keymap
   console.keyMap = "fr";
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
