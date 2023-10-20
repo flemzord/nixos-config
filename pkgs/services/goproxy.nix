@@ -1,12 +1,9 @@
 {
-  virtualisation = {
-    backend = "docker";
-    containers.goproxy = {
-      volumes = [
-        "goproxy:/go"
-      ];
-      environment.TZ = "Europe/Paris";
+  virtualisation.oci-containers.containers = {
+    goproxy = {
       image = "goproxy/goproxy:latest";
+      volumes = [ "goproxy:/go" ];
+      autoStart = true;
     };
   };
 }

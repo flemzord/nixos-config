@@ -9,5 +9,6 @@
         flags = [ "--all" "--volumes" ];
       };
     };
+    oci-containers.backend = "docker";
   };
 }
