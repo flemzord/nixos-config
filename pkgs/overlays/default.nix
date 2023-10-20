@@ -6,9 +6,16 @@
       ./../services/openssh.nix
       ./../programs/zsh.nix
       ./../programs/git.nix
-      ./../pkgs/shared
-      ./../pkgs/shared/cachix
     ];
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowBroken = true;
+      allowInsecure = false;
+      allowUnsupportedSystem = true;
+    };
+  };
 
   nix = {
     package = pkgs.nixUnstable;
@@ -17,7 +24,7 @@
     gc = {
       user = "root";
       automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      dates = "weekly";
       options = "--delete-older-than 30d";
     };
 
