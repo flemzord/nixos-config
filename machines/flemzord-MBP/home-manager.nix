@@ -51,6 +51,7 @@ in
   homebrew.brews = [
     "earthly"
     "formancehq/tap/fctl"
+    "loft-sh/tap/vcluster"
   ];
 
   # These app IDs are from using the mas CLI app

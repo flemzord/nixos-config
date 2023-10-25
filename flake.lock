@@ -205,6 +205,22 @@
         "type": "github"
       }
     },
+    "loftsh-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698163858,
+        "narHash": "sha256-oFQ6ymbA1nBPTbAZwZSu9IWLqvSnExenMyGeCyQmFxw=",
+        "owner": "loft-sh",
+        "repo": "homebrew-tap",
+        "rev": "17e1a7449c4edf7f19773f7b9bc08cf9c8afc85e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "loft-sh",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
@@ -330,6 +346,7 @@
         "home-manager": "home-manager_2",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "loftsh-cask": "loftsh-cask",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_5"
       }
