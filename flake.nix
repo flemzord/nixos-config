@@ -28,13 +28,17 @@
       url = "github:loft-sh/homebrew-tap";
       flake = false;
     };
+    earthly-cask = {
+      url = "github:earthly/homebrew-earthly";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, home-manager, nixpkgs, disko, agenix } @inputs: {
+  outputs = { self, darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, home-manager, nixpkgs, disko, agenix } @inputs: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -59,6 +63,7 @@
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "formancehq/homebrew-tap" = formancehq-cask;
                 "loft-sh/homebrew-tap" = loftsh-cask;
+                "earthly/homebrew-earthly" = earthly-cask;
               };
               mutableTaps = true;
               autoMigrate = true;

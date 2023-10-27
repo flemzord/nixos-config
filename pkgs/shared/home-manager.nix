@@ -95,6 +95,8 @@ in
       "Thumbs.db"
       ".bundle"
       ".fleet"
+      ".direnv"
+      ".envrc"
     ];
     userName = name;
     userEmail = email;

@@ -52,6 +52,7 @@ in
     "earthly"
     "formancehq/tap/fctl"
     "loft-sh/tap/vcluster"
+    "earthly/earthly/earthly"
   ];
 
   # These app IDs are from using the mas CLI app

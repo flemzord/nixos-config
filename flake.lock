@@ -100,6 +100,22 @@
         "type": "github"
       }
     },
+    "earthly-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698178232,
+        "narHash": "sha256-bJzeILP5IpvuInb/gcWkCgHcZWrCarrR7rA7pK0rITg=",
+        "owner": "earthly",
+        "repo": "homebrew-earthly",
+        "rev": "ad1a45eb74ac0339e2c6cdd5bdba08732b9002b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "earthly",
+        "repo": "homebrew-earthly",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -342,6 +358,7 @@
         "agenix": "agenix",
         "darwin": "darwin_2",
         "disko": "disko",
+        "earthly-cask": "earthly-cask",
         "formancehq-cask": "formancehq-cask",
         "home-manager": "home-manager_2",
         "homebrew-cask": "homebrew-cask",
