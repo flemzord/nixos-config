@@ -49,10 +49,10 @@ in
   homebrew.brewPrefix = "/opt/homebrew/bin";
   homebrew.casks = pkgs.callPackage ./casks.nix { };
   homebrew.brews = [
-    "earthly"
     "formancehq/tap/fctl"
     "loft-sh/tap/vcluster"
     "earthly/earthly/earthly"
+    "renovate"
   ];
 
   # These app IDs are from using the mas CLI app
