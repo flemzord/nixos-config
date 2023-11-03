@@ -81,8 +81,15 @@ in
     alias weather='curl http://wttr.in'
 
     alias dc='docker compose'
+    alias k='kubectl'
+    alias kx='kubectx'
 
     eval "$(direnv hook zsh)"
+
+    export PATH="~/.krew/bin:$PATH"
+
+    eval $(ssh-agent)
+    ssh-add ~/.ssh/github
   '';
 
   git = {

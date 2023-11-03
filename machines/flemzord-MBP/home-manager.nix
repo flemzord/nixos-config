@@ -53,6 +53,7 @@ in
     "loft-sh/tap/vcluster"
     "earthly/earthly/earthly"
     "renovate"
+    "krew"
   ];
 
   # These app IDs are from using the mas CLI app
