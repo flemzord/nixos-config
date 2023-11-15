@@ -16,6 +16,12 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub = {
+    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+    # devices = [ ];
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
 
   networking.hostName = "home-dell"; # Define your hostname.
 
