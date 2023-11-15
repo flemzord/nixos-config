@@ -6,6 +6,7 @@
       ./../services/openssh.nix
       ./../programs/zsh.nix
       ./../programs/git.nix
+      ./../services/tailscale.nix
     ];
 
   nixpkgs = {
