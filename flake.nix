@@ -51,6 +51,7 @@
         system = "x86_64-linux";
         modules = [
           ./machines/home-dell
+          disko.nixosModules.disko
         ];
       };
     };
