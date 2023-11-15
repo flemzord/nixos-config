@@ -51,4 +51,13 @@ shared-packages ++ [
   go-task
   nodePackages.wrangler
   git-subrepo
+  httpie
+  k6
+  kubectx
+  kubernetes-helm
+  supabase-cli
+  terraform
+  terragrunt
+  direnv
+  ffmpeg
 ]
