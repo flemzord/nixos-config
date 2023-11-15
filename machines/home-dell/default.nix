@@ -10,6 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./../../pkgs/overlays/default.nix
+      ./disk-config.nix
     ];
 
   # Bootloader.
