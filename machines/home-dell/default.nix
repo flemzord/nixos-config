@@ -2,14 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ modulesPath, config, lib, pkgs, ... }:
 
 {
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./../../pkgs/overlays/default.nix
+      # ./hardware-configuration.nix
+      # ./../../pkgs/overlays/default.nix
+      (modulesPath + "/installer/scan/not-detected.nix")
+      (modulesPath + "/profiles/qemu-guest.nix")
       ./disk-config.nix
     ];
 
