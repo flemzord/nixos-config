@@ -46,6 +46,13 @@
           ./machines/home-hp
         ];
       };
+
+      "home-dell" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./machines/home-dell
+        ];
+      };
     };
 
     darwinConfigurations = {
