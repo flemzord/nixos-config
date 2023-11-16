@@ -6,6 +6,7 @@ let user = "flemzord"; in
   imports = [
     ./shared
     ./home-manager.nix
+    ../../pkgs/overlays
   ];
 
   # Auto upgrade nix package and the daemon service.
@@ -33,7 +34,7 @@ let user = "flemzord"; in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = import ../../pkgs/overlays/packages.nix { inherit pkgs; };
+  environment.systemPackages = import ../../pkgs/shared/packages.nix { inherit pkgs; };
 
   # Enable fonts dir
   fonts.fontDir.enable = true;

@@ -32,6 +32,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Configure console keymap
+  console.keyMap = "fr";
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.flemzord = {
     isNormalUser = true;

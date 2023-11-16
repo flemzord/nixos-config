@@ -1,7 +1,7 @@
 { pkgs }:
 
 with pkgs;
-let shared-packages = import ../../pkgs/overlays/packages.nix { inherit pkgs; }; in
+let shared-packages = import ../../pkgs/shared/packages.nix { inherit pkgs; }; in
 shared-packages ++ [
   dockutil
   nixpkgs-fmt

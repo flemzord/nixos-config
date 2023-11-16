@@ -52,9 +52,6 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Configure console keymap
-  console.keyMap = "fr";
-
   networking.firewall = {
     enable = true;
     checkReversePath = "loose";
