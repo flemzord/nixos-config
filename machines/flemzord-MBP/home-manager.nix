@@ -1,7 +1,7 @@
 { config, pkgs, lib, home-manager, ... }:
 
 let
-  shared-programs = import ../../pkgs/shared/home-manager.nix { inherit config; inherit pkgs; inherit lib; };
+  shared-programs = import ./shared/home-manager.nix { inherit config; inherit pkgs; inherit lib; };
   user = "flemzord";
 in
 {
@@ -74,7 +74,7 @@ in
   home-manager = {
     useGlobalPkgs = true;
     users.${user} = {
-      home.stateVersion = "23.11";
+      home.stateVersion = "23.05";
       home.enableNixpkgsReleaseCheck = false;
       home.packages = pkgs.callPackage ./packages.nix { };
       programs = shared-programs // { };

@@ -55,34 +55,10 @@
   # Configure console keymap
   console.keyMap = "fr";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    curl
-    htop
-    btop
-    glances
-    iftop
-    jq
-    yq
-    openssh
-    tree
-    unrar
-    unzip
-    wget
-    zip
-    watch
-    ctop
-    gnumake
-  ];
-
   networking.firewall = {
     enable = true;
     checkReversePath = "loose";
     trustedInterfaces = [ "tailscale0" ];
     allowedUDPPorts = [ config.services.tailscale.port ];
   };
-
 }
