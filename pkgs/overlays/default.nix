@@ -64,6 +64,18 @@
     htop
     btop
     glances
+    iftop
+    jq
+    yq
+    openssh
+    tree
+    unrar
+    unzip
+    wget
+    zip
+    watch
+    ctop
+    gnumake
   ];
 
   networking.firewall = {
