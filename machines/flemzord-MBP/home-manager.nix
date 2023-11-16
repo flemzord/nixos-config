@@ -74,7 +74,7 @@ in
   home-manager = {
     useGlobalPkgs = true;
     users.${user} = {
-      home.stateVersion = "23.05";
+      home.stateVersion = "23.11";
       home.enableNixpkgsReleaseCheck = false;
       home.packages = pkgs.callPackage ./packages.nix { };
       programs = shared-programs // { };

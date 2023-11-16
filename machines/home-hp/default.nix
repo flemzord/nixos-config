@@ -10,7 +10,6 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./../../pkgs/overlays/default.nix
-      ./../../pkgs/services/tailscale.nix
       ./../../pkgs/services/docker.nix
       ./../../pkgs/services/goproxy.nix
     ];
@@ -33,5 +32,5 @@
   environment = {
     systemPackages = pkgs.callPackage ./packages.nix { };
   };
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 }
