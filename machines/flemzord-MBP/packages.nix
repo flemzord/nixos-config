@@ -60,4 +60,7 @@ shared-packages ++ [
   terragrunt
   direnv
   ffmpeg
+
+  # Dev tools
+  go
 ]

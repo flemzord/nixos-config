@@ -36,7 +36,7 @@
     allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
-    # Enable networking
+  # Enable networking
   networking.networkmanager.enable = true;
 
   # Configure console keymap
