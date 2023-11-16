@@ -2,7 +2,6 @@
 
 # These packages are shared across all my machines
 with pkgs; [
-  vim
   wget
   curl
   htop
