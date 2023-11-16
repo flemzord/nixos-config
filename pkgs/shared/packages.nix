@@ -16,4 +16,5 @@ with pkgs; [
   zip
   watch
   ctop
+  gnumake
 ]
