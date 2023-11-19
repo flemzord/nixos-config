@@ -1,13 +1,12 @@
 { config, pkgs, lib, home-manager, ... }:
 
 let
-  shared-programs = import ./shared/home-manager.nix { inherit config; inherit pkgs; inherit lib; };
   user = "flemzord";
 in
 {
-  # imports = [
-  #   ./dock
-  # ];
+  imports = [
+    ./dock
+  ];
 
   # It me
   users.users.${user} = {
@@ -16,28 +15,6 @@ in
     isHidden = false;
     shell = pkgs.zsh;
   };
-
-  # Fully declarative dock using the latest from Nix Store
-  local.dock.enable = true;
-  #  local.dock.position = "left";
-  #  local.dock.autoHide = true;
-  local.dock.entries = [
-    { path = "/Applications/Arc.app/"; }
-    { path = "/Applications/Slack.app/"; }
-    { path = "/Applications/Discord.app/"; }
-    { path = "/Applications/Beeper.app/"; }
-    { path = "/Applications/Warp.app/"; }
-    { path = "/System/Applications/Home.app/"; }
-    {
-      path = "/Applications";
-      section = "others";
-    }
-    {
-      path = "${config.users.users.${user}.home}/Downloads";
-      section = "others";
-      options = "--sort datemodified --view grid --display stack";
-    }
-  ];
 
   # We use Homebrew to install impure software only (Mac Apps)
   homebrew.enable = true;
@@ -76,16 +53,36 @@ in
   # Enable home-manager to manage the XDG standard
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} = {
-      home.stateVersion = "23.11";
+    users.${user} = { pkgs, config, lib, ... }: {
       home.enableNixpkgsReleaseCheck = false;
-      home.packages = pkgs.callPackage ./packages.nix { };
-      programs = shared-programs // { };
+      home.stateVersion = "21.11";
 
-      # https://github.com/nix-community/home-manager/issues/3344
+      home.packages = pkgs.callPackage ./packages.nix { };
+      programs = { } // import ./shared/home-manager.nix { inherit config pkgs lib; };
+
       # Marked broken Oct 20, 2022 check later to remove this
-      # Confirmed still broken, Mar 5, 2023
+      # https://github.com/nix-community/home-manager/issues/3344
       manual.manpages.enable = false;
     };
   };
+
+  # Fully declarative dock using the latest from Nix Store
+  local.dock.enable = true;
+  local.dock.entries = [
+    { path = "/Applications/Arc.app/"; }
+    { path = "/Applications/Slack.app/"; }
+    { path = "/Applications/Discord.app/"; }
+    { path = "/Applications/Beeper.app/"; }
+    { path = "/Applications/Warp.app/"; }
+    { path = "/System/Applications/Home.app/"; }
+    {
+      path = "/Applications";
+      section = "others";
+    }
+    {
+      path = "${config.users.users.${user}.home}/Downloads";
+      section = "others";
+      options = "--sort datemodified --view grid --display stack";
+    }
+  ];
 }

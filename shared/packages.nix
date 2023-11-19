@@ -19,4 +19,5 @@ with pkgs; [
   watch
   ctop
   gnumake
+  git
 ]
