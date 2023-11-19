@@ -6,7 +6,6 @@ with pkgs; [
   nixpkgs-fmt
   statix
   pre-commit
-  # awscli2
   difftastic
   coreutils
   flyctl

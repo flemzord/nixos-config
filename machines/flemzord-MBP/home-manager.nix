@@ -34,6 +34,7 @@ in
     "protobuf"
     "protoc-gen-go"
     "protoc-gen-go-grpc"
+    "awscli"
   ];
 
   # These app IDs are from using the mas CLI app
