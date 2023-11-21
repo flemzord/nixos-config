@@ -20,9 +20,6 @@
     };
   };
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
