@@ -13,8 +13,9 @@
       ./disk-config.nix
       ./hardware-configuration.nix
       ./../../pkgs/overlays/server.nix
-      ./../../pkgs/services/mosquitto.nix
+      ./../../pkgs/services/docker.nix
       ./../../pkgs/services/home-assistant.nix
+      ./../../pkgs/services/mosquitto.nix
     ];
 
   # Bootloader.
