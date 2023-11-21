@@ -68,9 +68,6 @@ in
     alias pn=pnpm
     alias px=pnpx
 
-    # bat makes cat pretty
-    alias cat=bat
-
     # Use difftastic, syntax-aware diffing
     alias diff=difft
 
