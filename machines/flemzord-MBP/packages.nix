@@ -30,7 +30,9 @@ with pkgs; [
   zsh-powerlevel10k
   ffmpeg
 
-  # # Dev tools
+  syncthing # Sync files between machines
+
+  # Dev tools
   git-subrepo
   go-task
   go
