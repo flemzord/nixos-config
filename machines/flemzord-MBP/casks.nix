@@ -45,4 +45,5 @@ _:
   "Transmit"
   "firefox"
   "spacedrive"
+  "KeepingYouAwake"
 ]
