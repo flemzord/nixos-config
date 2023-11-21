@@ -9,7 +9,6 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./../../pkgs/overlays/default.nix
       ./../../pkgs/overlays/server.nix
       ./../../pkgs/services/docker.nix
       ./../../pkgs/services/goproxy.nix

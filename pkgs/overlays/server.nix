@@ -11,6 +11,18 @@
 
   nix.optimise.automatic = true;
 
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowBroken = true;
+      allowInsecure = false;
+      allowUnsupportedSystem = true;
+    };
+  };
+
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 

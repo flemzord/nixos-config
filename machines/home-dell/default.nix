@@ -12,7 +12,6 @@
       (modulesPath + "/profiles/qemu-guest.nix")
       ./disk-config.nix
       ./hardware-configuration.nix
-      ./../../pkgs/overlays/default.nix
       ./../../pkgs/overlays/server.nix
       ./../../pkgs/services/mosquitto.nix
       ./../../pkgs/services/home-assistant.nix
