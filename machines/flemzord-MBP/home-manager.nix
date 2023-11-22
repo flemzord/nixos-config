@@ -8,6 +8,7 @@ in
 {
   imports = [
     ./dock
+    ./../../pkgs/programs/Starship.nix
   ];
 
   # It me
