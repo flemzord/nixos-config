@@ -274,6 +274,7 @@ in
   local.dock.enable = true;
   local.dock.entries = [
     { path = "/Applications/Arc.app/"; }
+    { path = "/Applications/SigmaOS.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Discord.app/"; }
     { path = "/Applications/Beeper.app/"; }

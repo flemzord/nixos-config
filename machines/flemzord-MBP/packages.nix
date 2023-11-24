@@ -45,4 +45,5 @@ with pkgs; [
   terraform
   terragrunt
   direnv
+  nodePackages.pnpm
 ]
