@@ -46,4 +46,5 @@ _:
   "firefox"
   "spacedrive"
   "KeepingYouAwake"
+  "sigmaos"
 ]
