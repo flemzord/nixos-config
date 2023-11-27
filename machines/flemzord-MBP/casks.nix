@@ -35,7 +35,6 @@ _:
   "audacity"
 
   # Another
-  "google-chrome"
   "ngrok"
   "raycast"
   "vlc"
@@ -43,8 +42,12 @@ _:
   "mumble"
   "the-unarchiver"
   "Transmit"
-  "firefox"
   "spacedrive"
   "KeepingYouAwake"
+
+  # Browsers
+  "firefox"
   "sigmaos"
+  "google-chrome"
+  "arc"
 ]
