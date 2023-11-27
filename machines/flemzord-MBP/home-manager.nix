@@ -106,7 +106,7 @@ in
             alias ls='ls --color=auto'
 
             # Weather report in your terminal
-            alias weather='curl http://wttr.in'
+            alias weather='curl http://wttr.in/Paris'
 
             alias dc='docker compose'
             alias k='kubectl'
