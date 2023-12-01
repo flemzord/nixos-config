@@ -44,6 +44,7 @@ _:
   "Transmit"
   "spacedrive"
   "KeepingYouAwake"
+  "syncthing"
 
   # Browsers
   "firefox"
