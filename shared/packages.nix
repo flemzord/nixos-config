@@ -20,4 +20,5 @@ with pkgs; [
   ctop
   gnumake
   git
+  screen
 ]
