@@ -111,6 +111,7 @@ in
             alias dc='docker compose'
             alias k='kubectl'
             alias kx='kubectx'
+            alias e='earthly -P --no-output --push'
 
             eval "$(direnv hook zsh)"
 
