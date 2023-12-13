@@ -35,15 +35,26 @@ with pkgs; [
   # Dev tools
   git-subrepo
   go-task
-  go
-  gopls
   httpie
   k6
   kubectx
   kubernetes-helm
   supabase-cli
+  packer
+  hcloud
   terraform
   terragrunt
   direnv
   nodePackages.pnpm
+  yq
+  jq
+
+  # Dev tools GoLang
+  go
+  gopls
+  # Dev tools Rust
+  rustc
+  rustfmt
+  cargo
+  rustup
 ]
