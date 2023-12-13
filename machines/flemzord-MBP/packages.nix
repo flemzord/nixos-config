@@ -56,5 +56,4 @@ with pkgs; [
   rustc
   rustfmt
   cargo
-  rustup
 ]
