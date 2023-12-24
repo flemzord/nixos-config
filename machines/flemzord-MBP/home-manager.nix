@@ -280,7 +280,7 @@ in
     { path = "/Applications/Beeper.app/"; }
     { path = "/Applications/Warp.app/"; }
     { path = "/System/Applications/Home.app/"; }
-    { path = "/Applications/Amie.app/"; }
+    { path = "/Applications/Cron.app/"; }
     { path = "/Applications/Superhuman.app/"; }
     {
       path = "/Applications";

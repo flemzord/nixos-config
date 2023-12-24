@@ -48,6 +48,11 @@ with pkgs; [
   nodePackages.pnpm
   yq
   jq
+  k9s
+  watch
+  cilium-cli
+  tree
+  kustomize
 
   # Dev tools GoLang
   go

@@ -14,9 +14,6 @@ _:
   "google-cloud-sdk"
   "iterm2"
 
-  # AI
-  "diffusionbee"
-
   # Communication Tools
   "discord"
   "loom"
@@ -45,6 +42,7 @@ _:
   "spacedrive"
   "KeepingYouAwake"
   "syncthing"
+  "whatsapp"
 
   # Browsers
   "firefox"
