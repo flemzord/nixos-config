@@ -39,6 +39,7 @@ with pkgs; [
   k6
   kubectx
   kubernetes-helm
+  helm-docs
   supabase-cli
   packer
   hcloud

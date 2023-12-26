@@ -278,6 +278,7 @@ in
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Discord.app/"; }
     { path = "/Applications/Beeper.app/"; }
+    { path = "/Applications/WhatsApp.app/"; }
     { path = "/Applications/Warp.app/"; }
     { path = "/System/Applications/Home.app/"; }
     { path = "/Applications/Cron.app/"; }
