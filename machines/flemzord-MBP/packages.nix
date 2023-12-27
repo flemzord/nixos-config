@@ -33,6 +33,7 @@ with pkgs; [
   syncthing # Sync files between machines
 
   # Dev tools
+  ansible
   git-subrepo
   go-task
   httpie
