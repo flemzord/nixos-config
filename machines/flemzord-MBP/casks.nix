@@ -46,7 +46,6 @@ _:
 
   # Browsers
   "firefox"
-  "sigmaos"
   "google-chrome"
   "arc"
 ]

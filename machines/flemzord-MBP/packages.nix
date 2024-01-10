@@ -29,6 +29,8 @@ with pkgs; [
   ssm-session-manager-plugin
   zsh-powerlevel10k
   ffmpeg
+  curl
+  wget
 
   syncthing # Sync files between machines
 
