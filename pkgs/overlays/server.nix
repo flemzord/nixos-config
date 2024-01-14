@@ -48,7 +48,7 @@
   # Enable networking
   networking.networkmanager = {
     enable = true;
-    unmanaged = [ "tailscale0" ];
+    unmanaged = [ config.services.tailscale.interface ];
   };
 
   # Configure console keymap
