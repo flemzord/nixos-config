@@ -5,7 +5,6 @@ with pkgs; [
   wget
   curl
   htop
-  btop
   glances
   iftop
   jq
