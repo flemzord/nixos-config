@@ -38,6 +38,7 @@ in
       "protoc-gen-go"
       "protoc-gen-go-grpc"
       "awscli"
+      "allure"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
@@ -281,7 +282,7 @@ in
     { path = "/Applications/WhatsApp.app/"; }
     { path = "/Applications/Warp.app/"; }
     { path = "/System/Applications/Home.app/"; }
-    { path = "/Applications/Cron.app/"; }
+    { path = "/Applications/Notion Calendar.app/"; }
     { path = "/Applications/Superhuman.app/"; }
     {
       path = "/Applications";

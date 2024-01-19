@@ -19,10 +19,12 @@ _:
   "loom"
   "notion"
   "slack"
+  "mattermost"
   "beeper"
   "cron"
   "1password"
   "obsidian"
+  "amie"
 
   # Streaming
   "obs"
