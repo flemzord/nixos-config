@@ -21,7 +21,7 @@ _:
   "slack"
   "mattermost"
   "beeper"
-  "cron"
+  "notion-calendar"
   "1password"
   "obsidian"
   "amie"
