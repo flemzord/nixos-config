@@ -39,6 +39,7 @@ in
       "protoc-gen-go-grpc"
       "awscli"
       "allure"
+      "nvm"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
@@ -117,9 +118,16 @@ in
             eval "$(direnv hook zsh)"
 
             export PATH="~/.krew/bin:$PATH"
+            export PATH="~/.local/bin:$PATH"
 
             eval $(ssh-agent)
             ssh-add ~/.ssh/github
+
+            alias natsf="nats --server=nats://`kubectl get pod -n formance-system nats-0 -o jsonpath='{.status.podIP}'`"
+
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+            [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
           '';
         };
         git = {

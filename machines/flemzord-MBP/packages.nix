@@ -23,7 +23,6 @@ with pkgs; [
   libfido2
   neofetch
   nodePackages.npm
-  nodejs
   ripgrep
   sqlite
   ssm-session-manager-plugin
