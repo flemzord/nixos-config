@@ -8,7 +8,7 @@
     };
   };
   networking.firewall = {
-    enable = false;
+    enable = true;
     allowedTCPPorts = [ 8581 ];
   };
 }
