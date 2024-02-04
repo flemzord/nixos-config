@@ -7,4 +7,8 @@
       autoStart = true;
     };
   };
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8581 ];
+  };
 }
