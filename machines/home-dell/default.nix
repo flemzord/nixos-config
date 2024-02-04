@@ -16,6 +16,7 @@
       ./../../pkgs/services/docker.nix
       ./../../pkgs/services/home-assistant.nix
       ./../../pkgs/services/mosquitto.nix
+      ./../../pkgs/services/homebridge.nix
     ];
 
   # Bootloader.
