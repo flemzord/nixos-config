@@ -57,6 +57,10 @@ with pkgs; [
   tree
   kustomize
 
+  # Dev tools NodeJS
+  nodejs_20
+  nodePackages_latest.pnpm
+  bun
   # Dev tools GoLang
   go
   gopls

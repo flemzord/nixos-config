@@ -32,14 +32,13 @@ in
       "formancehq/tap/fctl"
       "loft-sh/tap/vcluster"
       "earthly/earthly/earthly"
-      "renovate"
       "krew"
-      "protobuf"
-      "protoc-gen-go"
-      "protoc-gen-go-grpc"
+      # "renovate"
+      # "protobuf"
+      # "protoc-gen-go"
+      # "protoc-gen-go-grpc"
       "awscli"
       "allure"
-      "nvm"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
@@ -97,37 +96,22 @@ in
             export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$PATH
             source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 
-            # git shortcuts
-            alias gm="git merge --rebase"
-            alias gp="git pull origin"
-
+            export PATH="~/.krew/bin:$PATH"
+            export PATH="~/.local/bin:$PATH"
+            eval "$(direnv hook zsh)"
+          
             # Use difftastic, syntax-aware diffing
             alias diff=difft
 
             # Always color ls and group directories
             alias ls='ls --color=auto'
 
-            # Weather report in your terminal
-            alias weather='curl http://wttr.in/Paris'
-
             alias dc='docker compose'
             alias k='kubectl'
             alias kx='kubectx'
-            alias e='earthly -P --no-output --push'
-
-            eval "$(direnv hook zsh)"
-
-            export PATH="~/.krew/bin:$PATH"
-            export PATH="~/.local/bin:$PATH"
 
             eval $(ssh-agent)
             ssh-add ~/.ssh/github
-
-            alias natsf="nats --server=nats://`kubectl get pod -n formance-system nats-0 -o jsonpath='{.status.podIP}'`"
-
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-            [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
           '';
         };
         git = {
