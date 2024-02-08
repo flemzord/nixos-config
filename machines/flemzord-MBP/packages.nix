@@ -22,7 +22,6 @@ with pkgs; [
   killall
   libfido2
   neofetch
-  nodePackages.npm
   ripgrep
   sqlite
   ssm-session-manager-plugin
@@ -48,7 +47,6 @@ with pkgs; [
   terraform
   terragrunt
   direnv
-  nodePackages.pnpm
   yq
   jq
   k9s
@@ -59,7 +57,7 @@ with pkgs; [
 
   # Dev tools NodeJS
   nodejs_20
-  nodePackages_latest.pnpm
+  nodePackages.pnpm
   bun
   # Dev tools GoLang
   go
