@@ -58,6 +58,7 @@ with pkgs; [
   # Dev tools NodeJS
   nodejs_20
   nodePackages.pnpm
+  nodePackages.yarn
   bun
   # Dev tools GoLang
   go
