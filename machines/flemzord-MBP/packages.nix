@@ -54,6 +54,7 @@ with pkgs; [
   cilium-cli
   tree
   kustomize
+  postgresql_16
 
   # Dev tools NodeJS
   nodejs_20
