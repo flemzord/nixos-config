@@ -1,10 +1,14 @@
-{ config, pkgs, lib, ... }:
-
 {
-  services = {
+  virtualisation.oci-containers.containers = {
     n8n = {
-      enable = true;
-      openFirewall = true;
+      image = "docker.n8n.io/n8nio/n8n:1.29.1";
+      ports = [ "5678:5678" ];
+      volumes = [ "n8n_data:/home/node/.n8n" ];
+      environment = {
+        GENERIC_TIMEZONE = "Europe/Paris";
+        TZ = "Europe/Paris";
+      };
+      autoStart = true;
     };
   };
 }
