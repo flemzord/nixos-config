@@ -22,10 +22,19 @@
 
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
+  systemd.timers."auto-update" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "5m";
+      OnUnitActiveSec = "40m";
+      Unit = "auto-update.service";
+    };
+  };
+
   systemd.services."auto-update" = {
     script = ''
       cd /etc/nixos/
-      git pull origin main
+      ${pkgs.git}/bin/git pull origin main
       make switch NIXNAME=home-hp
     '';
     serviceConfig = {
