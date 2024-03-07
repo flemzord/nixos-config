@@ -27,6 +27,7 @@
     allowReboot = true;
     persistent = true;
     dates = "03:00";
+    operation = "switch";
     flags = [ "--impure", "-L" ];
     flake = "/etc/nixos#home-dell";
   };
