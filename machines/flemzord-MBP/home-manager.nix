@@ -275,7 +275,7 @@ in
     { path = "/Applications/Warp.app/"; }
     { path = "/System/Applications/Home.app/"; }
     { path = "/Applications/Amie.app/"; }
-    { path = "/Applications/Superhuman.app/"; }
+    { path = "/Applications/Setapp/Spark Mail.app/"; }
     {
       path = "/Applications";
       section = "others";
