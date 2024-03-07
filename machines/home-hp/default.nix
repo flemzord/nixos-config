@@ -25,7 +25,8 @@
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
+    persistent = true;
     dates = "03:00";
-    flake = "github:flemzord/nixos-config";
+    flake = "github:flemzord/nixos-config#home-hp";
   };
 }
