@@ -29,6 +29,10 @@
       OnUnitActiveSec = "40m";
       Unit = "auto-update.service";
     };
+    serviceConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+    };
   };
 
   systemd.services."auto-update" = {
@@ -41,8 +45,6 @@
       NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM = "1";
     };
     serviceConfig = {
-      OnCalendar = "daily";
-      Persistent = true;
       User = "root";
     };
   };
