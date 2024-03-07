@@ -27,7 +27,7 @@
     allowReboot = true;
     persistent = true;
     dates = "03:00";
-    flags = [ "--impure" ];
-    flake = "github:flemzord/nixos-config#home-hp";
+    flags = [ "--impure", "-L" ];
+    flake = "/etc/nixos#home-dell";
   };
 }
