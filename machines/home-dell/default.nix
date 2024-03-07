@@ -33,12 +33,24 @@
 
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
+  systemd.timers."auto-update" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "5m";
+      OnUnitActiveSec = "40m";
+      Unit = "auto-update.service";
+    };
+  };
+
   systemd.services."auto-update" = {
     script = ''
       cd /etc/nixos/
-      git pull origin main
-      make switch NIXNAME=home-dell
+      /root/.nix-profile/bin/git pull origin main
+      /run/current-system/sw/bin/nixos-rebuild switch --flake ".#home-dell"
     '';
+    environment = {
+      NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM = "1";
+    };
     serviceConfig = {
       OnCalendar = "daily";
       Persistent = true;

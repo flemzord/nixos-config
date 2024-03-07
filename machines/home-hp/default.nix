@@ -34,9 +34,12 @@
   systemd.services."auto-update" = {
     script = ''
       cd /etc/nixos/
-      ${pkgs.git}/bin/git pull origin main
-      make switch NIXNAME=home-hp
+      /root/.nix-profile/bin/git pull origin main
+      /run/current-system/sw/bin/nixos-rebuild switch --flake ".#home-hp"
     '';
+    environment = {
+      NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM = "1";
+    };
     serviceConfig = {
       OnCalendar = "daily";
       Persistent = true;
