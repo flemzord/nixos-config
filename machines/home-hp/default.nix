@@ -21,4 +21,17 @@
   networking.hostName = "home-hp"; # Define your hostname.
 
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
+
+  systemd.services."auto-update" = {
+    script = ''
+      cd /etc/nixos/
+      git pull origin main
+      make switch NIXNAME=home-hp
+    '';
+    serviceConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      User = "root";
+    };
+  };
 }

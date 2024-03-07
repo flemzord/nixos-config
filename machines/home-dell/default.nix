@@ -32,4 +32,17 @@
   networking.hostName = "home-dell"; # Define your hostname.
 
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
+
+  systemd.services."auto-update" = {
+    script = ''
+      cd /etc/nixos/
+      git pull origin main
+      make switch NIXNAME=home-dell
+    '';
+    serviceConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      User = "root";
+    };
+  };
 }
