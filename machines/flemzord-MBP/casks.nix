@@ -45,6 +45,7 @@ _:
   "KeepingYouAwake"
   "syncthing"
   "whatsapp"
+  "rectangle"
 
   # Browsers
   "firefox"
