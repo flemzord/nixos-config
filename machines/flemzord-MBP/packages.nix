@@ -33,6 +33,8 @@ with pkgs; [
   syncthing # Sync files between machines
 
   # Dev tools
+  krew
+  awscli2
   ansible
   git-subrepo
   go-task

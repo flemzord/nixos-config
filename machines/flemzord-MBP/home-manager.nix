@@ -32,13 +32,6 @@ in
       "formancehq/tap/fctl"
       "loft-sh/tap/vcluster"
       "earthly/earthly/earthly"
-      "krew"
-      # "renovate"
-      # "protobuf"
-      # "protoc-gen-go"
-      # "protoc-gen-go-grpc"
-      "awscli"
-      "allure"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
