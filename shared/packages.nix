@@ -5,13 +5,11 @@ with pkgs; [
   wget
   curl
   htop
-  glances
   iftop
   jq
   yq
   openssh
   tree
-  unrar
   unzip
   wget
   zip
