@@ -55,6 +55,7 @@ with pkgs; [
   tree
   kustomize
   postgresql_16
+  natscli
 
   # Dev tools NodeJS
   nodejs_20
