@@ -8,6 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
+      ./../../shared/cachix
       ./hardware-configuration.nix
       ./../../pkgs/overlays/server.nix
       ./../../pkgs/services/docker.nix
