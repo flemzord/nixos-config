@@ -18,6 +18,7 @@
       # ./../../pkgs/services/home-assistant.nix
       ./../../pkgs/services/mosquitto.nix
       ./../../pkgs/services/homebridge.nix
+      ./kube.nix
     ];
 
   # Bootloader.

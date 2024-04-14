@@ -13,6 +13,7 @@
       ./../../pkgs/overlays/server.nix
       ./../../pkgs/services/docker.nix
       ./../../pkgs/services/n8n.nix
+      ./kube.nix
     ];
 
   # Bootloader.
