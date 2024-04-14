@@ -3,6 +3,6 @@
     enable = true;
     role = "server";
     token = "mysupertokenwhichshouldnotbepublicbutwillbeanyway";
-    serverAddr = "https://100.69.131.75:6443";
+    serverAddr = "https://192.168.1.119:6443";
   };
 }
