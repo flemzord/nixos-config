@@ -64,6 +64,7 @@ with pkgs; [
   nodePackages.pnpm
   nodePackages.yarn
   bun
+  nodePackages.wrangler
   # Dev tools GoLang
   go
   gopls
