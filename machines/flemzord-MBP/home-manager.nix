@@ -264,10 +264,10 @@ in
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Discord.app/"; }
     { path = "/Applications/Beeper.app/"; }
+    { path = "/Applications/Telegram.app/"; }
     { path = "/Applications/WhatsApp.app/"; }
+    { path = "/Applications/Notion Calendar.app/"; }
     { path = "/Applications/Warp.app/"; }
-    { path = "/System/Applications/Home.app/"; }
-    { path = "/Applications/Amie.app/"; }
     { path = "/Applications/Setapp/Spark Mail.app/"; }
     {
       path = "/Applications";
