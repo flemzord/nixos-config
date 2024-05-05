@@ -39,6 +39,8 @@ in
       "Infuse" = 1136220934;
       "Screegle" = 1591051659;
       "Tailscale" = 1475387142;
+      "Telegram" = 747648890;
+
     };
   };
 
