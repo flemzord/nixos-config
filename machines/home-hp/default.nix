@@ -23,6 +23,8 @@
 
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
+  services.vscode-server.enable = true;
+
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
