@@ -21,6 +21,7 @@
 
   networking.hostName = "home-hp"; # Define your hostname.
 
+  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
   services.vscode-server.enable = true;
@@ -33,5 +34,13 @@
     operation = "switch";
     flags = [ "--impure" "-L" ];
     flake = "/etc/nixos#home-hp";
+  };
+
+  systemd.services.vscode-tunnel = {
+    description = "VSCode SSH Tunnel";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.vscode}/bin/code tunnel --name=home --no-sleep";
+    };
   };
 }
