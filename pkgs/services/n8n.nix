@@ -5,6 +5,7 @@
       ports = [ "5678:5678" ];
       volumes = [ "n8n_data:/home/node/.n8n" ];
       environment = {
+        N8N_SECURE_COOKIE = "false";
         GENERIC_TIMEZONE = "Europe/Paris";
         TZ = "Europe/Paris";
       };
