@@ -240,6 +240,22 @@
         "type": "github"
       }
     },
+    "koyeb-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715097508,
+        "narHash": "sha256-8YLx1l/rM8mzXhLe00LcG7XyynCahlyoNpG5iFmPgDs=",
+        "owner": "koyeb",
+        "repo": "homebrew-tap",
+        "rev": "14e321b27cab5f9f9b4c1cfc31c51f23f70c08cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "koyeb",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "loftsh-cask": {
       "flake": false,
       "locked": {
@@ -396,6 +412,7 @@
         "home-manager": "home-manager_2",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "koyeb-cask": "koyeb-cask",
         "loftsh-cask": "loftsh-cask",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_5",

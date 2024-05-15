@@ -30,6 +30,7 @@ in
     casks = pkgs.callPackage ./casks.nix { };
     brews = [
       "formancehq/tap/fctl"
+      "koyeb/tap/koyeb"
       "loft-sh/tap/vcluster"
       "earthly/earthly/earthly"
     ];
