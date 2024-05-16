@@ -12,6 +12,7 @@ _:
   "postman"
   "session-manager-plugin"
   "iterm2"
+  "cursor"
 
   # Communication Tools
   "discord"
