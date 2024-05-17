@@ -74,4 +74,9 @@ with pkgs; [
   rustc
   rustfmt
   cargo
+
+  # Dev PHP
+  php82Packages.composer
+  php82
+  xz
 ]
