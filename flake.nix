@@ -89,6 +89,26 @@
           ./machines/flemzord-MBP
         ];
       };
+      "home-mbp" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          home-manager.darwinModules.home-manager
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              user = "flemzord";
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+              };
+              mutableTaps = true;
+              autoMigrate = true;
+            };
+          }
+          ./machines/home-mbp
+        ];
+      };
     };
   };
 }
