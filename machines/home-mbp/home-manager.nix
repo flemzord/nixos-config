@@ -252,6 +252,10 @@ in
   # Fully declarative dock using the latest from Nix Store
   local.dock.enable = true;
   local.dock.entries = [
+    { path = "/Applications/Radarr.app/"; }
+    { path = "/Applications/Sonarr.app/"; }
+    { path = "/Applications/Prowlarr.app/"; }
+    { path = "/Applications/Transmission.app/"; }
     {
       path = "/Applications";
       section = "others";
