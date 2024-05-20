@@ -35,6 +35,7 @@ _:
   "syncthing"
   "whatsapp"
   "rectangle"
+  "capacities"
 
   # Browsers
   "firefox"
