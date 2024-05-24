@@ -11,10 +11,10 @@
           ingress = {
             "n8n.flemzord.ovh" = {
               service = "http://localhost:5678"
-            }
-          }
-        }
-      }
+            };
+          };
+        };
+      };
     };
   };
 }
