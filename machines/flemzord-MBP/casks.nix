@@ -35,7 +35,7 @@ _:
   "syncthing"
   "whatsapp"
   "rectangle"
-  "capacities"
+  "nvidia-geforce-now"
 
   # Browsers
   "firefox"
