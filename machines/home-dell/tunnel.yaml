@@ -1,0 +1,10 @@
+tunnel: home-dell
+credentials-file: /etc/nixos/secrets/01eea35c-34c5-42c0-811c-ad23cf8bc655.json
+
+# Optional
+# loglevel: warn
+
+ingress:
+  - hostname: n8n.flemzord.ovh
+    service: http://localhost:5678
+  - service: http_status:404

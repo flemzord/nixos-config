@@ -10,7 +10,7 @@
           default = "http_status:404";
           ingress = {
             "n8n.flemzord.ovh" = {
-              service = "http://localhost:5678"
+              service = "http://localhost:5678";
             };
           };
         };
