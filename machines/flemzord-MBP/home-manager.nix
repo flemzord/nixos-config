@@ -264,6 +264,7 @@ in
   local.dock.enable = true;
   local.dock.entries = [
     { path = "/Applications/Arc.app/"; }
+    { path = "/Applications/Safari.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Discord.app/"; }
     { path = "/Applications/Beeper.app/"; }
@@ -272,6 +273,10 @@ in
     { path = "/Applications/Notion Calendar.app/"; }
     { path = "/Applications/Warp.app/"; }
     { path = "/Applications/Setapp/Spark Mail.app/"; }
+    { path = "/Applications/Linear.app/"; }
+    { path = "/Applications/ChatGPT.app/"; }
+    { path = "/Applications/Limitless.app/"; }
+    { path = "/Applications/1Password.app/"; }
     {
       path = "/Applications";
       section = "others";
