@@ -58,6 +58,7 @@ with pkgs; [
   kustomize
   postgresql_16
   natscli
+  kind
 
   # Dev tools NodeJS
   nodejs_20
