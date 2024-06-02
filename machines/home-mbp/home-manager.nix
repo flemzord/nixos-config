@@ -39,7 +39,7 @@ in
     useGlobalPkgs = true;
     users.${user} = { pkgs, config, lib, ... }: {
       home.enableNixpkgsReleaseCheck = false;
-      home.stateVersion = "21.11";
+      home.stateVersion = "24.05";
 
       home.packages = pkgs.callPackage ./packages.nix { };
       programs = {
