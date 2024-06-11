@@ -41,4 +41,5 @@ _:
   "firefox"
   "google-chrome"
   "arc"
+  "zed"
 ]
