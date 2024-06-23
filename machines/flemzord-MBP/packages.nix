@@ -77,7 +77,7 @@ with pkgs; [
   cargo
 
   # Dev PHP
-  php82Packages.composer
-  php82
+  php83Packages.composer
+  php83
   xz
 ]
