@@ -1,4 +1,4 @@
 \#*
 *.swp
 result
-./secrets
+secrets
