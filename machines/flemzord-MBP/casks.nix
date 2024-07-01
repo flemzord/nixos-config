@@ -19,6 +19,7 @@ _:
   "notion"
   "slack"
   "beeper"
+  "automattic-texts"
   "notion-calendar"
   "1password"
   "obsidian"
@@ -33,7 +34,6 @@ _:
   "Transmit"
   "KeepingYouAwake"
   "syncthing"
-  "whatsapp"
   "rectangle"
   "nvidia-geforce-now"
 
