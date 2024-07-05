@@ -79,4 +79,9 @@ with pkgs; [
   php83Packages.composer
   php83
   xz
+
+  # IA 
+  whisper-ctranslate2
+  openai-whisper-cpp
+  #nvtopPackages.full
 ]

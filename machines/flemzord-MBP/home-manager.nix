@@ -33,6 +33,7 @@ in
       "koyeb/tap/koyeb"
       "loft-sh/tap/vcluster"
       "earthly/earthly/earthly"
+      "nvtop"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
