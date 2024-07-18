@@ -81,7 +81,7 @@ with pkgs; [
   xz
 
   # IA 
-  whisper-ctranslate2
-  openai-whisper-cpp
+  #whisper-ctranslate2
+  #openai-whisper-cpp
   #nvtopPackages.full
 ]
