@@ -21,9 +21,17 @@ with pkgs; [
   killall
   ripgrep
   zsh-powerlevel10k
-  ffmpeg
   curl
   wget
 
+
+  # Dev PHP
+  php83Packages.composer
+  php83
+  xz
+
+  # Dev Python
+  pipx
+  ffmpeg
 
  ]
