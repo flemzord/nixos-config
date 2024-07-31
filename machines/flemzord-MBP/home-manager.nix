@@ -265,12 +265,11 @@ in
     { path = "/Applications/Arc.app/"; }
     { path = "/Applications/Safari.app/"; }
     { path = "/Applications/Slack.app/"; }
+    { path = "/Applications/Mattermost.app/"; }
     { path = "/Applications/Discord.app/"; }
-    { path = "/Applications/Beeper.app/"; }
     { path = "/Applications/Texts.app/"; }
-    { path = "/Applications/Notion Calendar.app/"; }
+    { path = "/Applications/Setapp/Calendars.app/"; }
     { path = "/Applications/Warp.app/"; }
-    { path = "/Applications/Setapp/Spark Mail.app/"; }
     { path = "/Applications/Linear.app/"; }
     { path = "/Applications/ChatGPT.app/"; }
     { path = "/Applications/1Password.app/"; }
