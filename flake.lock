@@ -416,6 +416,7 @@
         "loftsh-cask": "loftsh-cask",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_5",
+        "vector-cask": "vector-cask",
         "vscode-server": "vscode-server"
       }
     },
@@ -461,6 +462,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vector-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722269811,
+        "narHash": "sha256-tKAdcdg94FrOQk1wWcFjHEB7NpkxfzhVRqYwFjd/Kqw=",
+        "owner": "vectordotdev",
+        "repo": "homebrew-brew",
+        "rev": "99bfea04bbacba74c44e98eec79fc9ce6f38e1fc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vectordotdev",
+        "repo": "homebrew-brew",
         "type": "github"
       }
     },
