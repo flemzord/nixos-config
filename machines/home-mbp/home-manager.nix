@@ -32,6 +32,9 @@ in
       "Infuse" = 1136220934;
       "Tailscale" = 1475387142;
     };
+    brews = [
+      "cloudflared"
+    ];
   };
 
   # Enable home-manager to manage the XDG standard
