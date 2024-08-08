@@ -1,7 +1,7 @@
 {
   virtualisation.oci-containers.containers = {
     homebridge = {
-      image = "homebridge/homebridge:2024-05-02";
+      image = "homebridge/homebridge:2024-06-27";
       extraOptions = [ "--network=host" ];
       volumes = [ "homebridge:/homebridge" ];
       autoStart = true;
