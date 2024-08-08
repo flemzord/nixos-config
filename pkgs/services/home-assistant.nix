@@ -14,8 +14,8 @@
       ];
     };
   };
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 8123 ];
-  };
+  # networking.firewall = {
+  #   enable = true;
+  #   allowedTCPPorts = [ 8123 ];
+  # };
 }
