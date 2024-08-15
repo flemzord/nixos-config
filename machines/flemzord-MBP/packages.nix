@@ -59,6 +59,7 @@ with pkgs; [
   postgresql_16
   natscli
   kind
+  process-compose
 
   # Dev tools NodeJS
   nodejs_20
