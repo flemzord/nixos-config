@@ -53,7 +53,6 @@ with pkgs; [
   jq
   k9s
   watch
-  cilium-cli
   tree
   kustomize
   postgresql_16
@@ -78,11 +77,17 @@ with pkgs; [
 
   # Dev PHP
   php83Packages.composer
-  php83
+  #php83
+  #php83Extensions.xdebug
   xz
-
-  # IA 
-  #whisper-ctranslate2
-  #openai-whisper-cpp
-  #nvtopPackages.full
+  (pkgs.php83.buildEnv {
+    extensions = ({ enabled, all }: enabled ++ (with all; [
+      xdebug
+    ]));
+    extraConfig = ''
+      xdebug.mode=debug
+      xdebug.client_host=127.0.0.1
+      xdebug.client_port="9003"
+    '';
+  })
 ]
