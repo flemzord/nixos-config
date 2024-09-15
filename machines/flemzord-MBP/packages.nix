@@ -34,6 +34,7 @@ with pkgs; [
 
   # Dev tools
   krew
+  k3d
   awscli2
   ansible
   git-subrepo
