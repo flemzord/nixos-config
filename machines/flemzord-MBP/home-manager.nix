@@ -35,6 +35,7 @@ in
       "earthly/earthly/earthly"
       "nvtop"
       "vectordotdev/brew/vector"
+      "speakeasy-api/homebrew-tap/speakeasy"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
