@@ -75,7 +75,7 @@ let user = "flemzord"; in
         autohide = true;
         show-recents = false;
         launchanim = true;
-        orientation = "left";
+        orientation = "right";
         tilesize = 30;
       };
 
