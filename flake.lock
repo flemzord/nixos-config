@@ -417,7 +417,6 @@
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_5",
         "speakeasy-cask": "speakeasy-cask",
-        "vector-cask": "vector-cask",
         "vscode-server": "vscode-server"
       }
     },
@@ -479,22 +478,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "vector-cask": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1726070869,
-        "narHash": "sha256-tVx7YtANu6+GFbtqpVrvasjeXAxk+f+F/D+5B7D7ads=",
-        "owner": "vectordotdev",
-        "repo": "homebrew-brew",
-        "rev": "3c9e881b9431f21fffe5e9d6eaf41b1a428405ec",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vectordotdev",
-        "repo": "homebrew-brew",
         "type": "github"
       }
     },

@@ -33,8 +33,6 @@ in
       "koyeb/tap/koyeb"
       "loft-sh/tap/vcluster"
       "earthly/earthly/earthly"
-      "nvtop"
-      "vectordotdev/brew/vector"
       "speakeasy-api/homebrew-tap/speakeasy"
     ];
     masApps = {
