@@ -37,9 +37,7 @@ in
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
-      "Bear" = 1091189122;
       "Infuse" = 1136220934;
-      "Screegle" = 1591051659;
       "Tailscale" = 1475387142;
     };
   };
