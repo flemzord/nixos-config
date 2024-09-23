@@ -26,7 +26,9 @@ let user = "flemzord"; in
   # Setup user, packages, programs
   nix = {
     package = pkgs.lix;
+    configureBuildUsers = true;
     settings.trusted-users = [ "@admin" "${user}" ];
+  
 
     gc = {
       user = "root";
