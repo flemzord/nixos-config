@@ -36,7 +36,6 @@ _:
   "KeepingYouAwake"
   "syncthing"
   "rectangle"
-  "nvidia-geforce-now"
 
   # Browsers
   "firefox"
