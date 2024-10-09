@@ -60,6 +60,7 @@ with pkgs; [
   natscli
   kind
   process-compose
+  fluxcd
 
   # Dev tools NodeJS
   nodejs_20
