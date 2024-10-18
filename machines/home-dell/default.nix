@@ -20,7 +20,6 @@
       ./../../pkgs/services/homebridge.nix
       ./../../pkgs/services/n8n.nix
       ./../../pkgs/services/cloudflared.nix
-      ./kube.nix
     ];
 
   # Bootloader.
