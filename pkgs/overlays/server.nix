@@ -20,6 +20,9 @@
 #    };
 #  };
 
+  boot.loader.grub.configurationLimit=2;
+
+
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
