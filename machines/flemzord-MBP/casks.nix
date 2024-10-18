@@ -4,12 +4,7 @@ _:
   # Development Tools
   "orbstack"
   "warp"
-  "insomnia"
-  "visual-studio-code"
-  "lens"
-  "openlens"
   "jetbrains-toolbox"
-  "postman"
   "session-manager-plugin"
   "iterm2"
   "cursor"
@@ -30,11 +25,9 @@ _:
   "raycast"
   "vlc"
   "transmission"
-  "mumble"
   "the-unarchiver"
   "Transmit"
   "KeepingYouAwake"
-  "syncthing"
   "rectangle"
 
   # Browsers

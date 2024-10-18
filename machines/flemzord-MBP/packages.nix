@@ -68,7 +68,7 @@ with pkgs; [
   nodePackages.yarn
   bun
   
-  turbo
+  #turbo
   # Dev tools GoLang
   go
   gopls
