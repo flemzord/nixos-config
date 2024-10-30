@@ -53,6 +53,7 @@ with pkgs; [
   yq
   jq
   k9s
+  ko
   watch
   tree
   kustomize
