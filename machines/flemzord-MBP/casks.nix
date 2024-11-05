@@ -35,4 +35,5 @@ _:
   "google-chrome"
   "arc"
   "zed"
+  "zen-browser"
 ]
