@@ -37,6 +37,8 @@ with pkgs; [
   k3d
   awscli2
   ansible
+  pipx
+  poetry
   git-subrepo
   go-task
   httpie
@@ -68,7 +70,7 @@ with pkgs; [
   nodePackages.pnpm
   nodePackages.yarn
   bun
-  
+
   #turbo
   # Dev tools GoLang
   go

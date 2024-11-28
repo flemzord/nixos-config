@@ -265,7 +265,7 @@ in
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Mattermost.app/"; }
     { path = "/Applications/Discord.app/"; }
-    { path = "/Applications/Texts.app/"; }
+    { path = "/Applications/Beeper.app/"; }
     { path = "/Applications/Setapp/Calendars.app/"; }
     { path = "/Applications/Warp.app/"; }
     { path = "/Applications/Linear.app/"; }
