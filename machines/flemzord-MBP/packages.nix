@@ -49,8 +49,7 @@ with pkgs; [
   supabase-cli
   packer
   hcloud
-  terraform
-  terragrunt
+  tenv
   direnv
   yq
   jq

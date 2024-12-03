@@ -49,7 +49,7 @@
     gnome-tour
     gnome-connections
     epiphany # web browser
-    geary # email reader. Up to 24.05. Starting from 24.11 the package name is just geary.
+    geary # email reader. Up to 24.11. Starting from 24.11 the package name is just geary.
     evince # document viewer
   ];
   i18n.supportedLocales = ["all"];

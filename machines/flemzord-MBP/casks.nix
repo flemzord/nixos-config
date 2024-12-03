@@ -29,6 +29,7 @@ _:
   "Transmit"
   "KeepingYouAwake"
   "rectangle"
+  "taskbar"
 
   # Browsers
   "firefox"
