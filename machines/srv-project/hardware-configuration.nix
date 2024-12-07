@@ -27,13 +27,9 @@
    boot.swraid.enable = true;
    boot.swraid.mdadmConf = ''
      HOMEHOST srv-project
+     mailAddr root
    '';
-
-  services.mdadm = {
-    enable = true;
-    mailAddr = "root";
-  };
-
+   
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
