@@ -10,9 +10,9 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = ["dm-snapshot"];
+  boot.kernelModules = ["kvm-intel"];
+  boot.extraModulePackages = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -22,6 +22,10 @@
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = false;
+  };
 }
