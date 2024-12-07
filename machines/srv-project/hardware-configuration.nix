@@ -13,13 +13,37 @@
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.loader.grub = {
+      enable = true;
+      device = "/dev/nvme0n1";
+
+      # We don't raid the boot parts, instead we copy everything
+      # over to the second disk
+      mirroredBoots = [{
+        devices = [ "/dev/nvme1n1" ];
+        path = "/boot";
+      }];
+    };
+   boot.swraid.enable = true;
+   boot.swraid.mdadmConf = ''
+     HOMEHOST srv-project
+   '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
+  #networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
+  networking = {
+      useDHCP = false;
+      interfaces."enp35s0" = {
+        ipv4.addresses = [{ address = "1.2.3.4"; prefixLength = 26; }];
+        ipv6.addresses = [{ address = "2a01:xx:xx::1"; prefixLength = 64; }];
+      };
+      defaultGateway = "1.2.3.1";
+      defaultGateway6 = { address = "fe80::1"; interface = "enp35s0"; };
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
