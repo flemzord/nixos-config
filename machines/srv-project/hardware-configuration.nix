@@ -14,16 +14,16 @@
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
   boot.loader.grub = {
-      enable = true;
-      device = "/dev/nvme0n1";
+    enable = true;
+    device = "/dev/nvme0n1";
 
-      # We don't raid the boot parts, instead we copy everything
-      # over to the second disk
-      mirroredBoots = [{
-        devices = [ "/dev/nvme1n1" ];
-        path = "/boot";
-      }];
-    };
+    # We don't raid the boot parts, instead we copy everything
+    # over to the second disk
+    mirroredBoots = [{
+      devices = [ "/dev/nvme1n1" ];
+      path = "/boot";
+    }];
+  };
    boot.swraid.enable = true;
    boot.swraid.mdadmConf = ''
      HOMEHOST srv-project
@@ -37,12 +37,12 @@
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
   networking = {
       useDHCP = false;
-      interfaces."enp35s0" = {
-        ipv4.addresses = [{ address = "1.2.3.4"; prefixLength = 26; }];
-        ipv6.addresses = [{ address = "2a01:xx:xx::1"; prefixLength = 64; }];
+      interfaces."enp4s0" = {
+        ipv4.addresses = [{ address = "37.27.100.113"; prefixLength = 26; }];
+#        ipv6.addresses = [{ address = "2a01:xx:xx::1"; prefixLength = 64; }];
       };
-      defaultGateway = "1.2.3.1";
-      defaultGateway6 = { address = "fe80::1"; interface = "enp35s0"; };
+      defaultGateway = "37.27.100.65";
+#      defaultGateway6 = { address = "fe80::1"; interface = "enp35s0"; };
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
