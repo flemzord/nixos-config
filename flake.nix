@@ -66,6 +66,15 @@
           disko.nixosModules.disko
         ];
       };
+      };
+
+      "srv-project" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./machines/srv-project
+          disko.nixosModules.disko
+        ];
+      };
     };
 
     darwinConfigurations = {
