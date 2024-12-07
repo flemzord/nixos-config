@@ -23,9 +23,4 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = false;
-  };
 }
