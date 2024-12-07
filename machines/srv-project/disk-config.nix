@@ -5,9 +5,14 @@
     type = "gpt";
     partitions = {
       boot = {
-        name = "boot";
-        size = "1G";
-        type = "ext4";
+        type = "EF00";
+        start = "1MiB";
+        end = "500MiB";
+        content = {
+          type = "filesystem";
+          format = "vfat";
+          mountpoint = "/boot";
+        };
       };
       raid2 = {
         size = "100%";
