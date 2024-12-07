@@ -1,13 +1,14 @@
-{lib, ...}: let
+{ lib, ... }: let
   one = "/dev/nvme0n1";
   two = "/dev/nvme1n1";
+
   content = {
     type = "gpt";
     partitions = {
       boot = {
         name = "boot";
-        size = "1M";
-        type = "EF02";
+        size = "500M";
+        type = "EF00";
       };
       raid1 = {
         size = "1G";
@@ -38,24 +39,44 @@ in {
       device = two;
     };
   };
+
   disko.devices.mdadm = {
-    braid = { # stands for boot raid
+    braid = {
       type = "mdadm";
       level = 1;
       content = {
-        type = "filesystem";
-        format = "ext4";
-        mountpoint = "/boot";
+        type = "gpt";
+        partitions = {
+          p1 = {
+            size = "100%";
+            type = "EF00";
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
+              mountOptions = [ "umask=0077" ];
+            };
+          };
+        };
       };
     };
-    rraid = { # stands for root raid
+
+    rraid = {
       type = "mdadm";
       level = 1;
       content = {
-        type = "filesystem";
-        format = "ext4";
-        mountpoint = "/";
-        mountOptions = ["defaults"];
+        type = "gpt";
+        partitions = {
+          p1 = {
+            size = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
+              mountOptions = ["defaults"];
+            };
+          };
+        };
       };
     };
   };
