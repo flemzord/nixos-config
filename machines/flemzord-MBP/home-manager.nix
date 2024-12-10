@@ -34,6 +34,7 @@ in
       "loft-sh/tap/vcluster"
       "earthly/earthly/earthly"
       "speakeasy-api/homebrew-tap/speakeasy"
+      "helmfile"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
