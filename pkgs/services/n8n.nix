@@ -12,6 +12,7 @@
         N8N_PORT = "5678";
         N8N_PROTOCOL = "https";
         WEBHOOK_URL = "https://n8n.flemzord.ovh/";
+        NODEJS_PREFER_IPV4 = "true";
       };
       autoStart = true;
     };
