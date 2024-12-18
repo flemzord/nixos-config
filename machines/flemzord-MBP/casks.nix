@@ -19,6 +19,7 @@ _:
   "1password"
   "obsidian"
   "steam"
+  "whatsapp"
   
   # Another
   "ngrok"

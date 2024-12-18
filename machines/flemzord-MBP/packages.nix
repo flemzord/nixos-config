@@ -71,6 +71,9 @@ with pkgs; [
   bun
 
   #turbo
+  bob
+  devbox
+  devenv
   # Dev tools GoLang
   go
   gopls
