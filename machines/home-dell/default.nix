@@ -19,6 +19,7 @@
       ./../../pkgs/services/mosquitto.nix
       ./../../pkgs/services/homebridge.nix
       ./../../pkgs/services/n8n.nix
+      ./../../pkgs/services/qdrant.nix
       ./../../pkgs/services/cloudflared.nix
     ];
 
