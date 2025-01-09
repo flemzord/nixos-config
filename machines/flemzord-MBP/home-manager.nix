@@ -262,12 +262,14 @@ in
   local.dock.enable = true;
   local.dock.entries = [
     { path = "/Applications/Arc.app/"; }
-    { path = "/Applications/Safari.app/"; }
+    { path = "/Applications/Zen Browser.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Mattermost.app/"; }
     { path = "/Applications/Discord.app/"; }
     { path = "/Applications/Beeper.app/"; }
-    { path = "/Applications/Setapp/Calendars.app/"; }
+    { path = "/Applications/WhatsApp.app"; }
+    { path = "/Applications/Obsidian.app"; }
+    { path = "/Applications/Notion Calendar.app/"; }
     { path = "/Applications/Warp.app/"; }
     { path = "/Applications/Linear.app/"; }
     { path = "/Applications/ChatGPT.app/"; }
