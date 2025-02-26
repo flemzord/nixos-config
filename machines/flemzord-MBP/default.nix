@@ -20,18 +20,13 @@ let user = "flemzord"; in
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   # Setup user, packages, programs
   nix = {
     package = pkgs.lix;
-    configureBuildUsers = true;
     settings.trusted-users = [ "@admin" "${user}" ];
   
 
     gc = {
-      user = "root";
       automatic = true;
       interval = { Weekday = 0; Hour = 2; Minute = 0; };
       options = "--delete-older-than 30d";

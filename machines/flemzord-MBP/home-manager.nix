@@ -263,10 +263,11 @@ in
   local.dock.entries = [
     { path = "/Applications/Arc.app/"; }
     { path = "/Applications/Zen Browser.app/"; }
+    { path = "/Applications/Safari.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Mattermost.app/"; }
     { path = "/Applications/Discord.app/"; }
-    { path = "/Applications/Beeper.app/"; }
+    { path = "/Applications/Beeper Desktop.app/"; }
     { path = "/Applications/WhatsApp.app"; }
     { path = "/Applications/Obsidian.app"; }
     { path = "/Applications/Notion Calendar.app/"; }
