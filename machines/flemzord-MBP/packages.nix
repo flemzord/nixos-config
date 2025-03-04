@@ -97,7 +97,7 @@ with pkgs; [
       xdebug.client_port="9003"
     '';
   })
-  
+
   # Dev Python 
   uv
   python313

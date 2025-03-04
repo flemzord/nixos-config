@@ -11,16 +11,16 @@
 
   nix.optimise.automatic = true;
 
-#  nixpkgs = {
-#    config = {
-#      allowUnfree = false;
-#      allowBroken = false;
-#      allowInsecure = false;
-#      allowUnsupportedSystem = true;
-#    };
-#  };
+  #  nixpkgs = {
+  #    config = {
+  #      allowUnfree = false;
+  #      allowBroken = false;
+  #      allowInsecure = false;
+  #      allowUnsupportedSystem = true;
+  #    };
+  #  };
 
-  boot.loader.grub.configurationLimit=2;
+  boot.loader.grub.configurationLimit = 2;
 
 
   # Set your time zone.

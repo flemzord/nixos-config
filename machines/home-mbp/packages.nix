@@ -21,4 +21,4 @@ with pkgs; [
   pipx
   ffmpeg
 
- ]
+]

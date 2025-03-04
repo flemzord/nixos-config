@@ -17,14 +17,14 @@
       autoStart = true;
     };
     browserless = {
-        image = "ghcr.io/browserless/chromium";
-        ports = [ "3000:3000" ];
-        environment = {
-            CONCURRENT = "10";
-            TOKEN = "6R0W53R135510";
-            
-        };
-        autoStart = true;
+      image = "ghcr.io/browserless/chromium";
+      ports = [ "3000:3000" ];
+      environment = {
+        CONCURRENT = "10";
+        TOKEN = "6R0W53R135510";
+
+      };
+      autoStart = true;
     };
   };
 }

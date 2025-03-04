@@ -24,7 +24,7 @@ let user = "flemzord"; in
   nix = {
     package = pkgs.lix;
     settings.trusted-users = [ "@admin" "${user}" ];
-  
+
 
     gc = {
       automatic = true;

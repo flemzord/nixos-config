@@ -52,10 +52,10 @@
     geary # email reader. Up to 24.11. Starting from 24.11 the package name is just geary.
     evince # document viewer
   ];
-  i18n.supportedLocales = ["all"];
+  i18n.supportedLocales = [ "all" ];
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "flemzord";
-security.chromiumSuidSandbox.enable = true;
- # systemd.services."getty@tty1".enable = false;
-#  systemd.services."autovt@tty1".enable = false;
+  security.chromiumSuidSandbox.enable = true;
+  # systemd.services."getty@tty1".enable = false;
+  #  systemd.services."autovt@tty1".enable = false;
 }

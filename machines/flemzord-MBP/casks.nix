@@ -20,7 +20,7 @@ _:
   "obsidian"
   "steam"
   "whatsapp"
-  
+
   # Another
   "ngrok"
   "raycast"
