@@ -38,7 +38,6 @@ with pkgs; [
   awscli2
   ansible
   pipx
-  poetry
   git-subrepo
   go-task
   httpie
@@ -84,11 +83,11 @@ with pkgs; [
   cargo
 
   # Dev PHP
-  php83Packages.composer
-  #php83
-  #php83Extensions.xdebug
+  php84Packages.composer
+  #php84
+  #php84Extensions.xdebug
   xz
-  (pkgs.php83.buildEnv {
+  (pkgs.php84.buildEnv {
     extensions = ({ enabled, all }: enabled ++ (with all; [
       xdebug
     ]));
@@ -98,4 +97,9 @@ with pkgs; [
       xdebug.client_port="9003"
     '';
   })
+  
+  # Dev Python 
+  uv
+  python313
+  poetry
 ]
