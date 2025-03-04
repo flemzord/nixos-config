@@ -84,8 +84,6 @@ with pkgs; [
 
   # Dev PHP
   php84Packages.composer
-  #php84
-  #php84Extensions.xdebug
   xz
   (pkgs.php84.buildEnv {
     extensions = ({ enabled, all }: enabled ++ (with all; [

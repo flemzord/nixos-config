@@ -41,7 +41,7 @@
       flake = false;
     };
     temporal-cask = {
-      url = "github.com:temporalio/homebrew-brew";
+      url = "github:temporalio/homebrew-brew";
       flake = false;
     };
     disko = {
