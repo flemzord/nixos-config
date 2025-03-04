@@ -34,6 +34,8 @@ in
       "loft-sh/tap/vcluster"
       "earthly/earthly/earthly"
       "speakeasy-api/homebrew-tap/speakeasy"
+      "temporalio/homebrew-tap/tcld"
+      "temporal"
       "helmfile"
     ];
     masApps = {
