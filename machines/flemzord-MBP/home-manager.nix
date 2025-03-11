@@ -72,19 +72,31 @@ in
         zsh = {
           enable = true;
           autocd = false;
+          enableCompletion = true;
+          history = {
+            append = true;
+            expireDuplicatesFirst = true;
+          };
+          oh-my-zsh = {
+            enable = true;
+            plugins = [
+              "z"
+            ];
+          };
           cdpath = [ "~/.local/share/src" ];
           dirHashes = {
             code = "$HOME/.local/share/src";
             nixos-config = "$HOME/.local/share/src/nixos-config";
           };
           plugins = [
-
           ];
           initExtraFirst = ''
             if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
               . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
               . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
             fi
+            
+            export EDITOR=vim
 
             # Remove history data we don't want to see
             export HISTIGNORE="pwd:ls:cd"
@@ -121,7 +133,7 @@ in
             ".bundle"
             ".fleet"
             ".direnv"
-            ".envrc"
+            ".env"
           ];
           userName = name;
           userEmail = email;

@@ -29,7 +29,7 @@ with pkgs; [
   ffmpeg
   curl
   wget
-  tailscale
+  #tailscale
   syncthing # Sync files between machines
 
   # Dev tools
