@@ -4,6 +4,7 @@
 with pkgs; [
   dockutil
   nixpkgs-fmt
+  nixd
   statix
   pre-commit
   difftastic
@@ -62,6 +63,7 @@ with pkgs; [
   kind
   process-compose
   fluxcd
+  ncdu
 
   # Dev tools NodeJS
   nodejs_20
