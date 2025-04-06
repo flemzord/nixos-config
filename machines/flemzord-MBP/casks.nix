@@ -3,7 +3,6 @@ _:
 [
   # Development Tools
   "orbstack"
-  "warp"
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"

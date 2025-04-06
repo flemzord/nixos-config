@@ -285,7 +285,7 @@ in
     { path = "/Applications/WhatsApp.app"; }
     { path = "/Applications/Obsidian.app"; }
     { path = "/Applications/Notion Calendar.app/"; }
-    { path = "/Applications/Warp.app/"; }
+    { path = "/Applications/iTerm.app/"; }
     { path = "/Applications/Linear.app/"; }
     { path = "/Applications/ChatGPT.app/"; }
     { path = "/Applications/1Password.app/"; }
