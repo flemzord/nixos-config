@@ -76,7 +76,7 @@ with pkgs; [
   # Dev tools GoLang
   go
   gopls
-  pulumi-bin
+  # pulumi-bin
   # Dev tools Rust
   rustc
   rustfmt

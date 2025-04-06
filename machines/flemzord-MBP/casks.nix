@@ -14,7 +14,6 @@ _:
   "notion"
   "slack"
   "beeper"
-  "automattic-texts"
   "notion-calendar"
   "1password"
   "obsidian"
