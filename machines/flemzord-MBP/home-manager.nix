@@ -37,6 +37,7 @@ in
       # "temporalio/homebrew-tap/tcld"
       "temporal"
       "helmfile"
+      "ansible"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;

@@ -37,7 +37,6 @@ with pkgs; [
   krew
   k3d
   awscli2
-  ansible
   pipx
   git-subrepo
   go-task
