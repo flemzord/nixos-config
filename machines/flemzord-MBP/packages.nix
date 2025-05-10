@@ -75,13 +75,13 @@ with pkgs; [
   devbox
   devenv
   # Dev tools GoLang
-  go
-  gopls
+  #go
+  #gopls
   # pulumi-bin
   # Dev tools Rust
-  rustc
-  rustfmt
-  cargo
+  #rustc
+  #rustfmt
+  #cargo
 
   # Dev PHP
   php84Packages.composer
