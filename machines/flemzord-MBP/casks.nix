@@ -6,6 +6,7 @@ _:
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
+  "warp"
   "cursor"
 
   # Communication Tools
@@ -35,5 +36,4 @@ _:
   "google-chrome"
   "arc"
   "zed"
-  "zen-browser"
 ]

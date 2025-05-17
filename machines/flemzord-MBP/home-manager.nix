@@ -42,7 +42,6 @@ in
     masApps = {
       "1Password for Safari" = 1569813296;
       "Infuse" = 1136220934;
-      "Tailscale" = 1475387142;
     };
   };
 
@@ -281,7 +280,6 @@ in
   local.dock.enable = true;
   local.dock.entries = [
     { path = "/Applications/Arc.app/"; }
-    { path = "/Applications/Zen Browser.app/"; }
     { path = "/Applications/Safari.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Mattermost.app/"; }

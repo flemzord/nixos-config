@@ -25,13 +25,14 @@ with pkgs; [
   neofetch
   ripgrep
   sqlite
+  sshpass
   ssm-session-manager-plugin
   zsh-powerlevel10k
   ffmpeg
   curl
   wget
   tailscale
-  syncthing # Sync files between machines
+  turso-cli
 
   # Dev tools
   krew
