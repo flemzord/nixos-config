@@ -13,7 +13,6 @@ _:
   "discord"
   "notion"
   "slack"
-  "beeper"
   "notion-calendar"
   "1password"
   "obsidian"
