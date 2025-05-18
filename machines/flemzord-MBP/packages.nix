@@ -66,7 +66,7 @@ with pkgs; [
   ncdu
 
   # Dev tools NodeJS
-  nodejs_20
+  nodejs_22
   nodePackages.pnpm
   nodePackages.yarn
   bun
