@@ -31,7 +31,7 @@ with pkgs; [
   ffmpeg
   curl
   wget
-  tailscale
+  #tailscale
   turso-cli
 
   # Dev tools

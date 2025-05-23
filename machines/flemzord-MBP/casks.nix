@@ -2,12 +2,20 @@ _:
 
 [
   # Development Tools
-  "orbstack"
+#  "orbstack"
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
   "warp"
   "cursor"
+  "windsurf"
+  "mattermost"
+  "linear-linear"
+  "chatgpt"
+  "setapp"
+  "postgres-unofficial"
+  "superwhisper"
+  "tailscale"
 
   # Communication Tools
   "discord"

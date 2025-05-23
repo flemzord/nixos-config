@@ -42,6 +42,7 @@ in
     masApps = {
       "1Password for Safari" = 1569813296;
       "Infuse" = 1136220934;
+      "Beeper: All Chats, One App" = 6499013100;
     };
   };
 
@@ -285,7 +286,7 @@ in
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Mattermost.app/"; }
     { path = "/Applications/Discord.app/"; }
-    { path = "/Applications/Beeper Desktop.app/"; }
+    { path = "/Applications/Beeper.app/"; }
     { path = "/Applications/WhatsApp.app"; }
     { path = "/Applications/Obsidian.app"; }
     { path = "/Applications/Notion Calendar.app/"; }

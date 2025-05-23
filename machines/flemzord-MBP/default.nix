@@ -19,6 +19,7 @@ let user = "flemzord"; in
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
+  ids.gids.nixbld = 350;
 
   # Setup user, packages, programs
   nix = {
