@@ -51,7 +51,7 @@ in
     useGlobalPkgs = true;
     users.${user} = { pkgs, config, lib, ... }: {
       home.enableNixpkgsReleaseCheck = false;
-      home.stateVersion = "24.11";
+      home.stateVersion = "25.05";
 
       home.packages = pkgs.callPackage ./packages.nix { };
       programs = {
@@ -107,6 +107,7 @@ in
 
             export PATH="~/.krew/bin:$PATH"
             export PATH="~/.local/bin:$PATH"
+            export PATH="~/.cache/npm/bin:$PATH"
             eval "$(direnv hook zsh)"
           
             # Use difftastic, syntax-aware diffing

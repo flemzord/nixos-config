@@ -16,6 +16,9 @@ _:
   "postgres-unofficial"
   "superwhisper"
   "tailscale"
+  "figma"
+  "microsoft-teams"
+  "zen"
 
   # Communication Tools
   "discord"
