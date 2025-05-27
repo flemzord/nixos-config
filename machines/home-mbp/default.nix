@@ -23,6 +23,8 @@ let user = "flemzord"; in
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+  system.primaryUser = user;
+
   # Setup user, packages, programs
   nix = {
     package = pkgs.nix;
