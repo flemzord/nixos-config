@@ -11,6 +11,7 @@
       ./../../shared/cachix
       ./hardware-configuration.nix
       ./../../pkgs/overlays/server.nix
+      ./../../pkgs/services/docker.nix
     ];
 
   # Bootloader.
@@ -49,13 +50,13 @@
     gnome-tour
     gnome-connections
     epiphany # web browser
-    geary # email reader. Up to 25.05. Starting from 25.05 the package name is just geary.
     evince # document viewer
   ];
   i18n.supportedLocales = [ "all" ];
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "flemzord";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "flemzord";
   security.chromiumSuidSandbox.enable = true;
   # systemd.services."getty@tty1".enable = false;
   #  systemd.services."autovt@tty1".enable = false;
+  services.teamviewer.enable = true;
 }
