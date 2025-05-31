@@ -40,6 +40,7 @@ _:
   "KeepingYouAwake"
   "rectangle"
   "taskbar"
+  "yaak"
 
   # Browsers
   "firefox"
