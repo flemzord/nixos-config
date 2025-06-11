@@ -128,6 +128,7 @@ in
             export PATH=$PATH:$ANDROID_HOME/emulator
             export PATH=$PATH:$ANDROID_HOME/platform-tools
             alias codex='npx @openai/codex@latest'
+            alias cs='claude-squad'
           '';
         };
         git = {
