@@ -39,6 +39,7 @@ in
       "helmfile"
       "ansible"
       "claude-squad"
+      "tmux"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;
@@ -129,6 +130,8 @@ in
             export PATH=$PATH:$ANDROID_HOME/platform-tools
             alias codex='npx @openai/codex@latest'
             alias cs='claude-squad'
+            alias laravel='/Users/flemzord/.config/composer/vendor/bin/laravel'
+            export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
           '';
         };
         git = {
