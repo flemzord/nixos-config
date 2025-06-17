@@ -44,7 +44,6 @@ in
     masApps = {
       "1Password for Safari" = 1569813296;
       "Infuse" = 1136220934;
-      "Beeper: All Chats, One App" = 6499013100;
     };
   };
 
@@ -290,14 +289,16 @@ in
   local.dock.entries = [
     { path = "/Applications/Arc.app/"; }
     { path = "/Applications/Safari.app/"; }
+    { path = "/Applications/Google Chrome.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Mattermost.app/"; }
     { path = "/Applications/Discord.app/"; }
-    { path = "/Applications/Beeper.app/"; }
+    { path = "/Applications/Beeper Desktop.app/"; }
     { path = "/Applications/WhatsApp.app"; }
     { path = "/Applications/Obsidian.app"; }
     { path = "/Applications/Notion Calendar.app/"; }
     { path = "/Applications/iTerm.app/"; }
+    { path = "/Applications/Warp.app/"; }
     { path = "/Applications/Linear.app/"; }
     { path = "/Applications/ChatGPT.app/"; }
     { path = "/Applications/1Password.app/"; }

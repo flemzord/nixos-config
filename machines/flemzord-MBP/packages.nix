@@ -80,9 +80,10 @@ with pkgs; [
   #gopls
   # pulumi-bin
   # Dev tools Rust
-  #rustc
+  rustc
   #rustfmt
-  #cargo
+  cargo
+  cmake
 
   # Dev PHP
   php84Packages.composer

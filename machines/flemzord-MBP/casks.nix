@@ -18,7 +18,6 @@ _:
   "tailscale"
   "figma"
   "microsoft-teams"
-  "zen"
 
   # Communication Tools
   "discord"
