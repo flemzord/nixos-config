@@ -15,7 +15,6 @@ _:
   "setapp"
   "postgres-unofficial"
   "superwhisper"
-  "tailscale"
   "figma"
   "microsoft-teams"
 

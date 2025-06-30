@@ -131,6 +131,7 @@ in
             alias cs='claude-squad'
             alias laravel='/Users/flemzord/.config/composer/vendor/bin/laravel'
             export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+            export ENABLE_BACKGROUND_TASKS=1
           '';
         };
         git = {
