@@ -30,7 +30,6 @@ in
     casks = pkgs.callPackage ./casks.nix { };
     masApps = {
       "Infuse" = 1136220934;
-      "Tailscale" = 1475387142;
     };
     brews = [
       "cloudflared"
