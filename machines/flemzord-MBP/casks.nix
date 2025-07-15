@@ -17,6 +17,7 @@ _:
   "superwhisper"
   "figma"
   "microsoft-teams"
+  "tailscale-app"
 
   # Communication Tools
   "discord"
