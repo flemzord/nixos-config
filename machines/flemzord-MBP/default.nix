@@ -6,7 +6,6 @@ let user = "flemzord"; in
   imports = [
     ./../../shared/cachix
     ./home-manager.nix
-    ./../../pkgs/services/aerospace.nix
   ];
 
   nixpkgs = {

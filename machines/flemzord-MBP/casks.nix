@@ -3,6 +3,7 @@ _:
 [
   # Development Tools
 #  "orbstack"
+  "nikitabobko/tap/aerospace"
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
