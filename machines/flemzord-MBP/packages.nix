@@ -63,6 +63,7 @@ with pkgs; [
   process-compose
   fluxcd
   ncdu
+  sketchybar
 
   # Dev tools NodeJS
   nodejs_22

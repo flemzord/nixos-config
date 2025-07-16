@@ -8,6 +8,8 @@ in
 {
   imports = [
     ./dock
+    # ./../../shared/services/sketchybar.nix
+    #./../../shared/programs/aerospace.nix
   ];
 
   # It me
