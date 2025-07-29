@@ -10,6 +10,7 @@ shared-packages ++ [
 
   # Dev PHP
   php84Packages.composer
+  php84Packages.php
   xz
 
   # Dev tools NodeJS
