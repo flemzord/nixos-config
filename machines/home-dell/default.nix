@@ -45,6 +45,27 @@
     ];
   };
 
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_17;
+    ensureDatabases = [ "postgres", "kipli ];
+    ensureUsers = [
+      {
+        name = "postgres";
+        ensureDBOwnership = true;
+      }
+    ];
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all all trust
+      host all all 127.0.0.1/32 trust
+      host all all ::1/128 trust
+    '';
+    settings = {
+      listen_addresses = "localhost";
+      port = 5432;
+    };
+  };
+
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
