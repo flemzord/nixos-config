@@ -11,14 +11,11 @@
 
   nix.optimise.automatic = true;
 
-  #  nixpkgs = {
-  #    config = {
-  #      allowUnfree = false;
-  #      allowBroken = false;
-  #      allowInsecure = false;
-  #      allowUnsupportedSystem = true;
-  #    };
-  #  };
+   nixpkgs = {
+     config = {
+       allowUnfree = true;
+     };
+   };
 
   boot.loader.grub.configurationLimit = 2;
 
