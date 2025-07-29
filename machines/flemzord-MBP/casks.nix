@@ -3,7 +3,6 @@ _:
 [
   # Development Tools
 #  "orbstack"
-  "nikitabobko/tap/aerospace"
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
@@ -19,6 +18,8 @@ _:
   "figma"
   "microsoft-teams"
   "tailscale-app"
+  "vibetunnel"
+  "superhuman"
 
   # Communication Tools
   "discord"
