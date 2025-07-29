@@ -35,6 +35,16 @@
 
   networking.hostName = "home-dell"; # Define your hostname.
 
+  users.users.flemzord = {
+    isNormalUser = true;
+    description = "flemzord";
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    packages = with pkgs; [
+      git
+      vim
+    ];
+  };
+
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
