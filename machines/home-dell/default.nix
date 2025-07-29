@@ -48,7 +48,7 @@
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_17;
-    ensureDatabases = [ "postgres", "kipli ];
+    ensureDatabases = [ "postgres" "kipli" ];
     ensureUsers = [
       {
         name = "postgres";
