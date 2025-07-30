@@ -6,7 +6,6 @@ _:
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
-  "warp"
   "cursor"
   "windsurf"
   "mattermost"
