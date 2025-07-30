@@ -289,6 +289,7 @@ in
   local.dock.enable = true;
   local.dock.username = user;
   local.dock.entries = [
+    { path = "/Applications/Superhuman.app/"; }
     { path = "/Applications/Arc.app/"; }
     { path = "/Applications/Google Chrome.app/"; }
     { path = "/Applications/Slack.app/"; }
