@@ -290,7 +290,6 @@ in
   local.dock.username = user;
   local.dock.entries = [
     { path = "/Applications/Arc.app/"; }
-    { path = "/Applications/Safari.app/"; }
     { path = "/Applications/Google Chrome.app/"; }
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Mattermost.app/"; }
