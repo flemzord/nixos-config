@@ -17,12 +17,14 @@ in
       # Open firewall for SMB/CIFS
       openFirewall = true;
 
-      extraConfig = ''
-        workgroup = WORKGROUP
-        server string = home-dell
-        map to guest = Bad User
-        smb encrypt = desired
-      '';
+      # Modern configuration style replaces extraConfig
+      settings = {
+        # Global section
+        "workgroup" = "WORKGROUP";
+        "server string" = "home-dell";
+        "map to guest" = "Bad User";
+        "smb encrypt" = "desired";
+      };
 
       shares = {
         media = {
