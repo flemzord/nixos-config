@@ -43,5 +43,25 @@ in
 
     # WS-Discovery for Windows network discovery without legacy NetBIOS
     samba-wsdd.enable = true;
+
+    # Advertise SMB over mDNS/Bonjour so Apple/iOS clients (Infuse) can discover it
+    avahi = {
+      enable = true;
+      publish = {
+        enable = true;
+        workstation = true;
+      };
+      extraServiceFiles.smb = ''
+        <?xml version="1.0" standalone='no'?>
+        <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+        <service-group>
+          <name replace-wildcards="yes">%h</name>
+          <service>
+            <type>_smb._tcp</type>
+            <port>445</port>
+          </service>
+        </service-group>
+      '';
+    };
   };
 }
