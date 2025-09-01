@@ -23,6 +23,8 @@ in
           "workgroup" = "WORKGROUP";
           "server string" = "home-dell";
           "map to guest" = "Bad User";
+          # Improve compatibility and security by disabling SMB1
+          "server min protocol" = "SMB2";
           "smb encrypt" = "desired";
         };
 
