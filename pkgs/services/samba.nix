@@ -17,16 +17,15 @@ in
       # Open firewall for SMB/CIFS
       openFirewall = true;
 
-      # Modern configuration style replaces extraConfig
+      # New-style INI settings with explicit sections
       settings = {
-        # Global section
-        "workgroup" = "WORKGROUP";
-        "server string" = "home-dell";
-        "map to guest" = "Bad User";
-        "smb encrypt" = "desired";
-      };
+        global = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "home-dell";
+          "map to guest" = "Bad User";
+          "smb encrypt" = "desired";
+        };
 
-      shares = {
         media = {
           path = sharePath;
           browseable = "yes";
