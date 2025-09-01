@@ -15,6 +15,7 @@
       ./hardware-configuration.nix
       ./../../pkgs/overlays/server.nix
       ./../../pkgs/services/docker.nix
+      ./../../pkgs/services/samba.nix
       # ./../../pkgs/services/home-assistant.nix
       # ./../../pkgs/services/mosquitto.nix
       # ./../../pkgs/services/homebridge.nix
