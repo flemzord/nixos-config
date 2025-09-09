@@ -129,5 +129,41 @@
         ];
       };
     };
+    
+    # Developer experience
+    devShells = {
+      x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            nixpkgs-fmt
+            statix
+            deadnix
+            nil
+            pre-commit
+            git
+            direnv
+          ];
+        };
+      };
+      aarch64-darwin = let pkgs = nixpkgs.legacyPackages.aarch64-darwin; in {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            nixpkgs-fmt
+            statix
+            deadnix
+            nil
+            pre-commit
+            git
+            direnv
+          ];
+        };
+      };
+    };
+
+    # Allow `nix fmt`
+    formatter = {
+      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
+    };
   };
 }

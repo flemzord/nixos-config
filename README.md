@@ -13,6 +13,11 @@ This is my personal NixOS configuration, which I use on my personal computers an
 - `modules/`: reusable modules (`services/`, `programs/`, `roles/`, `common/`).
 - `flake.nix`: flake inputs/outputs; `Makefile`: convenience targets.
 
+## Dev environment
+- Enable direnv with `direnv allow` (see `.envrc`).
+- Enter dev shell: `nix develop` (provides `nixpkgs-fmt`, `statix`, `deadnix`, `nil`, `pre-commit`).
+- Common commands: `make fmt`, `make lint`, `make build`, `make check`.
+
 # Bootstrap New Computer
 
 ## For MacOS, install Nix package manager and dependencies

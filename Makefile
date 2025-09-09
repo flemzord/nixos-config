@@ -26,3 +26,21 @@ endif
 
 update:
 	nix flake update --commit-lock-file
+
+fmt:
+	nix fmt
+
+lint:
+	# Use devShell to ensure tools are available
+	nix develop -c statix check
+	nix develop -c deadnix --fail .
+
+check:
+	nix flake show
+
+build:
+ifeq ($(UNAME), Darwin)
+	nix build ".#darwinConfigurations.${NIXNAME}.system" --impure
+else
+	nix build ".#nixosConfigurations.${NIXNAME}.config.system.build.toplevel" -L
+endif
