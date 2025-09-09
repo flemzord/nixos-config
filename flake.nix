@@ -2,7 +2,8 @@
   description = "flemzord's Configuration for NixOS and MacOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs' default branch is 'master' (not 'main')
+    nixpkgs.url = "github:nixos/nixpkgs?ref=master";
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
