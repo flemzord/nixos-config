@@ -2,7 +2,7 @@ _:
 
 [
   # Development Tools
-#  "orbstack"
+  #  "orbstack"
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"

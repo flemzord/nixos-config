@@ -39,7 +39,7 @@ let user = "flemzord"; in
     '';
   };
 
-  
+
   # Load configuration that is shared across systems
   environment.systemPackages = import ../../modules/common/packages.nix { inherit pkgs; };
 

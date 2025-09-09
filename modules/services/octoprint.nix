@@ -4,14 +4,14 @@
     enable = true;
     port = 5000;
     openFirewall = true;
-    
+
     # Configure plugins if needed
     plugins = plugins: with plugins; [
       # Add plugins here, for example:
       # stlviewer
       # themeify
     ];
-    
+
     # Extra configuration for OctoPrint
     extraConfig = {
       server = {
@@ -44,7 +44,7 @@
       };
     };
   };
-  
+
   # Ensure the octoprint user has access to the printer
   users.users.octoprint.extraGroups = [ "dialout" ];
 }

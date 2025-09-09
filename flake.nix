@@ -53,7 +53,7 @@
     };
   };
 
-  outputs = { darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, speakeasy-cask, temporal-cask, home-manager, nixpkgs, disko, vscode-server, ... } : {
+  outputs = { darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, speakeasy-cask, temporal-cask, home-manager, nixpkgs, disko, vscode-server, ... }: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -129,7 +129,7 @@
         ];
       };
     };
-    
+
     # Developer experience
     devShells = {
       x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {

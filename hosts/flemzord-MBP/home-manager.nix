@@ -293,30 +293,30 @@ in
     enable = true;
     username = user;
     entries = [
-    { path = "/Applications/Superhuman.app/"; }
-    { path = "/Applications/Arc.app/"; }
-    { path = "/Applications/Google Chrome.app/"; }
-    { path = "/Applications/Slack.app/"; }
-    { path = "/Applications/Mattermost.app/"; }
-    { path = "/Applications/Discord.app/"; }
-    { path = "/Applications/Beeper Desktop.app/"; }
-    { path = "/Applications/WhatsApp.app"; }
-    { path = "/Applications/Obsidian.app"; }
-    { path = "/Applications/Notion Calendar.app/"; }
-    { path = "/Applications/iTerm.app/"; }
-    { path = "/Applications/Linear.app/"; }
-    { path = "/Applications/ChatGPT.app/"; }
-    { path = "/Applications/1Password.app/"; }
-    { path = "/Applications/Cursor.app/"; }
-    {
-      path = "/Applications";
-      section = "others";
-    }
-    {
-      path = "${config.users.users.${user}.home}/Downloads";
-      section = "others";
-      options = "--sort datemodified --view grid --display stack";
-    }
+      { path = "/Applications/Superhuman.app/"; }
+      { path = "/Applications/Arc.app/"; }
+      { path = "/Applications/Google Chrome.app/"; }
+      { path = "/Applications/Slack.app/"; }
+      { path = "/Applications/Mattermost.app/"; }
+      { path = "/Applications/Discord.app/"; }
+      { path = "/Applications/Beeper Desktop.app/"; }
+      { path = "/Applications/WhatsApp.app"; }
+      { path = "/Applications/Obsidian.app"; }
+      { path = "/Applications/Notion Calendar.app/"; }
+      { path = "/Applications/iTerm.app/"; }
+      { path = "/Applications/Linear.app/"; }
+      { path = "/Applications/ChatGPT.app/"; }
+      { path = "/Applications/1Password.app/"; }
+      { path = "/Applications/Cursor.app/"; }
+      {
+        path = "/Applications";
+        section = "others";
+      }
+      {
+        path = "${config.users.users.${user}.home}/Downloads";
+        section = "others";
+        options = "--sort datemodified --view grid --display stack";
+      }
     ];
   };
 }
