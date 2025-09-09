@@ -19,6 +19,7 @@ _:
   "tailscale-app"
   "vibetunnel"
   "superhuman"
+  "ghostty"
 
   # Communication Tools
   "discord"

@@ -32,6 +32,7 @@ with pkgs; [
   curl
   wget
   turso-cli
+  newman
 
   # Dev tools
   krew
