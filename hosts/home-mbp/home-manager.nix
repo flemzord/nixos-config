@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, ... }:
+{ config, pkgs, ... }:
 
 let
   user = "flemzord";
@@ -39,11 +39,12 @@ in
   # Enable home-manager to manage the XDG standard
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} = { pkgs, config, lib, ... }: {
-      home.enableNixpkgsReleaseCheck = false;
-      home.stateVersion = "25.05";
-
-      home.packages = pkgs.callPackage ./packages.nix { };
+    users.${user} = { pkgs, lib, ... }: {
+      home = {
+        enableNixpkgsReleaseCheck = false;
+        stateVersion = "25.05";
+        packages = pkgs.callPackage ./packages.nix { };
+      };
       programs = {
         starship = {
           enable = true;
@@ -252,21 +253,23 @@ in
   };
 
   # Fully declarative dock using the latest from Nix Store
-  local.dock.enable = true;
-  local.dock.username = user;
-  local.dock.entries = [
-    { path = "/Applications/Radarr.app/"; }
-    { path = "/Applications/Sonarr.app/"; }
-    { path = "/Applications/Prowlarr.app/"; }
-    { path = "/Applications/Transmission.app/"; }
-    {
-      path = "/Applications";
-      section = "others";
-    }
-    {
-      path = "${config.users.users.${user}.home}/Downloads";
-      section = "others";
-      options = "--sort datemodified --view grid --display stack";
-    }
-  ];
+  local.dock = {
+    enable = true;
+    username = user;
+    entries = [
+      { path = "/Applications/Radarr.app/"; }
+      { path = "/Applications/Sonarr.app/"; }
+      { path = "/Applications/Prowlarr.app/"; }
+      { path = "/Applications/Transmission.app/"; }
+      {
+        path = "/Applications";
+        section = "others";
+      }
+      {
+        path = "${config.users.users.${user}.home}/Downloads";
+        section = "others";
+        options = "--sort datemodified --view grid --display stack";
+      }
+    ];
+  };
 }

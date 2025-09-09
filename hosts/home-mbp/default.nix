@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, ... }:
+{ pkgs, ... }:
 
 let user = "flemzord"; in
 {
@@ -23,7 +23,7 @@ let user = "flemzord"; in
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  system.primaryUser = user;
+  # system-related settings grouped below
 
   # Setup user, packages, programs
   nix = {
@@ -43,13 +43,13 @@ let user = "flemzord"; in
     '';
   };
 
-  # Turn off NIX_PATH warnings now that we're using flakes
-  system.checks.verifyNixPath = false;
-
   # Load configuration that is shared across systems
   environment.systemPackages = import ../../modules/common/packages.nix { inherit pkgs; };
 
   system = {
+    primaryUser = user;
+    # Turn off NIX_PATH warnings now that we're using flakes
+    checks.verifyNixPath = false;
     stateVersion = 4;
 
     defaults = {

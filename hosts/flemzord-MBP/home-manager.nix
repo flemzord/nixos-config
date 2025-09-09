@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, ... }:
+{ config, pkgs, ... }:
 
 let
   user = "flemzord";
@@ -50,11 +50,12 @@ in
   # Enable home-manager to manage the XDG standard
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} = { pkgs, config, lib, ... }: {
-      home.enableNixpkgsReleaseCheck = false;
-      home.stateVersion = "25.05";
-
-      home.packages = pkgs.callPackage ./packages.nix { };
+    users.${user} = { pkgs, lib, ... }: {
+      home = {
+        enableNixpkgsReleaseCheck = false;
+        stateVersion = "25.05";
+        packages = pkgs.callPackage ./packages.nix { };
+      };
       programs = {
         starship = {
           enable = true;
@@ -288,9 +289,10 @@ in
   };
 
   # Fully declarative dock using the latest from Nix Store
-  local.dock.enable = true;
-  local.dock.username = user;
-  local.dock.entries = [
+  local.dock = {
+    enable = true;
+    username = user;
+    entries = [
     { path = "/Applications/Superhuman.app/"; }
     { path = "/Applications/Arc.app/"; }
     { path = "/Applications/Google Chrome.app/"; }
@@ -315,5 +317,6 @@ in
       section = "others";
       options = "--sort datemodified --view grid --display stack";
     }
-  ];
+    ];
+  };
 }

@@ -89,9 +89,9 @@ with pkgs; [
   php84Packages.composer
   xz
   (pkgs.php84.buildEnv {
-    extensions = ({ enabled, all }: enabled ++ (with all; [
+    extensions = { enabled, all }: enabled ++ (with all; [
       xdebug
-    ]));
+    ]);
     extraConfig = ''
       xdebug.mode=debug
       xdebug.client_host=127.0.0.1

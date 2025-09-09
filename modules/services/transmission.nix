@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+_:
 
 let
   downloadDir = "/srv/media";
@@ -40,4 +40,3 @@ in
     };
   };
 }
-
