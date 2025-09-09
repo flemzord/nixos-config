@@ -4,7 +4,7 @@ let user = "flemzord"; in
 {
 
   imports = [
-    ./../../shared/cachix
+    ./../../modules/common/cachix.nix
     ./home-manager.nix
   ];
 
@@ -47,7 +47,7 @@ let user = "flemzord"; in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = import ../../shared/packages.nix { inherit pkgs; };
+  environment.systemPackages = import ../../modules/common/packages.nix { inherit pkgs; };
 
   system = {
     stateVersion = 4;

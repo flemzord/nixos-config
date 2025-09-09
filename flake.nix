@@ -59,14 +59,14 @@
         system = "x86_64-linux";
         modules = [
           vscode-server.nixosModules.default
-          ./machines/home-hp
+          ./hosts/home-hp
         ];
       };
 
       "home-dell" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./machines/home-dell
+          ./hosts/home-dell
           disko.nixosModules.disko
         ];
       };
@@ -75,7 +75,7 @@
       "srv-project" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./machines/srv-project
+          ./hosts/srv-project
           disko.nixosModules.disko
         ];
       };
@@ -105,7 +105,7 @@
               autoMigrate = true;
             };
           }
-          ./machines/flemzord-MBP
+          ./hosts/flemzord-MBP
         ];
       };
       "home-mbp" = darwin.lib.darwinSystem {
@@ -125,7 +125,7 @@
               autoMigrate = true;
             };
           }
-          ./machines/home-mbp
+          ./hosts/home-mbp
         ];
       };
     };

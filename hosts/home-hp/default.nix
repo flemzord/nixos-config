@@ -8,11 +8,11 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./../../shared/cachix
+      ./../../modules/common/cachix.nix
       ./hardware-configuration.nix
-      ./../../pkgs/overlays/server.nix
-      ./../../pkgs/services/docker.nix
-      ./../../pkgs/services/octoprint.nix
+      ./../../modules/roles/server.nix
+      ./../../modules/services/docker.nix
+      ./../../modules/services/octoprint.nix
     ];
 
   # Bootloader.

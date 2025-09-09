@@ -2,12 +2,11 @@
 
 ## Project Structure & Module Organization
 - `flake.nix`/`flake.lock`: Entry point and inputs/outputs for Nix flakes.
-- `machines/<host>`: Per‑machine NixOS/darwin configs (e.g., `home-hp`, `flemzord-MBP`).
-- `pkgs/`: Reusable modules
-  - `programs/` and `services/`: Service/program modules (e.g., `samba.nix`).
-  - `overlays/`: Common profiles (e.g., `server.nix`).
-- `shared/`: Shared modules (e.g., `cachix/`, `packages.nix`).
-- `secrets/`: Machine secrets. Do not add new plaintext secrets; prefer agenix.
+- `hosts/<host>`: Per‑host NixOS/darwin configs (e.g., `home-hp`, `flemzord-MBP`).
+- `modules/`: Reusable modules
+  - `programs/` and `services/`: Program/service modules (e.g., `samba.nix`).
+  - `roles/`: Role bundles (e.g., `server.nix`).
+  - `common/`: Shared bits (e.g., `cachix.nix`, `packages.nix`).
 - `Makefile`: Convenience targets for apply/update.
 - `.pre-commit-config.yaml`, `.editorconfig`: Formatting and linting.
 
@@ -27,8 +26,8 @@
 - Language: Nix. Format with `nixpkgs-fmt` and lint with `statix`.
   - Install hooks: `pre-commit install`; run: `pre-commit run -a`.
 - Naming:
-  - Hosts: `machines/<hostname>` with `default.nix`, optional `packages.nix`, `casks.nix`.
-  - Services/Programs: one module per file under `pkgs/services` or `pkgs/programs`.
+  - Hosts: `hosts/<hostname>` with `default.nix`, optional `packages.nix`, `casks.nix`.
+  - Services/Programs: one module per file under `modules/services` or `modules/programs`.
 
 ## Testing Guidelines
 - Lint/format before commit: `pre-commit run -a` (runs `statix fix` and `nixpkgs-fmt`).
@@ -49,4 +48,3 @@
 - Prefer encrypted secrets via agenix (`*.age`) and avoid committing new plaintext files under `secrets/`.
 - macOS prerequisites: Xcode CLT and Nix installed (see README). Set `NIXNAME` accordingly.
 - Linux: some hosts may require `NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1` (handled in `Makefile`).
-
