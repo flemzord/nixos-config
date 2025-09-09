@@ -31,6 +31,6 @@ repos:
       name: deadnix
       description: Detect unused Nix code
       entry: deadnix
-      args: ["--fail", "."]
+      args: ["--fail"]
       language: system
       files: \.nix$

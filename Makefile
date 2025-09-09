@@ -45,7 +45,7 @@ check:
 
 build:
 ifeq ($(UNAME), Darwin)
-	nix build ".#darwinConfigurations.${NIXNAME}.system" --impure
+	nix --experimental-features 'nix-command flakes' build ".#darwinConfigurations.${NIXNAME}.system" --impure
 else
-	nix build ".#nixosConfigurations.${NIXNAME}.config.system.build.toplevel" -L
+	nix --experimental-features 'nix-command flakes' build ".#nixosConfigurations.${NIXNAME}.config.system.build.toplevel" -L
 endif

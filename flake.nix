@@ -70,15 +70,6 @@
           disko.nixosModules.disko
         ];
       };
-
-
-      "srv-project" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/srv-project
-          disko.nixosModules.disko
-        ];
-      };
     };
 
     darwinConfigurations = {
@@ -131,32 +122,14 @@
     };
 
     # Developer experience
-    devShells = {
+    devShells = let
+      common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv ];
+    in {
       x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {
-        default = pkgs.mkShell {
-          packages = with pkgs; [
-            nixpkgs-fmt
-            statix
-            deadnix
-            nil
-            pre-commit
-            git
-            direnv
-          ];
-        };
+        default = pkgs.mkShell { packages = common pkgs; };
       };
       aarch64-darwin = let pkgs = nixpkgs.legacyPackages.aarch64-darwin; in {
-        default = pkgs.mkShell {
-          packages = with pkgs; [
-            nixpkgs-fmt
-            statix
-            deadnix
-            nil
-            pre-commit
-            git
-            direnv
-          ];
-        };
+        default = pkgs.mkShell { packages = common pkgs; };
       };
     };
 

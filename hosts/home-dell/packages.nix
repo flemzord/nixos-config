@@ -1,8 +1,8 @@
 { pkgs }:
 
 with pkgs;
-let shared-packages = import ./../../modules/common/packages.nix { inherit pkgs; }; in
-shared-packages ++ [
+let sharedPackages = import ./../../modules/common/packages.nix { inherit pkgs; }; in
+sharedPackages ++ [
   vim
   k3s
   cloudflared
