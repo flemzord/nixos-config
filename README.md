@@ -16,7 +16,7 @@ This is my personal NixOS configuration, which I use on my personal computers an
 ## Dev environment
 - Enable direnv with `direnv allow` (see `.envrc`).
 - Enter dev shell: `nix develop` (provides `nixpkgs-fmt`, `statix`, `deadnix`, `nil`, `pre-commit`).
-- Common commands: `make fmt`, `make lint`, `make build`, `make check`.
+- Common commands: `make fmt`, `make lint` (non-bloquant), `make lint-ci` (strict), `make build`, `make check`.
 
 # Bootstrap New Computer
 

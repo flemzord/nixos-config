@@ -31,7 +31,12 @@ fmt:
 	nix fmt
 
 lint:
-	# Use devShell to ensure tools are available
+	# Run linters but do not fail the target (developer-friendly)
+	- nix develop -c statix check
+	- nix develop -c deadnix --fail .
+
+lint-ci:
+	# Strict linting for CI (fail on issues)
 	nix develop -c statix check
 	nix develop -c deadnix --fail .
 
