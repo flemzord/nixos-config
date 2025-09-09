@@ -2,7 +2,7 @@
   description = "flemzord's Configuration for NixOS and MacOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
@@ -53,29 +53,20 @@
     };
   };
 
-  outputs = { self, darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, speakeasy-cask, temporal-cask, home-manager, nixpkgs, disko, agenix, vscode-server } @inputs: {
+  outputs = { darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, speakeasy-cask, temporal-cask, home-manager, nixpkgs, disko, vscode-server, ... }: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           vscode-server.nixosModules.default
-          ./machines/home-hp
+          ./hosts/home-hp
         ];
       };
 
       "home-dell" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./machines/home-dell
-          disko.nixosModules.disko
-        ];
-      };
-
-
-      "srv-project" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./machines/srv-project
+          ./hosts/home-dell
           disko.nixosModules.disko
         ];
       };
@@ -105,7 +96,7 @@
               autoMigrate = true;
             };
           }
-          ./machines/flemzord-MBP
+          ./hosts/flemzord-MBP
         ];
       };
       "home-mbp" = darwin.lib.darwinSystem {
@@ -125,9 +116,27 @@
               autoMigrate = true;
             };
           }
-          ./machines/home-mbp
+          ./hosts/home-mbp
         ];
       };
+    };
+
+    # Developer experience
+    devShells = let
+      common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv ];
+    in {
+      x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {
+        default = pkgs.mkShell { packages = common pkgs; };
+      };
+      aarch64-darwin = let pkgs = nixpkgs.legacyPackages.aarch64-darwin; in {
+        default = pkgs.mkShell { packages = common pkgs; };
+      };
+    };
+
+    # Allow `nix fmt`
+    formatter = {
+      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
     };
   };
 }

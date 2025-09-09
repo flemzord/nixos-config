@@ -8,6 +8,16 @@ Hey, you made it! Welcome. 🤓
 
 This is my personal NixOS configuration, which I use on my personal computers and servers. It's a work in progress, but it's already pretty cool. I'm sharing it here in case it's useful to others.
 
+## Structure
+- `hosts/<host>`: per‑host configs (NixOS and macOS).
+- `modules/`: reusable modules (`services/`, `programs/`, `roles/`, `common/`).
+- `flake.nix`: flake inputs/outputs; `Makefile`: convenience targets.
+
+## Dev environment
+- Enable direnv with `direnv allow` (see `.envrc`).
+- Enter dev shell: `nix develop` (provides `nixpkgs-fmt`, `statix`, `deadnix`, `nil`, `pre-commit`).
+- Common commands: `make fmt`, `make lint` (non-bloquant), `make lint-ci` (strict), `make build`, `make check`.
+
 # Bootstrap New Computer
 
 ## For MacOS, install Nix package manager and dependencies

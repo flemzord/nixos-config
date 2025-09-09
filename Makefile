@@ -20,10 +20,32 @@ endif
 	nix --experimental-features 'nix-command flakes' build ".#darwinConfigurations.${NIXNAME}.system" --impure
 	sudo ./result/sw/bin/darwin-rebuild switch --flake "$$(pwd)#${NIXNAME}" --impure
 	unlink ./result
-	# nix-collect-garbage --delete-older-than 14d
 else
 	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${NIXNAME}"
 endif
 
 update:
 	nix flake update --commit-lock-file
+
+fmt:
+	nix fmt
+
+lint:
+	# Run linters but do not fail the target (developer-friendly)
+	- nix develop -c statix check
+	- nix develop -c deadnix --fail .
+
+lint-ci:
+	# Strict linting for CI (fail on issues)
+	nix develop -c statix check
+	nix develop -c deadnix --fail .
+
+check:
+	nix flake show
+
+build:
+ifeq ($(UNAME), Darwin)
+	nix --experimental-features 'nix-command flakes' build ".#darwinConfigurations.${NIXNAME}.system" --impure
+else
+	nix --experimental-features 'nix-command flakes' build ".#nixosConfigurations.${NIXNAME}.config.system.build.toplevel" -L
+endif

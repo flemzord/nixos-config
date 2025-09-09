@@ -17,3 +17,20 @@ repos:
        language: system
        files: \.nix$
        require_serial: true
+
+    - id: statix-check
+      name: statix check
+      description: Lint Nix code with statix (no changes)
+      entry: statix
+      args: [ "check" ]
+      pass_filenames: false
+      language: system
+      files: \.nix$
+
+    - id: deadnix
+      name: deadnix
+      description: Detect unused Nix code
+      entry: deadnix
+      args: ["--fail"]
+      language: system
+      files: \.nix$
