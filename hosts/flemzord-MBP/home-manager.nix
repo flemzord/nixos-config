@@ -107,9 +107,9 @@ in
             export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$PATH
             source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 
-            export PATH="~/.krew/bin:$PATH"
-            export PATH="~/.local/bin:$PATH"
-            export PATH="~/.cache/npm/bin:$PATH"
+            export PATH="$HOME/.krew/bin:$PATH"
+            export PATH="$HOME/.local/bin:$PATH"
+            export PATH="$HOME/.cache/npm/bin:$PATH"
             eval "$(direnv hook zsh)"
           
             # Use difftastic, syntax-aware diffing
