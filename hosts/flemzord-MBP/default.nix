@@ -23,7 +23,7 @@ let user = "flemzord"; in
 
   # Setup user, packages, programs
   nix = {
-    package = pkgs.lix;
+#    package = pkgs.lix;
     settings.trusted-users = [ "@admin" "${user}" ];
 
 
