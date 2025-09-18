@@ -302,9 +302,10 @@ in
     enable = true;
     username = user;
     entries = [
+      { path = "/Applications/Todoist.app/"; }
       { path = "/Applications/Superhuman.app/"; }
       { path = "/Applications/Arc.app/"; }
-      { path = "/Applications/Google Chrome.app/"; }
+      { path = "/Applications/Comet.app/"; }
       { path = "/Applications/Slack.app/"; }
       { path = "/Applications/Mattermost.app/"; }
       { path = "/Applications/Discord.app/"; }
@@ -312,11 +313,10 @@ in
       { path = "/Applications/WhatsApp.app"; }
       { path = "/Applications/Obsidian.app"; }
       { path = "/Applications/Notion Calendar.app/"; }
-      { path = "/Applications/iTerm.app/"; }
-      { path = "/Applications/Ghostty.app/"; }
       { path = "/Applications/Linear.app/"; }
       { path = "/Applications/ChatGPT.app/"; }
-      { path = "/Applications/1Password.app/"; }
+      { path = "/Applications/iTerm.app/"; }
+      { path = "/Applications/Ghostty.app/"; }
       { path = "/Applications/Cursor.app/"; }
       { path = "/Applications/Zed.app/"; }
       {
