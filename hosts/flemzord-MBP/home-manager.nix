@@ -313,10 +313,12 @@ in
       { path = "/Applications/Obsidian.app"; }
       { path = "/Applications/Notion Calendar.app/"; }
       { path = "/Applications/iTerm.app/"; }
+      { path = "/Applications/Ghostty.app/"; }
       { path = "/Applications/Linear.app/"; }
       { path = "/Applications/ChatGPT.app/"; }
       { path = "/Applications/1Password.app/"; }
       { path = "/Applications/Cursor.app/"; }
+      { path = "/Applications/Zed.app/"; }
       {
         path = "/Applications";
         section = "others";
