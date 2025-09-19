@@ -40,7 +40,6 @@ _:
   "transmission"
   "the-unarchiver"
   "Transmit"
-  "KeepingYouAwake"
   "rectangle"
   "taskbar"
   "yaak"

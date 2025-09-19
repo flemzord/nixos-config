@@ -152,6 +152,8 @@ in
               ".fleet"
               ".direnv"
               ".env"
+              "TODOS.md"
+              "todos/"
             ];
             userName = name;
             userEmail = email;
