@@ -154,6 +154,7 @@ in
               ".env"
               "TODOS.md"
               "todos/"
+              "CLAUDE.md"
             ];
             userName = name;
             userEmail = email;
