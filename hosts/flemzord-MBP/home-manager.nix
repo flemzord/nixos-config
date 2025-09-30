@@ -155,6 +155,7 @@ in
               "TODOS.md"
               "todos/"
               "CLAUDE.md"
+              ".claude/"
             ];
             userName = name;
             userEmail = email;
