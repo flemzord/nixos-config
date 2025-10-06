@@ -33,6 +33,7 @@ with pkgs; [
   wget
   turso-cli
   newman
+  mosh
 
   # Dev tools
   krew
