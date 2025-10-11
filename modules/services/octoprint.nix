@@ -7,7 +7,8 @@
 
     # Configure plugins if needed
     plugins = plugins: with plugins; [
-      # Add plugins here, for example:
+      printjobhistory
+      # Add more plugins here, for example:
       # stlviewer
       # themeify
     ];
