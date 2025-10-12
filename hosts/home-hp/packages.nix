@@ -10,6 +10,7 @@ sharedPackages ++ [
   code-cursor
   windsurf
   vim
+  ncdu
   vscode
   chromium
   appimage-run

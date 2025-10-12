@@ -7,6 +7,7 @@ sharedPackages ++ [
   k3s
   cloudflared
   claude-code
+  ncdu
 
   # Dev PHP
   php84Packages.composer
