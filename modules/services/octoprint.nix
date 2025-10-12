@@ -7,7 +7,7 @@
 
     # Configure plugins if needed
     plugins = plugins: with plugins; [
-      printjobhistory
+      octopod
       # Add more plugins here, for example:
       # stlviewer
       # themeify
@@ -15,9 +15,7 @@
 
     # Extra configuration for OctoPrint
     extraConfig = {
-      server = {
-        firstRun = false;
-      };
+      # Removed firstRun = false to allow the setup wizard on first start
       webcam = {
         # Enable webcam support if you have one
         stream = "/webcam/?action=stream";
