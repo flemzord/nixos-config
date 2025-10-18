@@ -38,7 +38,7 @@ in
       "temporal"
       "helmfile"
       "ansible"
-      "claude-squad"
+      "rbenv"
       "tmux"
     ];
     masApps = {

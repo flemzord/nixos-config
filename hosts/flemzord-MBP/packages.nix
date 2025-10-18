@@ -86,9 +86,6 @@ with pkgs; [
   cargo
   cmake
 
-  # Dev Ruby
-  rbenv
-
   # Dev PHP
   php84Packages.composer
   xz
