@@ -20,8 +20,8 @@ _:
   "vibetunnel"
   "superhuman"
   "ghostty"
-  "craft"
   "todoist-app"
+  "warp"
 
   # Communication Tools
   "discord"
