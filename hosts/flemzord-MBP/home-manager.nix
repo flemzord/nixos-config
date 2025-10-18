@@ -138,6 +138,8 @@ in
               export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
               # Cursor Agent
               export PATH="$HOME/.local/bin:$PATH"
+              # Rbenv
+              eval "$(rbenv init - --no-rehash bash)"
             '';
           };
           git = {
