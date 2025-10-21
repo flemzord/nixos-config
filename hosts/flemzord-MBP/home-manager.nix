@@ -311,7 +311,9 @@ in
       { path = "/Applications/Todoist.app/"; }
       { path = "/Applications/Superhuman.app/"; }
       { path = "/Applications/Arc.app/"; }
+      { path = "/Applications/Google Chrome.app/"; }
       { path = "/Applications/Comet.app/"; }
+      { path = "/Applications/ChatGPT Atlas.app/"; }
       { path = "/Applications/Slack.app/"; }
       { path = "/Applications/Mattermost.app/"; }
       { path = "/Applications/Discord.app/"; }
@@ -323,6 +325,7 @@ in
       { path = "/Applications/ChatGPT.app/"; }
       { path = "/Applications/iTerm.app/"; }
       { path = "/Applications/Ghostty.app/"; }
+      { path = "/Applications/Warp.app/"; }
       { path = "/Applications/Cursor.app/"; }
       { path = "/Applications/Zed.app/"; }
       {
