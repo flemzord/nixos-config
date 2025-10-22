@@ -159,12 +159,15 @@ in
               "CLAUDE.md"
               ".claude/"
             ];
-            userName = name;
-            userEmail = email;
             lfs = {
               enable = true;
             };
-            extraConfig = {
+            settings = {
+              user = {
+                name = name;
+                email = email;
+                signingkey = "~/.ssh/github.pub";
+              };
               init.defaultBranch = "main";
               core = {
                 editor = "vim";
@@ -172,7 +175,6 @@ in
               };
               commit.gpgsign = true;
               gpg.format = "ssh";
-              user.signingkey = "~/.ssh/github.pub";
               pull.rebase = true;
               rebase.autoStash = true;
               push.autoSetupRemote = true;
