@@ -17,7 +17,7 @@
       #./../../modules/services/docker.nix
       ./../../modules/services/samba.nix
       ./../../modules/services/transmission.nix
-      # ./../../modules/services/home-assistant.nix
+      ./../../modules/services/home-assistant.nix
       # ./../../modules/services/mosquitto.nix
       # ./../../modules/services/homebridge.nix
       #./../../modules/services/n8n.nix
