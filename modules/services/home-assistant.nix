@@ -1,7 +1,8 @@
+{ config, pkgs, ... }:
+
 {
   # Home Assistant in Docker
   virtualisation.oci-containers = {
-    backend = "docker";
     containers.homeassistant = {
       volumes = [
         "home-assistant:/config"
