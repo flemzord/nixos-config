@@ -14,7 +14,7 @@
       ./disk-config.nix
       ./hardware-configuration.nix
       ./../../modules/roles/server.nix
-      #./../../modules/services/docker.nix
+      ./../../modules/services/docker.nix
       ./../../modules/services/samba.nix
       ./../../modules/services/transmission.nix
       ./../../modules/services/home-assistant.nix
