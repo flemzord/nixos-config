@@ -2,7 +2,7 @@
   # This file was populated at runtime with the networking
   # details gathered from the active system.
   networking = {
-    nameservers = [ "100.100.100.100"
+    nameservers = [ "1.1.1.1"
  ];
     defaultGateway = "172.31.1.1";
     defaultGateway6 = {
