@@ -23,6 +23,7 @@
       #./../../modules/services/n8n.nix
       # ./../../modules/services/qdrant.nix
       ./../../modules/services/cloudflared.nix
+      ./../../modules/services/nixos-auto-update.nix
     ];
 
   # Bootloader.
@@ -75,13 +76,20 @@
 
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
 
-  system.autoUpgrade = {
+  # Auto-update NixOS configuration from git daily at 6 AM
+  services.nixos-auto-update = {
     enable = true;
-    allowReboot = true;
-    persistent = true;
-    dates = "03:00";
-    operation = "switch";
-    flags = [ "--impure" "-L" ];
-    flake = "/etc/nixos#home-dell";
+    hostname = "home-dell";
   };
+
+  # Disabled in favor of nixos-auto-update service that includes git pull
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   allowReboot = true;
+  #   persistent = true;
+  #   dates = "03:00";
+  #   operation = "switch";
+  #   flags = [ "--impure" "-L" ];
+  #   flake = "/etc/nixos#home-dell";
+  # };
 }

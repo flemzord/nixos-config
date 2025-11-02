@@ -13,6 +13,7 @@
       ./../../modules/roles/server.nix
       ./../../modules/services/docker.nix
       ./../../modules/services/octoprint.nix
+      ./../../modules/services/nixos-auto-update.nix
     ];
 
   # Bootloader.
@@ -38,15 +39,22 @@
     teamviewer.enable = true;
   };
 
-  system.autoUpgrade = {
+  # Auto-update NixOS configuration from git daily at 6 AM
+  services.nixos-auto-update = {
     enable = true;
-    allowReboot = true;
-    persistent = true;
-    dates = "03:00";
-    operation = "switch";
-    flags = [ "--impure" "-L" ];
-    flake = "/etc/nixos#home-hp";
+    hostname = "home-hp";
   };
+
+  # Disabled in favor of nixos-auto-update service that includes git pull
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   allowReboot = true;
+  #   persistent = true;
+  #   dates = "03:00";
+  #   operation = "switch";
+  #   flags = [ "--impure" "-L" ];
+  #   flake = "/etc/nixos#home-hp";
+  # };
 
   systemd.services.vscode-tunnel = {
     description = "VSCode SSH Tunnel";
