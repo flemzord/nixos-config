@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Home Assistant in Docker
