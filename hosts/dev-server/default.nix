@@ -12,6 +12,7 @@
     ./../../modules/common/cachix.nix
     ./../../modules/roles/server.nix
     ./../../modules/services/docker.nix
+    ./../../modules/services/nixos-auto-update.nix
   ];
 
   # Bootloader - Using GRUB for better VM compatibility
@@ -41,6 +42,12 @@
 
   # DNS configuration
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+
+  # Auto-update NixOS configuration from git daily at 6 AM
+  services.nixos-auto-update = {
+    enable = true;
+    hostname = "dev-server";
+  };
 
   # No automatic upgrades - manual control for dev server
   # system.autoUpgrade.enable = false;
