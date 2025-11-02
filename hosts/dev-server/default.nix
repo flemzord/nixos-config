@@ -6,7 +6,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./disk-config.nix
     ./networking.nix
 
     # Shared modules
