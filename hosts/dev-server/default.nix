@@ -5,10 +5,9 @@
 
 {
   imports = [
-    # Hardware configuration
-    (modulesPath + "/installer/scan/not-detected.nix")
     ./hardware-configuration.nix
     ./disk-config.nix
+    ./networking.nix
 
     # Shared modules
     ./../../modules/common/cachix.nix

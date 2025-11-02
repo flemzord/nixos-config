@@ -7,15 +7,18 @@
 { config, lib, modulesPath, ... }:
 
 {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
+
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "sd_mod" "usb_storage" ];
     initrd.kernelModules = [ ];
     kernelModules = [ ];
     extraModulePackages = [ ];
+    loader.grub = {
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
   };
 
   # Enable DHCP on all network interfaces by default
