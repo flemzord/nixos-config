@@ -1,7 +1,7 @@
 # Configuration for dev-server - Remote development server
 # Minimal, headless NixOS system with core development tools
 
-{ modulesPath, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [

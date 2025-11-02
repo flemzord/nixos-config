@@ -164,8 +164,7 @@ in
             };
             settings = {
               user = {
-                name = name;
-                email = email;
+                inherit name email;
                 signingkey = "~/.ssh/github.pub";
               };
               init.defaultBranch = "main";
