@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 let
   downloadDir = "/srv/media";
@@ -14,6 +14,7 @@ in
 
   services.transmission = {
     enable = true;
+    package = pkgs.transmission_4;
     user = runUser;
     group = runGroup;
     openFirewall = true;
