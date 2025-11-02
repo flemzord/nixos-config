@@ -3,13 +3,13 @@ _:
 [
   # Development Tools
   #  "orbstack"
+  "claude-code"
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
   "cursor"
   "windsurf"
   "mattermost"
-  "linear-linear"
   "chatgpt"
   "setapp"
   "postgres-unofficial"
@@ -17,7 +17,6 @@ _:
   "figma"
   "microsoft-teams"
   "tailscale-app"
-  "vibetunnel"
   "superhuman"
   "ghostty"
   "todoist-app"
@@ -41,8 +40,6 @@ _:
   "the-unarchiver"
   "Transmit"
   "rectangle"
-  "taskbar"
-  "yaak"
 
   # Browsers
   "firefox"
