@@ -14,9 +14,13 @@
     ./../../modules/services/docker.nix
   ];
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Bootloader - Using GRUB for better VM compatibility
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
 
   # Hostname
   networking.hostName = "dev-server";
