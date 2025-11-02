@@ -71,6 +71,14 @@
           disko.nixosModules.disko
         ];
       };
+
+      "dev-server" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/dev-server
+          disko.nixosModules.disko
+        ];
+      };
     };
 
     darwinConfigurations = {
