@@ -34,10 +34,10 @@ in
       "loft-sh/tap/vcluster"
       "earthly/earthly/earthly"
       "speakeasy-api/homebrew-tap/speakeasy"
-      # "temporalio/homebrew-tap/tcld"
+      "temporalio/homebrew-tap/tcld"
       "temporal"
       "helmfile"
-      "ansible"
+      #"ansible"
       "rbenv"
       "tmux"
     ];
@@ -322,7 +322,6 @@ in
       { path = "/Applications/WhatsApp.app"; }
       { path = "/Applications/Obsidian.app"; }
       { path = "/Applications/Notion Calendar.app/"; }
-      { path = "/Applications/Linear.app/"; }
       { path = "/Applications/ChatGPT.app/"; }
       { path = "/Applications/iTerm.app/"; }
       { path = "/Applications/Ghostty.app/"; }

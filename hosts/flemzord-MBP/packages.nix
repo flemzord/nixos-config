@@ -65,6 +65,7 @@ with pkgs; [
   process-compose
   fluxcd
   ncdu
+  pg_activity
 
   # Dev tools NodeJS
   nodejs_22
