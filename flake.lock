@@ -38,6 +38,38 @@
         "type": "github"
       }
     },
+    "charmbracelet-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762781915,
+        "narHash": "sha256-Izzzmfcnto3sST4atiCSaY9LJbWivZ7hm3VJvBeEgkE=",
+        "owner": "charmbracelet",
+        "repo": "homebrew-tap",
+        "rev": "56044837aa1bb59c8c99fa3f32f7f1738916e6a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "charmbracelet",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
+    "darksworm-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762507005,
+        "narHash": "sha256-VUX3QfAJIQDAFCi1QZcVPXedrH88Kj39Y73JEw+EFRY=",
+        "owner": "darksworm",
+        "repo": "homebrew-tap",
+        "rev": "e0987ba0e0f4286605eee270e1622f77f1e64506",
+        "type": "github"
+      },
+      "original": {
+        "owner": "darksworm",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -337,6 +369,8 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "charmbracelet-cask": "charmbracelet-cask",
+        "darksworm-cask": "darksworm-cask",
         "darwin": "darwin_2",
         "disko": "disko",
         "earthly-cask": "earthly-cask",
