@@ -41,7 +41,6 @@ in
       "rbenv"
       "tmux"
       "charmbracelet/tap/crush"
-      "darksworm/tap/argonaut"
     ];
     masApps = {
       "1Password for Safari" = 1569813296;

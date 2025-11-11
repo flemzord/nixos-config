@@ -4,6 +4,7 @@ _:
   # Development Tools
   #  "orbstack"
   "claude-code"
+  "darksworm/tap/argonaut"
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
