@@ -3,6 +3,7 @@ _:
 [
   # Development Tools
   #  "orbstack"
+  "httpie-desktop"
   "beeper"
   "claude-code"
   "codex"
