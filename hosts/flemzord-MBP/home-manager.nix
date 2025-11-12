@@ -310,7 +310,6 @@ in
     entries = [
       { path = "/Applications/Todoist.app/"; }
       { path = "/Applications/Superhuman.app/"; }
-      { path = "/Applications/Arc.app/"; }
       { path = "/Applications/Google Chrome.app/"; }
       { path = "/Applications/Comet.app/"; }
       { path = "/Applications/ChatGPT Atlas.app/"; }

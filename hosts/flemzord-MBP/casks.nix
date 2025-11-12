@@ -49,6 +49,5 @@ _:
   # Browsers
   "firefox"
   "google-chrome"
-  "arc"
   "zed"
 ]
