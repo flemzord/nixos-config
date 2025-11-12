@@ -43,9 +43,6 @@ in
       "charmbracelet/tap/crush"
       "argocd"
     ];
-    masApps = {
-      "1Password for Safari" = 1569813296;
-    };
   };
 
   # Enable home-manager to manage the XDG standard
