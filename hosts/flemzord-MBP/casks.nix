@@ -3,6 +3,7 @@ _:
 [
   # Development Tools
   #  "orbstack"
+  "beeper"
   "claude-code"
   "darksworm/tap/argonaut"
   "jetbrains-toolbox"
