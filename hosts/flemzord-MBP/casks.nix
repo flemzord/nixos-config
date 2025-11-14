@@ -14,7 +14,6 @@ _:
   "session-manager-plugin"
   "iterm2"
   "cursor"
-  "windsurf"
   "mattermost"
   "chatgpt"
   "setapp"
