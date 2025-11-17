@@ -75,8 +75,8 @@ with pkgs; [
 
   #turbo
   bob
-  devbox
-  devenv
+  # devbox # Temporarily disabled due to cachix build issues
+  # devenv # Temporarily disabled due to cachix build issues
   # Dev tools GoLang
   #go
   #gopls

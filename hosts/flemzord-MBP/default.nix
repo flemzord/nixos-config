@@ -15,6 +15,16 @@ let user = "flemzord"; in
       allowInsecure = false;
       allowUnsupportedSystem = true;
     };
+    overlays = [
+      (final: prev: {
+        fish = prev.fish.overrideAttrs (old: {
+          doCheck = false;
+        });
+        cachix = prev.cachix.overrideAttrs (old: {
+          doCheck = false;
+        });
+      })
+    ];
   };
 
   # Set your time zone.
