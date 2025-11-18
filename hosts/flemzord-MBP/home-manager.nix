@@ -42,6 +42,7 @@ in
       "tmux"
       "charmbracelet/tap/crush"
       "argocd"
+      "jiratui"
     ];
   };
 
