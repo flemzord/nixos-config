@@ -31,10 +31,8 @@ in
         media = {
           path = sharePath;
           browseable = "yes";
-          "read only" = "yes";
+          "read only" = "no";
           "guest ok" = "yes";
-          # Allow writes only for authenticated users listed here
-          "write list" = ownerUser;
           "force user" = ownerUser;
           "force group" = ownerGroup;
           "create mask" = "0664";
