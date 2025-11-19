@@ -56,6 +56,7 @@ in
       "jiratui"
       "gemini-cli"
       "cocoapods"
+      "trufflehog"
     ];
   };
 
