@@ -9,7 +9,6 @@ _:
   "codex"
   "chatgpt-atlas"
   "visual-studio-code"
-  "darksworm/tap/argonaut"
   "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
