@@ -43,6 +43,7 @@ in
       "charmbracelet/tap/crush"
       "argocd"
       "jiratui"
+      "gemini-cli"
     ];
   };
 
