@@ -27,6 +27,17 @@ in
       upgrade = true;
     };
     brewPrefix = "/opt/homebrew/bin";
+    taps = [
+      "homebrew/cask"
+      "homebrew/core"
+      "formancehq/tap"
+      "koyeb/tap"
+      "loft-sh/tap"
+      "earthly/earthly"
+      "speakeasy-api/homebrew-tap"
+      "temporalio/homebrew-tap"
+      "charmbracelet/tap"
+    ];
     casks = pkgs.callPackage ./casks.nix { };
     brews = [
       "formancehq/tap/fctl"
