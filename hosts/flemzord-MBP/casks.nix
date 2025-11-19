@@ -49,4 +49,7 @@ _:
   "firefox"
   "google-chrome"
   "zed"
+
+  # Dev 
+  "flutter"
 ]

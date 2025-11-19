@@ -55,6 +55,7 @@ in
       "argocd"
       "jiratui"
       "gemini-cli"
+      "cocoapods"
     ];
   };
 
