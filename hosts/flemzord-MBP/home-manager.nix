@@ -57,6 +57,7 @@ in
       "gemini-cli"
       "cocoapods"
       "trufflehog"
+      "yamllint"
     ];
   };
 
