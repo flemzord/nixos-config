@@ -58,6 +58,7 @@ in
       "cocoapods"
       "trufflehog"
       "yamllint"
+      "specify"
     ];
   };
 
