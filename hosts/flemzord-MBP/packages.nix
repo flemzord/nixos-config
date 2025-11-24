@@ -58,7 +58,6 @@ with pkgs; [
   ko
   watch
   tree
-  kustomize
   postgresql_16
   natscli
   kind
