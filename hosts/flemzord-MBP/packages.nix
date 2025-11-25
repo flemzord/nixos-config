@@ -65,6 +65,7 @@ with pkgs; [
   fluxcd
   ncdu
   pg_activity
+  ipcalc
 
   # Dev tools NodeJS
   nodejs_22
