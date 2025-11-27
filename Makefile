@@ -27,6 +27,9 @@ endif
 update:
 	nix flake update --commit-lock-file
 
+update-homebrew:
+	nix flake update nix-homebrew homebrew-core homebrew-cask formancehq-cask loftsh-cask earthly-cask koyeb-cask speakeasy-cask temporal-cask charmbracelet-cask darksworm-cask --commit-lock-file
+
 fmt:
 	nix fmt
 
