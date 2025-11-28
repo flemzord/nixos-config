@@ -34,3 +34,30 @@ make switch
 ```sh
 nix flake update
 ```
+
+## Secrets Management (agenix)
+
+Secrets are encrypted with [agenix](https://github.com/ryantm/agenix) using age encryption.
+
+### Edit a secret
+```sh
+nix develop
+agenix -e secrets/ssh-config.age
+```
+
+### Re-encrypt all secrets (after adding a key to secrets.nix)
+```sh
+nix develop
+agenix -r
+```
+
+### Apply changes after editing secrets
+```sh
+make switch
+sudo launchctl kickstart system/org.nixos.activate-agenix  # macOS only
+```
+
+### Add a new secret
+1. Add the secret definition in `secrets.nix`
+2. Create and encrypt: `agenix -e secrets/my-secret.age`
+3. Reference it in your module with `age.secrets.my-secret.file`

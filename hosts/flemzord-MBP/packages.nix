@@ -2,6 +2,7 @@
 
 # These packages are shared across all my machines
 with pkgs; [
+  ragenix
   dockutil
   nixpkgs-fmt
   nixd

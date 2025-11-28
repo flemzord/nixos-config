@@ -44,6 +44,7 @@ _:
   "the-unarchiver"
   "Transmit"
   "rectangle"
+  "1password-cli"
 
   # Browsers
   "firefox"

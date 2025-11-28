@@ -1,4 +1,7 @@
 \#*
 *.swp
 result
-secrets
+
+# Secrets - ignore unencrypted files, allow .age encrypted files
+secrets/*
+!secrets/*.age

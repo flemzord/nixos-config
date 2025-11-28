@@ -62,11 +62,12 @@
     };
   };
 
-  outputs = { darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, speakeasy-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, ... }: {
+  outputs = { darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, speakeasy-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, agenix, ... }: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          agenix.nixosModules.default
           vscode-server.nixosModules.default
           ./hosts/home-hp
         ];
@@ -75,16 +76,18 @@
       "home-dell" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/home-dell
+          agenix.nixosModules.default
           disko.nixosModules.disko
+          ./hosts/home-dell
         ];
       };
 
       "dev-server" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/dev-server
+          agenix.nixosModules.default
           disko.nixosModules.disko
+          ./hosts/dev-server
         ];
       };
     };
@@ -93,6 +96,7 @@
       "flemzord-MBP" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           {
@@ -142,7 +146,7 @@
 
     # Developer experience
     devShells = let
-      common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv ];
+      common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv agenix.packages.${pkgs.system}.default ];
     in {
       x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {
         default = pkgs.mkShell { packages = common pkgs; };

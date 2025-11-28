@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let user = "flemzord"; in
 {
@@ -7,6 +7,16 @@ let user = "flemzord"; in
     ./../../modules/common/cachix.nix
     ./home-manager.nix
   ];
+
+  # Agenix configuration
+  age.identityPaths = [ "/Users/${user}/.ssh/id_rsa" ];
+
+  age.secrets.ssh-config = {
+    file = ./../../secrets/ssh-config.age;
+    path = "/Users/${user}/.ssh/config";
+    owner = user;
+    mode = "0600";
+  };
 
   nixpkgs = {
     config = {
