@@ -334,7 +334,6 @@ in
       { path = "/Applications/Discord.app/"; }
       { path = "/Applications/Beeper Desktop.app/"; }
       { path = "/Applications/WhatsApp.app"; }
-      { path = "/Applications/Obsidian.app"; }
       { path = "/Applications/Notion Calendar.app/"; }
       { path = "/Applications/ChatGPT.app/"; }
       { path = "/Applications/iTerm.app/"; }

@@ -5,7 +5,6 @@ let sharedPackages = import ./../../modules/common/packages.nix { inherit pkgs; 
 sharedPackages ++ [
   slack
   discord
-  obsidian
   teamviewer
   code-cursor
   windsurf

@@ -32,7 +32,6 @@ _:
   "slack"
   "notion-calendar"
   "1password"
-  "obsidian"
   "steam"
   "whatsapp"
 
