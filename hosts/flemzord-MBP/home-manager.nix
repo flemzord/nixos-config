@@ -59,6 +59,7 @@ in
       "trufflehog"
       "yamllint"
       "specify"
+      "runme"
     ];
   };
 
