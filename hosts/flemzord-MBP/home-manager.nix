@@ -156,6 +156,7 @@ in
               export PATH="$HOME/.local/bin:$PATH"
               # Rbenv
               eval "$(rbenv init - --no-rehash bash)"
+              alias cc='claude --dangerously-skip-permissions'
             '';
           };
           git = {
