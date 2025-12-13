@@ -330,7 +330,7 @@ in
       { path = "/Applications/Todoist.app/"; }
       { path = "/Applications/Superhuman.app/"; }
       { path = "/Applications/Google Chrome.app/"; }
-      { path = "/Applications/ChatGPT Atlas.app/"; }
+      { path = "/Applications/Dia.app/"; }
       { path = "/Applications/Slack.app/"; }
       { path = "/Applications/Mattermost.app/"; }
       { path = "/Applications/Discord.app/"; }
