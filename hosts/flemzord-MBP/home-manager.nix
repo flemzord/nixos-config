@@ -54,7 +54,6 @@ in
       "charmbracelet/tap/crush"
       "argocd"
       "jiratui"
-      "gemini-cli"
       "cocoapods"
       "trufflehog"
       "yamllint"
