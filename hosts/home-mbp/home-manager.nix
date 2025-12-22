@@ -42,7 +42,7 @@ in
     users.${user} = { pkgs, lib, ... }: {
       home = {
         enableNixpkgsReleaseCheck = false;
-        stateVersion = "25.05";
+        stateVersion = "25.11";
         packages = pkgs.callPackage ./packages.nix { };
       };
       programs = {
