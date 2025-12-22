@@ -1,10 +1,8 @@
-{ name, email, ... }:
+{ fullName, email, ... }:
 
 {
   programs.git = {
     enable = true;
-    userName = name;
-    userEmail = email;
     ignores = [
       "*.swp"
       ".idea"
@@ -24,7 +22,12 @@
     lfs = {
       enable = true;
     };
-    extraConfig = {
+    settings = {
+      user = {
+        name = fullName;
+        email = email;
+        signingkey = "~/.ssh/github.pub";
+      };
       init.defaultBranch = "main";
       core = {
         editor = "vim";
@@ -32,7 +35,6 @@
       };
       commit.gpgsign = true;
       gpg.format = "ssh";
-      user.signingkey = "~/.ssh/github.pub";
       pull.rebase = true;
       rebase.autoStash = true;
       push.autoSetupRemote = true;

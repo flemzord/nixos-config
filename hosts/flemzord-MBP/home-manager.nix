@@ -2,7 +2,7 @@
 
 let
   user = "flemzord";
-  name = "Maxence Maireaux";
+  fullName = "Maxence Maireaux";
   email = "maxence@maireaux.fr";
 in
 {
@@ -65,7 +65,7 @@ in
       { pkgs, lib, ... }:
       {
         _module.args = {
-          inherit name email;
+          inherit fullName email;
         };
 
         imports = [
