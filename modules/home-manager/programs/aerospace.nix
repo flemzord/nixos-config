@@ -13,26 +13,38 @@
       automatically-unhide-macos-hidden-apps = true;
       key-mapping.preset = "qwerty";
       gaps = {
-        inner.horizontal = 12;
-        inner.vertical = 12;
-        outer.left = 12;
-        outer.bottom = 12;
-        outer.top = 12;
-        outer.right = 12;
+        inner.horizontal = 0;
+        inner.vertical = 0;
+        outer.left = 0;
+        outer.bottom = 0;
+        outer.top = 0;
+        outer.right = 0;
       };
+      # AZERTY-friendly keybindings
       mode.main.binding = {
+        # Layout
         alt-slash = "layout tiles horizontal vertical";
         alt-comma = "layout accordion horizontal vertical";
+
+        # Focus (vim-style - same physical keys on AZERTY)
         alt-h = "focus left";
         alt-j = "focus down";
         alt-k = "focus up";
         alt-l = "focus right";
+
+        # Move windows
         alt-shift-h = "move left";
         alt-shift-j = "move down";
         alt-shift-k = "move up";
         alt-shift-l = "move right";
-        alt-shift-minus = "resize smart -50";
-        alt-shift-equal = "resize smart +50";
+
+        # Resize (letter keys work on all layouts)
+        alt-d = "resize smart -50";
+        alt-shift-d = "resize smart -200";
+        alt-f = "resize smart +50";
+        alt-shift-f = "resize smart +200";
+
+        # Workspaces
         alt-1 = "workspace 1";
         alt-2 = "workspace 2";
         alt-3 = "workspace 3";
@@ -41,6 +53,8 @@
         alt-6 = "workspace 6";
         alt-7 = "workspace 7";
         alt-m = "workspace M";
+
+        # Move to workspace
         alt-shift-1 = "move-node-to-workspace 1";
         alt-shift-2 = "move-node-to-workspace 2";
         alt-shift-3 = "move-node-to-workspace 3";
@@ -50,11 +64,17 @@
         alt-shift-7 = "move-node-to-workspace 7";
         alt-shift-8 = "move-node-to-workspace 8";
         alt-shift-m = "move-node-to-workspace M";
+
+        # Workspace navigation
         alt-tab = "workspace-back-and-forth";
         alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
-        alt-leftSquareBracket = "focus-monitor left";
-        alt-rightSquareBracket = "focus-monitor right";
-        alt-shift-semicolon = "mode service";
+
+        # Monitor focus (AZERTY-friendly: i/o instead of [/])
+        alt-i = "focus-monitor left";
+        alt-o = "focus-monitor right";
+
+        # Service mode (AZERTY-friendly: s instead of ;)
+        alt-shift-s = "mode service";
       };
 
       mode.service.binding = {
@@ -127,7 +147,10 @@
         }
         {
           "if".app-id = "com.anthropic.claudefordesktop";
-          run = "move-node-to-workspace 1";
+          run = [
+            "move-node-to-workspace 1"
+            "resize width -400"
+          ];
         }
         {
           "if".app-id = "com.todesktop.230313mzl4w4u92"; # Cursor

@@ -73,7 +73,7 @@ in
           ./../../modules/home-manager/programs/zsh.nix
           ./../../modules/home-manager/programs/git.nix
           ./../../modules/home-manager/programs/vim.nix
-          ./../../modules/home-manager/programs/aerospace.nix
+          #./../../modules/home-manager/programs/aerospace.nix
         ];
 
         home = {
