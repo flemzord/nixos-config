@@ -7,11 +7,11 @@
     settings = {
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;
-      accordion-padding = 30;
+      accordion-padding = 0;
       default-root-container-layout = "accordion";
       default-root-container-orientation = "horizontal";
       automatically-unhide-macos-hidden-apps = true;
-      key-mapping.preset = "azerty";
+      key-mapping.preset = "qwerty";
       gaps = {
         inner.horizontal = 12;
         inner.vertical = 12;
@@ -106,56 +106,36 @@
 
       on-window-detected = [
         {
-          run = [ "move-node-to-workspace 1" ];
-          "if".app-id = "com.mitchellh.ghostty";
-        }
-        {
-          "if".app-id = "com.jetbrains.intellij.ce";
-          run = "move-node-to-workspace 1";
-        }
-        {
-          "if".app-id = "net.imput.helium";
-          run = "move-node-to-workspace 2";
-        }
-        {
-          "if".app-id = "com.figma.Desktop";
-          run = "move-node-to-workspace 2";
-        }
-        {
-          "if".app-id = "com.linear";
-          run = "move-node-to-workspace 2";
-        }
-        {
-          "if".app-id = "com.rogueamoeba.Loopback";
-          run = "move-node-to-workspace 4";
-        }
-        {
-          "if".app-id = "com.insta360.linkcontroller";
-          run = "move-node-to-workspace 4";
-        }
-        {
-          "if".app-id = "com.obsproject.obs-studio";
-          run = "move-node-to-workspace 5";
-        }
-        {
           "if".app-id = "com.hnc.Discord";
-          run = "move-node-to-workspace M";
+          run = "layout floating";
         }
         {
           "if".app-id = "com.apple.MobileSMS";
-          run = "move-node-to-workspace M";
-        }
-        {
-          "if".app-id = "org.whispersystems.signal-desktop";
-          run = "move-node-to-workspace M";
+          run = "layout floating";
         }
         {
           "if".app-id = "net.whatsapp.WhatsApp";
-          run = "move-node-to-workspace M";
+          run = "layout floating";
+        }
+        {
+          "if".app-id = "com.tinyspeck.slackmacgap";
+          run = "layout floating";
         }
         {
           "if".app-id = "com.1password.1password";
           run = "layout floating";
+        }
+        {
+          "if".app-id = "com.anthropic.claudefordesktop";
+          run = "move-node-to-workspace 1";
+        }
+        {
+          "if".app-id = "com.todesktop.230313mzl4w4u92"; # Cursor
+          run = "move-node-to-workspace 1";
+        }
+        {
+          "if".app-id = "com.google.Chrome";
+          run = "move-node-to-workspace 1";
         }
       ];
     };
