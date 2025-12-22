@@ -6,10 +6,6 @@ let
   email = "maxence@maireaux.fr";
 in
 {
-  imports = [
-    ./dock
-  ];
-
   # It me
   users.users.${user} = {
     name = "${user}";
@@ -319,38 +315,5 @@ in
         # https://github.com/nix-community/home-manager/issues/3344
         manual.manpages.enable = false;
       };
-  };
-
-  # Fully declarative dock using the latest from Nix Store
-  local.dock = {
-    enable = true;
-    username = user;
-    entries = [
-      { path = "/Applications/Todoist.app/"; }
-      { path = "/Applications/Superhuman.app/"; }
-      { path = "/Applications/Google Chrome.app/"; }
-      { path = "/Applications/Dia.app/"; }
-      { path = "/Applications/Slack.app/"; }
-      { path = "/Applications/Mattermost.app/"; }
-      { path = "/Applications/Discord.app/"; }
-      { path = "/Applications/Beeper Desktop.app/"; }
-      { path = "/Applications/WhatsApp.app"; }
-      { path = "/Applications/Notion Calendar.app/"; }
-      { path = "/Applications/ChatGPT.app/"; }
-      { path = "/Applications/iTerm.app/"; }
-      { path = "/Applications/Ghostty.app/"; }
-      { path = "/Applications/Warp.app/"; }
-      { path = "/Applications/Cursor.app/"; }
-      { path = "/Applications/Zed.app/"; }
-      {
-        path = "/Applications";
-        section = "others";
-      }
-      {
-        path = "${config.users.users.${user}.home}/Downloads";
-        section = "others";
-        options = "--sort datemodified --view grid --display stack";
-      }
-    ];
   };
 }

@@ -43,7 +43,6 @@ let user = "flemzord"; in
 
   # Setup user, packages, programs
   nix = {
-#    package = pkgs.lix;
     settings.trusted-users = [ "@admin" "${user}" ];
 
 
@@ -70,44 +69,84 @@ let user = "flemzord"; in
     stateVersion = 4;
 
     defaults = {
-      LaunchServices = {
-        LSQuarantine = false;
-      };
+    spaces.spans-displays = false; # For aerospace
+    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+    dock = {
+      autohide = true;
+      launchanim = false;
+      magnification = false;
+      mru-spaces = false;
+      orientation = "bottom";
 
-      NSGlobalDomain = {
-        AppleShowAllExtensions = true;
-        ApplePressAndHoldEnabled = false;
-
-        # 120, 90, 60, 30, 12, 6, 2
-        KeyRepeat = 2;
-
-        # 120, 94, 68, 35, 25, 15
-        InitialKeyRepeat = 15;
-
-        "com.apple.mouse.tapBehavior" = 1;
-        "com.apple.sound.beep.volume" = 0.0;
-        "com.apple.sound.beep.feedback" = 0;
-      };
-
-      dock = {
-        autohide = true;
-        show-recents = false;
-        launchanim = true;
-        orientation = "bottom";
-        tilesize = 30;
-      };
-
-      finder = {
-        _FXShowPosixPathInTitle = false;
-      };
-
-      trackpad = {
-        Clicking = true;
-        TrackpadThreeFingerDrag = false;
-      };
+      persistent-apps = [
+        "/Applications/Superhuman.app/"
+        "/Applications/Google Chrome.app/"
+        "/Applications/Dia.app/"
+        "/Applications/Slack.app/"
+        "/Applications/Mattermost.app/"
+        "/Applications/Discord.app/"
+        "/Applications/Beeper Desktop.app/"
+        "/Applications/WhatsApp.app"
+        "/Applications/Notion Calendar.app/"
+        "/Applications/ChatGPT.app/"
+        "/Applications/iTerm.app/"
+        "/Applications/Ghostty.app/"
+        "/Applications/Warp.app/"
+        "/Applications/Cursor.app/"
+        "/Applications/Zed.app/"
+      ];
+      persistent-others = [
+        "/Users/${user}/Developer"
+        "/Applications"
+        "/Users/${user}/Downloads"
+      ];
+      show-recents = false;
+      tilesize = 36;
     };
 
-    keyboard = {
+    finder = {
+      AppleShowAllFiles = true;
+      FXEnableExtensionChangeWarning = false;
+      NewWindowTarget = "Home";
+      ShowHardDrivesOnDesktop = true;
+      ShowMountedServersOnDesktop = true;
+      ShowPathbar = true;
+      ShowStatusBar = true;
+    };
+
+    WindowManager = {
+      EnableTilingByEdgeDrag = false;
+      EnableTilingOptionAccelerator = false;
+      GloballyEnabled = false;
+    };
+
+    controlcenter = {
+      BatteryShowPercentage = true;
+      Bluetooth = true;
+      Display = false;
+      FocusModes = false;
+      Sound = true;
+    };
+
+    NSGlobalDomain = {
+      AppleInterfaceStyleSwitchesAutomatically = true;
+      ApplePressAndHoldEnabled = false;
+      AppleShowAllExtensions = true;
+      AppleShowAllFiles = true;
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticWindowAnimationsEnabled = false;
+      NSTableViewDefaultSizeMode = 1;
+      _HIHideMenuBar = false;
+      "com.apple.keyboard.fnState" = true;
+    };
+    CustomUserPreferences = {
+      # Enable ctrl+cmd+drag to move windows
+      NSWindowShouldDragOnGesture = {
+        value = true;
+      };
+    };
+  };
+      keyboard = {
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
