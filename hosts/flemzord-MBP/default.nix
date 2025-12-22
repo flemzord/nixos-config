@@ -6,6 +6,7 @@ let user = "flemzord"; in
   imports = [
     ./../../modules/common/cachix.nix
     ./home-manager.nix
+    ./../../modules/programs/aerospace.nix
   ];
 
   # Agenix configuration
