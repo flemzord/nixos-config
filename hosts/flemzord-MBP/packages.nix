@@ -90,13 +90,14 @@ with pkgs; [
 
   # Dev PHP
   php84Packages.composer
+  php84Extensions.pcov
   xz
   (pkgs.php84.buildEnv {
     extensions = { enabled, all }: enabled ++ (with all; [
       xdebug
     ]);
     extraConfig = ''
-      xdebug.mode=debug
+      xdebug.mode=debug,coverage
       xdebug.client_host=127.0.0.1
       xdebug.client_port="9003"
     '';
