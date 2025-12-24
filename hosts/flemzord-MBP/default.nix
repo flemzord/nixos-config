@@ -138,7 +138,7 @@ let user = "flemzord"; in
       NSAutomaticWindowAnimationsEnabled = false;
       NSTableViewDefaultSizeMode = 1;
       _HIHideMenuBar = false;
-      "com.apple.keyboard.fnState" = true;
+      "com.apple.keyboard.fnState" = false;
     };
     CustomUserPreferences = {
       # Enable ctrl+cmd+drag to move windows
