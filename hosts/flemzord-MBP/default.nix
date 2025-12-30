@@ -130,7 +130,7 @@ let user = "flemzord"; in
     };
 
     NSGlobalDomain = {
-      AppleInterfaceStyleSwitchesAutomatically = true;
+      AppleInterfaceStyleSwitchesAutomatically = false;
       ApplePressAndHoldEnabled = false;
       AppleShowAllExtensions = true;
       AppleShowAllFiles = true;
