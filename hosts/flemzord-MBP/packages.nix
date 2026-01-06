@@ -75,7 +75,7 @@ with pkgs; [
   bun
 
   #turbo
-  bob
+  # bob # Removed: unmaintained upstream with vulnerable dependencies
   # devbox # Temporarily disabled due to cachix build issues
   # devenv # Temporarily disabled due to cachix build issues
   # Dev tools GoLang
