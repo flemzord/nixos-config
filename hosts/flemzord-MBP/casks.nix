@@ -2,8 +2,8 @@ _:
 
 [
   # Development Tools
-  #  "orbstack"
   "httpie-desktop"
+  "bruno"
   "beeper"
   "claude-code"
   "codex"
