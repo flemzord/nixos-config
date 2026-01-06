@@ -54,7 +54,6 @@ in
       "trufflehog"
       "yamllint"
       "specify"
-      "opencode"
     ];
   };
 
