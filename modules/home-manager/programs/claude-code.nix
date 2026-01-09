@@ -8,6 +8,10 @@
       includeCoAuthoredBy = false;
       model = "opus";
       alwaysThinkingEnabled = true;
+      statusLine = {
+        type = "command";
+        command = "bun x ccusage statusline";
+      };
     };
 
     agents = {
