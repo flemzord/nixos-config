@@ -5,7 +5,6 @@ _:
   "httpie-desktop"
   "bruno"
   "beeper"
-  "claude-code"
   "codex"
   "chatgpt-atlas"
   "visual-studio-code"

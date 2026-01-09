@@ -72,6 +72,7 @@ in
           ./../../modules/home-manager/programs/zsh.nix
           ./../../modules/home-manager/programs/git.nix
           ./../../modules/home-manager/programs/vim.nix
+          ./../../modules/home-manager/programs/claude-code.nix
           #./../../modules/home-manager/programs/aerospace.nix
         ];
 
