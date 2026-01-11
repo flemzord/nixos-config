@@ -72,7 +72,7 @@
     };
 
     skills = {
-      "prd/SKILL.md" = ''
+      "prd/SKILL" = ''
         ---
         name: prd
         description: "Generate a Product Requirements Document (PRD) for a new feature. Use when planning a feature, starting a new project, or when asked to create a PRD. Triggers on: create a prd, write prd for, plan this feature, requirements for, spec out."
@@ -315,7 +315,7 @@
         - [ ] Saved to `tasks/prd-[feature-name].md`
       '';
 
-      "ralph/SKILL.md" = ''
+      "ralph/SKILL" = ''
         ---
         name: ralph
         description: "Convert PRDs to prd.json format for the Ralph autonomous agent system. Use when you have an existing PRD and need to convert it to Ralph's JSON format. Triggers on: convert this prd, turn this into ralph format, create prd.json from this, ralph json."
@@ -575,7 +575,7 @@
         - [ ] No story depends on a later story
       '';
 
-      "frontend-design/SKILL.md" = ''
+      "frontend-design/SKILL" = ''
         ---
         name: frontend-design
         description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.
