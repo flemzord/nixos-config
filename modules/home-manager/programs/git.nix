@@ -18,6 +18,7 @@
       "CLAUDE.md"
       ".claude/"
       ".crush/"
+      "./tasks/"
     ];
     lfs = {
       enable = true;
