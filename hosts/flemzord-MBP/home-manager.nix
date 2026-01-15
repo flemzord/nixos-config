@@ -33,6 +33,7 @@ in
       "speakeasy-api/homebrew-tap"
       "temporalio/homebrew-tap"
       "charmbracelet/tap"
+      "steveyegge/beads"
     ];
     casks = pkgs.callPackage ./casks.nix { };
     brews = [
@@ -42,6 +43,7 @@ in
       "earthly/earthly/earthly"
       "speakeasy-api/homebrew-tap/speakeasy"
       "temporalio/homebrew-tap/tcld"
+      "steveyegge/beads/bd"
       "temporal"
       "helmfile"
       #"ansible"
