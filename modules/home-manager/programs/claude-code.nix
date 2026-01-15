@@ -15,19 +15,6 @@ in
         type = "command";
         command = "bun x ccusage statusline";
       };
-      hooks = {
-        Stop = [
-          {
-            matcher = "";
-            hooks = [
-              {
-                type = "command";
-                command = "${ralphLoopScriptsDir}/stop-hook.sh";
-              }
-            ];
-          }
-        ];
-      };
     };
 
     agents = {

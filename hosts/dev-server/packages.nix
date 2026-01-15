@@ -11,7 +11,7 @@ with pkgs; [
   nodePackages.yarn
   bun
   python313
-  poetry
+  # poetry # Temporarily disabled: pbs-installer version conflict in nixpkgs
   uv
   php84Packages.composer
   (pkgs.php84.buildEnv {

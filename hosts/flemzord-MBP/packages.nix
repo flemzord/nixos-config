@@ -104,8 +104,8 @@ with pkgs; [
     '';
   })
 
-  # Dev Python 
+  # Dev Python
   uv
   python313
-  poetry
+  # poetry # Temporarily disabled: pbs-installer version conflict in nixpkgs
 ]
