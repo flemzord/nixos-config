@@ -17,7 +17,6 @@
       "todos/"
       "CLAUDE.md"
       ".claude/"
-      ".crush/"
       "./tasks/"
     ];
     lfs = {

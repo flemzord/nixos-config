@@ -32,7 +32,6 @@ in
       "earthly/earthly"
       "speakeasy-api/homebrew-tap"
       "temporalio/homebrew-tap"
-      "charmbracelet/tap"
       "steveyegge/beads"
     ];
     casks = pkgs.callPackage ./casks.nix { };
@@ -49,7 +48,6 @@ in
       #"ansible"
       "rbenv"
       "tmux"
-      "charmbracelet/tap/crush"
       "argocd"
       "jiratui"
       "cocoapods"
