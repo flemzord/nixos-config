@@ -3,16 +3,8 @@
 with pkgs;
 let sharedPackages = import ./../../modules/common/packages.nix { inherit pkgs; }; in
 sharedPackages ++ [
-  slack
-  discord
-  teamviewer
-  code-cursor
-  windsurf
   vim
   ncdu
-  vscode
-  chromium
-  appimage-run
   nodejs_20
   bun
   # Dev PHP
