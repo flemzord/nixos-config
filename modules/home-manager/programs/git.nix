@@ -18,7 +18,7 @@
       "CLAUDE.md"
       ".claude/"
       "tasks/"
-      ".ralph-ui/"
+      ".ralph-tui/"
       ".beads/"
     ];
     lfs = {
