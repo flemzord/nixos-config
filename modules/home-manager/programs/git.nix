@@ -18,6 +18,8 @@
       "CLAUDE.md"
       ".claude/"
       "./tasks/"
+      ".ralph-ui"
+      ".beads"
     ];
     lfs = {
       enable = true;
