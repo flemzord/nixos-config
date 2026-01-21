@@ -15,6 +15,12 @@ in
         type = "command";
         command = "bun x ccusage statusline";
       };
+      mcpServers = {
+        chrome-devtools = {
+          command = "npx";
+          args = [ "-y" "chrome-devtools-mcp@latest" ];
+        };
+      };
     };
 
     agents = {
