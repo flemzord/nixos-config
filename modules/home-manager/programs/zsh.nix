@@ -56,8 +56,7 @@
       export ANDROID_HOME=$HOME/Library/Android/sdk
       export PATH=$PATH:$ANDROID_HOME/emulator
       export PATH=$PATH:$ANDROID_HOME/platform-tools
-      alias codex='npx @openai/codex@latest --model 'gpt-5-codex' --yolo -c model_reasoning_summary_format=experimental --search'
-      alias cs='claude-squad'
+      alias codex='npx @openai/codex@latest --yolo --search'
       alias laravel='/Users/flemzord/.config/composer/vendor/bin/laravel'
       export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
       export ENABLE_BACKGROUND_TASKS=1
