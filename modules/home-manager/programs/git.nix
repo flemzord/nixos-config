@@ -20,6 +20,7 @@
       "tasks/"
       ".ralph-tui/"
       ".beads/"
+      "ralph/"
     ];
     lfs = {
       enable = true;
