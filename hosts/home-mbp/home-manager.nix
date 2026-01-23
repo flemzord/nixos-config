@@ -32,6 +32,7 @@ in
       "Infuse" = 1136220934;
     };
     brews = [
+      "dockutil"
       "cloudflared"
     ];
   };

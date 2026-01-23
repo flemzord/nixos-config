@@ -36,6 +36,8 @@ in
     ];
     casks = pkgs.callPackage ./casks.nix { };
     brews = [
+      "dockutil"
+      "pre-commit"
       "formancehq/tap/fctl"
       "koyeb/tap/koyeb"
       "loft-sh/tap/vcluster"
