@@ -36,6 +36,7 @@ _:
 
   # Another
   "ngrok"
+  "jordanbaird-ice@beta"
   "raycast"
   "vlc"
   "transmission"
