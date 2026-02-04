@@ -9,6 +9,7 @@ with pkgs; [
   difftastic
   coreutils
   flyctl
+  atuin
   fd
   fzf
   font-awesome

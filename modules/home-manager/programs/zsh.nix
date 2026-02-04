@@ -39,6 +39,7 @@
       export PATH="$HOME/.local/bin:$PATH"
       export PATH="$HOME/.cache/npm/bin:$PATH"
       eval "$(direnv hook zsh)"
+      eval "$(atuin init zsh)"
 
       # Use difftastic, syntax-aware diffing
       alias diff=difft
