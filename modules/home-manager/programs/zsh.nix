@@ -21,7 +21,8 @@
       nixos-config = "$HOME/.local/share/src/nixos-config";
     };
     plugins = [ ];
-    initContent = lib.mkBefore ''
+    initContent = lib.mkMerge [
+      (lib.mkBefore ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
@@ -39,7 +40,6 @@
       export PATH="$HOME/.local/bin:$PATH"
       export PATH="$HOME/.cache/npm/bin:$PATH"
       eval "$(direnv hook zsh)"
-      eval "$(atuin init zsh)"
 
       # Use difftastic, syntax-aware diffing
       alias diff=difft
@@ -68,6 +68,11 @@
       # Rbenv
       eval "$(rbenv init - --no-rehash bash)"
       alias cc='claude --dangerously-skip-permissions'
-    '';
+    '')
+      (lib.mkAfter ''
+        # Atuin must be initialized after oh-my-zsh to override Ctrl+R binding
+        eval "$(atuin init zsh)"
+      '')
+    ];
   };
 }
