@@ -71,7 +71,7 @@
     '')
       (lib.mkAfter ''
         # Atuin must be initialized after oh-my-zsh to override Ctrl+R binding
-        eval "$(atuin init zsh)"
+        eval "$(atuin init zsh --disable-up-arrow)"
       '')
     ];
   };
