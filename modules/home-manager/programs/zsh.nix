@@ -68,6 +68,8 @@
       # Rbenv
       eval "$(rbenv init - --no-rehash bash)"
       alias cc='claude --dangerously-skip-permissions'
+      
+      export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
     '')
       (lib.mkAfter ''
         # Atuin must be initialized after oh-my-zsh to override Ctrl+R binding
