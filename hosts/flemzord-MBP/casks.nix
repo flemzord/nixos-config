@@ -8,7 +8,6 @@ _:
   "codex"
   "chatgpt-atlas"
   "visual-studio-code"
-  "jetbrains-toolbox"
   "session-manager-plugin"
   "iterm2"
   "cursor"
