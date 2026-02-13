@@ -1,5 +1,8 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+in
 {
   programs.zsh = {
     enable = true;
@@ -33,8 +36,13 @@
       # Remove history data we don't want to see
       export HISTIGNORE="pwd:ls:cd"
       export HISTFILE=$HOME/.local/share/zsh/history
+      ${lib.optionalString isDarwin ''
       export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$PATH
       source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+      ''}
+      ${lib.optionalString (!isDarwin) ''
+      export PATH="$HOME/bin:$HOME/go/bin:$PATH"
+      ''}
 
       export PATH="$HOME/.krew/bin:$PATH"
       export PATH="$HOME/.local/bin:$PATH"
@@ -54,19 +62,23 @@
       eval $(ssh-agent)
       ssh-add ~/.ssh/github
 
+      ${lib.optionalString isDarwin ''
       export ANDROID_HOME=$HOME/Library/Android/sdk
       export PATH=$PATH:$ANDROID_HOME/emulator
       export PATH=$PATH:$ANDROID_HOME/platform-tools
       alias codex='npx @openai/codex@latest --yolo --search'
       alias laravel='/Users/flemzord/.config/composer/vendor/bin/laravel'
       export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
+      ''}
       export TENV_AUTO_INSTALL=true
       export ENABLE_BACKGROUND_TASKS=1
       export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
       # Cursor Agent
       export PATH="$HOME/.local/bin:$PATH"
+      ${lib.optionalString isDarwin ''
       # Rbenv
       eval "$(rbenv init - --no-rehash bash)"
+      ''}
       alias cc='claude --dangerously-skip-permissions'
       
       export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1

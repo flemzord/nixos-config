@@ -149,6 +149,17 @@
       };
     };
 
+    homeConfigurations = {
+      "flemzord@dev" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+          overlays = [ claude-code-nix.overlays.default ];
+        };
+        modules = [ ./hosts/dev ];
+      };
+    };
+
     # Developer experience
     devShells = let
       common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv agenix.packages.${pkgs.system}.default ];

@@ -4,6 +4,9 @@ MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 # The name of the nixosConfiguration in the flake
 NIXNAME ?= flemzord-MBP
 
+# The name of the homeConfiguration in the flake
+HMNAME ?= flemzord@dev
+
 # We need to do some OS switching below.
 UNAME := $(shell uname)
 
@@ -52,3 +55,9 @@ ifeq ($(UNAME), Darwin)
 else
 	nix --experimental-features 'nix-command flakes' build ".#nixosConfigurations.${NIXNAME}.config.system.build.toplevel" -L
 endif
+
+home-switch:
+	home-manager switch --flake ".#${HMNAME}"
+
+home-build:
+	nix build ".#homeConfigurations.${HMNAME}.activationPackage" -L
