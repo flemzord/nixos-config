@@ -26,10 +26,15 @@ in
     stateVersion = "25.11";
     packages = pkgs.callPackage ./packages.nix { };
 
-    file.".ssh/authorized_keys".text = ''
-      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHvSrBVrcw0wYewYB5RKkr2RTQ2aUyP74jFNZgR1YKb maxence@maireaux.fr
-    '';
   };
+
+  home.activation.authorizedKeys = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
+    cat > "$HOME/.ssh/authorized_keys" << 'SSH_KEYS'
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHvSrBVrcw0wYewYB5RKkr2RTQ2aUyP74jFNZgR1YKb maxence@maireaux.fr
+SSH_KEYS
+    chmod 600 "$HOME/.ssh/authorized_keys"
+  '';
 
   # Marked broken Oct 20, 2022 check later to remove this
   # https://github.com/nix-community/home-manager/issues/3344
