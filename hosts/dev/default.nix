@@ -25,6 +25,10 @@ in
     enableNixpkgsReleaseCheck = false;
     stateVersion = "25.11";
     packages = pkgs.callPackage ./packages.nix { };
+
+    file.".ssh/authorized_keys".text = ''
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAHvSrBVrcw0wYewYB5RKkr2RTQ2aUyP74jFNZgR1YKb maxence@maireaux.fr
+    '';
   };
 
   # Marked broken Oct 20, 2022 check later to remove this
