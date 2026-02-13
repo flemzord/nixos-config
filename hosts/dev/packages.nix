@@ -17,7 +17,6 @@ with pkgs; [
   git-filter-repo
   gnupg
   hack-font
-  home-manager
   jetbrains-mono
   killall
   libfido2
