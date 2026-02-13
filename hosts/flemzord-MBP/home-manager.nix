@@ -56,6 +56,7 @@ in
       "trufflehog"
       "yamllint"
       "specify"
+      "worktrunk"
     ];
   };
 
