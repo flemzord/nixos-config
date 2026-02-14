@@ -26,7 +26,7 @@ in
       cleanup = "zap";
       upgrade = true;
     };
-    brewPrefix = "/opt/homebrew/bin";
+    prefix = "/opt/homebrew";
     casks = pkgs.callPackage ./casks.nix { };
     masApps = {
       "Infuse" = 1136220934;
