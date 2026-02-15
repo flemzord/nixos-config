@@ -5,7 +5,6 @@ _:
   "httpie-desktop"
   "bruno"
   "beeper"
-  "codex"
   "chatgpt-atlas"
   "visual-studio-code"
   "session-manager-plugin"

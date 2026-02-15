@@ -66,7 +66,6 @@ in
       export ANDROID_HOME=$HOME/Library/Android/sdk
       export PATH=$PATH:$ANDROID_HOME/emulator
       export PATH=$PATH:$ANDROID_HOME/platform-tools
-      alias codex='npx @openai/codex@latest --yolo --search'
       alias laravel='/Users/flemzord/.config/composer/vendor/bin/laravel'
       export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
       ''}
