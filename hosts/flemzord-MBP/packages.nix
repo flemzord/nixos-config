@@ -5,6 +5,7 @@ with pkgs; [
   ragenix
   nixpkgs-fmt
   nixd
+  nvd
   statix
   difftastic
   coreutils

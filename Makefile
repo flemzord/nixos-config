@@ -20,11 +20,15 @@ ifeq ("$(wildcard $(DIR_TO_CHECK_FOR))", "")
 else
 	echo "Skipping chmod because directory not exists."
 endif
-	nix --experimental-features 'nix-command flakes' build ".#darwinConfigurations.${NIXNAME}.system" --impure
-	sudo ./result/sw/bin/darwin-rebuild switch --flake "$$(pwd)#${NIXNAME}" --impure
-	unlink ./result
+	@BEFORE=$$(readlink /nix/var/nix/profiles/system); \
+	nix --experimental-features 'nix-command flakes' build ".#darwinConfigurations.${NIXNAME}.system" --impure && \
+	sudo ./result/sw/bin/darwin-rebuild switch --flake "$$(pwd)#${NIXNAME}" --impure && \
+	unlink ./result && \
+	nvd diff $$BEFORE /nix/var/nix/profiles/system
 else
-	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${NIXNAME}"
+	@BEFORE=$$(readlink /nix/var/nix/profiles/system); \
+	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${NIXNAME}" && \
+	nvd diff $$BEFORE /nix/var/nix/profiles/system
 endif
 
 update:
