@@ -79,6 +79,7 @@ in
       eval "$(rbenv init - --no-rehash bash)"
       ''}
       alias cc='claude --dangerously-skip-permissions'
+      alias co='codex --full-auto'
       
       export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
     '')
