@@ -33,6 +33,7 @@ in
       "speakeasy-api/homebrew-tap"
       "temporalio/homebrew-tap"
       "steveyegge/beads"
+      "kamillobinski/thock"
     ];
     casks = pkgs.callPackage ./casks.nix { };
     brews = [

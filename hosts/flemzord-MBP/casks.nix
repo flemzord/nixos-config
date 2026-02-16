@@ -35,6 +35,7 @@ _:
   # Another
   "ngrok"
   "thaw"
+  "kamillobinski/thock/thock"
   "raycast"
   "vlc"
   "transmission"
