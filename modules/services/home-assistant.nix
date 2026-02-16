@@ -9,7 +9,7 @@ _:
         "/var/run/dbus:/run/dbus:ro"
       ];
       environment.TZ = "Europe/Paris";
-      image = "ghcr.io/home-assistant/home-assistant:2025.10.4";
+      image = "ghcr.io/home-assistant/home-assistant:2026.2.2";
       extraOptions = [
         "--network=host"
       ];
