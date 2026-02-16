@@ -111,5 +111,5 @@ with pkgs; [
 
   # AI tools
   claude-code # Via overlay from claude-code-nix
-  codex # Via overlay from codex-cli-nix
+  # codex is managed via programs.codex in modules/home-manager/programs/codex.nix
 ]
