@@ -20,7 +20,7 @@
         ghost_commit = false;
         unified_exec = true;
         apply_patch_freeform = true;
-        web_search_request = true;
+        web_search = "live";
         skills = true;
         shell_snapshot = true;
       };
