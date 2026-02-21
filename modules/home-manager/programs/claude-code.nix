@@ -79,9 +79,13 @@ in
       includeCoAuthoredBy = false;
       model = "opus";
       alwaysThinkingEnabled = true;
+      skipDangerousModePermissionPrompt = true;
       statusLine = {
         type = "command";
         command = "bun x ccusage statusline";
+      };
+      enabledPlugins = {
+        "formance-skills@formance-plugins" = true;
       };
       mcpServers = {
         chrome-devtools = {
@@ -92,7 +96,7 @@ in
     };
 
     commands = {
-      "ci-watch.md" = ''
+      "ci-watch" = ''
         Watch the CI pipeline for the current branch and ensure it passes.
         Use the GitHub CLI (`gh`) to monitor workflow runs.
 
