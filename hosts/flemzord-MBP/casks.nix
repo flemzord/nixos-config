@@ -9,7 +9,7 @@ _:
   "visual-studio-code"
   "session-manager-plugin"
   "iterm2"
-  "cursor"
+  "obsidian"
   "mattermost"
   "chatgpt"
   "setapp"
@@ -19,7 +19,6 @@ _:
   "microsoft-teams"
   "tailscale-app"
   "superhuman"
-  "ghostty"
   "todoist-app"
   "warp"
 

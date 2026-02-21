@@ -34,6 +34,7 @@ in
       "temporalio/homebrew-tap"
       "steveyegge/beads"
       "kamillobinski/thock"
+      "yakitrak/yakitrak"
     ];
     casks = pkgs.callPackage ./casks.nix { };
     brews = [
@@ -58,6 +59,7 @@ in
       "yamllint"
       "specify"
       "worktrunk"
+      "yakitrak/yakitrak/obsidian-cli"
     ];
   };
 
