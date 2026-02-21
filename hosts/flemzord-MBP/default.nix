@@ -91,9 +91,7 @@ let user = "flemzord"; in
         "/Applications/Notion Calendar.app/"
         "/Applications/ChatGPT.app/"
         "/Applications/iTerm.app/"
-        "/Applications/Ghostty.app/"
         "/Applications/Warp.app/"
-        "/Applications/Cursor.app/"
         "/Applications/Zed.app/"
       ];
       persistent-others = [
