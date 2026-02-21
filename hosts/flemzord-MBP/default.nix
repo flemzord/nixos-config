@@ -90,6 +90,7 @@ let user = "flemzord"; in
         "/Applications/WhatsApp.app"
         "/Applications/Notion Calendar.app/"
         "/Applications/ChatGPT.app/"
+        "/Applications/Obsidian.app/"
         "/Applications/iTerm.app/"
         "/Applications/Warp.app/"
         "/Applications/Zed.app/"
