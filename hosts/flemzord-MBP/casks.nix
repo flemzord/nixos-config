@@ -48,6 +48,7 @@ _:
   "google-chrome"
   "zed"
 
-  # Dev 
+  # Dev
   "flutter"
+  "supacode"
 ]
