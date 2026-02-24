@@ -35,6 +35,7 @@ in
       "steveyegge/beads"
       "kamillobinski/thock"
       "yakitrak/yakitrak"
+      "CleverCloud/misc"
     ];
     casks = pkgs.callPackage ./casks.nix { };
     brews = [
@@ -60,12 +61,14 @@ in
       "specify"
       "worktrunk"
       "yakitrak/yakitrak/obsidian-cli"
+      "CleverCloud/misc/mdr"
     ];
   };
 
   # Enable home-manager to manage the XDG standard
   home-manager = {
     useGlobalPkgs = true;
+    backupFileExtension = "backup";
     users.${user} =
       { pkgs, lib, ... }:
       {
