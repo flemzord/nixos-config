@@ -9,6 +9,7 @@
       model = "gpt-5.3-codex";
       model_reasoning_effort = "high";
       personality = "pragmatic";
+      approval_mode = "full-auto";
 
       projects = {
         "/Users/flemzord/Project" = {
@@ -20,9 +21,9 @@
         ghost_commit = false;
         unified_exec = true;
         apply_patch_freeform = true;
-        web_search = "live";
         skills = true;
         shell_snapshot = true;
+        multi_agent = true;
       };
     };
   };
