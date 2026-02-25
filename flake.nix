@@ -37,10 +37,6 @@
       url = "github:koyeb/homebrew-tap";
       flake = false;
     };
-    speakeasy-cask = {
-      url = "github:speakeasy-api/homebrew-tap";
-      flake = false;
-    };
     temporal-cask = {
       url = "github:temporalio/homebrew-brew";
       flake = false;
@@ -70,7 +66,7 @@
     };
   };
 
-  outputs = { darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, speakeasy-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, ... }: {
+  outputs = { darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, ... }: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -119,7 +115,6 @@
                 "loft-sh/homebrew-tap" = loftsh-cask;
                 "earthly/homebrew-earthly" = earthly-cask;
                 "koyeb/homebrew-tap" = koyeb-cask;
-                "speakeasy-api/homebrew-tap" = speakeasy-cask;
                 "temporalio/homebrew-tap" = temporal-cask;
                 "charmbracelet/homebrew-tap" = charmbracelet-cask;
                 "darksworm/homebrew-tap" = darksworm-cask;
