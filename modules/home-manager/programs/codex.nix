@@ -21,6 +21,7 @@
         ghost_commit = false;
         unified_exec = true;
         apply_patch_freeform = true;
+        web_search = true;
         skills = true;
         shell_snapshot = true;
         multi_agent = true;
