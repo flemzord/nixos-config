@@ -462,25 +462,8 @@
         "loftsh-cask": "loftsh-cask",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_3",
-        "speakeasy-cask": "speakeasy-cask",
         "temporal-cask": "temporal-cask",
         "vscode-server": "vscode-server"
-      }
-    },
-    "speakeasy-cask": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771858860,
-        "narHash": "sha256-EODREk6bfQAadCnLedY1eMKsvIqRaMzzJwdMcnKHvdE=",
-        "owner": "speakeasy-api",
-        "repo": "homebrew-tap",
-        "rev": "e1557b63f1fd2564961e50d18eac20be6b3de142",
-        "type": "github"
-      },
-      "original": {
-        "owner": "speakeasy-api",
-        "repo": "homebrew-tap",
-        "type": "github"
       }
     },
     "systems": {
