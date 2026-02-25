@@ -17,6 +17,8 @@
         };
       };
 
+      suppress_unstable_features_warning = true;
+
       features = {
         ghost_commit = false;
         unified_exec = true;
