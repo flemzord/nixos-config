@@ -60,6 +60,7 @@ in
       "worktrunk"
       "yakitrak/yakitrak/obsidian-cli"
       "CleverCloud/misc/mdr"
+      "claude-agent-acp"
     ];
   };
 
