@@ -67,7 +67,6 @@ in
       export PATH=$PATH:$ANDROID_HOME/emulator
       export PATH=$PATH:$ANDROID_HOME/platform-tools
       alias laravel='/Users/flemzord/.config/composer/vendor/bin/laravel'
-      export LIBRARY_PATH="$LIBRARY_PATH:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"
       ''}
       export TENV_AUTO_INSTALL=true
       export ENABLE_BACKGROUND_TASKS=1
