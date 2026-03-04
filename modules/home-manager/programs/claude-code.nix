@@ -77,7 +77,7 @@ in
 
     settings = {
       includeCoAuthoredBy = false;
-      model = "opus";
+      model = "opus[1m]";
       alwaysThinkingEnabled = true;
       skipDangerousModePermissionPrompt = true;
       statusLine = {
