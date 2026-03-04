@@ -35,6 +35,7 @@ in
       "kamillobinski/thock"
       "yakitrak/yakitrak"
       "CleverCloud/misc"
+      "entireio/tap"
     ];
     casks = pkgs.callPackage ./casks.nix { };
     brews = [
@@ -60,6 +61,7 @@ in
       "worktrunk"
       "yakitrak/yakitrak/obsidian-cli"
       "CleverCloud/misc/mdr"
+      "entireio/tap/entire"
     ];
   };
 
