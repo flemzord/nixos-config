@@ -61,7 +61,6 @@ in
       "worktrunk"
       "yakitrak/yakitrak/obsidian-cli"
       "CleverCloud/misc/mdr"
-      "entireio/tap/entire"
     ];
   };
 

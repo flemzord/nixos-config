@@ -51,4 +51,5 @@ _:
   # Dev
   "flutter"
   "supacode"
+  "entireio/tap/entire"
 ]
