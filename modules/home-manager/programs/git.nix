@@ -20,6 +20,7 @@
       "tasks/"
       ".ralph-tui/"
       ".beads/"
+      ".entire/"
       "ralph/"
     ];
     lfs = {
