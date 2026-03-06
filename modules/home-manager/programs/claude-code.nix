@@ -1,8 +1,5 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
-let
-  ralphLoopScriptsDir = "${config.home.homeDirectory}/.claude/scripts/ralph-loop";
-in
 {
   programs.claude-code = {
     enable = true;
