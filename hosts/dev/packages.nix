@@ -20,7 +20,7 @@ with pkgs; [
   jetbrains-mono
   killall
   libfido2
-  neofetch
+  fastfetch
   ripgrep
   sqlite
   sshpass

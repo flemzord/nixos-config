@@ -10,8 +10,8 @@
       model_reasoning_effort = "high";
       personality = "pragmatic";
       approval_mode = "full-auto";
-      model_context_window = "1000000";
-      model_auto_compact_token_limit = "9000000";
+      model_context_window = 1000000;
+      model_auto_compact_token_limit = 9000000;
 
       projects = {
         "/Users/flemzord/Project" = {
