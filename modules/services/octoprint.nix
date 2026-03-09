@@ -17,7 +17,7 @@
           owner = "navaismo";
           repo = "OctoPrint-E3v3seprintjobdetails";
           rev = "main";
-          hash = "";
+          hash = "sha256-pOsxkQJAvqiyDJp2cpjzOwktZopJdHyg6BLb2UVV8iU=";
         };
         meta.description = "OctoPrint plugin for Ender 3 V3 SE print job details";
       })
