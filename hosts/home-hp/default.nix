@@ -27,11 +27,9 @@
 
   services = {
     vscode-server.enable = true;
-    xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-    };
+    xserver.enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
     displayManager.autoLogin = {
       enable = true;
       user = "flemzord";
