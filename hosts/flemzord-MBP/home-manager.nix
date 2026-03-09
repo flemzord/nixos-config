@@ -61,6 +61,7 @@ in
       "worktrunk"
       "yakitrak/yakitrak/obsidian-cli"
       "CleverCloud/misc/mdr"
+      "mobile-dev-inc/tap/maestro"
     ];
   };
 
