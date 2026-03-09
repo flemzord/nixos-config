@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   # OctoPrint native NixOS service
   services.octoprint = {
@@ -8,9 +9,17 @@
     # Configure plugins if needed
     plugins = plugins: with plugins; [
       octopod
-      # Add more plugins here, for example:
-      # stlviewer
-      # themeify
+      (buildPlugin rec {
+        pname = "OctoPrint-E3v3seprintjobdetails";
+        version = "0.1.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "navaismo";
+          repo = "OctoPrint-E3v3seprintjobdetails";
+          rev = "main";
+          hash = "";
+        };
+        meta.description = "OctoPrint plugin for Ender 3 V3 SE print job details";
+      })
     ];
 
     # Extra configuration for OctoPrint
