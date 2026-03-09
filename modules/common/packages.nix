@@ -18,4 +18,5 @@ with pkgs; [
   gnumake
   git
   screen
+  nvd
 ]

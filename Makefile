@@ -24,11 +24,11 @@ endif
 	nix --experimental-features 'nix-command flakes' build ".#darwinConfigurations.${NIXNAME}.system" --impure && \
 	sudo ./result/sw/bin/darwin-rebuild switch --flake "$$(pwd)#${NIXNAME}" --impure && \
 	unlink ./result && \
-	nix store diff-closures $$BEFORE /nix/var/nix/profiles/system
+	nvd diff $$BEFORE /nix/var/nix/profiles/system
 else
 	@BEFORE=/nix/var/nix/profiles/$$(readlink /nix/var/nix/profiles/system); \
 	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${NIXNAME}" && \
-	nix store diff-closures $$BEFORE /nix/var/nix/profiles/system
+	nvd diff $$BEFORE /nix/var/nix/profiles/system
 endif
 
 update:
