@@ -12,6 +12,7 @@
       (buildPlugin rec {
         pname = "OctoPrint-E3v3seprintjobdetails";
         version = "0.1.0";
+        format = "setuptools";
         src = pkgs.fetchFromGitHub {
           owner = "navaismo";
           repo = "OctoPrint-E3v3seprintjobdetails";
