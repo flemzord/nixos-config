@@ -74,8 +74,23 @@
     '';
 
     settings = {
+      awsAuthRefresh = "aws sso login";
+      env = {
+        AWS_PROFILE = "staging-FormanceBedrockAccess";
+        AWS_REGION = "eu-west-1";
+        CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
+        CLAUDE_CODE_USE_BEDROCK=  "1";
+        CLAUDE_CODE_ENABLE_TELEMETRY= "1";
+        OTEL_METRICS_EXPORTER="otlp";
+        OTEL_LOGS_EXPORTER="otlp";
+        OTEL_EXPORTER_OTLP_PROTOCOL="grpc";
+        OTEL_EXPORTER_OTLP_ENDPOINT="https://ingest.eu.signoz.cloud:443";
+        # OTEL_EXPORTER_OTLP_HEADERS is set via agenix secret in zsh initContent
+        OTEL_METRIC_EXPORT_INTERVAL="10000";
+        OTEL_LOGS_EXPORT_INTERVAL="5000";
+      };
       includeCoAuthoredBy = false;
-      model = "opus[1m]";
+      model = "eu.anthropic.claude-opus-4-6-v1[1m]";
       alwaysThinkingEnabled = true;
       skipDangerousModePermissionPrompt = true;
       statusLine = {
@@ -434,8 +449,8 @@
         GEMINI_OUTPUT=$(mktemp)
 
         # Launch Codex review in background
-        (codex exec --dangerously-bypass-approvals-and-sandbox \
-          -m gpt-5.3-codex -c model_reasoning_effort="high" \
+        (codex exec --dangerously-bypass-approvals-and-sandbox;
+          -m gpt-5.3-codex -c model_reasoning_effort="high";
           "$REVIEW_PROMPT" 2>/dev/null > "$CODEX_OUTPUT") &
         CODEX_PID=$!
 

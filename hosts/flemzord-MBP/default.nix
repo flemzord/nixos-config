@@ -19,6 +19,13 @@ let user = "flemzord"; in
     mode = "0600";
   };
 
+  age.secrets.signoz-token = {
+    file = ./../../secrets/signoz-token.age;
+    path = "/Users/${user}/.config/secrets/signoz-token";
+    owner = user;
+    mode = "0600";
+  };
+
   nixpkgs = {
     config = {
       allowUnfree = true;

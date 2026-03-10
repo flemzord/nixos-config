@@ -70,6 +70,11 @@ in
       ''}
       export TENV_AUTO_INSTALL=true
       export ENABLE_BACKGROUND_TASKS=1
+
+      # Signoz OTEL headers (from agenix secret)
+      if [[ -f "$HOME/.config/secrets/signoz-token" ]]; then
+        export OTEL_EXPORTER_OTLP_HEADERS="$(cat "$HOME/.config/secrets/signoz-token")"
+      fi
       export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
       # Cursor Agent
       export PATH="$HOME/.local/bin:$PATH"
@@ -80,7 +85,6 @@ in
       alias cc='claude --dangerously-skip-permissions'
       alias co='codex --full-auto'
       
-      export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
     '')
       (lib.mkAfter ''
         # Atuin must be initialized after oh-my-zsh to override Ctrl+R binding
