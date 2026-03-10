@@ -112,5 +112,6 @@ with pkgs; [
 
   # AI tools
   claude-code # Via overlay from claude-code-nix
+  gemini-cli
   # codex is managed via programs.codex in modules/home-manager/programs/codex.nix
 ]

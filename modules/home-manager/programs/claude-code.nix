@@ -17,6 +17,7 @@
       - If something goes sideways, STOP and re-plan immediately — don't keep pushing
       - Use plan mode for verification steps, not just building
       - Write detailed specs upfront to reduce ambiguity
+      - **MANDATORY**: When the plan-review hook returns Codex/Gemini reviews, you MUST immediately spawn the `plan-deliberation` agent to add your own review and run deliberation rounds until consensus. Never skip this step — never just summarize the reviews yourself.
 
       ### 2. Subagent Strategy
       - Use subagents liberally to keep main context window clean
@@ -92,7 +93,7 @@
               {
                 type = "command";
                 command = "~/.claude/hooks/plan-review.sh";
-                timeout = 300;
+                timeout = 600;
               }
             ];
           }
@@ -372,8 +373,10 @@
     hooks = {
       "plan-review.sh" = ''
         #!/bin/bash
-        # Codex Plan Review Hook
-        # Triggers when Claude exits plan mode to get a second opinion on the plan
+        # Plan Deliberation Hook
+        # Triggers when Claude exits plan mode to launch parallel reviews
+        # from Codex (OpenAI) and Gemini (Google), feeding back into Claude
+        # for a multi-model deliberation until consensus.
 
         # Read hook input from stdin
         INPUT=$(cat)
@@ -384,7 +387,12 @@
         # If no plan file in input, try to find it in the project
         if [ -z "$PLAN_FILE" ]; then
             PROJECT_DIR=$(echo "$INPUT" | jq -r '.cwd // "."')
-            PLAN_FILE=$(find "$PROJECT_DIR" -name "PLAN.md" -o -name "plan.md" 2>/dev/null | head -1)
+            for candidate in "$PROJECT_DIR/tasks/todo.md" "$PROJECT_DIR/PLAN.md" "$PROJECT_DIR/plan.md"; do
+                if [ -f "$candidate" ]; then
+                    PLAN_FILE="$candidate"
+                    break
+                fi
+            done
         fi
 
         # Exit silently if no plan found (non-blocking)
@@ -395,30 +403,91 @@
         # Read the plan content
         PLAN_CONTENT=$(cat "$PLAN_FILE")
 
-        # Get Codex's review
-        REVIEW=$(codex exec --dangerously-bypass-approvals-and-sandbox "You are reviewing a plan that Claude Code created. Analyze it for:
+        # Truncate very long plans to avoid CLI argument limits
+        if [ ''${#PLAN_CONTENT} -gt 15000 ]; then
+            PLAN_CONTENT="''${PLAN_CONTENT:0:15000}
 
-        1. Potential issues or risks
+        [... TRUNCATED — plan exceeds 15000 characters ...]"
+        fi
+
+        REVIEW_PROMPT="You are one of three AI reviewers (Claude, Codex, Gemini) in a plan deliberation. Provide an independent, critical review.
+
+        Analyze for:
+        1. Potential issues, risks, or blind spots
         2. Missing steps or considerations
         3. Better alternatives (if any)
         4. Edge cases not addressed
-
-        Be concise. Only flag significant concerns.
+        5. Feasibility concerns
 
         PLAN:
         $PLAN_CONTENT
 
-        Respond with:
-        - ✓ LGTM (if plan is solid)
-        - OR specific concerns (bullet points, max 5)")
+        Format your response as:
+        ### Verdict: [APPROVE / CONCERNS / REJECT]
+        ### Key Points:
+        - [numbered list of findings]
+        ### Suggested Changes:
+        - [specific actionable suggestions]"
 
-        # Output the review as context for the user
+        # Run Codex and Gemini reviews in parallel
+        CODEX_OUTPUT=$(mktemp)
+        GEMINI_OUTPUT=$(mktemp)
+
+        # Launch Codex review in background
+        (codex exec --dangerously-bypass-approvals-and-sandbox \
+          -m gpt-5.3-codex -c model_reasoning_effort="high" \
+          "$REVIEW_PROMPT" 2>/dev/null > "$CODEX_OUTPUT") &
+        CODEX_PID=$!
+
+        # Launch Gemini review in background
+        (gemini -p "$REVIEW_PROMPT" --sandbox 2>/dev/null > "$GEMINI_OUTPUT") &
+        GEMINI_PID=$!
+
+        # Wait for both with timeout (120s each)
+        TIMEOUT=120
+        for pid in $CODEX_PID $GEMINI_PID; do
+            ( sleep $TIMEOUT && kill $pid 2>/dev/null ) &
+            WATCHDOG=$!
+            wait $pid 2>/dev/null
+            kill $WATCHDOG 2>/dev/null 2>&1
+            wait $WATCHDOG 2>/dev/null 2>&1
+        done
+
+        CODEX_REVIEW=$(cat "$CODEX_OUTPUT")
+        GEMINI_REVIEW=$(cat "$GEMINI_OUTPUT")
+        rm -f "$CODEX_OUTPUT" "$GEMINI_OUTPUT"
+
+        # Output initial reviews for Claude to pick up and deliberate
         echo ""
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "🔍 CODEX SECOND OPINION ON PLAN"
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        echo "$REVIEW"
-        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "🏛️  PLAN DELIBERATION — INITIAL REVIEWS"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo ""
+
+        if [ -n "$CODEX_REVIEW" ]; then
+            echo "## 🔵 Codex Review (OpenAI gpt-5.3-codex)"
+            echo "$CODEX_REVIEW"
+        else
+            echo "## 🔵 Codex Review (OpenAI)"
+            echo "⚠️  Codex did not respond (timeout or error)"
+        fi
+
+        echo ""
+
+        if [ -n "$GEMINI_REVIEW" ]; then
+            echo "## 🔴 Gemini Review (Google)"
+            echo "$GEMINI_REVIEW"
+        else
+            echo "## 🔴 Gemini Review (Google)"
+            echo "⚠️  Gemini did not respond (timeout or error)"
+        fi
+
+        echo ""
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "MANDATORY: Spawn the plan-deliberation agent NOW to"
+        echo "add your Claude review and run deliberation rounds"
+        echo "until all three models reach consensus."
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
         echo ""
 
         exit 0
@@ -426,6 +495,157 @@
     };
 
     agents = {
+      "plan-deliberation.md" = ''
+        ---
+        name: plan-deliberation
+        description: Multi-model plan deliberation agent. Orchestrates a consensus-driven review of plans between Claude, Codex (OpenAI), and Gemini (Google). Use when exiting plan mode or when the user wants a collaborative plan review.
+        ---
+
+        # Plan Deliberation Agent
+
+        You orchestrate a **multi-model deliberation** on plans. Three AI reviewers (Claude, Codex, Gemini) discuss and debate a plan until they reach consensus or exhaust the round limit.
+
+        You must always respond in French for communication, but all code and technical terms remain in English.
+
+        ## Context
+
+        When this agent is invoked, the hook has already collected initial reviews from Codex and Gemini (visible in the conversation context). Your job is to:
+        1. Add your own Claude review
+        2. Run deliberation rounds if there's no consensus
+        3. Present the final synthesis
+
+        ## Step 1: Your Review (Claude)
+
+        Read the plan and provide your own independent analysis:
+        - Architectural soundness and design trade-offs
+        - Missing steps or dependencies
+        - Risk assessment
+        - Feasibility and complexity estimation
+
+        Format identically to the other reviews:
+        ```
+        ## 🟢 Claude Review
+        ### Verdict: [APPROVE / CONCERNS / REJECT]
+        ### Key Points:
+        - [findings]
+        ### Suggested Changes:
+        - [suggestions]
+        ```
+
+        ## Step 2: Check for Consensus
+
+        **Consensus** = All three reviewers APPROVE (minor suggestions OK).
+
+        If consensus: skip to Step 4.
+        If not: proceed to Step 3.
+
+        ## Step 3: Deliberation Rounds (max 3)
+
+        For each round, share ALL reviews with each dissenting model and ask them to respond to the others' points.
+
+        **Run Codex and Gemini deliberation calls in parallel** using concurrent Bash tool calls:
+
+        ### Codex Deliberation
+        ```bash
+        codex exec --dangerously-bypass-approvals-and-sandbox -m gpt-5.3-codex -c model_reasoning_effort="high" "Plan deliberation round N.
+
+        ORIGINAL PLAN:
+        <plan summary>
+
+        ALL REVIEWS:
+        <claude review>
+        <codex review>
+        <gemini review>
+
+        Consider the other reviewers' points carefully. Either:
+        1. Maintain your position with evidence
+        2. Update your assessment based on valid points
+        3. Propose a compromise
+
+        Format:
+        ### Updated Verdict: [APPROVE / CONCERNS / REJECT]
+        ### Response to Other Reviewers:
+        - [point-by-point]
+        ### Remaining Concerns:
+        - [if any]" 2>/dev/null
+        ```
+
+        ### Gemini Deliberation
+        ```bash
+        gemini -p "Plan deliberation round N.
+
+        ORIGINAL PLAN:
+        <plan summary>
+
+        ALL REVIEWS:
+        <claude review>
+        <codex review>
+        <gemini review>
+
+        Consider the other reviewers' points carefully. Either:
+        1. Maintain your position with evidence
+        2. Update your assessment based on valid points
+        3. Propose a compromise
+
+        Format:
+        ### Updated Verdict: [APPROVE / CONCERNS / REJECT]
+        ### Response to Other Reviewers:
+        - [point-by-point]
+        ### Remaining Concerns:
+        - [if any]" --sandbox 2>/dev/null
+        ```
+
+        ### Your Update (Claude)
+        Update your own assessment honestly. If Codex or Gemini raised valid points you missed, acknowledge them.
+
+        After each round, check for consensus again. If reached, proceed to Step 4. Otherwise, continue (max 3 rounds).
+
+        ## Step 4: Final Synthesis
+
+        Present the consolidated result:
+
+        ```
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        🏛️ PLAN DELIBERATION — FINAL VERDICT
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        ## Consensus: [REACHED after N rounds / NOT REACHED after 3 rounds]
+
+        ### Final Verdicts:
+        - 🟢 Claude: [APPROVE/CONCERNS/REJECT]
+        - 🔵 Codex: [APPROVE/CONCERNS/REJECT]
+        - 🔴 Gemini: [APPROVE/CONCERNS/REJECT]
+
+        ### Agreed Points:
+        - [points all three agree on]
+
+        ### Resolved Disagreements:
+        - [points debated but resolved, with final position]
+
+        ### Remaining Disagreements (if any):
+        - [topic]: Claude thinks X, Codex thinks Y, Gemini thinks Z
+
+        ### Recommended Plan Changes:
+        1. [actionable changes based on the deliberation]
+
+        ### Risk Assessment:
+        - [consolidated risks from all reviewers]
+
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        ```
+
+        ## Rules
+
+        1. **Run Codex and Gemini in parallel** — always use concurrent Bash calls
+        2. **All three must participate** in each deliberation round
+        3. **Max 3 deliberation rounds** — then present as-is
+        4. **Be genuinely open** — update your position when others raise valid points
+        5. **Stay focused** — only significant concerns, not style preferences
+        6. **Evidence-based** — reference specific parts of the plan
+        7. **Transparency** — show everything each model said, hide nothing
+        8. **French communication** — all user-facing text in French, code in English
+      '';
+
       "codex-review.md" = ''
         ---
         name: codex-review
