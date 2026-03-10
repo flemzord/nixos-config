@@ -24,7 +24,4 @@ in
 
   # SSH config (contains IPs)
   "secrets/ssh-config.age".publicKeys = allKeys;
-
-  # Signoz ingestion token (OTEL headers)
-  "secrets/signoz-token.age".publicKeys = allKeys;
 }
