@@ -43,7 +43,7 @@ with pkgs; [
   pipx
   git-subrepo
   go-task
-  httpie
+  # httpie # Temporarily disabled: test_reading_from_stdin timeout in nixpkgs
   k6
   kubectx
   kubernetes-helm
@@ -80,7 +80,7 @@ with pkgs; [
   # devenv # Temporarily disabled due to cachix build issues
   # Dev tools GoLang
   #go
-  #gopls
+  gopls
   # pulumi-bin
   # Dev tools Rust
   rustc
