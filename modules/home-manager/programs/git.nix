@@ -22,6 +22,7 @@
       ".beads/"
       ".entire/"
       "ralph/"
+      ".omc/"
     ];
     lfs = {
       enable = true;
