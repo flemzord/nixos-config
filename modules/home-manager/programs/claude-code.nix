@@ -79,7 +79,7 @@
         AWS_PROFILE = "staging-FormanceBedrockAccess";
         AWS_REGION = "eu-west-1";
         CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
-        CLAUDE_CODE_USE_BEDROCK=  "1";
+        # CLAUDE_CODE_USE_BEDROCK=  "1";
       };
       includeCoAuthoredBy = false;
       model = "eu.anthropic.claude-opus-4-6-v1[1m]";
@@ -91,6 +91,7 @@
       };
       enabledPlugins = {
         "formance-skills@formance-plugins" = true;
+        "gopls-lsp@claude-plugins-official" = true;
       };
       hooks = {
         PostToolUse = [
