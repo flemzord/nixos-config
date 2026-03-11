@@ -117,7 +117,7 @@
       skipDangerousModePermissionPrompt = true;
       statusLine = {
         type = "command";
-        command = "bun x ccusage statusline";
+        command = "node /Users/flemzord/.claude/hud/omc-hud.mjs";
       };
       enabledPlugins = {
         "formance-skills@formance-plugins" = true;
