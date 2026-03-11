@@ -123,7 +123,7 @@
         #"formance-skills@formance-plugins" = true;
         "gopls-lsp@claude-plugins-official" = true;
         "typescript-lsp@claude-plugins-official" = true;
-        "oh-my-claudecode@omc" = "true";
+        "oh-my-claudecode@omc" = true;
       };
       hooks = {
         PostToolUse = [
