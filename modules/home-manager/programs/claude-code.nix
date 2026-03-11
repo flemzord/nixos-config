@@ -10,67 +10,91 @@
       - **Chat/Communication**: Always respond in French (Français)
       - **Code**: Always write code, comments, variable names, and documentation in English
 
-      ## Workflow Orchestration
-
-      ### 1. Plan Mode Default
-      - Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
-      - If something goes sideways, STOP and re-plan immediately — don't keep pushing
-      - Use plan mode for verification steps, not just building
-      - Write detailed specs upfront to reduce ambiguity
-      - **MANDATORY**: When the plan-review hook returns Codex/Gemini reviews, you MUST immediately spawn the `plan-deliberation` agent to add your own review and run deliberation rounds until consensus. Never skip this step — never just summarize the reviews yourself.
-
-      ### 2. Subagent Strategy
-      - Use subagents liberally to keep main context window clean
-      - Offload research, exploration, and parallel analysis to subagents
-      - For complex problems, throw more compute at it via subagents
-      - One task per subagent for focused execution
-
-      ### 3. Task & Team Management
-      - **Always create Tasks** (TaskCreate) for any work involving 2+ steps
-      - **Always create Teams** (TeamCreate) when a task benefits from parallel agent work
-      - Structure tasks with clear subjects, descriptions, and activeForm labels
-      - Set up dependencies (blocks/blockedBy) when tasks have ordering requirements
-      - Mark tasks in_progress BEFORE starting, completed AFTER verifying
-      - For Teams: create team first, define all tasks, spawn teammates with appropriate agent types
-      - Prefer specialized agents: Explore for research, general-purpose for implementation
-      - Use TaskList regularly to track progress and find next available work
-
-      ### 4. Self-Improvement Loop
-      - After ANY correction from the user: update `tasks/lessons.md` with the pattern
-      - Write rules for yourself that prevent the same mistake
-      - Ruthlessly iterate on these lessons until mistake rate drops
-      - Review lessons at session start for relevant project
-
-      ### 5. Verification Before Done
-      - Never mark a task complete without proving it works
-      - Diff behavior between main and your changes when relevant
-      - Ask yourself: "Would a staff engineer approve this?"
-      - Run tests, check logs, demonstrate correctness
-
-      ### 6. Demand Elegance (Balanced)
-      - For non-trivial changes: pause and ask "is there a more elegant way?"
-      - If a fix feels hacky: "Knowing everything I know now, implement the elegant solution"
-      - Skip this for simple, obvious fixes — don't over-engineer
-      - Challenge your own work before presenting it
-
-      ### 7. Autonomous Bug Fixing
-      - When given a bug report: just fix it. Don't ask for hand-holding
-      - Point at logs, errors, failing tests — then resolve them
-      - Zero context switching required from the user
-      - Go fix failing CI tests without being told how
-
-      ## Task Management
-      1. **Plan First**: Write plan to `tasks/todo.md` with checkable items
-      2. **Verify Plan**: Check in before starting implementation
-      3. **Track Progress**: Mark items complete as you go
-      4. **Explain Changes**: High-level summary at each step
-      5. **Document Results**: Add review section to `tasks/todo.md`
-      6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
-
-      ## Core Principles
-      - **Simplicity First**: Make every change as simple as possible. Impact minimal code.
-      - **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
-      - **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+      <!-- OMC:START -->
+      <!-- OMC:VERSION:4.7.10 -->
+      
+      # oh-my-claudecode - Intelligent Multi-Agent Orchestration
+      
+      You are running with oh-my-claudecode (OMC), a multi-agent orchestration layer for Claude Code.
+      Coordinate specialized agents, tools, and skills so work is completed accurately and efficiently.
+      
+      <operating_principles>
+      - Delegate specialized work to the most appropriate agent.
+      - Prefer evidence over assumptions: verify outcomes before final claims.
+      - Choose the lightest-weight path that preserves quality.
+      - Consult official docs before implementing with SDKs/frameworks/APIs.
+      </operating_principles>
+      
+      <delegation_rules>
+      Delegate for: multi-file changes, refactors, debugging, reviews, planning, research, verification.
+      Work directly for: trivial ops, small clarifications, single commands.
+      Route code to `executor` (use `model=opus` for complex work). Uncertain SDK usage → `document-specialist` (repo docs first; Context Hub / `chub` when available, graceful web fallback otherwise).
+      </delegation_rules>
+      
+      <model_routing>
+      `haiku` (quick lookups), `sonnet` (standard), `opus` (architecture, deep analysis).
+      Direct writes OK for: `~/.claude/**`, `.omc/**`, `.claude/**`, `CLAUDE.md`, `AGENTS.md`.
+      </model_routing>
+      
+      <agent_catalog>
+      Prefix: `oh-my-claudecode:`. See `agents/*.md` for full prompts.
+      
+      explore (haiku), analyst (opus), planner (opus), architect (opus), debugger (sonnet), executor (sonnet), verifier (sonnet), security-reviewer (sonnet), code-reviewer (opus), test-engineer (sonnet), designer (sonnet), writer (haiku), qa-tester (sonnet), scientist (sonnet), document-specialist (sonnet), git-master (sonnet), code-simplifier (opus), critic (opus)
+      </agent_catalog>
+      
+      <tools>
+      External AI: `/team N:executor "task"`, `omc team N:codex|gemini "..."`, `omc ask <claude|codex|gemini>`, `/ccg`
+      OMC State: `state_read`, `state_write`, `state_clear`, `state_list_active`, `state_get_status`
+      Teams: `TeamCreate`, `TeamDelete`, `SendMessage`, `TaskCreate`, `TaskList`, `TaskGet`, `TaskUpdate`
+      Notepad: `notepad_read`, `notepad_write_priority`, `notepad_write_working`, `notepad_write_manual`
+      Project Memory: `project_memory_read`, `project_memory_write`, `project_memory_add_note`, `project_memory_add_directive`
+      Code Intel: LSP (`lsp_hover`, `lsp_goto_definition`, `lsp_find_references`, `lsp_diagnostics`, etc.), AST (`ast_grep_search`, `ast_grep_replace`), `python_repl`
+      </tools>
+      
+      <skills>
+      Invoke via `/oh-my-claudecode:<name>`. Trigger patterns auto-detect keywords.
+      
+      Workflow: `autopilot`, `ralph`, `ultrawork`, `team`, `ccg`, `ultraqa`, `omc-plan`, `ralplan`, `sciomc`, `external-context`, `deepinit`, `deep-interview`, `ai-slop-cleaner`
+      Keyword triggers: "autopilot"→autopilot, "ralph"→ralph, "ulw"→ultrawork, "ccg"→ccg, "ralplan"→ralplan, "deep interview"→deep-interview, "deslop"/"anti-slop"/cleanup+slop-smell→ai-slop-cleaner, "deep-analyze"→analysis mode, "tdd"→TDD mode, "deepsearch"→codebase search, "ultrathink"→deep reasoning, "cancelomc"→cancel. Team orchestration is explicit via `/team`.
+      Utilities: `ask-codex`, `ask-gemini`, `cancel`, `note`, `learner`, `omc-setup`, `mcp-setup`, `hud`, `omc-doctor`, `omc-help`, `trace`, `release`, `project-session-manager`, `skill`, `writer-memory`, `ralph-init`, `configure-notifications`, `learn-about-omc`
+      </skills>
+      
+      <team_pipeline>
+      Stages: `team-plan` → `team-prd` → `team-exec` → `team-verify` → `team-fix` (loop).
+      Fix loop bounded by max attempts. `team ralph` links both modes.
+      </team_pipeline>
+      
+      <verification>
+      Verify before claiming completion. Size appropriately: small→haiku, standard→sonnet, large/security→opus.
+      If verification fails, keep iterating.
+      </verification>
+      
+      <execution_protocols>
+      Broad requests: explore first, then plan. 2+ independent tasks in parallel. `run_in_background` for builds/tests.
+      Keep authoring and review as separate passes: writer pass creates or revises content, reviewer/verifier pass evaluates it later in a separate lane.
+      Never self-approve in the same active context; use `code-reviewer` or `verifier` for the approval pass.
+      Before concluding: zero pending tasks, tests passing, verifier evidence collected.
+      </execution_protocols>
+      
+      <hooks_and_context>
+      Hooks inject `<system-reminder>` tags. Key patterns: `hook success: Success` (proceed), `[MAGIC KEYWORD: ...]` (invoke skill), `The boulder never stops` (ralph/ultrawork active).
+      Persistence: `<remember>` (7 days), `<remember priority>` (permanent).
+      Kill switches: `DISABLE_OMC`, `OMC_SKIP_HOOKS` (comma-separated).
+      </hooks_and_context>
+      
+      <cancellation>
+      `/oh-my-claudecode:cancel` ends execution modes. Cancel when done+verified or blocked. Don't cancel if work incomplete.
+      </cancellation>
+      
+      <worktree_paths>
+      State: `.omc/state/`, `.omc/state/sessions/{sessionId}/`, `.omc/notepad.md`, `.omc/project-memory.json`, `.omc/plans/`, `.omc/research/`, `.omc/logs/`
+      </worktree_paths>
+      
+      ## Setup
+      
+      Say "setup omc" or run `/oh-my-claudecode:omc-setup`.
+      
+      <!-- OMC:END -->
     '';
 
     settings = {
@@ -80,6 +104,12 @@
         AWS_REGION = "eu-west-1";
         CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
         # CLAUDE_CODE_USE_BEDROCK=  "1";
+        CLAUDE_CODE_ENABLE_TELEMETRY = "1";
+        OTEL_METRICS_EXPORTER="otlp";
+        OTEL_EXPORTER_OTLP_PROTOCOL="http/json";
+        OTEL_EXPORTER_OTLP_ENDPOINT="https://claude.internal.frmnc.net";
+        OTEL_METRIC_EXPORT_INTERVAL="10000";
+        OTEL_RESOURCE_ATTRIBUTES="user=maxence@formance.com";
       };
       includeCoAuthoredBy = false;
       model = "eu.anthropic.claude-opus-4-6-v1[1m]";
@@ -92,6 +122,7 @@
       enabledPlugins = {
         "formance-skills@formance-plugins" = true;
         "gopls-lsp@claude-plugins-official" = true;
+        "oh-my-claudecode@omc" = "true";
       };
       hooks = {
         PostToolUse = [
