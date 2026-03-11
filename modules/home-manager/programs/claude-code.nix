@@ -120,8 +120,9 @@
         command = "node /Users/flemzord/.claude/hud/omc-hud.mjs";
       };
       enabledPlugins = {
-        "formance-skills@formance-plugins" = true;
+        #"formance-skills@formance-plugins" = true;
         "gopls-lsp@claude-plugins-official" = true;
+        "typescript-lsp@claude-plugins-official" = true;
         "oh-my-claudecode@omc" = "true";
       };
       hooks = {
