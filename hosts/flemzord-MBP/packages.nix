@@ -49,8 +49,6 @@ with pkgs; [
   kubernetes-helm
   helm-docs
   supabase-cli
-  packer
-  hcloud
   tenv
   direnv
   yq
