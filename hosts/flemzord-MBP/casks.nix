@@ -16,7 +16,7 @@ _:
   "microsoft-teams"
   "tailscale-app"
   "superhuman"
-  "warp"
+  "wispr-flow"
   "bambu-studio"
 
   # Communication Tools
@@ -43,6 +43,7 @@ _:
   "zed"
 
   # Dev
+  "claude"
   "supacode"
   "entireio/tap/entire"
 ]
