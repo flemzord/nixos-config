@@ -59,8 +59,10 @@ in
       alias k='kubectl'
       alias kx='kubectx'
 
-      eval $(ssh-agent)
-      ssh-add ~/.ssh/github
+      if [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; then
+        eval $(ssh-agent) > /dev/null
+        ssh-add ~/.ssh/github 2>/dev/null
+      fi
 
       ${lib.optionalString isDarwin ''
       export ANDROID_HOME=$HOME/Library/Android/sdk
