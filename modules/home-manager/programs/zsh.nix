@@ -46,6 +46,7 @@ in
 
       export PATH="$HOME/.krew/bin:$PATH"
       export PATH="$HOME/.local/bin:$PATH"
+      export NPM_CONFIG_PREFIX="$HOME/.cache/npm"
       export PATH="$HOME/.cache/npm/bin:$PATH"
       eval "$(direnv hook zsh)"
 
