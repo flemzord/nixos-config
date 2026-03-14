@@ -29,6 +29,8 @@ jobs:
         uses: cachix/install-nix-action@v26
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            filter-syscalls = false
 
       - name: Update flake.lock
         run: nix flake update
