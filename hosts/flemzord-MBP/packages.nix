@@ -15,6 +15,7 @@ with pkgs; [
   fzf
   font-awesome
   gcc
+  apple-sdk
   gh # github
   git-filter-repo
   gnupg
