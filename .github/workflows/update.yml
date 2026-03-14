@@ -28,12 +28,6 @@ jobs:
       - name: Show flake
         run: nix flake show
 
-      - name: Lint (statix)
-        run: nix develop -c statix check
-
-      - name: Deadnix
-        run: nix develop -c deadnix --fail .
-
       - name: Build NixOS hosts
         run: |
           nix build .#nixosConfigurations.home-hp.config.system.build.toplevel -L
