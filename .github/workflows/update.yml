@@ -17,6 +17,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
       - name: Install Nix
         uses: cachix/install-nix-action@v26
         with:
@@ -28,15 +36,26 @@ jobs:
       - name: Show flake
         run: nix flake show
 
-      - name: Build NixOS hosts
-        run: |
-          nix build .#nixosConfigurations.home-hp.config.system.build.toplevel -L
-          nix build .#nixosConfigurations.home-dell.config.system.build.toplevel -L
-          nix build .#nixosConfigurations.dev-server.config.system.build.toplevel -L
+      - name: Build NixOS host home-hp
+        run: nix build .#nixosConfigurations.home-hp.config.system.build.toplevel -L
+
+      - name: Cleanup store
+        run: nix-collect-garbage
+
+      - name: Build NixOS host home-dell
+        run: nix build .#nixosConfigurations.home-dell.config.system.build.toplevel -L
+
+      - name: Cleanup store
+        run: nix-collect-garbage
+
+      - name: Build NixOS host dev-server
+        run: nix build .#nixosConfigurations.dev-server.config.system.build.toplevel -L
+
+      - name: Cleanup store
+        run: nix-collect-garbage
 
       - name: Build Home Manager configuration
-        run: |
-          nix build .#homeConfigurations."flemzord@dev".activationPackage -L
+        run: nix build .#homeConfigurations."flemzord@dev".activationPackage -L
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
