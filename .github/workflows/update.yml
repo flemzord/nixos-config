@@ -17,47 +17,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Free disk space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: false
-          large-packages: true
-          docker-images: true
-          swap-storage: true
-
       - name: Install Nix
         uses: cachix/install-nix-action@v26
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: |
-            filter-syscalls = false
 
       - name: Update flake.lock
         run: nix flake update
-
-      - name: Show flake
-        run: nix flake show
-
-      - name: Build NixOS host home-hp
-        run: nix build .#nixosConfigurations.home-hp.config.system.build.toplevel -L
-
-      - name: Cleanup store
-        run: nix-collect-garbage
-
-      - name: Build NixOS host home-dell
-        run: nix build .#nixosConfigurations.home-dell.config.system.build.toplevel -L
-
-      - name: Cleanup store
-        run: nix-collect-garbage
-
-      - name: Build NixOS host dev-server
-        run: nix build .#nixosConfigurations.dev-server.config.system.build.toplevel -L
-
-      - name: Cleanup store
-        run: nix-collect-garbage
-
-      - name: Build Home Manager configuration
-        run: nix build .#homeConfigurations."flemzord@dev".activationPackage -L
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
@@ -67,6 +33,4 @@ jobs:
           title: "chore: automated flake.lock update"
           body: |
             Automated weekly update of `flake.lock`.
-
-            All NixOS and Home Manager configurations built successfully.
           delete-branch: true
