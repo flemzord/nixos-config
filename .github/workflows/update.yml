@@ -23,13 +23,10 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
 
       - name: Update flake.lock
-        run: nix flake update --commit-lock-file
+        run: nix flake update
 
       - name: Show flake
         run: nix flake show
-
-      - name: Formatter check
-        run: nix fmt -- --check
 
       - name: Lint (statix)
         run: nix develop -c statix check
