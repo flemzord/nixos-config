@@ -56,4 +56,5 @@ with pkgs; [
   sqlite
   curl
   wget
+  nvd
 ]
