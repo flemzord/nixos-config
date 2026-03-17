@@ -21,6 +21,7 @@
       ".entire/"
       "ralph/"
       ".omc/"
+      ".claude/worktrees"
     ];
     lfs = {
       enable = true;
