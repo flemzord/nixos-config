@@ -15,8 +15,6 @@
       ".env"
       "TODOS.md"
       "todos/"
-      "CLAUDE.md"
-      ".claude/"
       "tasks/"
       ".ralph-tui/"
       ".beads/"
