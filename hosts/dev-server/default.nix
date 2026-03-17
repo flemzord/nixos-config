@@ -13,6 +13,7 @@
     ./../../modules/roles/server.nix
     ./../../modules/services/docker.nix
     ./../../modules/services/nixos-auto-update.nix
+    ./../../modules/services/postgresql.nix
   ];
 
   # Bootloader - Using GRUB for better VM compatibility
