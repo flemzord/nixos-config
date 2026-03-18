@@ -11,14 +11,6 @@
         AWS_PROFILE = "staging-FormanceBedrockAccess";
         AWS_REGION = "eu-west-1";
         CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
-        # CLAUDE_CODE_USE_BEDROCK=  "1";
-        CLAUDE_CODE_ENABLE_TELEMETRY = "1";      
-        OTEL_EXPORTER_OTLP_ENDPOINT = "https://claude.internal.frmnc.net";
-        OTEL_EXPORTER_OTLP_PROTOCOL = "http/protobuf";
-        OTEL_METRICS_EXPORTER = "otlp";
-        OTEL_METRIC_EXPORT_INTERVAL = "10000";
-        OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE = "cumulative";
-        OTEL_RESOURCE_ATTRIBUTES = "user=$USER";
       };
       includeCoAuthoredBy = false;
       model = "eu.anthropic.claude-opus-4-6-v1[1m]";

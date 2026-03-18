@@ -82,6 +82,7 @@ let user = "flemzord"; in
       persistent-apps = [
         "/Applications/Superhuman.app/"
         "/Applications/Google Chrome.app/"
+        "/Applications/Comet.app/"
         "/Applications/Dia.app/"
         "/Applications/Slack.app/"
         "/Applications/Mattermost.app/"

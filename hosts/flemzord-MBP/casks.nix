@@ -18,6 +18,7 @@ _:
   "superhuman"
   "wispr-flow"
   "bambu-studio"
+  "comet"
 
   # Communication Tools
   "discord"
