@@ -88,7 +88,7 @@ in
       alias cc='claude --dangerously-skip-permissions'
       alias co='codex --full-auto'
       
-      export CLAUDE_CODE_USE_BEDROCK=1
+      # export CLAUDE_CODE_USE_BEDROCK=1
       export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
       
     '')

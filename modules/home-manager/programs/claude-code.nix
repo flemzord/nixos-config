@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.claude-code = {
@@ -13,7 +13,7 @@
         CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
       };
       includeCoAuthoredBy = false;
-      model = "eu.anthropic.claude-opus-4-6-v1[1m]";
+      model = "opus[1m]";
       alwaysThinkingEnabled = true;
       skipDangerousModePermissionPrompt = true;
       statusLine = {
