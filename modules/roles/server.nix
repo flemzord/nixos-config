@@ -7,6 +7,7 @@
       ./../programs/zsh.nix
       ./../programs/git.nix
       ./../services/tailscale.nix
+      ./../services/netbird.nix
     ];
 
   nix.optimise.automatic = true;
