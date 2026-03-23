@@ -38,7 +38,7 @@
         qmd = {
           command = "npx @tobilu/qmd -y";
           args = ["mcp"];
-        }
+        };
       };
     };
 
