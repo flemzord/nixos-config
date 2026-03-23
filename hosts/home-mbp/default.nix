@@ -3,6 +3,8 @@
 let user = "flemzord"; in
 {
 
+  networking.hostName = "home-mbp";
+
   imports = [
     ./../../modules/common/cachix.nix
     ./home-manager.nix

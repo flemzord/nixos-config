@@ -2,7 +2,8 @@
 MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 # The name of the nixosConfiguration in the flake
-NIXNAME ?= flemzord-MBP
+# Auto-detect from hostname; override with: make switch NIXNAME=foo
+NIXNAME ?= $(shell hostname -s)
 
 # The name of the homeConfiguration in the flake
 HMNAME ?= flemzord@dev
