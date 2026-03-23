@@ -36,7 +36,7 @@
           url = "https://mcp.kipli.dev/mcp";
         };
         qmd = {
-          command = "qmd";
+          command = "npx @tobilu/qmd -y";
           args = ["mcp"];
         }
       };
