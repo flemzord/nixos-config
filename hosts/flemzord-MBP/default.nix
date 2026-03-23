@@ -8,6 +8,7 @@ let user = "flemzord"; in
   imports = [
     ./../../modules/common/cachix.nix
     ./home-manager.nix
+    ./crons.nix
     #./../../modules/programs/aerospace.nix
   ];
 
