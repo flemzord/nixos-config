@@ -35,6 +35,10 @@
           type = "url";
           url = "https://mcp.kipli.dev/mcp";
         };
+        qmd = {
+          command = "qmd";
+          args = ["mcp"];
+        }
       };
     };
 
