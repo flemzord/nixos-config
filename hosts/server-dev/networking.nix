@@ -1,33 +1,31 @@
-{ lib, ... }: {
-  # This file was populated at runtime with the networking
-  # details gathered from the active system.
+{ lib, ... }:
+{
   networking = {
-    nameservers = [ "1.1.1.1"
- ];
-    defaultGateway = "172.31.1.1";
+    nameservers = [ "1.1.1.1" "9.9.9.9" ];
+    defaultGateway = {
+      address = "65.109.38.129";
+      interface = "eno1";
+    };
     defaultGateway6 = {
       address = "fe80::1";
-      interface = "eth0";
+      interface = "eno1";
     };
     dhcpcd.enable = false;
-    usePredictableInterfaceNames = lib.mkForce false;
+    usePredictableInterfaceNames = lib.mkForce true;
     interfaces = {
-      eth0 = {
+      eno1 = {
         ipv4.addresses = [
-          { address="168.119.225.21"; prefixLength=32; }
+          { address = "65.109.38.186"; prefixLength = 26; }
         ];
         ipv6.addresses = [
-          { address="2a01:4f8:1c1b:f56a::1"; prefixLength=64; }
-{ address="fe80::9000:6ff:fe6e:9a9f"; prefixLength=64; }
+          { address = "2a01:4f9:5a:2402::2"; prefixLength = 64; }
+          { address = "fe80::52eb:f6ff:fe2f:341f"; prefixLength = 64; }
         ];
-        ipv4.routes = [ { address = "172.31.1.1"; prefixLength = 32; } ];
-        ipv6.routes = [ { address = "fe80::1"; prefixLength = 128; } ];
       };
-      
     };
   };
+
   services.udev.extraRules = ''
-    ATTR{address}=="92:00:06:6e:9a:9f", NAME="eth0"
-    
+    ATTR{address}=="50:eb:f6:2f:34:1f", NAME="eno1"
   '';
 }

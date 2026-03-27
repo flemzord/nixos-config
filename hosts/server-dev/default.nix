@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./disk-config.nix
     ./hardware-configuration.nix
     ./networking.nix
     ./../../modules/profiles/nixos/common.nix
@@ -9,13 +10,8 @@
     ./../../modules/services/postgresql.nix
   ];
 
-  # Bootloader
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    efiInstallAsRemovable = true;
-  };
+  # Bootloader - GRUB managed by disko (installed on both NVMe)
+  boot.loader.grub.enable = true;
 
   networking.hostName = "server-dev";
 
