@@ -1,8 +1,6 @@
 { pkgs }:
 
-with pkgs;
-let sharedPackages = import ./../../modules/common/packages.nix { inherit pkgs; }; in
-sharedPackages ++ [
+with pkgs; [
   vim
   ncdu
   nodejs_20

@@ -7,8 +7,17 @@
 {
   imports = [
     ./homebrew.nix
-    ../../common/cachix.nix
   ];
+
+  nix.settings = {
+    substituters = [
+      "https://nix-community.cachix.org"
+      "https://cache.nixos.org/"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -24,7 +33,6 @@
     shell = pkgs.zsh;
   };
 
-  environment.systemPackages = import ../../common/packages.nix { inherit pkgs; };
 
   time.timeZone = "Europe/Paris";
   ids.gids.nixbld = 350;
