@@ -109,7 +109,7 @@
           ./hosts/laptop-work
         ];
       };
-      "laptop-personnal" = darwin.lib.darwinSystem {
+      "laptop-personal" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { inherit inputs; username = "flemzord"; };
         modules = [
@@ -118,7 +118,7 @@
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           ./modules/profiles/darwin/common.nix
-          ./hosts/laptop-personnal
+          ./hosts/laptop-personal
         ];
       };
     };
