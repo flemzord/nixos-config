@@ -1,52 +1,27 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { modulesPath, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./../../modules/common/cachix.nix
-      (modulesPath + "/installer/scan/not-detected.nix")
-      (modulesPath + "/profiles/qemu-guest.nix")
-      ./disk-config.nix
-      ./hardware-configuration.nix
-      ./../../modules/roles/server.nix
-      ./../../modules/services/docker.nix
-      ./../../modules/services/samba.nix
-      ./../../modules/services/transmission.nix
-      ./../../modules/services/home-assistant.nix
-      # ./../../modules/services/mosquitto.nix
-      # ./../../modules/services/homebridge.nix
-      #./../../modules/services/n8n.nix
-      # ./../../modules/services/qdrant.nix
-      ./../../modules/services/cloudflared.nix
-      ./../../modules/services/nixos-auto-update.nix
-    ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ./disk-config.nix
+    ./hardware-configuration.nix
+    ./../../modules/profiles/nixos/common.nix
+    ./../../modules/services/samba.nix
+    ./../../modules/services/transmission.nix
+    ./../../modules/services/home-assistant.nix
+    ./../../modules/services/cloudflared.nix
+  ];
 
-  # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
+  # Bootloader
   boot.loader.grub = {
-    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
-    # devices = [ ];
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
 
-  networking.hostName = "home-dell"; # Define your hostname.
+  networking.hostName = "home-dell";
 
-  users.users.flemzord = {
-    isNormalUser = true;
-    description = "flemzord";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      git
-      vim
-    ];
-  };
+  environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
   services.postgresql = {
     enable = true;
@@ -72,24 +47,10 @@
     '';
   };
 
-  environment.systemPackages = pkgs.callPackage ./packages.nix { };
-
-  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
-
-  # Auto-update NixOS configuration from git daily at 6 AM
   services.nixos-auto-update = {
     enable = true;
     hostname = "home-dell";
   };
 
-  # Disabled in favor of nixos-auto-update service that includes git pull
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   allowReboot = true;
-  #   persistent = true;
-  #   dates = "03:00";
-  #   operation = "switch";
-  #   flags = [ "--impure" "-L" ];
-  #   flake = "/etc/nixos#home-dell";
-  # };
+  system.stateVersion = "25.11";
 }

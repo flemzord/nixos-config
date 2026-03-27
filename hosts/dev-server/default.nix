@@ -1,22 +1,14 @@
-# Configuration for dev-server - Remote development server
-# Minimal, headless NixOS system with core development tools
-
 { pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix
-
-    # Shared modules
-    ./../../modules/common/cachix.nix
-    ./../../modules/roles/server.nix
-    ./../../modules/services/docker.nix
-    ./../../modules/services/nixos-auto-update.nix
+    ./../../modules/profiles/nixos/common.nix
     ./../../modules/services/postgresql.nix
   ];
 
-  # Bootloader - Using GRUB for better VM compatibility
+  # Bootloader
   boot.loader.grub = {
     enable = true;
     device = "nodev";
@@ -24,32 +16,14 @@
     efiInstallAsRemovable = true;
   };
 
-  # Hostname
   networking.hostName = "dev-server";
 
-  # User configuration
-  users.users.flemzord = {
-    isNormalUser = true;
-    description = "flemzord";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      git
-      vim
-    ];
-  };
-
-  # Development packages
   environment.systemPackages = pkgs.callPackage ./packages.nix { };
 
-  # DNS configuration
-  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
-
-  # Auto-update NixOS configuration from git daily at 6 AM
   services.nixos-auto-update = {
     enable = true;
     hostname = "dev-server";
   };
 
-  # No automatic upgrades - manual control for dev server
-  # system.autoUpgrade.enable = false;
+  system.stateVersion = "25.11";
 }
