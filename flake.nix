@@ -66,7 +66,7 @@
     };
   };
 
-  outputs = { darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, ... }: {
+  outputs = inputs@{ darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, ... }: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -99,51 +99,14 @@
     darwinConfigurations = {
       "flemzord-MBP" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = { inherit inputs; username = "flemzord"; };
         modules = [
           { nixpkgs.overlays = [ claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              user = "flemzord";
-              taps = {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "formancehq/homebrew-tap" = formancehq-cask;
-                "loft-sh/homebrew-tap" = loftsh-cask;
-                "earthly/homebrew-earthly" = earthly-cask;
-                "koyeb/homebrew-tap" = koyeb-cask;
-                "temporalio/homebrew-tap" = temporal-cask;
-                "charmbracelet/homebrew-tap" = charmbracelet-cask;
-                "darksworm/homebrew-tap" = darksworm-cask;
-              };
-              mutableTaps = true;
-              autoMigrate = true;
-            };
-          }
+          ./modules/profiles/darwin/common.nix
           ./hosts/flemzord-MBP
-        ];
-      };
-      "home-mbp" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          home-manager.darwinModules.home-manager
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              user = "flemzord";
-              taps = {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-              };
-              mutableTaps = true;
-              autoMigrate = true;
-            };
-          }
-          ./hosts/home-mbp
         ];
       };
     };

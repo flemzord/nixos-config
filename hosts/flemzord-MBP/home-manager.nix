@@ -1,70 +1,11 @@
-{ config, pkgs, ... }:
+{ pkgs, username, ... }:
 
 let
-  user = "flemzord";
+  user = username;
   fullName = "Maxence Maireaux";
   email = "maxence@maireaux.fr";
 in
 {
-  # It me
-  users.users.${user} = {
-    name = "${user}";
-    home = "/Users/${user}";
-    isHidden = false;
-    shell = pkgs.zsh;
-  };
-
-  # We use Homebrew to install impure software only (Mac Apps)
-  homebrew = {
-    enable = true;
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "zap";
-      upgrade = true;
-    };
-    prefix = "/opt/homebrew";
-    taps = [
-      "homebrew/cask"
-      "homebrew/core"
-      "formancehq/tap"
-      "koyeb/tap"
-      "loft-sh/tap"
-      "earthly/earthly"
-      "temporalio/homebrew-tap"
-      "steveyegge/beads"
-      "kamillobinski/thock"
-      "yakitrak/yakitrak"
-      "CleverCloud/misc"
-      "entireio/tap"
-    ];
-    casks = pkgs.callPackage ./casks.nix { };
-    brews = [
-      "dockutil"
-      "pre-commit"
-      "formancehq/tap/fctl"
-      "koyeb/tap/koyeb"
-      "loft-sh/tap/vcluster"
-      "earthly/earthly/earthly"
-      "temporalio/homebrew-tap/tcld"
-      "steveyegge/beads/bd"
-      "temporal"
-      "helmfile"
-      #"ansible"
-      "rbenv"
-      "tmux"
-      "argocd"
-      "jiratui"
-      "cocoapods"
-      "trufflehog"
-      "yamllint"
-      "specify"
-      "worktrunk"
-      "yakitrak/yakitrak/obsidian-cli"
-      "CleverCloud/misc/mdr"
-      "mobile-dev-inc/tap/maestro"
-    ];
-  };
-
   # Enable home-manager to manage the XDG standard
   home-manager = {
     useGlobalPkgs = true;
