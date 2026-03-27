@@ -40,13 +40,6 @@
     };
   };
 
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-connections
-    epiphany
-    evince
-  ];
-
   i18n.supportedLocales = [ "all" ];
   security.chromiumSuidSandbox.enable = true;
 
