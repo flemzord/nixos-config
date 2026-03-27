@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix
     ./../../modules/profiles/nixos/common.nix
+    ./../../modules/profiles/nixos/dev.nix
     ./../../modules/services/postgresql.nix
   ];
 
@@ -16,13 +17,11 @@
     efiInstallAsRemovable = true;
   };
 
-  networking.hostName = "dev-server";
-
-  environment.systemPackages = pkgs.callPackage ./packages.nix { };
+  networking.hostName = "server-dev";
 
   services.nixos-auto-update = {
     enable = true;
-    hostname = "dev-server";
+    hostname = "server-dev";
   };
 
   system.stateVersion = "25.11";

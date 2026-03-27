@@ -86,12 +86,14 @@
         ];
       };
 
-      "dev-server" = nixpkgs.lib.nixosSystem {
+      "server-dev" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          { nixpkgs.overlays = [ claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
           agenix.nixosModules.default
           disko.nixosModules.disko
-          ./hosts/dev-server
+          home-manager.nixosModules.home-manager
+          ./hosts/server-dev
         ];
       };
     };
@@ -120,17 +122,6 @@
           ./modules/profiles/darwin/common.nix
           ./hosts/laptop-personal
         ];
-      };
-    };
-
-    homeConfigurations = {
-      "flemzord@dev" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-          overlays = [ claude-code-nix.overlays.default ];
-        };
-        modules = [ ./hosts/dev ];
       };
     };
 
