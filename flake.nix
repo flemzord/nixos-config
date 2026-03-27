@@ -97,7 +97,7 @@
     };
 
     darwinConfigurations = {
-      "flemzord-MBP" = darwin.lib.darwinSystem {
+      "laptop-work" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { inherit inputs; username = "flemzord"; };
         modules = [
@@ -106,7 +106,19 @@
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           ./modules/profiles/darwin/common.nix
-          ./hosts/flemzord-MBP
+          ./hosts/laptop-work
+        ];
+      };
+      "laptop-personnal" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs; username = "flemzord"; };
+        modules = [
+          { nixpkgs.overlays = [ claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
+          agenix.darwinModules.default
+          home-manager.darwinModules.home-manager
+          nix-homebrew.darwinModules.nix-homebrew
+          ./modules/profiles/darwin/common.nix
+          ./hosts/laptop-personnal
         ];
       };
     };

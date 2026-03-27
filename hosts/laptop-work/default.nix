@@ -1,6 +1,6 @@
 { username, ... }:
 {
-  networking.hostName = "flemzord-MBP";
+  networking.hostName = "laptop-work";
 
   imports = [
     ./home-manager.nix

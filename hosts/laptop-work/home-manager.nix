@@ -30,7 +30,7 @@ in
         home = {
           enableNixpkgsReleaseCheck = false;
           stateVersion = "25.11";
-          packages = pkgs.callPackage ./packages.nix { };
+          packages = pkgs.callPackage ./../../modules/profiles/darwin/packages.nix { };
         };
 
         # Marked broken Oct 20, 2022 check later to remove this
