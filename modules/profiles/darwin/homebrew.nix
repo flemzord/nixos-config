@@ -9,7 +9,7 @@
   nix-homebrew = {
     enable = true;
     enableRosetta = false;
-    mutableTaps = lib.mkDefault false;
+    mutableTaps = true;
     autoMigrate = true;
     user = username;
     taps = {
