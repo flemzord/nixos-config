@@ -36,6 +36,12 @@ with pkgs; [
   turso-cli
   newman
   mosh
+  ctop
+  gnumake
+  htop
+  iftop
+  zip
+  screen
 
   # Dev tools
   krew

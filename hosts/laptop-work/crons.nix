@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  claudeBin = "/Users/flemzord/.local/bin/claude";
+  claudeBin = "/Users/flemzord/.nix-profile/bin/claude";
   vaultDir = "/Users/flemzord/Library/Mobile Documents/iCloud~md~obsidian/Documents/Main";
   cronDir = "${vaultDir}/cron";
   logDir = "${cronDir}/logs";
@@ -14,8 +14,8 @@ let
         "/bin/bash"
         "-c"
         ''
-          mkdir -p ${logDir}
-          ${claudeBin} --model sonnet ${if allowedTools != "" then "--allowedTools '${allowedTools}'" else "--print"} -p "$(cat '${cronDir}/${promptFile}')" 2>>${logDir}/${name}.stderr.log
+          mkdir -p '${logDir}'
+          '${claudeBin}' --model sonnet ${if allowedTools != "" then "--allowedTools '${allowedTools}'" else "--print"} -p "$(cat '${cronDir}/${promptFile}')" 2>>'${logDir}/${name}.stderr.log'
         ''
       ];
       WorkingDirectory = vaultDir;
@@ -26,7 +26,7 @@ let
       StandardErrorPath = "${logDir}/${name}.stderr.log";
       EnvironmentVariables = {
         HOME = "/Users/flemzord";
-        PATH = "/Users/flemzord/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+        PATH = "/Users/flemzord/.nix-profile/bin:/Users/flemzord/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin";
       };
     };
   };
