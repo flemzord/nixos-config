@@ -6,14 +6,12 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
-    initrd.kernelModules = [ "dm-raid" "md_mod" "raid1" ];
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "e1000e" ];
+    initrd.kernelModules = [ "md_mod" "raid1" ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
+    swraid.enable = true;
   };
-
-  # Disko manages filesystems
-  # fileSystems and swapDevices are declared in disk-config.nix
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = true;

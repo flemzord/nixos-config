@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -14,6 +14,9 @@
   boot.loader.grub.enable = true;
 
   networking.hostName = "server-dev";
+
+  # Disable NetworkManager — this server uses static IP config
+  networking.networkmanager.enable = lib.mkForce false;
 
   services.nixos-auto-update = {
     enable = true;

@@ -118,6 +118,9 @@
         NSWindowShouldDragOnGesture = {
           value = true;
         };
+        "com.apple.cameracontinuityd" = {
+          Disabled = true;
+        };
       };
     };
   };
