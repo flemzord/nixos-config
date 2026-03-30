@@ -52,7 +52,6 @@
       "rbenv"
       "tmux"
       "argocd"
-      "jiratui"
       "cocoapods"
       "trufflehog"
       "yamllint"

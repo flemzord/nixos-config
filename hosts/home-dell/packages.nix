@@ -14,7 +14,7 @@ with pkgs; [
 
   # Dev tools NodeJS
   nodejs_22
-  nodePackages.pnpm
-  nodePackages.yarn
+  pnpm
+  yarn
   bun
 ]
