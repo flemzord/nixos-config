@@ -28,7 +28,6 @@ with pkgs; [
   ripgrep
   sqlite
   sshpass
-  # ssm-session-manager-plugin # TODO: broken vendoring upstream
   zsh-powerlevel10k
   ffmpeg
   curl
@@ -42,6 +41,7 @@ with pkgs; [
   iftop
   zip
   screen
+  httpie
 
   # Dev tools
   krew
