@@ -6,10 +6,8 @@
     package = pkgs.claude-code; # From claude-code-nix overlay
 
     settings = {
-      awsAuthRefresh = "aws sso login";
+      "$schema" = "https://json.schemastore.org/claude-code-settings.json";
       env = {
-        AWS_PROFILE = "staging-FormanceBedrockAccess";
-        AWS_REGION = "eu-west-1";
         CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
       };
       includeCoAuthoredBy = false;
@@ -25,6 +23,7 @@
         "gopls-lsp@claude-plugins-official" = true;
         "typescript-lsp@claude-plugins-official" = true;
         "oh-my-claudecode@omc" = true;
+        "plannotator@plannotator" = true;
       };
       mcpServers = {
         chrome-devtools = {
