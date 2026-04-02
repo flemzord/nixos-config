@@ -4,7 +4,6 @@
 
   imports = [
     ./home-manager.nix
-    ./crons.nix
   ];
 
   # Agenix configuration
