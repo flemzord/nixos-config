@@ -60,6 +60,7 @@
       "yakitrak/yakitrak/obsidian-cli"
       "CleverCloud/misc/mdr"
       "mobile-dev-inc/tap/maestro"
+      "yt-dlp"
     ];
     casks = [
       # Shared across all Macs
