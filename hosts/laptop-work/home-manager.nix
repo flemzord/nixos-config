@@ -27,6 +27,7 @@ in
           ./../../modules/home-manager/programs/aerospace.nix
           ./../../modules/home-manager/programs/glow.nix
           ./../../modules/home-manager/programs/direnv.nix
+          ./../../modules/home-manager/programs/ghostty.nix
         ];
 
         home = {
