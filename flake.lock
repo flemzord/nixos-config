@@ -41,11 +41,11 @@
     "charmbracelet-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1774989519,
-        "narHash": "sha256-iBV3PlgNfuaVWP/t2muhONeG7efnUkWcr+nyKYaxkKQ=",
+        "lastModified": 1775163169,
+        "narHash": "sha256-aR/G64APSD6FvFDDEu4tdxsyv5ZQEUqk677x8tCvwxQ=",
         "owner": "charmbracelet",
         "repo": "homebrew-tap",
-        "rev": "c3bba3231087b973287862d1395be652cd60fd63",
+        "rev": "2e5cb230dc31deea52054405964cde29b454ced9",
         "type": "github"
       },
       "original": {
@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775088444,
-        "narHash": "sha256-hGWixWAyE3YhUQdHh1fZao8C2r7Khokx5CwzTdZdgKY=",
+        "lastModified": 1775174900,
+        "narHash": "sha256-Tb/CH58JcTv4hx7LFSLDHPpdEJLKXwoNM1yVOC2mh7k=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "b46a627009fd58cd0b28d0ea20d503f7562bc90a",
+        "rev": "9f95558d85c36bf37132889f4c5456284f7fe8e4",
         "type": "github"
       },
       "original": {
