@@ -23,6 +23,12 @@
     ];
   };
 
+  age.secrets.github-token = {
+    file = ../../../secrets/github-token.age;
+    mode = "0440";
+    group = "nixbld";
+  };
+
   nix = {
     optimise.automatic = true;
     gc = {
@@ -34,6 +40,9 @@
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "@wheel" "flemzord" ];
     };
+    extraOptions = ''
+      !include ${config.age.secrets.github-token.path}
+    '';
   };
 
   # Locale
