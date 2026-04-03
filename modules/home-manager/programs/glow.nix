@@ -1,0 +1,9 @@
+{
+  home.file.".config/glow/glow.yml".text = ''
+    style: "light"
+    mouse: false
+    pager: false
+    width: 80
+    all: false
+  '';
+}

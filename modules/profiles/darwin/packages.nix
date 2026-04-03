@@ -115,6 +115,9 @@ with pkgs; [
   python313Packages.click
   # poetry # Temporarily disabled: pbs-installer version conflict in nixpkgs
 
+  # CLI tools
+  glow
+
   # AI tools
   claude-code # Via overlay from claude-code-nix
   gemini-cli
