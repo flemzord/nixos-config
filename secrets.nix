@@ -27,4 +27,7 @@ in
 
   # GitHub API token (for Nix flake fetching rate limits)
   "secrets/github-token.age".publicKeys = allKeys;
+
+  # OpenAI API key (for PaperclipAI)
+  "secrets/openai-api-key.age".publicKeys = allKeys;
 }
