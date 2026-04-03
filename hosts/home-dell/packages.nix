@@ -5,6 +5,7 @@ with pkgs; [
   k3s
   cloudflared
   claude-code
+  codex
   ncdu
 
   # Dev PHP
