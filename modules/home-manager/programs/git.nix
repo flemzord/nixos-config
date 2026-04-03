@@ -22,6 +22,7 @@
       "ralph/"
       ".omc/"
       ".claude/worktrees"
+      ".gsd/"
     ];
     lfs = {
       enable = true;
