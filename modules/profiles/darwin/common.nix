@@ -76,6 +76,7 @@
         mru-spaces = false;
         show-recents = false;
         tilesize = lib.mkDefault 36;
+        orientation = "bottom";
       };
 
       finder = {
