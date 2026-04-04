@@ -32,8 +32,8 @@
 
   services.paperclipai.enable = true;
 
-  age.secrets.hermes-telegram = {
-    file = ../../secrets/hermes-telegram.age;
+  age.secrets.hermes-env = {
+    file = ../../secrets/hermes-env.age;
     owner = "hermes";
     group = "hermes";
     mode = "0400";
@@ -48,9 +48,14 @@
     };
     environmentFiles = [
       config.age.secrets.openai-api-key.path
-      config.age.secrets.hermes-telegram.path
+      config.age.secrets.hermes-env.path
     ];
     addToSystemPackages = true;
+    mcpServers.github = {
+      command = "npx";
+      args = [ "-y" "@modelcontextprotocol/server-github" ];
+      env.GITHUB_PERSONAL_ACCESS_TOKEN = "\${GITHUB_PERSONAL_ACCESS_TOKEN}";
+    };
   };
 
   system.stateVersion = "25.11";

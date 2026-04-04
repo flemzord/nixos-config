@@ -32,6 +32,6 @@ in
   # OpenAI API key (for PaperclipAI)
   "secrets/openai-api-key.age".publicKeys = allKeys;
 
-  # Telegram bot token (for Hermes Agent)
-  "secrets/hermes-telegram.age".publicKeys = allKeys;
+  # Hermes Agent environment (Telegram, GitHub, etc.)
+  "secrets/hermes-env.age".publicKeys = allKeys;
 }
