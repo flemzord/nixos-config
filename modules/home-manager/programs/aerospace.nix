@@ -92,12 +92,12 @@
       };
 
       # Window detection for specific apps
-      on-window-detected = [
-        {
-          "if".app-id = "com.1password.1password";
-          run = [ "move-node-to-workspace M" ];
-        }
-      ];
+      # on-window-detected = [
+      #   {
+      #     "if".app-id = "com.1password.1password";
+      #     run = [ "move-node-to-workspace M" ];
+      #   }
+      # ];
     };
   };
 
