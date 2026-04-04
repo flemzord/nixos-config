@@ -32,10 +32,20 @@
 
   services.paperclipai.enable = true;
 
+  age.secrets.hermes-telegram = {
+    file = ../../secrets/hermes-telegram.age;
+    owner = "hermes";
+    group = "hermes";
+    mode = "0400";
+  };
+
   services.hermes-agent = {
     enable = true;
     settings.model.default = "openai/gpt-5.4";
-    environmentFiles = [ config.age.secrets.openai-api-key.path ];
+    environmentFiles = [
+      config.age.secrets.openai-api-key.path
+      config.age.secrets.hermes-telegram.path
+    ];
     addToSystemPackages = true;
   };
 
