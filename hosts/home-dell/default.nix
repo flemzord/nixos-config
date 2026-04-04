@@ -1,4 +1,4 @@
-{ modulesPath, pkgs, ... }:
+{ config, modulesPath, pkgs, ... }:
 
 {
   imports = [
@@ -31,6 +31,13 @@
   };
 
   services.paperclipai.enable = true;
+
+  services.hermes-agent = {
+    enable = true;
+    settings.model.default = "openai/gpt-5.4";
+    environmentFiles = [ config.age.secrets.openai-api-key.path ];
+    addToSystemPackages = true;
+  };
 
   system.stateVersion = "25.11";
 }

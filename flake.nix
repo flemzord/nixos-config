@@ -64,9 +64,12 @@
       url = "github:sadjow/codex-cli-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+    };
   };
 
-  outputs = inputs@{ darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, ... }: {
+  outputs = inputs@{ darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, ... }: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -82,6 +85,7 @@
         modules = [
           agenix.nixosModules.default
           disko.nixosModules.disko
+          hermes-agent.nixosModules.default
           ./hosts/home-dell
         ];
       };
