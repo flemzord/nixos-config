@@ -56,6 +56,9 @@
       args = [ "-y" "@modelcontextprotocol/server-github" ];
       env.GITHUB_PERSONAL_ACCESS_TOKEN = "\${GITHUB_PERSONAL_ACCESS_TOKEN}";
     };
+    mcpServers.deepwiki = {
+      url = "https://mcp.deepwiki.com/mcp";
+    };
   };
 
   system.stateVersion = "25.11";
