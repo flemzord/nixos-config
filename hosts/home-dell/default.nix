@@ -41,7 +41,11 @@
 
   services.hermes-agent = {
     enable = true;
-    settings.model.default = "gpt-5.4";
+    settings.model = {
+      provider = "custom";
+      default = "gpt-5.4";
+      base_url = "https://api.openai.com/v1";
+    };
     environmentFiles = [
       config.age.secrets.openai-api-key.path
       config.age.secrets.hermes-telegram.path
