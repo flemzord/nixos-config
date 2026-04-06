@@ -39,6 +39,10 @@
           command = "npx @tobilu/qmd -y";
           args = ["mcp"];
         };
+        gitnexus = {
+          command = "npx";
+          args = [ "-y" "gitnexus@latest" "mcp" ];
+        };
       };
     };
 
