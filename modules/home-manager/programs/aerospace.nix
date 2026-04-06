@@ -44,6 +44,7 @@
         alt-6 = "workspace 6";
         alt-7 = "workspace 7";
         alt-m = "workspace M";
+        alt-s = "workspace S";
         alt-shift-1 = "move-node-to-workspace 1";
         alt-shift-2 = "move-node-to-workspace 2";
         alt-shift-3 = "move-node-to-workspace 3";
@@ -52,6 +53,7 @@
         alt-shift-6 = "move-node-to-workspace 6";
         alt-shift-7 = "move-node-to-workspace 7";
         alt-shift-m = "move-node-to-workspace M";
+        alt-shift-s = "move-node-to-workspace S";
         alt-tab = "workspace-back-and-forth";
         alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
         alt-shift-semicolon = "mode service";
@@ -89,15 +91,36 @@
           "secondary"
           "main"
         ];
+        "S" = [
+          "secondary"
+          "main"
+        ];
       };
 
-      # Window detection for specific apps
-      # on-window-detected = [
-      #   {
-      #     "if".app-id = "com.1password.1password";
-      #     run = [ "move-node-to-workspace M" ];
-      #   }
-      # ];
+      on-window-detected = [
+        {
+          "if".app-id = "com.google.Chrome";
+          run = [
+            "move-node-to-workspace 1"
+          ];
+        }
+        {
+          "if".app-id = "ru.keepcoder.Telegram";
+          run = [ "move-node-to-workspace M" ];
+        }
+        {
+          "if".app-id = "net.whatsapp.WhatsApp";
+          run = [ "move-node-to-workspace M" ];
+        }
+        {
+          "if".app-id = "com.tinyspeck.slackmacgap";
+          run = [ "move-node-to-workspace S" ];
+        }
+        {
+          "if".app-id = "com.hnc.Discord";
+          run = [ "move-node-to-workspace S" ];
+        }
+      ];
     };
   };
 
