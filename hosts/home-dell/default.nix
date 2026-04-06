@@ -11,7 +11,7 @@
     ./../../modules/services/transmission.nix
     ./../../modules/services/home-assistant.nix
     ./../../modules/services/cloudflared.nix
-    ./../../modules/services/paperclipai.nix
+
     ./../../modules/services/postgresql.nix
   ];
 
@@ -30,7 +30,6 @@
     hostname = "home-dell";
   };
 
-  services.paperclipai.enable = true;
 
 
   system.stateVersion = "25.11";
