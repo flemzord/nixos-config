@@ -6,7 +6,7 @@
     package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
     enableZshIntegration = true;
     settings = {
-      macos-titlebar-style = "hidden";
+      macos-titlebar-style = "transparent";
       macos-option-as-alt = true;
       window-padding-x = 12;
       window-padding-y = 12;
