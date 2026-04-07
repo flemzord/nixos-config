@@ -81,11 +81,10 @@ in
       # Rbenv
       eval "$(rbenv init - --no-rehash bash)"
       ''}
-      alias cc='claude --dangerously-skip-permissions'
+      alias c='claude --dangerously-skip-permissions'
       alias co='codex --full-auto'
       alias qmd='npx @tobilu/qmd -y'
       
-      # export CLAUDE_CODE_USE_BEDROCK=1
       export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
       
     '')

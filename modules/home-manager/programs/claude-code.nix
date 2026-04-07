@@ -17,7 +17,91 @@
       skipDangerousModePermissionPrompt = true;
       statusLine = {
         type = "command";
-        command = "node /Users/flemzord/.claude/hud/omc-hud.mjs";
+        command = ''node "/Users/flemzord/.claude/hooks/gsd-statusline.js"'';
+      };
+      hooks = {
+        SessionStart = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = ''node "/Users/flemzord/.claude/hooks/gsd-check-update.js"'';
+              }
+            ];
+          }
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "bash /Users/flemzord/.claude/hooks/gsd-session-state.sh";
+              }
+            ];
+          }
+        ];
+        PostToolUse = [
+          {
+            matcher = "Bash|Edit|Write|MultiEdit|Agent|Task";
+            hooks = [
+              {
+                type = "command";
+                command = ''node "/Users/flemzord/.claude/hooks/gsd-context-monitor.js"'';
+                timeout = 10;
+              }
+            ];
+          }
+          {
+            matcher = "Write|Edit";
+            hooks = [
+              {
+                type = "command";
+                command = "bash /Users/flemzord/.claude/hooks/gsd-phase-boundary.sh";
+                timeout = 5;
+              }
+            ];
+          }
+        ];
+        PreToolUse = [
+          {
+            matcher = "Write|Edit";
+            hooks = [
+              {
+                type = "command";
+                command = ''node "/Users/flemzord/.claude/hooks/gsd-prompt-guard.js"'';
+                timeout = 5;
+              }
+            ];
+          }
+          {
+            matcher = "Write|Edit";
+            hooks = [
+              {
+                type = "command";
+                command = ''node "/Users/flemzord/.claude/hooks/gsd-read-guard.js"'';
+                timeout = 5;
+              }
+            ];
+          }
+          {
+            matcher = "Write|Edit";
+            hooks = [
+              {
+                type = "command";
+                command = ''node "/Users/flemzord/.claude/hooks/gsd-workflow-guard.js"'';
+                timeout = 5;
+              }
+            ];
+          }
+          {
+            matcher = "Bash";
+            hooks = [
+              {
+                type = "command";
+                command = "bash /Users/flemzord/.claude/hooks/gsd-validate-commit.sh";
+                timeout = 5;
+              }
+            ];
+          }
+        ];
       };
       enabledPlugins = {
         "formance-skills@formance-plugins" = true;

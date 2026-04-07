@@ -12,7 +12,41 @@
       default-root-container-layout = "accordion";
       default-root-container-orientation = "horizontal";
       automatically-unhide-macos-hidden-apps = true;
-      key-mapping.preset = "qwerty";
+      key-mapping.key-notation-to-key-code = {
+        # Number row (AZERTY)
+        "&" = "1";
+        "é" = "2";
+        "\"" = "3";
+        "'" = "4";
+        "(" = "5";
+        "§" = "6";
+        "è" = "7";
+        "!" = "8";
+        "ç" = "9";
+        "à" = "0";
+        ")" = "minus";
+        minus = "equal";
+
+        # Top row
+        a = "q"; z = "w"; e = "e"; r = "r"; t = "t";
+        y = "y"; u = "u"; i = "i"; o = "o"; p = "p";
+        "^" = "leftSquareBracket";
+        "$" = "rightSquareBracket";
+
+        # Home row
+        q = "a"; s = "s"; d = "d"; f = "f"; g = "g";
+        h = "h"; j = "j"; k = "k"; l = "l";
+        m = "semicolon";
+        "ù" = "quote";
+
+        # Bottom row
+        w = "z"; x = "x"; c = "c"; v = "v"; b = "b";
+        n = "n";
+        comma = "m";
+        semicolon = "comma";
+        colon = "period";
+        "=" = "slash";
+      };
 
       gaps = {
         inner.horizontal = 12;
@@ -26,16 +60,16 @@
       mode.main.binding = {
         alt-slash = "layout tiles horizontal vertical";
         alt-comma = "layout accordion horizontal vertical";
-        alt-h = "focus left";
-        alt-j = "focus down";
-        alt-k = "focus up";
-        alt-l = "focus right";
-        alt-shift-h = "move left";
-        alt-shift-j = "move down";
-        alt-shift-k = "move up";
-        alt-shift-l = "move right";
-        alt-shift-minus = "resize smart -50";
-        alt-shift-equal = "resize smart +50";
+        alt-left = "focus left";
+        alt-down = "focus down";
+        alt-up = "focus up";
+        alt-right = "focus right";
+        ctrl-alt-shift-left = "move left";
+        ctrl-alt-shift-down = "move down";
+        ctrl-alt-shift-up = "move up";
+        ctrl-alt-shift-right = "move right";
+        "alt-shift-)" = "resize smart -50";
+        alt-shift-minus = "resize smart +50";
         alt-1 = "workspace 1";
         alt-2 = "workspace 2";
         alt-3 = "workspace 3";
@@ -131,7 +165,7 @@
       inactive_color = "0x00000000";
       hidpi = true;
       style = "round";
-      width = 1.0;
+      width = 10.0;
       ax_focus = true;
       blacklist = "zed, slack";
     };
