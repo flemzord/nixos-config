@@ -50,7 +50,8 @@ with pkgs; [
   pipx
   git-subrepo
   go-task
-  # httpie # Temporarily disabled: test_reading_from_stdin timeout in nixpkgs
+  httpie 
+  zellij
   k6
   kubectx
   kubernetes-helm
@@ -89,7 +90,7 @@ with pkgs; [
   # pulumi-bin
   # Dev tools Rust
   rustc
-  #rustfmt
+  rustfmt
   cargo
   cmake
 

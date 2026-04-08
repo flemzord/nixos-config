@@ -15,6 +15,30 @@
       model = "opus[1m]";
       alwaysThinkingEnabled = true;
       skipDangerousModePermissionPrompt = true;
+      permissions = {
+        allow = [
+          "Bash(date:*)"
+          "Bash(echo:*)"
+          "Bash(cat:*)"
+          "Bash(ls:*)"
+          "Bash(mkdir:*)"
+          "Bash(wc:*)"
+          "Bash(head:*)"
+          "Bash(tail:*)"
+          "Bash(sort:*)"
+          "Bash(grep:*)"
+          "Bash(tr:*)"
+          "Bash(git add:*)"
+          "Bash(git commit:*)"
+          "Bash(git status:*)"
+          "Bash(git log:*)"
+          "Bash(git diff:*)"
+          "Bash(git tag:*)"
+          "Bash(just:*)"
+          "Bash(direnv:*)"
+          "Bash(go:*)"
+        ];
+      };
       statusLine = {
         type = "command";
         command = ''node "/Users/flemzord/.claude/hooks/gsd-statusline.js"'';
