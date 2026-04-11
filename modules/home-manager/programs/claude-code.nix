@@ -25,6 +25,20 @@
         "typescript-lsp@claude-plugins-official" = true;
         "oh-my-claudecode@omc" = true;
         "plannotator@plannotator" = true;
+        "code-review@claude-plugins-official" = true;
+        "code-simplifier@claude-plugins-official" = true;
+        "pr-review-toolkit@claude-plugins-official" = true;
+        "coderabbit@claude-plugins-official" = true;
+        "posthog@claude-plugins-official" = true;
+        "claude-code-setup@claude-plugins-official" = true;
+        "claude-md-management@claude-plugins-official" = true;
+        "security-guidance@claude-plugins-official" = true;
+        "session-report@claude-plugins-official" = true;
+        "commit-commands@claude-plugins-official" = true;
+        "feature-dev@claude-plugins-official" = true;
+        "hookify@claude-plugins-official" = true;
+        "semgrep@claude-plugins-official" = true;
+        "playground@claude-plugins-official" = true;
       };
       mcpServers = {
         chrome-devtools = {
