@@ -37,7 +37,7 @@ in
       export HISTIGNORE="pwd:ls:cd"
       export HISTFILE=$HOME/.local/share/zsh/history
       ${lib.optionalString isDarwin ''
-      export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$PATH
+      export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$HOME/.cargo/bin:$PATH
       source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
       ''}
       ${lib.optionalString (!isDarwin) ''
