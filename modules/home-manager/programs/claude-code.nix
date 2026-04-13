@@ -10,9 +10,11 @@
       env = {
         CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
         CLAUDE_CODE_NO_FLICKER = "1";
+        CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING = "1";
       };
       includeCoAuthoredBy = false;
       model = "opus[1m]";
+      effortLevel = "high";
       alwaysThinkingEnabled = true;
       skipDangerousModePermissionPrompt = true;
       statusLine = {
