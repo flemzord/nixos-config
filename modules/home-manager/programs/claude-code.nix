@@ -41,6 +41,7 @@
         "hookify@claude-plugins-official" = true;
         "semgrep@claude-plugins-official" = true;
         "playground@claude-plugins-official" = true;
+        "warp@claude-code-warp" = true;
       };
       mcpServers = {
         chrome-devtools = {
