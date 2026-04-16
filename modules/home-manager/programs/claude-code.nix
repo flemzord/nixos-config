@@ -12,6 +12,30 @@
         CLAUDE_CODE_NO_FLICKER = "1";
         CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING = "1";
       };
+      permissions = {
+        allow = [
+          "Bash(date:*)"
+          "Bash(echo:*)"
+          "Bash(cat:*)"
+          "Bash(ls:*)"
+          "Bash(mkdir:*)"
+          "Bash(wc:*)"
+          "Bash(head:*)"
+          "Bash(tail:*)"
+          "Bash(sort:*)"
+          "Bash(grep:*)"
+          "Bash(tr:*)"
+          "Bash(git add:*)"
+          "Bash(git commit:*)"
+          "Bash(git status:*)"
+          "Bash(git log:*)"
+          "Bash(git diff:*)"
+          "Bash(git tag:*)"
+          "Bash(just:*)"
+          "Bash(direnv:*)"
+          "Bash(go:*)"
+        ];
+      };
       includeCoAuthoredBy = false;
       model = "opus[1m]";
       effortLevel = "high";
