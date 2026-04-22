@@ -24,10 +24,5 @@
     hostname = "server-dev";
   };
 
-  # Bootstrap: skip the agenix-decrypted github-token until this host's
-  # SSH key is added to secrets.nix and secrets are rekeyed. Flip back to
-  # true (or drop this line) once server-dev is listed in allKeys.
-  flemzord.githubTokenSecret.enable = false;
-
   system.stateVersion = "25.11";
 }
