@@ -96,6 +96,7 @@
           { nixpkgs.overlays = [ claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
           agenix.nixosModules.default
           disko.nixosModules.disko
+          hermes-agent.nixosModules.default
           home-manager.nixosModules.home-manager
           ./hosts/server-dev
         ];
