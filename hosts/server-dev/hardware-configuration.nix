@@ -3,16 +3,15 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
   boot = {
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "e1000e" ];
-    initrd.kernelModules = [ "md_mod" "raid1" ];
-    kernelModules = [ "kvm-intel" ];
+    initrd.availableKernelModules = [ "xhci_pci" "virtio_pci" "virtio_scsi" "usbhid" "sd_mod" ];
+    initrd.kernelModules = [ ];
+    kernelModules = [ ];
     extraModulePackages = [ ];
-    swraid.enable = true;
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = true;
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }

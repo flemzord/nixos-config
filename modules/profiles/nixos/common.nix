@@ -11,39 +11,52 @@
     ../../programs/git.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
-  nix.settings = {
-    substituters = [
-      "https://nix-community.cachix.org"
-      "https://cache.nixos.org/"
-    ];
-    trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
-
-  age.secrets.github-token = {
-    file = ../../../secrets/github-token.age;
-    mode = "0440";
-    group = "nixbld";
-  };
-
-  nix = {
-    optimise.automatic = true;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "@wheel" "flemzord" ];
-    };
-    extraOptions = ''
-      !include ${config.age.secrets.github-token.path}
+  options.flemzord.githubTokenSecret.enable = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+    description = ''
+      Enable agenix-decrypted GitHub token (for flake fetching rate limits).
+      Set to false during bootstrap on a host whose SSH host key is not yet
+      registered in secrets.nix.
     '';
   };
+
+  config = {
+    nixpkgs.config.allowUnfree = true;
+
+    nix.settings = {
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
+
+    age.secrets = lib.mkIf config.flemzord.githubTokenSecret.enable {
+      github-token = {
+        file = ../../../secrets/github-token.age;
+        mode = "0440";
+        group = "nixbld";
+      };
+    };
+
+    nix = {
+      optimise.automatic = true;
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 30d";
+      };
+      settings = {
+        experimental-features = [ "nix-command" "flakes" ];
+        trusted-users = [ "@wheel" "flemzord" ];
+      };
+      extraOptions = lib.mkIf config.flemzord.githubTokenSecret.enable ''
+        !include ${config.age.secrets.github-token.path}
+      '';
+    };
 
   # Locale
   time.timeZone = "Europe/Paris";
@@ -91,7 +104,8 @@
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCStDH1pzFpVJ1MU+7sfJma8lDUjlvL81Ue0CDlwkGv5EC513SgyLNITD5kenERzIrlIwl4D+VtMUnVKv7XLTJceZGtPl7Vzp+B27ZN9Ufb3zPzTOkbO3bYnSIKYuDH5YCxH9IRRM869JhPQ+q6KDjit1k1zRcaHR/vUtmtNeuRdySieHArVWJCBSW5pFw2F9iObaOiemi0yJ4fhYHraPqUyKAq6K0DNy23ZaMoa94f9iEtDm4dR5aK5Y6JaO0frhMKsEwMOLbz0RsY4LdAat6QZ27v1sfocRw1UaMYHdA2Jkk5/a1SqnQF5runYanbdvOBRdIjVejYxXDw2Ml8axqq0RON4hU77s0YAPCTvwfYYeLS1AnctcN/k3gvI9f35NV8JudXkOSp7Zkj5mOWYh3mtFhCkinOgNdxdYYVx8hDG0al+WKpeFDonvLP8dYrofMmdHC7Bjry+kiAaa5PszCOEoVNlGtIckzx2Q2TcFtPFGMC5vKkwD/AtNLTB4+OoXMcVpQVyyen4oy2jbd5MqWL2QvA2c0jqJusv70zu9Qxdfbac/IuJCTdS4KXYeh9Ij87RKAnyWffX3boKUahYj5jLyOvfxCfi3mN/smuL5WPk3RHuOAbtvnCkL8SQzM1i/Cf5cm9DTM5erpayUYign8ffG07ZLj9uiNWeUY4nZ4rGw=="
   ];
 
-  environment.systemPackages = import ./packages.nix { inherit pkgs; };
+    environment.systemPackages = import ./packages.nix { inherit pkgs; };
 
-  systemd.services.NetworkManager-wait-online.enable = false;
+    systemd.services.NetworkManager-wait-online.enable = false;
+  };
 }

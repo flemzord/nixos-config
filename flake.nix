@@ -91,7 +91,7 @@
       };
 
       "server-dev" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = "aarch64-linux";
         modules = [
           { nixpkgs.overlays = [ claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
           agenix.nixosModules.default
