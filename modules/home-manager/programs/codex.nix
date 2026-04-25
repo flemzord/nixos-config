@@ -6,7 +6,7 @@
     package = pkgs.codex; # From codex-cli-nix overlay
 
     settings = {
-      model = "gpt-5.4";
+      model = "gpt-5.5";
       model_reasoning_effort = "high";
       personality = "pragmatic";
       approval_mode = "full-auto";
