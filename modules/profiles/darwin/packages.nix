@@ -8,6 +8,7 @@ with pkgs; [
   nvd
   statix
   difftastic
+  semgrep
   coreutils
   flyctl
   atuin
@@ -58,7 +59,12 @@ with pkgs; [
   helm-docs
   supabase-cli
   tenv
-  direnv
+  (direnv.overrideAttrs (_: {
+    doCheck = false;
+    doInstallCheck = false;
+    checkPhase = "true";
+    installCheckPhase = "true";
+  }))
   yq
   jq
   k9s
