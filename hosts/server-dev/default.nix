@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -45,12 +45,18 @@
     enable = true;
     settings.model = {
       provider = "custom";
-      default = "gpt-5.4";
+      default = "gpt-5.5";
       base_url = "https://api.openai.com/v1";
+    };
+    environment = {
+      CODEX_HOME = "${config.services.hermes-agent.stateDir}/.codex";
     };
     environmentFiles = [
       config.age.secrets.openai-api-key.path
       config.age.secrets.hermes-env.path
+    ];
+    extraPackages = [
+      pkgs.codex
     ];
     addToSystemPackages = true;
     mcpServers.github = {
