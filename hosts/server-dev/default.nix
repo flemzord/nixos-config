@@ -7,6 +7,7 @@
     ./networking.nix
     ./../../modules/profiles/nixos/common.nix
     ./../../modules/profiles/nixos/dev.nix
+    ./../../modules/services/hermes-github-auth.nix
     ./../../modules/services/postgresql.nix
   ];
 
@@ -53,7 +54,9 @@
     mcpServers.github = {
       command = "npx";
       args = [ "-y" "@modelcontextprotocol/server-github" ];
-      env.GITHUB_PERSONAL_ACCESS_TOKEN = "\${GITHUB_PERSONAL_ACCESS_TOKEN}";
+      env = {
+        GITHUB_PERSONAL_ACCESS_TOKEN = "$" + "{GITHUB_" + "TOKEN}";
+      };
     };
     mcpServers.deepwiki = {
       url = "https://mcp.deepwiki.com/mcp";

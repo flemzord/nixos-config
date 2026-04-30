@@ -133,6 +133,7 @@
 
     # AI tools
     claude-code
+    codex
     gemini-cli
   ];
 }
