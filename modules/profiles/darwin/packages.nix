@@ -7,6 +7,7 @@ with pkgs; [
   nixd
   nvd
   statix
+  deadnix
   difftastic
   semgrep
   coreutils
@@ -51,7 +52,7 @@ with pkgs; [
   pipx
   git-subrepo
   go-task
-  httpie 
+  httpie
   zellij
   k6
   kubectx
