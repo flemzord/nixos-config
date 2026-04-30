@@ -9,6 +9,7 @@
     ./../../modules/profiles/nixos/dev.nix
     ./../../modules/services/hermes-github-auth.nix
     ./../../modules/services/postgresql.nix
+    ./../../modules/services/fail2ban.nix
   ];
 
   # Bootloader — UEFI on Hetzner Cloud ARM vServer
@@ -19,6 +20,7 @@
 
   # Use systemd-networkd; disable NetworkManager from the common profile
   networking.networkmanager.enable = lib.mkForce false;
+  networking.firewall.enable = lib.mkForce true;
 
   services.nixos-auto-update = {
     enable = true;
