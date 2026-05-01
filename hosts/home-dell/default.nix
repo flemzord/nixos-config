@@ -1,8 +1,6 @@
-{
-  config,
-  modulesPath,
-  pkgs,
-  ...
+{ modulesPath
+, pkgs
+, ...
 }:
 
 {

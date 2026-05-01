@@ -197,13 +197,6 @@ in
     hostname = "server-dev";
   };
 
-  age.secrets.openai-api-key = {
-    file = ../../secrets/openai-api-key.age;
-    owner = "hermes";
-    group = "hermes";
-    mode = "0400";
-  };
-
   age.secrets.hermes-env = {
     file = ../../secrets/hermes-env.age;
     owner = "hermes";
@@ -213,29 +206,23 @@ in
 
   services.hermes-agent = {
     enable = true;
-    settings.model = {
-      provider = "openai-codex";
-      default = "gpt-5.5";
-    };
-    settings.fallback_providers = [
-      {
-        provider = "custom";
+    settings = {
+      model = {
+        provider = "openai-codex";
+        default = "gpt-5.5";
+      };
+      fallback_providers = [ ];
+      auxiliary.vision = {
+        provider = "codex";
         model = "gpt-5.5";
-        base_url = "https://api.openai.com/v1";
-        key_env = "OPENAI_API_KEY";
-      }
-    ];
-    settings.auxiliary.vision = {
-      provider = "custom";
-      model = "gpt-5.5";
-      base_url = "https://api.openai.com/v1";
-      timeout = 120;
+        base_url = null;
+        timeout = 120;
+      };
     };
     environment = {
       CODEX_HOME = "${config.services.hermes-agent.stateDir}/.codex";
     };
     environmentFiles = [
-      config.age.secrets.openai-api-key.path
       config.age.secrets.hermes-env.path
     ];
     extraPackages = [
