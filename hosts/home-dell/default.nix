@@ -12,6 +12,7 @@
     ./../../modules/services/home-assistant.nix
     ./../../modules/services/cloudflared.nix
     ./../../modules/services/hermes-github-auth.nix
+    ./../../modules/services/hermes-kanban.nix
 
     ./../../modules/services/postgresql.nix
   ];
