@@ -41,6 +41,9 @@
     difftastic
     coreutils
     flyctl
+    (writeShellScriptBin "vercel" ''
+      exec ${nodejs_22}/bin/npx --yes vercel "$@"
+    '')
     atuin
     fd
     fzf
