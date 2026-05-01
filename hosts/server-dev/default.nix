@@ -240,6 +240,7 @@ in
     ];
     extraPackages = [
       pkgs.codex
+      pkgs.turso-cli
     ];
     addToSystemPackages = true;
     mcpServers.github = {
