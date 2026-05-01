@@ -227,7 +227,7 @@ in
     ];
     settings.auxiliary.vision = {
       provider = "custom";
-      model = "gpt-4o-mini";
+      model = "gpt-5.5";
       base_url = "https://api.openai.com/v1";
       timeout = 120;
     };
