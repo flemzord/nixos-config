@@ -18,6 +18,10 @@ in
       UMask = "0077";
     };
 
+    path = [
+      pkgs.git
+    ];
+
     script = ''
       set -euo pipefail
 
