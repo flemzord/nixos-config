@@ -225,6 +225,12 @@ in
         key_env = "OPENAI_API_KEY";
       }
     ];
+    settings.auxiliary.vision = {
+      provider = "custom";
+      model = "gpt-4o-mini";
+      base_url = "https://api.openai.com/v1";
+      timeout = 120;
+    };
     environment = {
       CODEX_HOME = "${config.services.hermes-agent.stateDir}/.codex";
     };
