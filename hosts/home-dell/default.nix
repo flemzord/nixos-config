@@ -1,4 +1,9 @@
-{ config, modulesPath, pkgs, ... }:
+{
+  config,
+  modulesPath,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -44,30 +49,6 @@
     owner = "hermes";
     group = "hermes";
     mode = "0400";
-  };
-
-  services.hermes-agent = {
-    enable = true;
-    settings.model = {
-      provider = "custom";
-      default = "gpt-5.4";
-      base_url = "https://api.openai.com/v1";
-    };
-    environmentFiles = [
-      config.age.secrets.openai-api-key.path
-      config.age.secrets.hermes-env.path
-    ];
-    addToSystemPackages = true;
-    mcpServers.github = {
-      command = "npx";
-      args = [ "-y" "@modelcontextprotocol/server-github" ];
-      env = {
-        GITHUB_PERSONAL_ACCESS_TOKEN = "$" + "{GITHUB_" + "TOKEN}";
-      };
-    };
-    mcpServers.deepwiki = {
-      url = "https://mcp.deepwiki.com/mcp";
-    };
   };
 
   system.stateVersion = "25.11";

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -64,7 +69,10 @@
     addToSystemPackages = true;
     mcpServers.github = {
       command = "npx";
-      args = [ "-y" "@modelcontextprotocol/server-github" ];
+      args = [
+        "-y"
+        "@modelcontextprotocol/server-github"
+      ];
       env = {
         GITHUB_PERSONAL_ACCESS_TOKEN = "$" + "{GITHUB_" + "TOKEN}";
       };
