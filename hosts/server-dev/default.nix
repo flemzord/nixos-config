@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 
 {
@@ -52,10 +51,17 @@
   services.hermes-agent = {
     enable = true;
     settings.model = {
-      provider = "custom";
+      provider = "openai-codex";
       default = "gpt-5.5";
-      base_url = "https://api.openai.com/v1";
     };
+    settings.fallback_providers = [
+      {
+        provider = "custom";
+        model = "gpt-5.5";
+        base_url = "https://api.openai.com/v1";
+        key_env = "OPENAI_API_KEY";
+      }
+    ];
     environment = {
       CODEX_HOME = "${config.services.hermes-agent.stateDir}/.codex";
     };
