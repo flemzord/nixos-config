@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   programs.claude-code = {
@@ -78,7 +78,7 @@
         };
         qmd = {
           command = "npx @tobilu/qmd -y";
-          args = ["mcp"];
+          args = [ "mcp" ];
         };
         gitnexus = {
           command = "npx";

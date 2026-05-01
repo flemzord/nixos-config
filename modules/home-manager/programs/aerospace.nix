@@ -28,19 +28,38 @@
         minus = "equal";
 
         # Top row
-        a = "q"; z = "w"; e = "e"; r = "r"; t = "t";
-        y = "y"; u = "u"; i = "i"; o = "o"; p = "p";
+        a = "q";
+        z = "w";
+        e = "e";
+        r = "r";
+        t = "t";
+        y = "y";
+        u = "u";
+        i = "i";
+        o = "o";
+        p = "p";
         "^" = "leftSquareBracket";
         "$" = "rightSquareBracket";
 
         # Home row
-        q = "a"; s = "s"; d = "d"; f = "f"; g = "g";
-        h = "h"; j = "j"; k = "k"; l = "l";
+        q = "a";
+        s = "s";
+        d = "d";
+        f = "f";
+        g = "g";
+        h = "h";
+        j = "j";
+        k = "k";
+        l = "l";
         m = "semicolon";
         "ù" = "quote";
 
         # Bottom row
-        w = "z"; x = "x"; c = "c"; v = "v"; b = "b";
+        w = "z";
+        x = "x";
+        c = "c";
+        v = "v";
+        b = "b";
         n = "n";
         comma = "m";
         semicolon = "comma";
@@ -49,12 +68,16 @@
       };
 
       gaps = {
-        inner.horizontal = 12;
-        inner.vertical = 12;
-        outer.left = 12;
-        outer.bottom = 12;
-        outer.top = 12;
-        outer.right = 12;
+        inner = {
+          horizontal = 12;
+          vertical = 12;
+        };
+        outer = {
+          left = 12;
+          bottom = 12;
+          top = 12;
+          right = 12;
+        };
       };
 
       mode.main.binding = {

@@ -17,9 +17,9 @@
         "/Users/flemzord/Project" = {
           trust_level = "trusted";
         };
-      tui = {
-        notification_condition = "always";
-      };
+        tui = {
+          notification_condition = "always";
+        };
       };
 
       suppress_unstable_features_warning = true;

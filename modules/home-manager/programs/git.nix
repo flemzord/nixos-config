@@ -30,7 +30,7 @@
     settings = {
       user = {
         name = fullName;
-        email = email;
+        inherit email;
         signingkey = "~/.ssh/github.pub";
       };
       init.defaultBranch = "main";

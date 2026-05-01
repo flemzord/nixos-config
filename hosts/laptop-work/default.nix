@@ -16,9 +16,9 @@
   };
 
   nixpkgs.overlays = [
-    (final: prev: {
-      fish = prev.fish.overrideAttrs (old: { doCheck = false; });
-      cachix = prev.cachix.overrideAttrs (old: { doCheck = false; });
+    (_: prev: {
+      fish = prev.fish.overrideAttrs (_: { doCheck = false; });
+      cachix = prev.cachix.overrideAttrs (_: { doCheck = false; });
     })
   ];
 

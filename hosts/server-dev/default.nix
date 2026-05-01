@@ -16,11 +16,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "server-dev";
+  networking = {
+    hostName = "server-dev";
 
-  # Use systemd-networkd; disable NetworkManager from the common profile
-  networking.networkmanager.enable = lib.mkForce false;
-  networking.firewall.enable = lib.mkForce true;
+    # Use systemd-networkd; disable NetworkManager from the common profile
+    networkmanager.enable = lib.mkForce false;
+    firewall.enable = lib.mkForce true;
+  };
 
   services.nixos-auto-update = {
     enable = true;

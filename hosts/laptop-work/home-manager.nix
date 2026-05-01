@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ username, ... }:
 
 let
   user = username;
@@ -11,7 +11,7 @@ in
     useGlobalPkgs = true;
     backupFileExtension = "backup";
     users.${user} =
-      { pkgs, lib, ... }:
+      { pkgs, ... }:
       {
         _module.args = {
           inherit fullName email;

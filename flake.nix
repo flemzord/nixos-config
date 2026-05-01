@@ -69,7 +69,7 @@
     };
   };
 
-  outputs = inputs@{ darwin, nix-homebrew, homebrew-core, homebrew-cask, formancehq-cask, loftsh-cask, earthly-cask, koyeb-cask, temporal-cask, charmbracelet-cask, darksworm-cask, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, ... }: {
+  outputs = inputs@{ darwin, nix-homebrew, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, ... }: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -131,16 +131,18 @@
     };
 
     # Developer experience
-    devShells = let
-      common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv agenix.packages.${pkgs.system}.default ];
-    in {
-      x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {
-        default = pkgs.mkShell { packages = common pkgs; };
+    devShells =
+      let
+        common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv agenix.packages.${pkgs.system}.default ];
+      in
+      {
+        x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {
+          default = pkgs.mkShell { packages = common pkgs; };
+        };
+        aarch64-darwin = let pkgs = nixpkgs.legacyPackages.aarch64-darwin; in {
+          default = pkgs.mkShell { packages = common pkgs; };
+        };
       };
-      aarch64-darwin = let pkgs = nixpkgs.legacyPackages.aarch64-darwin; in {
-        default = pkgs.mkShell { packages = common pkgs; };
-      };
-    };
 
     # Allow `nix fmt`
     formatter = {

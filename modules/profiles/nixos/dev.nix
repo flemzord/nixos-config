@@ -1,11 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   # Home-manager integration for dev environment
   home-manager = {
     useGlobalPkgs = true;
     backupFileExtension = "backup";
-    users.flemzord = { pkgs, lib, ... }: {
+    users.flemzord = { ... }: {
       _module.args = {
         fullName = "Maxence Maireaux";
         email = "maxence@maireaux.fr";
