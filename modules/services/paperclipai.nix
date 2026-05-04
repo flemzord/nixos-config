@@ -45,8 +45,8 @@ in
 
     systemd.services.paperclipai-db-setup = {
       description = "Set PaperclipAI PostgreSQL password";
-      after = [ "postgresql.service" ];
-      requires = [ "postgresql.service" ];
+      after = [ "postgresql.service" "postgresql-setup.service" ];
+      requires = [ "postgresql.service" "postgresql-setup.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
