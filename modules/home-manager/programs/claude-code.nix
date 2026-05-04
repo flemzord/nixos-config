@@ -1,5 +1,18 @@
 { pkgs, ... }:
 
+let
+  vibeIslandHook = {
+    type = "command";
+    command = "/bin/sh -c '[ -x \"$HOME/.vibe-island/bin/vibe-island-bridge\" ] && exec \"$HOME/.vibe-island/bin/vibe-island-bridge\" --source claude; exit 0'";
+  };
+  vibeIslandHookEntry = {
+    hooks = [ vibeIslandHook ];
+  };
+  vibeIslandHookEntryWithMatcher = {
+    matcher = "*";
+    hooks = [ vibeIslandHook ];
+  };
+in
 {
   programs.claude-code = {
     enable = true;
@@ -11,6 +24,22 @@
         CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
         CLAUDE_CODE_NO_FLICKER = "1";
         CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING = "1";
+      };
+      hooks = {
+        Notification = [ vibeIslandHookEntryWithMatcher ];
+        PermissionRequest = [{
+          matcher = "*";
+          hooks = [ (vibeIslandHook // { timeout = 86400; }) ];
+        }];
+        PostToolUse = [ vibeIslandHookEntryWithMatcher ];
+        PreCompact = [ vibeIslandHookEntry ];
+        PreToolUse = [ vibeIslandHookEntryWithMatcher ];
+        SessionEnd = [ vibeIslandHookEntry ];
+        SessionStart = [ vibeIslandHookEntry ];
+        Stop = [ vibeIslandHookEntry ];
+        SubagentStart = [ vibeIslandHookEntry ];
+        SubagentStop = [ vibeIslandHookEntry ];
+        UserPromptSubmit = [ vibeIslandHookEntry ];
       };
       permissions = {
         allow = [
