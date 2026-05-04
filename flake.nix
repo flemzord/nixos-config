@@ -67,9 +67,12 @@
     hermes-agent = {
       url = "github:NousResearch/hermes-agent";
     };
+    googleworkspace-cli = {
+      url = "github:googleworkspace/cli";
+    };
   };
 
-  outputs = inputs@{ darwin, nix-homebrew, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, ... }: {
+  outputs = inputs@{ darwin, nix-homebrew, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, googleworkspace-cli, ... }: {
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -93,7 +96,15 @@
       "server-dev" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
-          { nixpkgs.overlays = [ claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
+          {
+            nixpkgs.overlays = [
+              claude-code-nix.overlays.default
+              codex-cli-nix.overlays.default
+              (_final: prev: {
+                googleworkspace-cli = googleworkspace-cli.packages.${prev.system}.gws;
+              })
+            ];
+          }
           agenix.nixosModules.default
           disko.nixosModules.disko
           hermes-agent.nixosModules.default

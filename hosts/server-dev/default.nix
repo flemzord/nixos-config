@@ -227,6 +227,7 @@ in
     ];
     extraPackages = [
       pkgs.codex
+      pkgs.googleworkspace-cli
       pkgs.turso-cli
     ];
     addToSystemPackages = true;
