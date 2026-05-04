@@ -176,6 +176,7 @@ in
     ./../../modules/profiles/nixos/dev.nix
     ./../../modules/services/hermes-github-auth.nix
     ./../../modules/services/hermes-kanban.nix
+    ./../../modules/services/paperclipai.nix
     ./../../modules/services/postgresql.nix
     ./../../modules/services/fail2ban.nix
   ];
@@ -192,11 +193,6 @@ in
     firewall.enable = lib.mkForce true;
   };
 
-  services.nixos-auto-update = {
-    enable = true;
-    hostname = "server-dev";
-  };
-
   age.secrets.hermes-env = {
     file = ../../secrets/hermes-env.age;
     owner = "hermes";
@@ -204,46 +200,78 @@ in
     mode = "0400";
   };
 
-  services.hermes-agent = {
-    enable = true;
-    settings = {
-      model = {
-        provider = "openai-codex";
-        default = "gpt-5.5";
-      };
-      fallback_providers = [ ];
-      auxiliary.vision = {
-        provider = "codex";
-        model = "gpt-5.5";
-        base_url = null;
-        timeout = 120;
-      };
+  age.secrets.openai-api-key = {
+    file = ../../secrets/openai-api-key.age;
+    owner = "root";
+    group = "openai-api-key";
+    mode = "0440";
+  };
+
+  users.groups.openai-api-key.members = [
+    "hermes"
+    "paperclipai"
+  ];
+
+  services = {
+    nixos-auto-update = {
+      enable = true;
+      hostname = "server-dev";
     };
-    environment = {
-      CODEX_HOME = "${config.services.hermes-agent.stateDir}/.codex";
+
+    paperclipai = {
+      enable = true;
+      workDir = "/var/lib/paperclipai";
     };
-    environmentFiles = [
-      config.age.secrets.hermes-env.path
-    ];
-    extraPackages = [
-      pkgs.codex
-      pkgs.google-cloud-sdk
-      pkgs.googleworkspace-cli
-      pkgs.turso-cli
-    ];
-    addToSystemPackages = true;
-    mcpServers.github = {
-      command = "npx";
-      args = [
-        "-y"
-        "@modelcontextprotocol/server-github"
+
+    hermes-agent = {
+      enable = true;
+      settings = {
+        model = {
+          provider = "openai-codex";
+          default = "gpt-5.5";
+        };
+        fallback_providers = [
+          {
+            provider = "custom";
+            model = "gpt-5.5";
+            base_url = "https://api.openai.com/v1";
+            key_env = "OPENAI_API_KEY";
+          }
+        ];
+        auxiliary.vision = {
+          provider = "codex";
+          model = "gpt-5.5";
+          base_url = null;
+          timeout = 120;
+        };
+      };
+      environment = {
+        CODEX_HOME = "${config.services.hermes-agent.stateDir}/.codex";
+      };
+      environmentFiles = [
+        config.age.secrets.openai-api-key.path
+        config.age.secrets.hermes-env.path
       ];
-      env = {
-        GITHUB_PERSONAL_ACCESS_TOKEN = "$" + "{GITHUB_" + "TOKEN}";
+      extraPackages = [
+        pkgs.codex
+        pkgs.google-cloud-sdk
+        pkgs.googleworkspace-cli
+        pkgs.turso-cli
+      ];
+      addToSystemPackages = true;
+      mcpServers.github = {
+        command = "npx";
+        args = [
+          "-y"
+          "@modelcontextprotocol/server-github"
+        ];
+        env = {
+          GITHUB_PERSONAL_ACCESS_TOKEN = "$" + "{GITHUB_" + "TOKEN}";
+        };
       };
-    };
-    mcpServers.deepwiki = {
-      url = "https://mcp.deepwiki.com/mcp";
+      mcpServers.deepwiki = {
+        url = "https://mcp.deepwiki.com/mcp";
+      };
     };
   };
 

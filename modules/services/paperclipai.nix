@@ -14,16 +14,15 @@ in
       default = "/data/paperclipai";
       description = "Working directory for PaperclipAI";
     };
+
+    openaiApiKeyFile = mkOption {
+      type = types.str;
+      default = config.age.secrets.openai-api-key.path;
+      description = "Environment file containing OPENAI_API_KEY for Codex local adapter.";
+    };
   };
 
   config = mkIf cfg.enable {
-    age.secrets.openai-api-key = {
-      file = ../../secrets/openai-api-key.age;
-      owner = "paperclipai";
-      group = "paperclipai";
-      mode = "0400";
-    };
-
     users.users.paperclipai = {
       isSystemUser = true;
       group = "paperclipai";
@@ -72,9 +71,14 @@ in
         User = "paperclipai";
         Group = "paperclipai";
         WorkingDirectory = cfg.workDir;
-        Environment = "DATABASE_URL=postgresql://paperclipai:paperclipai@127.0.0.1:5432/paperclipai";
-        EnvironmentFile = config.age.secrets.openai-api-key.path;
-        ExecStart = "${pkgs.nodejs_22}/bin/npx paperclipai run";
+        Environment = [
+          "CODEX_HOME=${cfg.workDir}/.codex"
+          "DATABASE_URL=postgresql://paperclipai:paperclipai@127.0.0.1:5432/paperclipai"
+          "HOME=${cfg.workDir}"
+          "PAPERCLIP_HOME=${cfg.workDir}"
+        ];
+        EnvironmentFile = cfg.openaiApiKeyFile;
+        ExecStart = "${pkgs.nodejs_22}/bin/npx --yes paperclipai run";
       };
     };
   };
