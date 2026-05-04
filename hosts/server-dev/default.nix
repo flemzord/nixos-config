@@ -227,6 +227,7 @@ in
     ];
     extraPackages = [
       pkgs.codex
+      pkgs.google-cloud-sdk
       pkgs.googleworkspace-cli
       pkgs.turso-cli
     ];
