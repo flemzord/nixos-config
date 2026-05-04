@@ -256,6 +256,7 @@ in
         pkgs.codex
         pkgs.google-cloud-sdk
         pkgs.googleworkspace-cli
+        pkgs.python3Packages.weasyprint
         pkgs.turso-cli
       ];
       addToSystemPackages = true;
