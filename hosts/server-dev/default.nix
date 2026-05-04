@@ -176,7 +176,6 @@ in
     ./../../modules/profiles/nixos/dev.nix
     ./../../modules/services/hermes-github-auth.nix
     ./../../modules/services/hermes-kanban.nix
-    ./../../modules/services/paperclipai.nix
     ./../../modules/services/postgresql.nix
     ./../../modules/services/fail2ban.nix
   ];
@@ -209,18 +208,12 @@ in
 
   users.groups.openai-api-key.members = [
     "hermes"
-    "paperclipai"
   ];
 
   services = {
     nixos-auto-update = {
       enable = true;
       hostname = "server-dev";
-    };
-
-    paperclipai = {
-      enable = true;
-      workDir = "/var/lib/paperclipai";
     };
 
     hermes-agent = {
