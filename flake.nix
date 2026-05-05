@@ -101,7 +101,7 @@
               claude-code-nix.overlays.default
               codex-cli-nix.overlays.default
               (_final: prev: {
-                googleworkspace-cli = googleworkspace-cli.packages.${prev.system}.gws;
+                googleworkspace-cli = googleworkspace-cli.packages.${prev.stdenv.hostPlatform.system}.gws;
               })
             ];
           }
@@ -144,7 +144,7 @@
     # Developer experience
     devShells =
       let
-        common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv agenix.packages.${pkgs.system}.default ];
+        common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
       in
       {
         x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {
