@@ -219,6 +219,7 @@ in
     hermes-agent = {
       enable = true;
       settings = {
+        security.redact_secrets = true;
         model = {
           provider = "openai-codex";
           default = "gpt-5.5";
