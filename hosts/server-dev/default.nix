@@ -5,6 +5,8 @@
 }:
 
 let
+  xurl = pkgs.callPackage ../../packages/xurl.nix { };
+
   sideProjectProfiles = {
     product = pkgs.writeText "hermes-profile-product-SOUL.md" ''
       # Product Profile
@@ -252,6 +254,7 @@ in
         pkgs.googleworkspace-cli
         pkgs.python3Packages.weasyprint
         pkgs.turso-cli
+        xurl
       ];
       addToSystemPackages = true;
       mcpServers.github = {
