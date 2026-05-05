@@ -9,7 +9,7 @@ in
   # Enable home-manager to manage the XDG standard
   home-manager = {
     useGlobalPkgs = true;
-    backupFileExtension = "backup";
+    backupFileExtension = "hm-backup";
     users.${user} =
       { pkgs, ... }:
       {
