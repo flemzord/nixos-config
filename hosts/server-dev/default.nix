@@ -178,6 +178,7 @@ in
     ./../../modules/profiles/nixos/dev.nix
     ./../../modules/services/hermes-github-auth.nix
     ./../../modules/services/hermes-kanban.nix
+    ./../../modules/services/hermes-webhooks.nix
     ./../../modules/services/postgresql.nix
     ./../../modules/services/fail2ban.nix
   ];

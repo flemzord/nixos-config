@@ -34,4 +34,7 @@ in
 
   # Hermes Agent environment (Telegram, GitHub, etc.)
   "secrets/hermes-env.age".publicKeys = allKeys;
+
+  # Hermes webhook HMAC secret (WEBHOOK_SECRET env file)
+  "secrets/hermes-webhook-env.age".publicKeys = allKeys;
 }
