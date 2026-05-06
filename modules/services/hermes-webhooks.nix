@@ -10,6 +10,11 @@ let
     runtimeInputs = [
       pkgs.codex
       pkgs.coreutils
+      pkgs.findutils
+      pkgs.git
+      pkgs.gh
+      pkgs.gnugrep
+      pkgs.gnused
     ];
     text = ''
       set -euo pipefail
@@ -38,15 +43,51 @@ let
       export HOME=${cfg.stateDir}
       export CODEX_HOME=${cfg.stateDir}/.codex
       export OBSIDIAN_VAULT_PATH="${obsidianVault}"
+      vault="${obsidianVault}"
 
-      install -d -m 700 "$CODEX_HOME" "${obsidianVault}"
+      install -d -m 700 "$CODEX_HOME" "$vault"
 
-      exec codex exec \
-        --cd "${obsidianVault}" \
+      # Codex can edit files in the vault, but its sandbox may mount .git as
+      # read-only. Keep git commit/pull/push in this wrapper, outside Codex.
+      stamp="$(mktemp --tmpdir hermes-obsidian-ingest.XXXXXX)"
+      trap 'rm -f "$stamp"' EXIT
+
+      codex exec \
+        --cd "$vault" \
         --sandbox workspace-write \
         -c 'approval_policy="never"' \
         --skip-git-repo-check \
         "\$ingest $url"
+
+      cd "$vault"
+
+      mapfile -d "" changed_files < <(
+        find 02_Areas 03_Resources \
+          -type f \
+          -name '*.md' \
+          -newer "$stamp" \
+          -print0 2>/dev/null || true
+      )
+
+      if [ "''${#changed_files[@]}" -eq 0 ]; then
+        echo "No Obsidian markdown files changed after Codex run; nothing to commit."
+        exit 0
+      fi
+
+      git add -- "''${changed_files[@]}"
+
+      if git diff --cached --quiet; then
+        echo "No staged git diff after adding Codex-touched markdown files; nothing to commit."
+        exit 0
+      fi
+
+      title="$(printf '%s' "$url" | sed -E 's#^https?://##; s#[/?#].*$##')"
+      git commit -m "ingest: $title"
+
+      git pull --rebase --autostash origin main
+      git -c credential.helper= \
+        -c credential.helper='!gh auth git-credential' \
+        push origin HEAD:main
     '';
   };
   hermesWebhookCaddyConfig = ''
