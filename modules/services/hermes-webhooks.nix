@@ -49,6 +49,13 @@ let
         "\$ingest $url"
     '';
   };
+  hermesWebhookCaddyConfig = ''
+    route {
+      @hermes_webhooks path /webhooks/* /health
+      reverse_proxy @hermes_webhooks 127.0.0.1:${toString webhookPort}
+      respond 404
+    }
+  '';
 in
 {
   age.secrets.hermes-webhook-env = {
@@ -68,13 +75,10 @@ in
       globalConfig = ''
         auto_https disable_redirects
       '';
-      virtualHosts."ai.maireaux.fr".extraConfig = ''
-        route {
-          @hermes_webhooks path /webhooks/* /health
-          reverse_proxy @hermes_webhooks 127.0.0.1:${toString webhookPort}
-          respond 404
-        }
-      '';
+      virtualHosts = {
+        "ai.maireaux.fr".extraConfig = hermesWebhookCaddyConfig;
+        "http://ai.maireaux.fr".extraConfig = hermesWebhookCaddyConfig;
+      };
     };
 
     hermes-agent = lib.mkIf cfg.enable {
