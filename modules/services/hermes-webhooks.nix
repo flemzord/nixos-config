@@ -65,7 +65,7 @@ in
   services = {
     caddy = {
       enable = true;
-      virtualHosts."ia.maireaux.fr".extraConfig = ''
+      virtualHosts."ai.maireaux.fr".extraConfig = ''
         route {
           @hermes_webhooks path /webhooks/* /health
           reverse_proxy @hermes_webhooks 127.0.0.1:${toString webhookPort}
