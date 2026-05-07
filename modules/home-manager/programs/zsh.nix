@@ -37,11 +37,11 @@ in
         export HISTIGNORE="pwd:ls:cd"
         export HISTFILE=$HOME/.local/share/zsh/history
         ${lib.optionalString isDarwin ''
-        export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$HOME/.cargo/bin:$PATH
-        source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+          export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin:$HOME/bin:$HOME/go/bin:$HOME/.cargo/bin:$PATH
+          source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
         ''}
         ${lib.optionalString (!isDarwin) ''
-        export PATH="$HOME/bin:$HOME/go/bin:$PATH"
+          export PATH="$HOME/bin:$HOME/go/bin:$PATH"
         ''}
 
         export PATH="$HOME/.krew/bin:$PATH"
@@ -62,10 +62,10 @@ in
         export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
         ${lib.optionalString isDarwin ''
-        export ANDROID_HOME=$HOME/Library/Android/sdk
-        export PATH=$PATH:$ANDROID_HOME/emulator
-        export PATH=$PATH:$ANDROID_HOME/platform-tools
-        alias laravel='/Users/flemzord/.config/composer/vendor/bin/laravel'
+          export ANDROID_HOME=$HOME/Library/Android/sdk
+          export PATH=$PATH:$ANDROID_HOME/emulator
+          export PATH=$PATH:$ANDROID_HOME/platform-tools
+          alias laravel='/Users/flemzord/.config/composer/vendor/bin/laravel'
         ''}
         export TENV_AUTO_INSTALL=true
         export ENABLE_BACKGROUND_TASKS=1
@@ -78,15 +78,15 @@ in
         # Cursor Agent
         export PATH="$HOME/.local/bin:$PATH"
         ${lib.optionalString isDarwin ''
-        # Rbenv
-        eval "$(rbenv init - --no-rehash bash)"
+          # Rbenv
+          eval "$(rbenv init - --no-rehash bash)"
         ''}
         alias c='claude --dangerously-skip-permissions'
-        alias co='codex --full-auto'
+        alias x='codex --full-auto'
         alias qmd='npx @tobilu/qmd -y'
-      
+
         export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
-      
+
       '')
       (lib.mkAfter ''
         # Atuin must be initialized after oh-my-zsh to override Ctrl+R binding
