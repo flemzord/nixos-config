@@ -254,6 +254,7 @@ in
       ];
       extraPackages = [
         pkgs.codex
+        pkgs.ffmpeg
         pkgs.google-cloud-sdk
         pkgs.googleworkspace-cli
         pkgs.python3Packages.weasyprint
