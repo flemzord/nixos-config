@@ -96,6 +96,14 @@
         "grafana" = {
           url = "https://grafana-mcp.internal.frmnc.net/sse";
         };
+        "gitnexus" = {
+          command = "npx";
+          args = [
+            "-y"
+            "gitnexus@latest"
+            "mcp"
+          ];
+        };
         "signoz" = {
           url = "https://mcp.eu.signoz.cloud/mcp";
           http_headers = {
