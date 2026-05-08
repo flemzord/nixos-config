@@ -223,6 +223,9 @@ in
       enable = true;
       settings = {
         security.redact_secrets = true;
+        plugins.enabled = [
+          "disk-cleanup"
+        ];
         model = {
           provider = "openai-codex";
           default = "gpt-5.5";
