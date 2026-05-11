@@ -101,22 +101,6 @@ with pkgs; [
   cargo
   cmake
 
-  # Dev PHP
-  php84Packages.composer
-  xz
-  (pkgs.php84.buildEnv {
-    extensions = { enabled, all }: enabled ++ (with all; [
-      xdebug
-      pcov
-    ]);
-    extraConfig = ''
-      xdebug.mode=debug,coverage
-      xdebug.client_host=127.0.0.1
-      xdebug.client_port="9003"
-      memory_limit = -1
-    '';
-  })
-
   # Dev Python
   uv
   python313
