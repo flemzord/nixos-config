@@ -1,8 +1,9 @@
-{ config
-, username
-, inputs
-, lib
-, ...
+{
+  config,
+  username,
+  inputs,
+  lib,
+  ...
 }:
 {
   nix-homebrew = {
@@ -42,11 +43,7 @@
       "dockutil"
       "pre-commit"
       "formancehq/tap/fctl"
-      "koyeb/tap/koyeb"
-      "loft-sh/tap/vcluster"
-      "earthly/earthly/earthly"
       "temporalio/homebrew-tap/tcld"
-      "steveyegge/beads/bd"
       "temporal"
       "helmfile"
       "rbenv"

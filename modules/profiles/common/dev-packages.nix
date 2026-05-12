@@ -117,5 +117,4 @@ in
   openssh
   unzip
   codex
-  git-worktree-switcher
 ]
