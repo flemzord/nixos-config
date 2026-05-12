@@ -32,88 +32,12 @@
   };
 
   # Dev packages (system-wide)
-  environment.systemPackages = with pkgs; [
-    # Essential utilities
-    ragenix
-    nixpkgs-fmt
-    nixd
-    statix
-    difftastic
-    coreutils
-    flyctl
+  environment.systemPackages = (pkgs.callPackage ../common/dev-packages.nix { }) ++ (with pkgs; [
     (writeShellScriptBin "vercel" ''
       exec ${nodejs_22}/bin/npx --yes vercel "$@"
     '')
-    atuin
-    fd
-    fzf
-    font-awesome
-    gcc
-    gh
-    git-filter-repo
-    gnupg
-    hack-font
-    jetbrains-mono
-    killall
-    libfido2
-    fastfetch
-    ripgrep
-    sqlite
-    sshpass
-    zsh-powerlevel10k
-    ffmpeg
-    curl
-    wget
-    turso-cli
-    newman
-    mosh
-    htop
-
-    # Cloud & K8s tools
-    krew
-    k3d
-    awscli2
-    pipx
-    git-subrepo
-    go-task
-    httpie
-    k6
-    kubectx
-    kubernetes-helm
-    helm-docs
-    supabase-cli
     packer
     hcloud
-    tenv
-    direnv
-    yq
-    jq
-    k9s
-    ko
-    watch
-    tree
-    postgresql_16
-    natscli
-    kind
-    process-compose
-    fluxcd
-    ncdu
-    pg_activity
-    ipcalc
-
-    # NodeJS
-    nodejs_22
-    pnpm
-    yarn
-    bun
-
-    # Rust
-    rustc
-    cargo
-    cmake
-    gnumake
-
-    # PHP
     php84Packages.composer
     xz
     (pkgs.php84.buildEnv {
@@ -128,15 +52,5 @@
         memory_limit = -1
       '';
     })
-
-    # Python
-    uv
-    python313
-    python313Packages.click
-
-    # AI tools
-    claude-code
-    codex
-    gemini-cli
-  ];
+  ]);
 }

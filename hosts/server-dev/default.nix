@@ -213,6 +213,11 @@ in
     "hermes"
   ];
 
+  users.users.flemzord = {
+    openssh.authorizedKeys.keys = config.users.users.root.openssh.authorizedKeys.keys;
+    shell = pkgs.zsh;
+  };
+
   services = {
     nixos-auto-update = {
       enable = true;
