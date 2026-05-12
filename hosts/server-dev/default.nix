@@ -218,6 +218,18 @@ in
     shell = pkgs.zsh;
   };
 
+  security.sudo.extraRules = [
+    {
+      users = [ "flemzord" ];
+      commands = [
+        {
+          command = "ALL";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   services = {
     nixos-auto-update = {
       enable = true;
