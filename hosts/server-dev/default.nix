@@ -229,6 +229,10 @@ in
     shell = pkgs.zsh;
   };
 
+  environment.systemPackages = [
+    pkgs.worktrunk
+  ];
+
   security.sudo.extraRules = [
     {
       users = [ "flemzord" ];
@@ -287,6 +291,7 @@ in
         pkgs.googleworkspace-cli
         pkgs.python3Packages.weasyprint
         pkgs.turso-cli
+        pkgs.worktrunk
         xurl
       ];
       addToSystemPackages = true;
