@@ -195,18 +195,28 @@ in
     firewall.enable = lib.mkForce true;
   };
 
-  age.secrets.hermes-env = {
-    file = ../../secrets/hermes-env.age;
-    owner = "hermes";
-    group = "hermes";
-    mode = "0400";
-  };
+  age.secrets = {
+    hermes-env = {
+      file = ../../secrets/hermes-env.age;
+      owner = "hermes";
+      group = "hermes";
+      mode = "0400";
+    };
 
-  age.secrets.openai-api-key = {
-    file = ../../secrets/openai-api-key.age;
-    owner = "root";
-    group = "openai-api-key";
-    mode = "0440";
+    openai-api-key = {
+      file = ../../secrets/openai-api-key.age;
+      owner = "root";
+      group = "openai-api-key";
+      mode = "0440";
+    };
+
+    ssh-private-key = {
+      file = ../../secrets/ssh-private-key.age;
+      path = "/home/flemzord/.ssh/id_rsa";
+      owner = "flemzord";
+      group = "users";
+      mode = "0600";
+    };
   };
 
   users.groups.openai-api-key.members = [

@@ -25,6 +25,7 @@ in
 
   # SSH config (contains IPs)
   "secrets/ssh-config.age".publicKeys = allKeys;
+  "secrets/ssh-private-key.age".publicKeys = allKeys;
 
   # GitHub API token (for Nix flake fetching rate limits)
   "secrets/github-token.age".publicKeys = allKeys;
