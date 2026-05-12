@@ -216,6 +216,7 @@ in
       owner = "flemzord";
       group = "users";
       mode = "0600";
+      symlink = false;
     };
   };
 
