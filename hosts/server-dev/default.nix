@@ -255,8 +255,13 @@ in
       enable = true;
       settings = {
         security.redact_secrets = true;
+        terminal.cwd = config.services.hermes-agent.workingDirectory;
         plugins.enabled = [
           "disk-cleanup"
+        ];
+        plugins.disabled = [
+          "platforms/google_chat"
+          "google_chat-platform"
         ];
         model = {
           provider = "openai-codex";
@@ -283,6 +288,9 @@ in
       environmentFiles = [
         config.age.secrets.openai-api-key.path
         config.age.secrets.hermes-env.path
+      ];
+      extraDependencyGroups = [
+        "messaging"
       ];
       extraPackages = [
         pkgs.codex
@@ -311,6 +319,25 @@ in
     };
   };
 
+  systemd.services.hermes-agent = lib.mkIf config.services.hermes-agent.enable {
+    environment = lib.mkForce {
+      HOME = config.services.hermes-agent.stateDir;
+      HERMES_HOME = "${config.services.hermes-agent.stateDir}/.hermes";
+      HERMES_MANAGED = "true";
+      TERMINAL_CWD = config.services.hermes-agent.workingDirectory;
+    };
+
+    serviceConfig.TimeoutStopSec = "210s";
+  };
+
+  system.activationScripts."hermes-agent-prune-deprecated-env" = lib.stringAfter [ "hermes-agent-setup" ] ''
+    env_file="${config.services.hermes-agent.stateDir}/.hermes/.env"
+    if [ -f "$env_file" ]; then
+      ${pkgs.gnused}/bin/sed -i '/^\(MESSAGING_CWD\|TERMINAL_CWD\)=/d' "$env_file"
+      chown ${config.services.hermes-agent.user}:${config.services.hermes-agent.group} "$env_file"
+      chmod 0640 "$env_file"
+    fi
+  '';
 
 
   systemd.services.hermes-side-project-profiles = {

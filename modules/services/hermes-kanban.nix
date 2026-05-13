@@ -6,6 +6,8 @@ let
 in
 {
   services.hermes-agent.settings = {
+    terminal.cwd = lib.mkDefault cfg.workingDirectory;
+
     kanban = {
       dispatch_in_gateway = true;
       dispatch_interval_seconds = 60;
@@ -31,7 +33,7 @@ in
       HOME = cfg.stateDir;
       HERMES_HOME = "${cfg.stateDir}/.hermes";
       HERMES_MANAGED = "true";
-      MESSAGING_CWD = cfg.workingDirectory;
+      TERMINAL_CWD = cfg.workingDirectory;
     };
 
     serviceConfig = {
