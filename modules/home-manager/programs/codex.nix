@@ -93,6 +93,7 @@ in
         shell_snapshot = true;
         multi_agent = true;
         goals = true;
+        remote_connections = true;
       };
 
       plugins = {
