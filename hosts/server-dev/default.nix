@@ -267,6 +267,7 @@ in
           provider = "openai-codex";
           default = "gpt-5.5";
         };
+        memory.provider = "holographic";
         fallback_providers = [
           {
             provider = "custom";
