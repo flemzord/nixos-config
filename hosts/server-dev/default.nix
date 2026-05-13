@@ -233,6 +233,8 @@ in
     pkgs.worktrunk
   ];
 
+  profiles.nixos.dev.manageAiCliConfig = false;
+
   security.sudo.extraRules = [
     {
       users = [ "flemzord" ];
