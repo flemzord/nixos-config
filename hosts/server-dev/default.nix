@@ -320,53 +320,77 @@ in
     };
   };
 
-  systemd.services.hermes-agent = lib.mkIf config.services.hermes-agent.enable {
-    environment = lib.mkForce {
-      HOME = config.services.hermes-agent.stateDir;
-      HERMES_HOME = "${config.services.hermes-agent.stateDir}/.hermes";
-      HERMES_MANAGED = "true";
-      TERMINAL_CWD = config.services.hermes-agent.workingDirectory;
+  systemd = {
+    services = {
+      hermes-agent = lib.mkIf config.services.hermes-agent.enable {
+        environment = lib.mkForce {
+          HOME = config.services.hermes-agent.stateDir;
+          HERMES_HOME = "${config.services.hermes-agent.stateDir}/.hermes";
+          HERMES_MANAGED = "true";
+          TERMINAL_CWD = config.services.hermes-agent.workingDirectory;
+        };
+
+        serviceConfig.TimeoutStopSec = "210s";
+      };
+
+      hermes-side-project-profiles = {
+        description = "Ensure Hermes side-project studio profiles exist";
+        after = [ "hermes-agent.service" ];
+        wantedBy = [ "multi-user.target" ];
+
+        serviceConfig = {
+          Type = "oneshot";
+          User = "hermes";
+          Group = "hermes";
+          Environment = [
+            "HOME=/var/lib/hermes"
+            "HERMES_HOME=/var/lib/hermes/.hermes"
+            "HERMES_MANAGED=true"
+          ];
+          UMask = "0077";
+        };
+
+        path = [
+          config.services.hermes-agent.package
+          pkgs.coreutils
+        ];
+
+        script = ''
+          ${setupSideProjectProfiles}
+        '';
+      };
     };
 
-    serviceConfig.TimeoutStopSec = "210s";
-  };
-
-  system.activationScripts."hermes-agent-prune-deprecated-env" = lib.stringAfter [ "hermes-agent-setup" ] ''
-    env_file="${config.services.hermes-agent.stateDir}/.hermes/.env"
-    if [ -f "$env_file" ]; then
-      ${pkgs.gnused}/bin/sed -i '/^\(MESSAGING_CWD\|TERMINAL_CWD\)=/d' "$env_file"
-      chown ${config.services.hermes-agent.user}:${config.services.hermes-agent.group} "$env_file"
-      chmod 0640 "$env_file"
-    fi
-  '';
-
-
-  systemd.services.hermes-side-project-profiles = {
-    description = "Ensure Hermes side-project studio profiles exist";
-    after = [ "hermes-agent.service" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "oneshot";
-      User = "hermes";
-      Group = "hermes";
-      Environment = [
-        "HOME=/var/lib/hermes"
-        "HERMES_HOME=/var/lib/hermes/.hermes"
-        "HERMES_MANAGED=true"
-      ];
-      UMask = "0077";
-    };
-
-    path = [
-      config.services.hermes-agent.package
-      pkgs.coreutils
+    tmpfiles.rules = [
+      "d ${config.services.hermes-agent.stateDir}/.hermes/skills 2770 ${config.services.hermes-agent.user} ${config.services.hermes-agent.group} - -"
     ];
-
-    script = ''
-      ${setupSideProjectProfiles}
-    '';
   };
 
-  system.stateVersion = "25.11";
+  system = {
+    activationScripts = {
+      "hermes-agent-skill-permissions" = lib.stringAfter [ "hermes-agent-setup" ] ''
+        skills_dir="${config.services.hermes-agent.stateDir}/.hermes/skills"
+        install -d -o ${config.services.hermes-agent.user} -g ${config.services.hermes-agent.group} -m 2770 "$skills_dir"
+
+        find "$skills_dir" -type d \
+          -exec chown ${config.services.hermes-agent.user}:${config.services.hermes-agent.group} {} + \
+          -exec chmod ug+rwx,o-rwx,g+s {} +
+
+        find "$skills_dir" -type f \
+          -exec chown ${config.services.hermes-agent.user}:${config.services.hermes-agent.group} {} + \
+          -exec chmod ug+rw,o-rwx {} +
+      '';
+
+      "hermes-agent-prune-deprecated-env" = lib.stringAfter [ "hermes-agent-setup" ] ''
+        env_file="${config.services.hermes-agent.stateDir}/.hermes/.env"
+        if [ -f "$env_file" ]; then
+          ${pkgs.gnused}/bin/sed -i '/^\(MESSAGING_CWD\|TERMINAL_CWD\)=/d' "$env_file"
+          chown ${config.services.hermes-agent.user}:${config.services.hermes-agent.group} "$env_file"
+          chmod 0640 "$env_file"
+        fi
+      '';
+    };
+
+    stateVersion = "25.11";
+  };
 }
