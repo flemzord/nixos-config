@@ -91,6 +91,7 @@
 
     # Boot
     boot.loader.grub.configurationLimit = lib.mkDefault 2;
+    boot.loader.systemd-boot.configurationLimit = lib.mkDefault 2;
 
     # User
     users.users.flemzord = {
