@@ -110,6 +110,7 @@ in
 ]
 ++ lib.optionals stdenv.isDarwin [
   apple-sdk
+  gitnexus
   killall
   qmd
 ]

@@ -230,6 +230,7 @@ in
   };
 
   environment.systemPackages = [
+    pkgs.gitnexus
     pkgs.qmd
     pkgs.worktrunk
   ];
@@ -299,6 +300,7 @@ in
       extraPackages = [
         pkgs.codex
         pkgs.ffmpeg
+        pkgs.gitnexus
         pkgs.google-cloud-sdk
         pkgs.googleworkspace-cli
         pkgs.qmd
