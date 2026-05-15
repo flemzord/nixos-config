@@ -111,6 +111,7 @@ in
 ++ lib.optionals stdenv.isDarwin [
   apple-sdk
   killall
+  qmd
 ]
 ++ lib.optionals stdenv.isLinux [
   git

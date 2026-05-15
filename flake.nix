@@ -72,11 +72,37 @@
     };
   };
 
-  outputs = inputs@{ darwin, nix-homebrew, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, googleworkspace-cli, ... }: {
+  outputs = inputs@{ darwin, nix-homebrew, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, googleworkspace-cli, ... }: rec {
+    overlays.default = final: _prev: {
+      qmd = final.callPackage ./packages/qmd.nix { };
+    };
+
+    packages =
+      let
+        mkPackages = system:
+          let
+            pkgs = import nixpkgs {
+              inherit system;
+              overlays = [ overlays.default ];
+            };
+          in
+          {
+            default = pkgs.qmd;
+            inherit (pkgs) qmd;
+          };
+      in
+      {
+        x86_64-linux = mkPackages "x86_64-linux";
+        aarch64-linux = mkPackages "aarch64-linux";
+        x86_64-darwin = mkPackages "x86_64-darwin";
+        aarch64-darwin = mkPackages "aarch64-darwin";
+      };
+
     nixosConfigurations = {
       "home-hp" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          { nixpkgs.overlays = [ overlays.default ]; }
           agenix.nixosModules.default
           vscode-server.nixosModules.default
           ./hosts/home-hp
@@ -86,6 +112,7 @@
       "home-dell" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          { nixpkgs.overlays = [ overlays.default ]; }
           agenix.nixosModules.default
           disko.nixosModules.disko
           hermes-agent.nixosModules.default
@@ -98,6 +125,7 @@
         modules = [
           {
             nixpkgs.overlays = [
+              overlays.default
               claude-code-nix.overlays.default
               codex-cli-nix.overlays.default
               (_final: prev: {
@@ -119,7 +147,7 @@
         system = "aarch64-darwin";
         specialArgs = { inherit inputs; username = "flemzord"; };
         modules = [
-          { nixpkgs.overlays = [ claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
+          { nixpkgs.overlays = [ overlays.default claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
@@ -131,7 +159,7 @@
         system = "aarch64-darwin";
         specialArgs = { inherit inputs; username = "flemzord"; };
         modules = [
-          { nixpkgs.overlays = [ claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
+          { nixpkgs.overlays = [ overlays.default claude-code-nix.overlays.default codex-cli-nix.overlays.default ]; }
           agenix.darwinModules.default
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew

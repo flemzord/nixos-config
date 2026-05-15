@@ -230,6 +230,7 @@ in
   };
 
   environment.systemPackages = [
+    pkgs.qmd
     pkgs.worktrunk
   ];
 
@@ -300,6 +301,7 @@ in
         pkgs.ffmpeg
         pkgs.google-cloud-sdk
         pkgs.googleworkspace-cli
+        pkgs.qmd
         pkgs.python3Packages.weasyprint
         pkgs.turso-cli
         pkgs.worktrunk
