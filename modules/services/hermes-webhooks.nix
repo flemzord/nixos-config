@@ -19,17 +19,20 @@ let
     text = ''
       set -euo pipefail
 
+      usage() {
+        printf '%s\n' "Usage: hermes-obsidian-ingest-codex [https-url]" >&2
+        printf '%s\n' "       printf '%s\\n' https-url | hermes-obsidian-ingest-codex" >&2
+      }
+
       if [ "$#" -gt 1 ]; then
-        echo "Usage: hermes-obsidian-ingest-codex [https-url]" >&2
-        echo "       printf '%s\n' https-url | hermes-obsidian-ingest-codex" >&2
+        usage
         exit 64
       fi
 
       if [ "$#" -eq 1 ]; then
         url="$1"
       elif ! IFS= read -r url; then
-        echo "Usage: hermes-obsidian-ingest-codex [https-url]" >&2
-        echo "       printf '%s\n' https-url | hermes-obsidian-ingest-codex" >&2
+        usage
         exit 64
       elif IFS= read -r _extra; then
         echo "Refusing multi-line URL input" >&2
