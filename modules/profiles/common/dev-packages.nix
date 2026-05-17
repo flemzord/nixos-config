@@ -102,6 +102,7 @@ in
   python313Packages.click
 
   # CLI tools
+  herdr
   glow
 
   # AI tools

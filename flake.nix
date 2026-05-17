@@ -75,6 +75,7 @@
   outputs = inputs@{ darwin, nix-homebrew, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, googleworkspace-cli, ... }: rec {
     overlays.default = final: _prev: {
       gitnexus = final.callPackage ./packages/gitnexus.nix { };
+      herdr = final.callPackage ./packages/herdr.nix { };
       qmd = final.callPackage ./packages/qmd.nix { };
     };
 
@@ -91,6 +92,7 @@
           {
             default = pkgs.qmd;
             inherit (pkgs) gitnexus;
+            inherit (pkgs) herdr;
             inherit (pkgs) qmd;
           };
       in

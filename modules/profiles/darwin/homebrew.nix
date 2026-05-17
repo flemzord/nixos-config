@@ -38,6 +38,7 @@
       "CleverCloud/misc"
       "junhoyeo/contrabass"
       "kitlangton/tap"
+      "muxy-app/tap"
     ];
     brews = [
       "dockutil"
@@ -99,7 +100,9 @@
       "visual-studio-code"
       "whatsapp"
       "wispr-flow"
+      "muxy-app/tap/muxy"
       "zed"
+      "tolaria"
     ];
   };
 }
