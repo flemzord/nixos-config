@@ -37,6 +37,7 @@
       "yakitrak/yakitrak"
       "CleverCloud/misc"
       "junhoyeo/contrabass"
+      "kitlangton/tap"
     ];
     brews = [
       "dockutil"
@@ -58,6 +59,7 @@
       "mobile-dev-inc/tap/maestro"
       "yt-dlp"
       "junhoyeo/contrabass/contrabass"
+      "kitlangton/tap/ghui"
     ];
     casks = [
       # Shared across all Macs
