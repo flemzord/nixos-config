@@ -267,6 +267,22 @@ in
           "platforms/google_chat"
           "google_chat-platform"
         ];
+        platform_toolsets = {
+          api_server = [ "hermes-api-server" "x_search" ];
+          cli = [ "hermes-cli" "x_search" ];
+          cron = [ "hermes-cron" "x_search" ];
+          discord = [ "hermes-discord" "x_search" ];
+          signal = [ "hermes-signal" "x_search" ];
+          slack = [ "hermes-slack" "x_search" ];
+          telegram = [ "hermes-telegram" "x_search" ];
+          webhook = [ "hermes-webhook" "x_search" ];
+          whatsapp = [ "hermes-whatsapp" "x_search" ];
+        };
+        x_search = {
+          model = "grok-4.20-reasoning";
+          retries = 2;
+          timeout_seconds = 180;
+        };
         model = {
           provider = "openai-codex";
           default = "gpt-5.5";
