@@ -264,6 +264,7 @@ in
         terminal.cwd = config.services.hermes-agent.workingDirectory;
         plugins.enabled = [
           "disk-cleanup"
+          "kanban/dashboard"
         ];
         plugins.disabled = [
           "platforms/google_chat"
@@ -327,6 +328,7 @@ in
         pkgs.gitnexus
         pkgs.google-cloud-sdk
         pkgs.googleworkspace-cli
+        pkgs.nodejs_22
         pkgs.qmd
         pkgs.python3Packages.weasyprint
         pkgs.turso-cli
@@ -335,7 +337,7 @@ in
       ];
       addToSystemPackages = true;
       mcpServers.github = {
-        command = "npx";
+        command = "${pkgs.nodejs_22}/bin/npx";
         args = [
           "-y"
           "@modelcontextprotocol/server-github"
