@@ -1,0 +1,4 @@
+interface:
+  display_name: "Nix Dev Machine Tooling"
+  short_description: "Manage Nix developer machine tools."
+  default_prompt: "Use this skill when adding CLI packages, changing Darwin/server-dev/Hermes tooling, or validating this Nix configuration."

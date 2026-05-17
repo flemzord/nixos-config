@@ -47,7 +47,7 @@ in
         export PATH="$HOME/.krew/bin:$PATH"
         export PATH="$HOME/.local/bin:$PATH"
         export NPM_CONFIG_PREFIX="$HOME/.cache/npm"
-        export PATH="$HOME/.cache/npm/bin:$PATH"
+        export PATH="$PATH:$HOME/.cache/npm/bin"
         # Use difftastic, syntax-aware diffing
         alias diff=difft
 
@@ -83,7 +83,6 @@ in
         ''}
         alias c='claude --dangerously-skip-permissions'
         alias x='codex --dangerously-bypass-approvals-and-sandbox'
-        alias qmd='npx @tobilu/qmd -y'
 
         export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 

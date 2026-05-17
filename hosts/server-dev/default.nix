@@ -264,6 +264,7 @@ in
         terminal.cwd = config.services.hermes-agent.workingDirectory;
         plugins.enabled = [
           "disk-cleanup"
+          "image_gen/openai-codex"
           "kanban/dashboard"
         ];
         plugins.disabled = [
@@ -285,6 +286,10 @@ in
           model = "grok-4.20-reasoning";
           retries = 2;
           timeout_seconds = 180;
+        };
+        image_gen = {
+          provider = "openai-codex";
+          model = "gpt-image-2-medium";
         };
         model = {
           provider = "openai-codex";

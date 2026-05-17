@@ -8,6 +8,11 @@ let
     checkPhase = "true";
     installCheckPhase = "true";
   });
+
+  pythonDev = python313.withPackages (ps: with ps; [
+    click
+    pyyaml
+  ]);
 in
 [
   ragenix
@@ -98,8 +103,7 @@ in
 
   # Dev Python
   uv
-  python313
-  python313Packages.click
+  pythonDev
 
   # CLI tools
   herdr
