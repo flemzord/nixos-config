@@ -237,6 +237,8 @@ in
 
   profiles.nixos.dev.manageAiCliConfig = false;
 
+  programs.mosh.enable = true;
+
   security.sudo.extraRules = [
     {
       users = [ "flemzord" ];
