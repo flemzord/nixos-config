@@ -286,6 +286,11 @@ in
           base_url = null;
           timeout = 120;
         };
+        stt = {
+          enabled = true;
+          provider = "local";
+          local.model = "base";
+        };
       };
       environment = {
         CODEX_HOME = "${config.services.hermes-agent.stateDir}/.codex";
@@ -296,6 +301,7 @@ in
       ];
       extraDependencyGroups = [
         "messaging"
+        "voice"
       ];
       extraPackages = [
         pkgs.codex
