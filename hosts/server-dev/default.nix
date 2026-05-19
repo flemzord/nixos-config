@@ -360,6 +360,36 @@ in
 
   systemd = {
     services = {
+      codex-remote-control = {
+        description = "Codex remote control for flemzord";
+        after = [ "network-online.target" ];
+        wants = [ "network-online.target" ];
+        wantedBy = [ "multi-user.target" ];
+
+        environment = {
+          HOME = "/home/flemzord";
+          SHELL = "${pkgs.zsh}/bin/zsh";
+        };
+
+        path = [
+          pkgs.codex
+          pkgs.git
+          pkgs.openssh
+        ];
+
+        serviceConfig = {
+          User = "flemzord";
+          Group = "users";
+          WorkingDirectory = "/home/flemzord/Developer";
+          Restart = "always";
+          RestartSec = "10s";
+        };
+
+        script = ''
+          exec codex remote-control
+        '';
+      };
+
       hermes-agent = lib.mkIf config.services.hermes-agent.enable {
         environment = lib.mkForce {
           HOME = config.services.hermes-agent.stateDir;
