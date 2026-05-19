@@ -338,6 +338,7 @@ in
         pkgs.python3Packages.weasyprint
         pkgs.turso-cli
         pkgs.worktrunk
+        pkgs.yt-dlp
         xurl
       ];
       addToSystemPackages = true;
