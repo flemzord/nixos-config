@@ -4,6 +4,25 @@ with lib;
 
 let
   cfg = config.services.nixos-auto-update;
+  autoUpdate = pkgs.writeShellApplication {
+    name = "nixos-auto-update";
+    runtimeInputs = [
+      config.nix.package
+      config.system.build.nixos-rebuild
+      pkgs.coreutils
+      pkgs.git
+      pkgs.nvd
+    ];
+    text = ''
+      set -euo pipefail
+
+      git pull ${escapeShellArg cfg.remote} ${escapeShellArg cfg.branch}
+
+      before="/nix/var/nix/profiles/$(readlink /nix/var/nix/profiles/system)"
+      NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${cfg.hostname}"
+      nvd diff "$before" /nix/var/nix/profiles/system
+    '';
+  };
 in
 {
   options.services.nixos-auto-update = {
@@ -46,11 +65,7 @@ in
       serviceConfig = {
         Type = "oneshot";
         WorkingDirectory = cfg.configPath;
-        ExecStart = pkgs.writeShellScript "nixos-auto-update" ''
-          set -e
-          ${pkgs.git}/bin/git pull ${cfg.remote} ${cfg.branch}
-          ${pkgs.gnumake}/bin/make switch NIXNAME=${cfg.hostname}
-        '';
+        ExecStart = "${autoUpdate}/bin/nixos-auto-update";
       };
     };
 
