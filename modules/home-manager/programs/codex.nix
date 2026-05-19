@@ -5,7 +5,22 @@ let
 
   plannotatorHook = {
     type = "command";
-    command = "/Users/flemzord/.local/bin/plannotator";
+    command = toString (pkgs.writeShellScript "codex-plannotator-stop-hook" ''
+      set +e
+
+      output="$("/Users/flemzord/.local/bin/plannotator" 2>&1)"
+      status="$?"
+
+      if [ -n "$output" ]; then
+        printf '%s\n' "$output"
+      fi
+
+      if [ "$status" -eq 1 ] && [ "$output" = "No plan content in hook event" ]; then
+        exit 0
+      fi
+
+      exit "$status"
+    '');
     timeout = 345600;
   };
 
