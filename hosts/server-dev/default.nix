@@ -315,9 +315,45 @@ in
           provider = "local";
           local.model = "base";
         };
+        platforms.telegram = {
+          home_channel = {
+            platform = "telegram";
+            chat_id = "-1003773595185";
+            name = "Default";
+            thread_id = "133";
+          };
+          extra = {
+            group_topics = [
+              {
+                chat_id = -1003773595185;
+                topics = [
+                  {
+                    name = "Obsidian";
+                    thread_id = 132;
+                  }
+                  {
+                    name = "Default";
+                    thread_id = 133;
+                  }
+                  {
+                    name = "Kulb";
+                    thread_id = 134;
+                  }
+                  {
+                    name = "Cabio";
+                    thread_id = 135;
+                  }
+                ];
+              }
+            ];
+          };
+        };
       };
       environment = {
         CODEX_HOME = "${config.services.hermes-agent.stateDir}/.codex";
+        TELEGRAM_HOME_CHANNEL = "-1003773595185";
+        TELEGRAM_HOME_CHANNEL_NAME = "Default";
+        TELEGRAM_HOME_CHANNEL_THREAD_ID = "133";
       };
       environmentFiles = [
         config.age.secrets.openai-api-key.path
