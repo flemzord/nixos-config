@@ -361,7 +361,7 @@ in
   systemd = {
     services = {
       codex-remote-control = {
-        description = "Codex remote control for flemzord";
+        description = "Codex app server for flemzord remote control";
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
@@ -386,7 +386,7 @@ in
         };
 
         script = ''
-          exec codex remote-control
+          exec codex app-server --listen ws://127.0.0.1:63050
         '';
       };
 
