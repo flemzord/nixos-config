@@ -9,6 +9,10 @@ let
     installCheckPhase = "true";
   });
 
+  pipxNoChecks = pipx.overridePythonAttrs (_: {
+    doCheck = false;
+  });
+
   pythonDev = python313.withPackages (ps: with ps; [
     click
     pyyaml
@@ -60,7 +64,7 @@ in
   krew
   k3d
   awscli2
-  pipx
+  pipxNoChecks
   git-subrepo
   go-task
   zellij
