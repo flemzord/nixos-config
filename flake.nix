@@ -76,7 +76,6 @@
     overlays.default = final: _prev: {
       gitnexus = final.callPackage ./packages/gitnexus.nix { };
       herdr = final.callPackage ./packages/herdr.nix { };
-      plannotator = final.callPackage ./packages/plannotator.nix { };
       qmd = final.callPackage ./packages/qmd.nix { };
     };
 
@@ -94,7 +93,6 @@
             default = pkgs.qmd;
             inherit (pkgs) gitnexus;
             inherit (pkgs) herdr;
-            inherit (pkgs) plannotator;
             inherit (pkgs) qmd;
           };
       in
