@@ -230,6 +230,7 @@ in
   };
 
   environment.systemPackages = [
+    pkgs.banqline
     pkgs.gitnexus
     pkgs.qmd
     pkgs.worktrunk
@@ -328,6 +329,7 @@ in
         "voice"
       ];
       extraPackages = [
+        pkgs.banqline
         pkgs.codex
         pkgs.ffmpeg
         pkgs.gitnexus
