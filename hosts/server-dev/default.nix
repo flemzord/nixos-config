@@ -1,4 +1,5 @@
 { config
+, inputs
 , lib
 , pkgs
 , ...
@@ -26,6 +27,39 @@ let
         propagatedBuildInputs = [ ];
       }))
     ];
+
+  hermesObsidianPythonPath = lib.makeSearchPath pkgs.python312.sitePackages (
+    pkgs.python312.pkgs.requiredPythonModules hermesObsidianPythonPackages
+  );
+
+  hermesPython = pkgs.writeShellApplication {
+    name = "hermes-python";
+    text = ''
+      export PYTHONPATH="${hermesObsidianPythonPath}''${PYTHONPATH:+:}''${PYTHONPATH:-}"
+      exec ${hermesBasePackage.passthru.hermesVenv}/bin/python3 "$@"
+    '';
+  };
+
+  hermesBasePackage = inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+    extraDependencyGroups = [
+      "exa"
+      "messaging"
+      "voice"
+    ];
+    extraPythonPackages = hermesObsidianPythonPackages;
+  };
+
+  hermesPackage = pkgs.runCommand "hermes-agent-with-obsidian-python-${hermesBasePackage.version}"
+    { nativeBuildInputs = [ pkgs.perl ]; }
+    ''
+      cp -R --no-preserve=mode,ownership ${hermesBasePackage} "$out"
+      chmod -R u+w "$out"
+
+      for bin in hermes hermes-agent hermes-acp; do
+        ${pkgs.perl}/bin/perl -0pi -e "s|^export HERMES_PYTHON=.*$|export HERMES_PYTHON='${hermesPython}/bin/hermes-python'|m" "$out/bin/$bin"
+        grep -F "export HERMES_PYTHON='${hermesPython}/bin/hermes-python'" "$out/bin/$bin" >/dev/null
+      done
+    '';
 
   sideProjectProfiles = {
     product = pkgs.writeText "hermes-profile-product-SOUL.md" ''
@@ -280,6 +314,7 @@ in
 
     hermes-agent = {
       enable = true;
+      package = hermesPackage;
       settings = {
         security.redact_secrets = true;
         terminal.cwd = config.services.hermes-agent.workingDirectory;
@@ -344,12 +379,6 @@ in
         config.age.secrets.openai-api-key.path
         config.age.secrets.hermes-env.path
       ];
-      extraDependencyGroups = [
-        "exa"
-        "messaging"
-        "voice"
-      ];
-      extraPythonPackages = hermesObsidianPythonPackages;
       extraPackages = [
         pkgs.banqline
         pkgs.codex

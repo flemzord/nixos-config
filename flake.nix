@@ -129,6 +129,7 @@
 
       "server-dev" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           {
             nixpkgs.overlays = [
