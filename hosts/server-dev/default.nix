@@ -13,19 +13,9 @@ let
       py = pkgs.python312Packages;
     in
     [
-      # Hermes rejects extraPythonPackages that re-propagate packages already
-      # present in its sealed venv, so keep only deps missing from core.
-      (py.beautifulsoup4.overridePythonAttrs (_old: {
-        dependencies = [ py.soupsieve ];
-        propagatedBuildInputs = [ py.soupsieve ];
-      }))
-      (py.markdownify.overridePythonAttrs (_old: {
-        dependencies = [ ];
-        propagatedBuildInputs = [ ];
-      }))
-      (py.python-frontmatter.overridePythonAttrs (_old: {
-        propagatedBuildInputs = [ ];
-      }))
+      py.beautifulsoup4
+      py.markdownify
+      py.python-frontmatter
     ];
 
   hermesObsidianPythonPath = lib.makeSearchPath pkgs.python312.sitePackages (
@@ -46,7 +36,6 @@ let
       "messaging"
       "voice"
     ];
-    extraPythonPackages = hermesObsidianPythonPackages;
   };
 
   hermesPackage = pkgs.runCommand "hermes-agent-with-obsidian-python-${hermesBasePackage.version}"
