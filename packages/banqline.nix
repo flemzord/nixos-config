@@ -10,11 +10,11 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "arkan";
     repo = "banqline";
-    rev = "c294608a2f6a743d8044a900a8ba67035c07be1f";
-    hash = "sha256-uqfko6RixAkUwh5UK5nUFNCWwtrcprCc7hZrHjAJVG8=";
+    rev = "b4e293ec38b84e1fb17b1c4b3c83fd2fd2be1770";
+    hash = "sha256-R13yyXHOwJTlDPDpoEyNLpWw+zXEubGIPi2oUZik6d0=";
   };
 
-  cargoHash = "sha256-d+6Wq7BpNdIqV5ImyiVXwLZOWusOqEfaX2RRkessPzQ=";
+  cargoHash = "sha256-OthVN0yP8hg6S3yri3gdFllLEBOjqxR3oHruKD62kS0=";
 
   preCheck = ''
     export HOME=$(mktemp -d)

@@ -84,7 +84,7 @@
       "notion"
       "notion-calendar"
       "obsidian"
-      "postgres-unofficial"
+      "postgres-app"
       "raycast"
       "rectangle"
       "screen-studio"
