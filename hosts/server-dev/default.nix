@@ -7,6 +7,26 @@
 let
   xurl = pkgs.callPackage ../../packages/xurl.nix { };
 
+  hermesObsidianPythonPackages =
+    let
+      py = pkgs.python312Packages;
+    in
+    [
+      # Hermes rejects extraPythonPackages that re-propagate packages already
+      # present in its sealed venv, so keep only deps missing from core.
+      (py.beautifulsoup4.overridePythonAttrs (_old: {
+        dependencies = [ py.soupsieve ];
+        propagatedBuildInputs = [ py.soupsieve ];
+      }))
+      (py.markdownify.overridePythonAttrs (_old: {
+        dependencies = [ ];
+        propagatedBuildInputs = [ ];
+      }))
+      (py.python-frontmatter.overridePythonAttrs (_old: {
+        propagatedBuildInputs = [ ];
+      }))
+    ];
+
   sideProjectProfiles = {
     product = pkgs.writeText "hermes-profile-product-SOUL.md" ''
       # Product Profile
@@ -325,9 +345,11 @@ in
         config.age.secrets.hermes-env.path
       ];
       extraDependencyGroups = [
+        "exa"
         "messaging"
         "voice"
       ];
+      extraPythonPackages = hermesObsidianPythonPackages;
       extraPackages = [
         pkgs.banqline
         pkgs.codex
@@ -335,7 +357,9 @@ in
         pkgs.gitnexus
         pkgs.google-cloud-sdk
         pkgs.googleworkspace-cli
+        pkgs.markdownlint-cli
         pkgs.nodejs_22
+        pkgs.prettier
         pkgs.qmd
         pkgs.python3Packages.weasyprint
         pkgs.turso-cli
