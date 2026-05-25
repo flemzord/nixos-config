@@ -41,12 +41,13 @@ let
   hermesPackage = pkgs.runCommand "hermes-agent-with-obsidian-python-${hermesBasePackage.version}"
     { nativeBuildInputs = [ pkgs.perl ]; }
     ''
-      cp -R --no-preserve=mode,ownership ${hermesBasePackage} "$out"
+      cp -R --no-preserve=ownership ${hermesBasePackage} "$out"
       chmod -R u+w "$out"
 
       for bin in hermes hermes-agent hermes-acp; do
         ${pkgs.perl}/bin/perl -0pi -e "s|^export HERMES_PYTHON=.*$|export HERMES_PYTHON='${hermesPython}/bin/hermes-python'|m" "$out/bin/$bin"
         grep -F "export HERMES_PYTHON='${hermesPython}/bin/hermes-python'" "$out/bin/$bin" >/dev/null
+        chmod +x "$out/bin/$bin"
       done
     '';
 
