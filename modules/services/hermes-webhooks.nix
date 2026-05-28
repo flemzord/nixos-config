@@ -146,6 +146,14 @@ in
         config.age.secrets.hermes-webhook-env.path
       ];
       extraPackages = [ obsidianIngestCodex ];
+      settings.platform_toolsets.webhook = [
+        "hermes-webhook"
+        "x_search"
+        "terminal"
+        "file"
+        "skills"
+        "delegation"
+      ];
       settings.platforms.webhook = {
         enabled = true;
         extra = {
