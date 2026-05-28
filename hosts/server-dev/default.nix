@@ -325,7 +325,14 @@ in
           signal = [ "hermes-signal" "x_search" ];
           slack = [ "hermes-slack" "x_search" ];
           telegram = [ "hermes-telegram" "x_search" ];
-          webhook = [ "hermes-webhook" "x_search" ];
+          webhook = [
+            "hermes-webhook"
+            "x_search"
+            "terminal"
+            "file"
+            "skills"
+            "delegation"
+          ];
           whatsapp = [ "hermes-whatsapp" "x_search" ];
         };
         x_search = {
