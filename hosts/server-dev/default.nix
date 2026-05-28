@@ -53,9 +53,11 @@ let
       cp -R --no-preserve=ownership ${hermesBasePackage} "$out"
       chmod -R u+w "$out"
 
+      hermes_pythonpath='${hermesCliDashboardAuthOverlay}/${pkgs.python312.sitePackages}:${hermesObsidianPythonPath}'
       for bin in hermes hermes-agent hermes-acp; do
-        ${pkgs.perl}/bin/perl -0pi -e "s|^export HERMES_PYTHON=.*$|export HERMES_PYTHON='${hermesPython}/bin/hermes-python'|m" "$out/bin/$bin"
+        ${pkgs.perl}/bin/perl -0pi -e "s|^export HERMES_PYTHON=.*$|export HERMES_PYTHON='${hermesPython}/bin/hermes-python'\nexport PYTHONPATH='$hermes_pythonpath'\\\''${PYTHONPATH:+:}\\\''${PYTHONPATH:-}|m" "$out/bin/$bin"
         grep -F "export HERMES_PYTHON='${hermesPython}/bin/hermes-python'" "$out/bin/$bin" >/dev/null
+        grep -F "export PYTHONPATH='${hermesCliDashboardAuthOverlay}/${pkgs.python312.sitePackages}:${hermesObsidianPythonPath}" "$out/bin/$bin" >/dev/null
         chmod +x "$out/bin/$bin"
       done
     '';
