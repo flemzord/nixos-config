@@ -22,10 +22,19 @@ let
     pkgs.python312.pkgs.requiredPythonModules hermesObsidianPythonPackages
   );
 
+  hermesCliDashboardAuthOverlay = pkgs.runCommand "hermes-cli-dashboard-auth-overlay-${hermesBasePackage.version}" { } ''
+    site_packages="$out/${pkgs.python312.sitePackages}"
+    mkdir -p "$site_packages"
+
+    cp -RL --no-preserve=ownership,mode ${hermesBasePackage.passthru.hermesVenv}/${pkgs.python312.sitePackages}/hermes_cli "$site_packages/hermes_cli"
+    rm -rf "$site_packages/hermes_cli/dashboard_auth"
+    cp -RL --no-preserve=ownership,mode ${inputs.hermes-agent}/hermes_cli/dashboard_auth "$site_packages/hermes_cli/dashboard_auth"
+  '';
+
   hermesPython = pkgs.writeShellApplication {
     name = "hermes-python";
     text = ''
-      export PYTHONPATH="${hermesObsidianPythonPath}''${PYTHONPATH:+:}''${PYTHONPATH:-}"
+      export PYTHONPATH="${hermesCliDashboardAuthOverlay}/${pkgs.python312.sitePackages}:${hermesObsidianPythonPath}''${PYTHONPATH:+:}''${PYTHONPATH:-}"
       exec ${hermesBasePackage.passthru.hermesVenv}/bin/python3 "$@"
     '';
   };
