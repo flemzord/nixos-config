@@ -1,8 +1,9 @@
-{ config
-, inputs
-, lib
-, pkgs
-, ...
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
 }:
 
 let
@@ -22,14 +23,16 @@ let
     pkgs.python312.pkgs.requiredPythonModules hermesObsidianPythonPackages
   );
 
-  hermesCliDashboardAuthOverlay = pkgs.runCommand "hermes-cli-dashboard-auth-overlay-${hermesBasePackage.version}" { } ''
-    site_packages="$out/${pkgs.python312.sitePackages}"
-    mkdir -p "$site_packages"
+  hermesCliDashboardAuthOverlay =
+    pkgs.runCommand "hermes-cli-dashboard-auth-overlay-${hermesBasePackage.version}" { }
+      ''
+        site_packages="$out/${pkgs.python312.sitePackages}"
+        mkdir -p "$site_packages"
 
-    cp -RL --no-preserve=ownership,mode ${hermesBasePackage.passthru.hermesVenv}/${pkgs.python312.sitePackages}/hermes_cli "$site_packages/hermes_cli"
-    rm -rf "$site_packages/hermes_cli/dashboard_auth"
-    cp -RL --no-preserve=ownership,mode ${inputs.hermes-agent}/hermes_cli/dashboard_auth "$site_packages/hermes_cli/dashboard_auth"
-  '';
+        cp -RL --no-preserve=ownership,mode ${hermesBasePackage.passthru.hermesVenv}/${pkgs.python312.sitePackages}/hermes_cli "$site_packages/hermes_cli"
+        rm -rf "$site_packages/hermes_cli/dashboard_auth"
+        cp -RL --no-preserve=ownership,mode ${inputs.hermes-agent}/hermes_cli/dashboard_auth "$site_packages/hermes_cli/dashboard_auth"
+      '';
 
   hermesPython = pkgs.writeShellApplication {
     name = "hermes-python";
@@ -39,28 +42,31 @@ let
     '';
   };
 
-  hermesBasePackage = inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
-    extraDependencyGroups = [
-      "exa"
-      "messaging"
-      "voice"
-    ];
-  };
+  hermesBasePackage =
+    inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default.override
+      {
+        extraDependencyGroups = [
+          "exa"
+          "messaging"
+          "voice"
+        ];
+      };
 
-  hermesPackage = pkgs.runCommand "hermes-agent-with-obsidian-python-${hermesBasePackage.version}"
-    { nativeBuildInputs = [ pkgs.perl ]; }
-    ''
-      cp -R --no-preserve=ownership ${hermesBasePackage} "$out"
-      chmod -R u+w "$out"
+  hermesPackage =
+    pkgs.runCommand "hermes-agent-with-obsidian-python-${hermesBasePackage.version}"
+      { nativeBuildInputs = [ pkgs.perl ]; }
+      ''
+        cp -R --no-preserve=ownership ${hermesBasePackage} "$out"
+        chmod -R u+w "$out"
 
-      hermes_pythonpath='${hermesCliDashboardAuthOverlay}/${pkgs.python312.sitePackages}:${hermesObsidianPythonPath}'
-      for bin in hermes hermes-agent hermes-acp; do
-        ${pkgs.perl}/bin/perl -0pi -e "s|^export HERMES_PYTHON=.*$|export HERMES_PYTHON='${hermesPython}/bin/hermes-python'\nexport PYTHONPATH='$hermes_pythonpath'\\\''${PYTHONPATH:+:}\\\''${PYTHONPATH:-}|m" "$out/bin/$bin"
-        grep -F "export HERMES_PYTHON='${hermesPython}/bin/hermes-python'" "$out/bin/$bin" >/dev/null
-        grep -F "export PYTHONPATH='${hermesCliDashboardAuthOverlay}/${pkgs.python312.sitePackages}:${hermesObsidianPythonPath}" "$out/bin/$bin" >/dev/null
-        chmod +x "$out/bin/$bin"
-      done
-    '';
+        hermes_pythonpath='${hermesCliDashboardAuthOverlay}/${pkgs.python312.sitePackages}:${hermesObsidianPythonPath}'
+        for bin in hermes hermes-agent hermes-acp; do
+          ${pkgs.perl}/bin/perl -0pi -e "s|^export HERMES_PYTHON=.*$|export HERMES_PYTHON='${hermesPython}/bin/hermes-python'\nexport PYTHONPATH='$hermes_pythonpath'\\\''${PYTHONPATH:+:}\\\''${PYTHONPATH:-}|m" "$out/bin/$bin"
+          grep -F "export HERMES_PYTHON='${hermesPython}/bin/hermes-python'" "$out/bin/$bin" >/dev/null
+          grep -F "export PYTHONPATH='${hermesCliDashboardAuthOverlay}/${pkgs.python312.sitePackages}:${hermesObsidianPythonPath}" "$out/bin/$bin" >/dev/null
+          chmod +x "$out/bin/$bin"
+        done
+      '';
 
   sideProjectProfiles = {
     product = pkgs.writeText "hermes-profile-product-SOUL.md" ''
@@ -329,13 +335,34 @@ in
           "google_chat-platform"
         ];
         platform_toolsets = {
-          api_server = [ "hermes-api-server" "x_search" ];
-          cli = [ "hermes-cli" "x_search" ];
-          cron = [ "hermes-cron" "x_search" ];
-          discord = [ "hermes-discord" "x_search" ];
-          signal = [ "hermes-signal" "x_search" ];
-          slack = [ "hermes-slack" "x_search" ];
-          telegram = [ "hermes-telegram" "x_search" ];
+          api_server = [
+            "hermes-api-server"
+            "x_search"
+          ];
+          cli = [
+            "hermes-cli"
+            "x_search"
+          ];
+          cron = [
+            "hermes-cron"
+            "x_search"
+          ];
+          discord = [
+            "hermes-discord"
+            "x_search"
+          ];
+          signal = [
+            "hermes-signal"
+            "x_search"
+          ];
+          slack = [
+            "hermes-slack"
+            "x_search"
+          ];
+          telegram = [
+            "hermes-telegram"
+            "x_search"
+          ];
           webhook = [
             "hermes-webhook"
             "x_search"
@@ -344,7 +371,10 @@ in
             "skills"
             "delegation"
           ];
-          whatsapp = [ "hermes-whatsapp" "x_search" ];
+          whatsapp = [
+            "hermes-whatsapp"
+            "x_search"
+          ];
         };
         x_search = {
           model = "grok-4.20-reasoning";
@@ -522,6 +552,6 @@ in
       '';
     };
 
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
 }

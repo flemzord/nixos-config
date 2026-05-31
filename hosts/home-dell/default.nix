@@ -1,6 +1,7 @@
-{ modulesPath
-, pkgs
-, ...
+{
+  modulesPath,
+  pkgs,
+  ...
 }:
 
 {
@@ -49,5 +50,5 @@
     mode = "0400";
   };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
