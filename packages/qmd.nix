@@ -13,7 +13,7 @@
 let
   nodeModulesHashes = {
     x86_64-linux = "sha256-D0ezO4vqq4iswcAMU2DCql9ZAQvh3me6N9aDB5roq4w=";
-    aarch64-darwin = "sha256-qU+9KdR/nTocelyANS09I/4yaQ+7s1LvJNqB27IOK/c=";
+    aarch64-darwin = "sha256-9IxNKYvndOmWbDq5cWjwSQY1daBYEuvnXbVSxp0WnqQ=";
 
     aarch64-linux = "sha256-4Pq5tIonuB2TQ1NmKF42oZVb5vEMtXwY2vf1msQ1/Bk=";
 
@@ -68,12 +68,19 @@ stdenv.mkDerivation rec {
 
       export HOME=$(mktemp -d)
 
-      bun install \
-        --backend copyfile \
-        --frozen-lockfile \
-        --ignore-scripts \
-        --no-progress \
+      bunInstallFlags=(
+        --backend copyfile
+        --frozen-lockfile
+        --ignore-scripts
+        --no-progress
         --production
+      )
+
+      ${lib.optionalString (stdenv.hostPlatform.system == "aarch64-darwin") ''
+        bunInstallFlags+=(--omit=peer)
+      ''}
+
+      bun install "''${bunInstallFlags[@]}"
 
       runHook postBuild
     '';
