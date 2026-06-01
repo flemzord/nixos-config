@@ -12,6 +12,7 @@ HMNAME ?= flemzord@dev
 UNAME := $(shell uname)
 
 DIR_TO_CHECK_FOR = '/opt/homebrew/Library/Taps'
+NIX_UPDATE_FD_LIMIT ?= 4096
 
 
 switch:
@@ -33,10 +34,10 @@ else
 endif
 
 update:
-	nix flake update --commit-lock-file
+	ulimit -n $(NIX_UPDATE_FD_LIMIT) && nix flake update --commit-lock-file
 
 update-homebrew:
-	nix flake update nix-homebrew homebrew-core homebrew-cask formancehq-cask loftsh-cask earthly-cask koyeb-cask temporal-cask charmbracelet-cask darksworm-cask --commit-lock-file
+	ulimit -n $(NIX_UPDATE_FD_LIMIT) && nix flake update nix-homebrew homebrew-core homebrew-cask formancehq-cask loftsh-cask earthly-cask koyeb-cask temporal-cask charmbracelet-cask darksworm-cask --commit-lock-file
 
 fmt:
 	nix fmt
