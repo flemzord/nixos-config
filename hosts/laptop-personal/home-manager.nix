@@ -25,6 +25,7 @@ in
           ./../../modules/home-manager/programs/claude-code.nix
           ./../../modules/home-manager/programs/codex.nix
           ./../../modules/home-manager/programs/opencode.nix
+          ./../../modules/home-manager/programs/ai-skills.nix
           ./../../modules/home-manager/programs/aerospace.nix
           ./../../modules/home-manager/programs/glow.nix
           ./../../modules/home-manager/programs/direnv.nix
