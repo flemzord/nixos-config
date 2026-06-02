@@ -7,18 +7,18 @@
 
 buildNpmPackage rec {
   pname = "gitnexus";
-  version = "1.6.4";
+  version = "1.6.5";
 
   src = fetchFromGitHub {
     owner = "abhigyanpatwari";
     repo = "GitNexus";
     rev = "v${version}";
-    hash = "sha256-YpNxXei0A+rHlHlBlAzMt54rJFNSyTkC5sOJZjP7ArA=";
+    hash = "sha256-bNV6yhbMbCYmkSu67dEF3Pm4amgzXNopWk+G2fmkdpI=";
   };
 
   sourceRoot = "${src.name}/gitnexus";
 
-  npmDepsHash = "sha256-O1VmviQ/jyqBY0rASdaAJaJuYyeAu6HPKR7iL5ihCA8=";
+  npmDepsHash = "sha256-BRvS1npNezOKThqQcHa1YKOSNQa5dL582/JszB6vdRI=";
   npmDepsFetcherVersion = 2;
   nodejs = nodejs_22;
 
@@ -34,8 +34,8 @@ buildNpmPackage rec {
   postPatch = ''
     substituteInPlace scripts/build.js \
       --replace-fail \
-        "execSync('npx tsc', { cwd: SHARED_ROOT, stdio: 'inherit', timeout: 120_000 });" \
-        "execSync('npx tsc -p ../gitnexus-shared/tsconfig.json', { cwd: ROOT, stdio: 'inherit', timeout: 120_000 });" \
+        "execSync(tscCmd, { cwd: SHARED_ROOT, stdio: 'inherit', timeout: 120_000 });" \
+        "execSync(tscCmd + ' -p ../gitnexus-shared/tsconfig.json', { cwd: ROOT, stdio: 'inherit', timeout: 120_000 });" \
       --replace-fail \
         "if (fs.existsSync(path.join(WEB_ROOT, 'package.json'))) {" \
         "if (false && fs.existsSync(path.join(WEB_ROOT, 'package.json'))) {"
