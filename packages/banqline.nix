@@ -5,13 +5,13 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "banqline";
-  version = "0.1.0-unstable-2026-05-22";
+  version = "0.1.0-unstable-2026-05-24";
 
   src = fetchFromGitHub {
     owner = "arkan";
     repo = "banqline";
-    rev = "b4e293ec38b84e1fb17b1c4b3c83fd2fd2be1770";
-    hash = "sha256-R13yyXHOwJTlDPDpoEyNLpWw+zXEubGIPi2oUZik6d0=";
+    rev = "d8eb7a8e9f059e9140df7e09cd76a758c3947c0d";
+    hash = "sha256-jMzCoaiEnOaXjhLi/DSSpx49vy+p3oPtzihFBZfpPVQ=";
   };
 
   cargoHash = "sha256-OthVN0yP8hg6S3yri3gdFllLEBOjqxR3oHruKD62kS0=";
