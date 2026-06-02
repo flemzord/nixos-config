@@ -4,24 +4,24 @@
 }:
 
 let
-  version = "0.5.9";
+  version = "0.6.6";
 
   assets = {
     aarch64-darwin = {
       name = "herdr-macos-aarch64";
-      hash = "sha256-i3lvNxeGKq6B2q5bnWwfGSnXWKrOoLRDO79TAO0spqw=";
+      hash = "sha256-VDf4fKx02whbvFFhmAT7YQZvSfd8JX8zMzEDW75ebD8=";
     };
     x86_64-darwin = {
       name = "herdr-macos-x86_64";
-      hash = "sha256-AObDRtzEjBzr+zE8fxIKH2BCavikGGCDchDIL2ZXvLA=";
+      hash = "sha256-9QeO6Lr5jyt9iRhgZerKunm5E59mEvxVQJJ8gZq7Z8U=";
     };
     aarch64-linux = {
       name = "herdr-linux-aarch64";
-      hash = "sha256-mjiUGkpU134MUQHRgScMqV8S5QReMVkvAPAHYwAjgQ0=";
+      hash = "sha256-aYI3XQGRAW4myM4XNC6lJHiPbDrrTzlJ0AFfUeM9FtI=";
     };
     x86_64-linux = {
       name = "herdr-linux-x86_64";
-      hash = "sha256-E/7B0cqoL6OSVBbXNJdsk8eoTVqHEmrzGQkKOBed524=";
+      hash = "sha256-DQwKOUaUNO+zYw1yWfn5FGO61yekwQ7RxAwG0wvA6qw=";
     };
   };
 
