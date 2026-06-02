@@ -12,26 +12,25 @@
 
 let
   nodeModulesHashes = {
-    x86_64-linux = "sha256-D0ezO4vqq4iswcAMU2DCql9ZAQvh3me6N9aDB5roq4w=";
-    aarch64-darwin = "sha256-9IxNKYvndOmWbDq5cWjwSQY1daBYEuvnXbVSxp0WnqQ=";
+    x86_64-linux = "sha256-sVXoNWIcx1RYRtRWB4F2j7x8/cabFBKq+plFhPU7tBc=";
+    aarch64-darwin = "sha256-xvmzyfJTw4l9eR6jB4OHolwaQFDWnHMjRj83VLJeaRE=";
 
-    aarch64-linux = "sha256-4Pq5tIonuB2TQ1NmKF42oZVb5vEMtXwY2vf1msQ1/Bk=";
+    aarch64-linux = "sha256-+6Sa/IjLdoD9Xm42Bzp/4xdB3I4q+FT3wjSi0sGo9eY=";
 
-    # Populate this on first build if needed.
-    x86_64-darwin = lib.fakeHash;
+    x86_64-darwin = "sha256-1Kz0pOO3DOcJCFOwbg61f9e00wEBMNiQnl9IsXkGjLk=";
   };
 
   nodeModulesHash = nodeModulesHashes.${stdenv.hostPlatform.system} or lib.fakeHash;
 in
 stdenv.mkDerivation rec {
   pname = "qmd";
-  version = "2.1.0";
+  version = "2.5.3";
 
   src = fetchFromGitHub {
     owner = "tobi";
     repo = "qmd";
     rev = "v${version}";
-    hash = "sha256-bqIVaNRTa8H5vrw3RwsD7QdtTa0xNvRuEVzlzE1hIBQ=";
+    hash = "sha256-bFk078qQ8Ha/1na+r5ka6yNPI/Pealh0Rk6hJxKBwNs=";
   };
 
   nativeBuildInputs = [
