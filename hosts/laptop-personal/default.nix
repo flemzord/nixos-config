@@ -17,8 +17,12 @@
 
   nixpkgs.overlays = [
     (_: prev: {
-      fish = prev.fish.overrideAttrs (_: { doCheck = false; });
-      cachix = prev.cachix.overrideAttrs (_: { doCheck = false; });
+      fish = prev.fish.overrideAttrs (_: {
+        doCheck = false;
+      });
+      cachix = prev.cachix.overrideAttrs (_: {
+        doCheck = false;
+      });
     })
   ];
 
@@ -32,7 +36,6 @@
       dock = {
         orientation = "bottom";
         persistent-apps = [
-          "/Applications/Comet.app/"
           "/Applications/Discord.app/"
           "/Applications/Beeper Desktop.app/"
           "/Applications/WhatsApp.app"

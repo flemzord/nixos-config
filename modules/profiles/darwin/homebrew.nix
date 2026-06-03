@@ -71,7 +71,6 @@
       "bambu-studio"
       "chatgpt"
       "claude"
-      "comet"
       "discord"
       "figma"
       "google-chrome"
