@@ -15,6 +15,7 @@ _:
 let
   sharedSkills = {
     grill-me = ./skills/grill-me;
+    review-pr = ./skills/review-pr;
   };
 in
 {
