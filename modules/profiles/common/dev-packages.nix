@@ -13,6 +13,10 @@ let
     doCheck = false;
   });
 
+  semgrepNoChecks = semgrep.overridePythonAttrs (_: {
+    doCheck = false;
+  });
+
   pythonDev = python313.withPackages (ps: with ps; [
     click
     pyyaml
@@ -26,7 +30,7 @@ in
   statix
   deadnix
   difftastic
-  semgrep
+  semgrepNoChecks
   coreutils
   flyctl
   atuin
