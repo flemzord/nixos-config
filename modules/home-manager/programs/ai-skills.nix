@@ -14,6 +14,7 @@ _:
 
 let
   sharedSkills = {
+    autoreview = ./skills/autoreview;
     grill-me = ./skills/grill-me;
     review-pr = ./skills/review-pr;
   };
