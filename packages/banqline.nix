@@ -1,23 +1,48 @@
-{ fetchFromGitHub
+{ fetchurl
 , lib
-, rustPlatform
+, stdenvNoCC
 }:
 
-rustPlatform.buildRustPackage rec {
-  pname = "banqline";
-  version = "0.1.0-unstable-2026-05-24";
-
-  src = fetchFromGitHub {
-    owner = "arkan";
-    repo = "banqline";
-    rev = "d8eb7a8e9f059e9140df7e09cd76a758c3947c0d";
-    hash = "sha256-jMzCoaiEnOaXjhLi/DSSpx49vy+p3oPtzihFBZfpPVQ=";
+let
+  version = "0.1.2";
+  targetBySystem = {
+    aarch64-darwin = "aarch64-apple-darwin";
+    aarch64-linux = "aarch64-unknown-linux-gnu";
+    x86_64-darwin = "x86_64-apple-darwin";
+    x86_64-linux = "x86_64-unknown-linux-gnu";
+  };
+  hashBySystem = {
+    aarch64-darwin = "sha256-nIMq3k0jO4E0TzO8kHgn6hnfLBJ6Cru+EYEHYBeLJ98=";
+    aarch64-linux = "sha256-aNq3PTtfr9UjTJO+7ndIooW3QAwf/gv5JeihTvB7q9I=";
+    x86_64-darwin = "sha256-02RmZDzmVI3NI5GU89NUzRCwQmprOCV4KJrsNpnQb20=";
+    x86_64-linux = "sha256-0XTOmWceBGtQnnCtWqENByVV+FTXLu5wzz0iGFnizxw=";
   };
 
-  cargoHash = "sha256-OthVN0yP8hg6S3yri3gdFllLEBOjqxR3oHruKD62kS0=";
+  system = stdenvNoCC.hostPlatform.system;
+  target = targetBySystem.${system}
+    or (throw "banqline: unsupported system ${system}");
+in
+stdenvNoCC.mkDerivation {
+  pname = "banqline";
+  inherit version;
 
-  preCheck = ''
-    export HOME=$(mktemp -d)
+  src = fetchurl {
+    url = "https://github.com/arkan/banqline/releases/download/v${version}/banqline-${version}-${target}.tar.gz";
+    hash = hashBySystem.${system};
+  };
+
+  installPhase = ''
+    runHook preInstall
+    install -Dm755 banqline "$out/bin/banqline"
+    runHook postInstall
+  '';
+
+  doInstallCheck = true;
+  installCheckPhase = ''
+    runHook preInstallCheck
+    "$out/bin/banqline" --help >/dev/null
+    "$out/bin/banqline" version >/dev/null
+    runHook postInstallCheck
   '';
 
   meta = {
@@ -25,6 +50,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/arkan/banqline";
     license = lib.licenses.mit;
     mainProgram = "banqline";
-    platforms = lib.platforms.unix;
+    platforms = builtins.attrNames targetBySystem;
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
   };
 }

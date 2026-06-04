@@ -27,6 +27,12 @@
     lfs = {
       enable = true;
     };
+    includes = [
+      {
+        condition = "gitdir:~/Developer/Formance/";
+        contents.user.email = "maxence@formance.com";
+      }
+    ];
     settings = {
       user = {
         name = fullName;
