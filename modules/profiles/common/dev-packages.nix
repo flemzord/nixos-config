@@ -81,6 +81,7 @@ in
   direnvNoChecks
   yq
   jq
+  jsonnet
   k9s
   ko
   watch
