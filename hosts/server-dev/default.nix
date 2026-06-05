@@ -322,6 +322,7 @@ in
       enable = true;
       package = hermesPackage;
       settings = {
+        approvals.mode = "off";
         security.redact_secrets = true;
         terminal.cwd = config.services.hermes-agent.workingDirectory;
         plugins.enabled = [
