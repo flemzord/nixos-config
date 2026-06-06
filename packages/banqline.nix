@@ -1,5 +1,7 @@
-{ fetchurl
+{ autoPatchelfHook
+, fetchurl
 , lib
+, stdenv
 , stdenvNoCC
 }:
 
@@ -30,6 +32,14 @@ stdenvNoCC.mkDerivation {
     url = "https://github.com/arkan/banqline/releases/download/v${version}/banqline-${version}-${target}.tar.gz";
     hash = hashBySystem.${system};
   };
+
+  nativeBuildInputs = lib.optionals stdenvNoCC.hostPlatform.isLinux [
+    autoPatchelfHook
+  ];
+
+  buildInputs = lib.optionals stdenvNoCC.hostPlatform.isLinux [
+    stdenv.cc.cc.lib
+  ];
 
   installPhase = ''
     runHook preInstall
