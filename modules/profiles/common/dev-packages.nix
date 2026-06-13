@@ -128,6 +128,9 @@ in
   gitnexus
   killall
   qmd
+  agent-browser
+  snouty
+  google-cloud-sdk
 ]
 ++ lib.optionals stdenv.isLinux [
   git

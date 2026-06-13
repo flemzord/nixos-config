@@ -2,6 +2,12 @@
 *.swp
 result
 
+# Agent curator outputs are local review artifacts. They can contain private
+# workflow names or paths and must stay outside git.
+.agent-curator/
+agent-curator-output/
+agent-curator-proposals/
+
 # Secrets - ignore unencrypted files, allow .age encrypted files
 secrets/*
 !secrets/*.age

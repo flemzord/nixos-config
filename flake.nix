@@ -73,10 +73,26 @@
   };
 
   outputs = inputs@{ darwin, nix-homebrew, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, googleworkspace-cli, ... }: rec {
-    overlays.default = final: _prev: {
+    overlays.default = final: prev: {
       banqline = final.callPackage ./packages/banqline.nix { };
       gitnexus = final.callPackage ./packages/gitnexus.nix { };
       herdr = final.callPackage ./packages/herdr.nix { };
+      kubernetes-helm = prev.kubernetes-helm.overrideAttrs (oldAttrs: {
+        preCheck = builtins.replaceStrings
+          [
+            "cmd/helm/dependency_build_test.go"
+            "cmd/helm/dependency_update_test.go"
+            "cmd/helm/install_test.go"
+            "cmd/helm/pull_test.go"
+          ]
+          [
+            "pkg/cmd/dependency_build_test.go"
+            "pkg/cmd/dependency_update_test.go"
+            "pkg/cmd/install_test.go"
+            "pkg/cmd/pull_test.go"
+          ]
+          oldAttrs.preCheck;
+      });
       qmd = final.callPackage ./packages/qmd.nix { };
     };
 

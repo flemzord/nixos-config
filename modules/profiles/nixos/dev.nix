@@ -36,6 +36,7 @@ in
           ++ lib.optionals cfg.manageAiCliConfig [
             ../../home-manager/programs/claude-code.nix
             ../../home-manager/programs/codex.nix
+            ../../home-manager/programs/agent-curator.nix
           ];
 
           programs.home-manager.enable = true;
