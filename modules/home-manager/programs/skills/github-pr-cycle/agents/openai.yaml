@@ -1,0 +1,7 @@
+interface:
+  display_name: "GitHub PR Cycle"
+  short_description: "Ship PRs, comments, and CI in one loop"
+  brand_color: "#0969DA"
+  default_prompt: "Use $github-pr-cycle to ship the current branch through PR comments and CI."
+policy:
+  allow_implicit_invocation: true

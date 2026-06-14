@@ -1,0 +1,7 @@
+interface:
+  display_name: "GitHub CI Repair"
+  short_description: "Watch checks and fix branch failures"
+  brand_color: "#0969DA"
+  default_prompt: "Use $github-ci-repair to watch this PR's checks and fix branch-attributable failures."
+policy:
+  allow_implicit_invocation: true

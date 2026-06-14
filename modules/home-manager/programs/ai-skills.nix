@@ -17,6 +17,10 @@ let
 
   sharedSkills = {
     autoreview = ./skills/autoreview;
+    github-ci-repair = ./skills/github-ci-repair;
+    github-inline-review = ./skills/github-inline-review;
+    github-pr-cycle = ./skills/github-pr-cycle;
+    github-pr-triage = ./skills/github-pr-triage;
     grill-me = ./skills/grill-me;
     review-pr = ./skills/review-pr;
   };
@@ -36,6 +40,18 @@ let
     symlinks to `~/.agents/skills`.
   '';
 
+  githubWorkflowRule = ''
+    # GitHub Workflow Defaults
+
+    When writing GitHub PR descriptions, issue comments, review comments,
+    inline comments, or re-review requests, use English by default unless the
+    user explicitly asks for another language.
+
+    Keep direct chat summaries to the user in French by default.
+
+    Do not merge pull requests unless the user explicitly asks for merge.
+  '';
+
   mkCanonicalSkillEntry = name: source:
     lib.nameValuePair ".agents/skills/${name}" {
       force = true;
@@ -49,8 +65,17 @@ let
     };
 in
 {
-  programs.claude-code.rules.skills-directory = skillsDirectoryRule;
-  programs.codex.rules.skills-directory = skillsDirectoryRule;
+  programs = {
+    claude-code.rules = {
+      github-workflows = githubWorkflowRule;
+      skills-directory = skillsDirectoryRule;
+    };
+
+    codex.rules = {
+      github-workflows = githubWorkflowRule;
+      skills-directory = skillsDirectoryRule;
+    };
+  };
 
   home = {
     activation = {

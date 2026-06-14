@@ -1,0 +1,7 @@
+interface:
+  display_name: "GitHub Inline Review"
+  short_description: "Post precise PR review comments"
+  brand_color: "#0969DA"
+  default_prompt: "Use $github-inline-review to review this PR and draft inline GitHub comments."
+policy:
+  allow_implicit_invocation: true

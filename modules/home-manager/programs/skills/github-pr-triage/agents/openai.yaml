@@ -1,0 +1,7 @@
+interface:
+  display_name: "GitHub PR Triage"
+  short_description: "Prioritize PRs needing attention"
+  brand_color: "#0969DA"
+  default_prompt: "Use $github-pr-triage to find the GitHub PRs that need my attention."
+policy:
+  allow_implicit_invocation: true
