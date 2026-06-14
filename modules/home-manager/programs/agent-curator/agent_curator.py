@@ -450,6 +450,8 @@ def read_document(
         text = path.read_text(encoding="utf-8", errors="replace")
     except OSError:
         return None
+    if not text.strip():
+        return None
 
     frontmatter = parse_frontmatter(text)
     kind = classify_document(path)
@@ -609,6 +611,10 @@ def make_duplicate_proposals(docs: list[Document]) -> list[dict[str, Any]]:
 
 
 def skill_inventory_entry(doc: Document) -> dict[str, Any]:
+    return document_inventory_entry(doc)
+
+
+def document_inventory_entry(doc: Document) -> dict[str, Any]:
     return {
         "name": doc.name,
         "path": doc.path,
@@ -744,6 +750,46 @@ def make_local_promotion_proposals(docs: list[Document]) -> list[dict[str, Any]]
     ]
 
 
+def make_local_agent_inventory_proposal(docs: list[Document]) -> list[dict[str, Any]]:
+    local_agents = [
+        doc
+        for doc in docs
+        if (
+            doc.kind == "codex-agent"
+            and not doc.managed_by_repo
+            and doc.management in {"local-agent-config", "unknown"}
+        )
+    ]
+    if not local_agents:
+        return []
+
+    return [
+        {
+            "type": "local-agent-inventory",
+            "name": "local-codex-agents",
+            "severity": "info",
+            "summary": f"{len(local_agents)} local Codex agent(s) are managed outside nixos-config.",
+            "recommendation": (
+                "Keep generated or marketplace agent packs outside Nix by default. "
+                "Promote only durable personal agents that should be reproducible across machines."
+            ),
+            "items": [
+                {
+                    "management": "local-or-unknown",
+                    "manager": "manual-review",
+                    "count": len(local_agents),
+                    "noun": "agent(s)",
+                    "entries": [
+                        document_inventory_entry(doc)
+                        for doc in sorted(local_agents, key=lambda d: d.name)[:50]
+                    ],
+                    "truncated": len(local_agents) > 50,
+                }
+            ],
+        }
+    ]
+
+
 def make_guidance_proposals(docs: list[Document]) -> list[dict[str, Any]]:
     guidance = [
         doc
@@ -783,6 +829,7 @@ def build_proposals(docs: list[Document]) -> list[dict[str, Any]]:
     proposals.extend(make_auto_managed_skill_proposal(docs))
     proposals.extend(make_runtime_managed_inventory_proposal(docs))
     proposals.extend(make_local_promotion_proposals(docs))
+    proposals.extend(make_local_agent_inventory_proposal(docs))
     proposals.extend(make_guidance_proposals(docs))
     return proposals
 
@@ -823,14 +870,16 @@ def proposal_markdown(proposal: dict[str, Any]) -> str:
                 lines.append("  - aliases:")
                 for alias in aliases:
                     lines.append(f"    - `{alias.get('source', '?')}`: `{alias.get('path', '')}`")
-        elif isinstance(item, dict) and "skills" in item:
+        elif isinstance(item, dict) and ("skills" in item or "entries" in item):
+            entries = item.get("entries") or item.get("skills") or []
+            noun = item.get("noun") or "skill(s)"
             label = item.get("source") or item.get("manager") or item.get("management") or "unknown"
-            lines.append(f"- `{label}`: {item.get('count')} skill(s)")
-            for skill in item.get("skills", []):
-                desc = skill.get("description") or "(none)"
+            lines.append(f"- `{label}`: {item.get('count')} {noun}")
+            for entry in entries:
+                desc = entry.get("description") or "(none)"
                 lines.append(
-                    f"  - `{skill.get('name')}` - `{skill.get('management', 'unknown')}` "
-                    f"via `{skill.get('manager', 'unknown')}` - {desc} - `{skill.get('path')}`"
+                    f"  - `{entry.get('name')}` - `{entry.get('management', 'unknown')}` "
+                    f"via `{entry.get('manager', 'unknown')}` - {desc} - `{entry.get('path')}`"
                 )
             if item.get("truncated"):
                 lines.append("  - ... truncated, see latest index.json")
@@ -879,6 +928,19 @@ def report_markdown(docs: list[Document], proposals: list[dict[str, Any]], meta:
     return "\n".join(lines)
 
 
+def clear_proposal_dir(proposal_dir: Path) -> int:
+    if not proposal_dir.exists():
+        return 0
+
+    removed = 0
+    for path in proposal_dir.glob("*.md"):
+        if not path.is_file():
+            continue
+        path.unlink()
+        removed += 1
+    return removed
+
+
 def cmd_scan(args: argparse.Namespace) -> int:
     config = load_config(expand_path(args.config) if args.config else None)
     if args.repo_root:
@@ -902,6 +964,7 @@ def cmd_scan(args: argparse.Namespace) -> int:
 
     if not args.no_proposals:
         proposal_dir = data_dir / "proposals"
+        removed = 0 if args.keep_proposal_history else clear_proposal_dir(proposal_dir)
         for index, proposal in enumerate(proposals, start=1):
             filename = f"{stamp}-{index:02d}-{proposal['type']}-{proposal['name']}.md"
             write_text(proposal_dir / filename, proposal_markdown(proposal))
@@ -910,6 +973,8 @@ def cmd_scan(args: argparse.Namespace) -> int:
     print(f"wrote {display_path(run_dir / 'REPORT.md')}")
     if proposals:
         print(f"wrote {len(proposals)} proposal(s) under {display_path(data_dir / 'proposals')}")
+        if removed:
+            print(f"removed {removed} old proposal file(s)")
     return 0
 
 
@@ -985,6 +1050,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     scan = sub.add_parser("scan", help="Index allowlisted knowledge files and write proposals")
     scan.add_argument("--no-proposals", action="store_true", help="Only write the inventory/report")
+    scan.add_argument(
+        "--keep-proposal-history",
+        action="store_true",
+        help="Do not clear old proposal markdown files before writing the latest scan proposals",
+    )
     scan.set_defaults(func=cmd_scan)
 
     status = sub.add_parser("status", help="Show latest scan summary")
