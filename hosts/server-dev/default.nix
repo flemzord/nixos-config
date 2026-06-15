@@ -334,6 +334,9 @@ in
           "platforms/google_chat"
           "google_chat-platform"
         ];
+        platforms.telegram.extra = {
+          rich_messages = true;
+        };
         platform_toolsets = {
           api_server = [
             "hermes-api-server"
