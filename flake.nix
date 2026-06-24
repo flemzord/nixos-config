@@ -4,6 +4,7 @@
   inputs = {
     # nixpkgs' default branch is 'master' (not 'main')
     nixpkgs.url = "github:nixos/nixpkgs?ref=master";
+    nixpkgs-nodejs.url = "github:nixos/nixpkgs/nixos-26.05";
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
@@ -73,31 +74,62 @@
   };
 
   outputs = inputs@{ darwin, nix-homebrew, home-manager, nixpkgs, disko, vscode-server, agenix, claude-code-nix, codex-cli-nix, hermes-agent, googleworkspace-cli, ... }: rec {
-    overlays.default = final: prev: {
-      banqline = final.callPackage ./packages/banqline.nix { };
-      gitnexus = final.callPackage ./packages/gitnexus.nix { };
-      herdr = final.callPackage ./packages/herdr.nix { };
-      kubernetes-helm = prev.kubernetes-helm.overrideAttrs (oldAttrs: {
-        preCheck = builtins.replaceStrings
-          [
-            "cmd/helm/dependency_build_test.go"
-            "cmd/helm/dependency_update_test.go"
-            "cmd/helm/install_test.go"
-            "cmd/helm/pull_test.go"
-          ]
-          [
-            "pkg/cmd/dependency_build_test.go"
-            "pkg/cmd/dependency_update_test.go"
-            "pkg/cmd/install_test.go"
-            "pkg/cmd/pull_test.go"
-          ]
-          oldAttrs.preCheck;
-      });
-      qmd = final.callPackage ./packages/qmd.nix { };
-      statix = prev.statix.overrideAttrs (_: {
-        doCheck = false;
-      });
-    };
+    overlays.default = final: prev:
+      let
+        nodejsPkgs = import inputs."nixpkgs-nodejs" {
+          system = final.stdenv.hostPlatform.system;
+          config.allowUnfree = true;
+        };
+        nodejsSlim = nodejsPkgs."nodejs-slim_22";
+        nodejsWithNpm = final.buildEnv {
+          name = "nodejs-slim-${nodejsSlim.version}-with-npm";
+          paths = [
+            nodejsSlim
+            nodejsSlim.corepack
+            nodejsSlim.dev
+            nodejsSlim.npm
+          ];
+          extraOutputsToInstall = [
+            "corepack"
+            "dev"
+            "npm"
+            "out"
+          ];
+          ignoreCollisions = true;
+          inherit (nodejsSlim) meta;
+          passthru = (nodejsSlim.passthru or { }) // {
+            inherit (nodejsSlim) corepack libv8 npm version;
+            dev = nodejsWithNpm;
+          };
+        };
+      in
+      {
+        banqline = final.callPackage ./packages/banqline.nix { };
+        gitnexus = final.callPackage ./packages/gitnexus.nix { };
+        herdr = final.callPackage ./packages/herdr.nix { };
+        kubernetes-helm = prev.kubernetes-helm.overrideAttrs (oldAttrs: {
+          preCheck = builtins.replaceStrings
+            [
+              "cmd/helm/dependency_build_test.go"
+              "cmd/helm/dependency_update_test.go"
+              "cmd/helm/install_test.go"
+              "cmd/helm/pull_test.go"
+            ]
+            [
+              "pkg/cmd/dependency_build_test.go"
+              "pkg/cmd/dependency_update_test.go"
+              "pkg/cmd/install_test.go"
+              "pkg/cmd/pull_test.go"
+            ]
+            oldAttrs.preCheck;
+        });
+        nodejs_22 = nodejsWithNpm;
+        "nodejs-slim_22" = nodejsPkgs."nodejs-slim_22";
+        qmd = final.callPackage ./packages/qmd.nix { };
+        statix = prev.statix.overrideAttrs (_: {
+          doCheck = false;
+        });
+      };
 
     packages =
       let
