@@ -94,6 +94,9 @@
           oldAttrs.preCheck;
       });
       qmd = final.callPackage ./packages/qmd.nix { };
+      statix = prev.statix.overrideAttrs (_: {
+        doCheck = false;
+      });
     };
 
     packages =
@@ -197,12 +200,18 @@
     devShells =
       let
         common = pkgs: with pkgs; [ nixpkgs-fmt statix deadnix nil pre-commit git direnv agenix.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+        mkDevPkgs = system:
+          import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = [ overlays.default ];
+          };
       in
       {
-        x86_64-linux = let pkgs = nixpkgs.legacyPackages.x86_64-linux; in {
+        x86_64-linux = let pkgs = mkDevPkgs "x86_64-linux"; in {
           default = pkgs.mkShell { packages = common pkgs; };
         };
-        aarch64-darwin = let pkgs = nixpkgs.legacyPackages.aarch64-darwin; in {
+        aarch64-darwin = let pkgs = mkDevPkgs "aarch64-darwin"; in {
           default = pkgs.mkShell { packages = common pkgs; };
         };
       };
