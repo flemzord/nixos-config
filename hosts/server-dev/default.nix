@@ -255,6 +255,18 @@ in
     firewall.enable = lib.mkForce true;
   };
 
+  nix.settings = {
+    cores = lib.mkDefault 2;
+    max-jobs = lib.mkDefault 1;
+  };
+
+  swapDevices = [
+    {
+      device = "/var/lib/nixos-swapfile";
+      size = 8192;
+    }
+  ];
+
   age.secrets = {
     hermes-env = {
       file = ../../secrets/hermes-env.age;
